@@ -1,14 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbg3p51dwtmf1"]
+[gd_scene load_steps=3 format=3 uid="uid://cbg3p51dwtmf1"]
 
-[sub_resource type="Curve3D" id="Curve3D_64s8n"]
-bake_interval = 5.37
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0191999, -0.0043844, -0.000809431, 0, 0, 0, 0, 0, 0, -0.494673, 0.249039, -0.0393379, 0, 0, 0, 0, 0, 0, -0.305387, 0.432552, -0.147616, 0, 0, 0, 0, 0, 0, 0.0462478, 0.434737, -0.198927, 0, 0, 0, 0, 0, 0, 0.498308, 0.264332, -0.188272, 0, 0, 0, 0, 0, 0, 0.430718, -0.168236, 0.0127513, 0, 0, 0, 0, 0, 0, -0.106973, -0.329902, 0.161248, 0, 0, 0, 0, 0, 0, -0.7063, -0.107064, 0.148484, 0, 0, 0, 0, 0, 0, -0.868226, 0.447845, -0.0737964, 0, 0, 0, 0, 0, 0, -0.654246, 0.613881, -0.177879, 0, 0, 0, 0, 0, 0, -0.618042, 0.353752, -0.446552, 0, 0, 0, 0, 0, 0, -0.666775, 0.233459, -0.862569, 0, 0, 0, 0, 0, 0, -0.511719, -0.207614, -0.900726, 0, 0, 0, 0, 0, 0, -0.199812, -0.627096, -0.204222, 0, 0, 0, 0, 0, 0, -0.113012, -0.506803, 0.38143, 0, 0, 0, 0, 0, 0, -0.211493, 0.162517, 1.049, 0, 0, 0, 0, 0, 0, -0.276283, 0.341393, 0.891977, 0, 0, 0, 0, 0, 0, 0.434977, 0.183637, 0.987552, 0, 0, 0, 0, 0, 0, 0.433491, 0.27526, 1.08103),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 19
+[ext_resource type="PackedScene" uid="uid://d1umjhv7hraft" path="res://_Features/room/another_bedroom.tscn" id="1_ghned"]
+
+[sub_resource type="Environment" id="Environment_pj4ii"]
+ambient_light_source = 2
+ambient_light_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+ambient_light_energy = 0.68
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Path3D" type="Path3D" parent="."]
-curve = SubResource("Curve3D_64s8n")
+[node name="Another bedroom" parent="." instance=ExtResource("1_ghned")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.937159, -0.347259, 0.0338354, -0.0486299, -0.0339751, 0.998239, -0.345498, -0.937154, -0.0487273, -0.0525053, 10.0817, -0.829261)
+light_color = Color(0.482353, 0.482353, 0.482353, 1)
+light_energy = 0.658
+light_indirect_energy = 0.25
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.0277552, 0.821358, -0.569737, -0.0399657, 0.570413, 0.820385, 0.998815, 0, 0.0486581, -3.78497, 4.34528, -0.829261)
+light_energy = 3.167
+light_indirect_energy = 2.083
+light_volumetric_fog_energy = 0.916
+light_size = 0.286
+light_specular = 4.835
+spot_range = 7.466
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pj4ii")
