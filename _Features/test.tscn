@@ -1,13 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbg3p51dwtmf1"]
+[gd_scene load_steps=5 format=3 uid="uid://cbg3p51dwtmf1"]
 
 [ext_resource type="PackedScene" uid="uid://d1umjhv7hraft" path="res://_Features/room/another_bedroom.tscn" id="1_ghned"]
+[ext_resource type="Shader" path="res://_Features/test.gdshader" id="1_h5jph"]
 
 [sub_resource type="Environment" id="Environment_pj4ii"]
 ambient_light_source = 2
-ambient_light_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+ambient_light_color = Color(0.533333, 0.533333, 0.533333, 1)
 ambient_light_energy = 0.68
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8t8nl"]
+shader = ExtResource("1_h5jph")
+shader_parameter/effect_amount = -1.103
+
 [node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999981, 0.00617158, 1.74891e-05, 8.65945e-05, -0.0168643, 0.999858, 0.006171, -0.999839, -0.0168645, 0, 19.956, 0)
+fov = 37.8493
 
 [node name="Another bedroom" parent="." instance=ExtResource("1_ghned")]
 
@@ -28,3 +37,13 @@ spot_range = 7.466
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pj4ii")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_8t8nl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
