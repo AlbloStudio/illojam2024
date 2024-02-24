@@ -32,4 +32,4 @@ text = "Probando cosa"
 script = ExtResource("6_ao6xq")
 
 [connection signal="body_entered" from="." to="FiniteStateMachine/Idle" method="_on_activable_body_entered"]
-[connection signal="body_exited" from="." to="FiniteStateMachine/Idle" method="_on_activable_body_exited"]
+[connection signal="body_exited" from="." to="FiniteStateMachine/Visible" method="_on_activable_body_exited"]
