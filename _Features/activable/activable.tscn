@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://1psp7sg7qxv3"]
+
+[ext_resource type="Script" path="res://_Features/activable/activable.gd" id="1_qm5le"]
+[ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_56nxk"]
+[ext_resource type="Script" path="res://_Features/activable/states/activable_state_idle.gd" id="3_fs8if"]
+[ext_resource type="Script" path="res://_Features/activable/states/activable_state_visible.gd" id="4_028q3"]
+[ext_resource type="Script" path="res://_Features/activable/states/activable_state_activated.gd" id="5_gx0th"]
+
+[node name="Activable" type="Area3D"]
+collision_layer = 2
+script = ExtResource("1_qm5le")
+
+[node name="FiniteStateMachine" type="Node" parent="."]
+script = ExtResource("2_56nxk")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("3_fs8if")
+
+[node name="Visible" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("4_028q3")
+
+[node name="Activated" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("5_gx0th")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="ActionLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="." to="FiniteStateMachine/Idle" method="_on_activable_body_entered"]

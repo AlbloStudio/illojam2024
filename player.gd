@@ -13,7 +13,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	calculate_velocity(delta)
-	
+
 	move_and_slide()
 
 
@@ -21,11 +21,10 @@ func calculate_velocity(delta: float) -> void:
 	var input_direction: Vector2 = Input.get_vector(
 		"player_left", "player_right", "player_up", "player_down"
 	)
-	
-	var input_direction_3d = Vector3(input_direction.x, 0.0,  input_direction.y)
+
+	var input_direction_3d = Vector3(input_direction.x, 0.0, input_direction.y)
 
 	if input_direction_3d != Vector3.ZERO:
 		velocity = lerp(velocity, input_direction_3d * speed, acceleration * delta)
-		print(velocity)		
 	else:
 		velocity = lerp(velocity, Vector3.ZERO, intertia * delta)
