@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://1psp7sg7qxv3"]
+[gd_scene load_steps=8 format=3 uid="uid://1psp7sg7qxv3"]
 
 [ext_resource type="Script" path="res://_Features/activable/activable.gd" id="1_qm5le"]
 [ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_56nxk"]
 [ext_resource type="Script" path="res://_Features/activable/states/activable_state_idle.gd" id="3_fs8if"]
 [ext_resource type="Script" path="res://_Features/activable/states/activable_state_visible.gd" id="4_028q3"]
 [ext_resource type="Script" path="res://_Features/activable/states/activable_state_activated.gd" id="5_gx0th"]
+[ext_resource type="Script" path="res://_Features/activable/states/activable_state_deactivated.gd" id="6_1yq4v"]
 [ext_resource type="Script" path="res://_Features/activable/activable_label.gd" id="6_ao6xq"]
 
 [node name="Activable" type="Area3D"]
@@ -23,6 +24,9 @@ script = ExtResource("4_028q3")
 
 [node name="Activated" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("5_gx0th")
+
+[node name="Deactivated" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("6_1yq4v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
