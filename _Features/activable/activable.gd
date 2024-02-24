@@ -5,6 +5,7 @@ class_name Activable extends Area3D
 @export var forbidden := false
 @export var activable_text := "Realizar acciÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n"
 
+@onready var state_activated := $FiniteStateMachine/Activated as FiniteState
 @onready var state_visible := $FiniteStateMachine/Visible as FiniteState
 @onready var state_idle := $FiniteStateMachine/Idle as FiniteState
 @onready var collision_shape_3d := $CollisionShape3D as CollisionShape3D
