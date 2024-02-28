@@ -5,6 +5,7 @@ class_name Activable extends Area3D
 @export var forbidden := false
 @export var activable_text := "Realizar action"
 
+@onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_deactivated := $FiniteStateMachine/Deactivated as ActivableState
 @onready var state_activated := $FiniteStateMachine/Activated as ActivableState
 @onready var state_visible := $FiniteStateMachine/Visible as ActivableState

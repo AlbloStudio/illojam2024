@@ -43,7 +43,7 @@ shape = SubResource("CylinderShape3D_t6nb5")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.22552, 2.5, -0.943154)
 
 [node name="Esquina" parent="Esquina" instance=ExtResource("3_dlmox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13414, 0, 0.210475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77236, 0, 0.210475)
 activable_name = "esquina"
 activable_text = "Doblar esquina"
 
