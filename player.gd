@@ -1,4 +1,4 @@
-class_name player extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 @export var speed = 300.0
 @export var acceleration := 10.0
@@ -6,30 +6,9 @@ class_name player extends CharacterBody3D
 
 var desired_velocity := Vector2.ZERO
 
+@onready var state_controlled := $FiniteStateMachine/Controlled as PlayerState
+@onready var state_puppet := $FiniteStateMachine/Puppet as PlayerState
+
 
 func _ready():
 	desired_velocity = Vector2.LEFT
-	SignalBus.activable_activated.connect(_activable_activated)
-
-
-func _physics_process(delta: float) -> void:
-	_calculate_velocity(delta)
-
-	move_and_slide()
-
-
-func _calculate_velocity(delta: float) -> void:
-	var input_direction: Vector2 = Input.get_vector(
-		"player_left", "player_right", "player_up", "player_down"
-	)
-
-	var input_direction_3d = Vector3(input_direction.x, 0.0, input_direction.y)
-
-	if input_direction_3d != Vector3.ZERO:
-		velocity = lerp(velocity, input_direction_3d * speed, acceleration * delta)
-	else:
-		velocity = lerp(velocity, Vector3.ZERO, intertia * delta)
-
-
-func _activable_activated(activable_name: String) -> void:
-	print(activable_name)

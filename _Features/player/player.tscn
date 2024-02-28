@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpkgwkvewfmuh"]
+[gd_scene load_steps=7 format=3 uid="uid://dpkgwkvewfmuh"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_nic3o"]
+[ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_bky17"]
+[ext_resource type="Script" path="res://_Features/player/states/player_state_controlled.gd" id="3_1flnn"]
+[ext_resource type="Script" path="res://_Features/player/states/player_state_puppet.gd" id="4_iboom"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7fb6b"]
 height = 1.75
@@ -20,3 +23,13 @@ shape = SubResource("CapsuleShape3D_7fb6b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_e108d")
+
+[node name="FiniteStateMachine" type="Node" parent="."]
+script = ExtResource("2_bky17")
+initial_state = NodePath("Controlled")
+
+[node name="Controlled" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("3_1flnn")
+
+[node name="Puppet" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("4_iboom")

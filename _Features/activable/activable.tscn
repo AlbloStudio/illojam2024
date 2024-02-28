@@ -34,6 +34,3 @@ script = ExtResource("6_1yq4v")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.5, 0)
 text = "Probando cosa"
 script = ExtResource("6_ao6xq")
-
-[connection signal="body_entered" from="." to="FiniteStateMachine/Idle" method="_on_activable_body_entered"]
-[connection signal="body_exited" from="." to="FiniteStateMachine/Visible" method="_on_activable_body_exited"]
