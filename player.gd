@@ -9,15 +9,16 @@ var desired_velocity := Vector2.ZERO
 
 func _ready():
 	desired_velocity = Vector2.LEFT
+	SignalBus.activable_activated.connect(_activable_activated)
 
 
 func _physics_process(delta: float) -> void:
-	calculate_velocity(delta)
+	_calculate_velocity(delta)
 
 	move_and_slide()
 
 
-func calculate_velocity(delta: float) -> void:
+func _calculate_velocity(delta: float) -> void:
 	var input_direction: Vector2 = Input.get_vector(
 		"player_left", "player_right", "player_up", "player_down"
 	)
@@ -28,3 +29,7 @@ func calculate_velocity(delta: float) -> void:
 		velocity = lerp(velocity, input_direction_3d * speed, acceleration * delta)
 	else:
 		velocity = lerp(velocity, Vector3.ZERO, intertia * delta)
+
+
+func _activable_activated(activable_name: String) -> void:
+	print(activable_name)

@@ -2,7 +2,6 @@ class_name ActivableStateVisible extends ActivableState
 
 
 func enter(_msg := {}) -> void:
-	SignalBus.activable_visibled.emit(state_owner.name)
 	state_owner.label.make_visible(true)
 	state_owner.body_exited.connect(_on_activable_body_exited)
 

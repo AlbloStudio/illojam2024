@@ -2,7 +2,6 @@ class_name ActivableStateIdle extends ActivableState
 
 
 func enter(_msg := {}) -> void:
-	SignalBus.activable_idled.emit(state_owner.name)
 	state_owner.label.make_visible(false)
 	state_owner.body_entered.connect(_on_activable_body_entered)
 
