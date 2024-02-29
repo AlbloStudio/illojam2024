@@ -16,5 +16,5 @@ func _on_activable_body_exited(_body: Node3D) -> void:
 
 
 func handle_input(event: InputEvent) -> void:
-	if event.is_action("player_action"):
+	if event.is_action_pressed("player_action"):
 		state_machine.transition_to(state_owner.state_activated.name)

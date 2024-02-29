@@ -36,9 +36,10 @@ func _calculate_velocity(delta: float) -> void:
 
 func _activable_activated(activable_name: String) -> void:
 	match activable_name:
-		"Esquina":
-			_esquina()
+		"Tablet":
+			_tablet()
 
 
-func _esquina() -> void:
+func _tablet() -> void:
 	state_machine.transition_to(state_owner.state_puppet.name)
+	SignalBus.tablet_opened.emit()
