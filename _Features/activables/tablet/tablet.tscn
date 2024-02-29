@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb43tlfgdsw7r"]
+
+[ext_resource type="Script" path="res://_Features/activables/tablet/tablet.gd" id="1_qxtak"]
+[ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_04h7g"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t6nb5"]
+radius = 1.01384
+
+[node name="Tablet" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.22552, 2.5, -0.943154)
+script = ExtResource("1_qxtak")
+
+[node name="Tablet" parent="." instance=ExtResource("2_04h7g")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.7176, -2.3239, -2.5)
+activable_name = "Tablet"
+activable_text = "Leer chat"
+
+[node name="CollisionShape3D" parent="Tablet" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19293, -0.968434)
+shape = SubResource("CylinderShape3D_t6nb5")
+
+[node name="ActionLabel" parent="Tablet" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.22552, 2.5, -0.943154)
+
+[node name="TabletScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabletScreen"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="TabletScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Despierta, Juan!
+Estás en un sueño.Intenta hacer cosas inusuales para poder escapar. En la barra de progreso verás qué tal vas. Podrías empezar por... ese... armario"
+
+[node name="Button" type="Button" parent="TabletScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Apagar"
+
+[connection signal="button_up" from="TabletScreen/VBoxContainer/Button" to="." method="_tablet_closed"]
+
+[editable path="Tablet"]

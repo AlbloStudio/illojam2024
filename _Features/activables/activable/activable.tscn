@@ -1,36 +1,36 @@
-[gd_scene load_steps=8 format=3 uid="uid://1psp7sg7qxv3"]
+[gd_scene load_steps=8 format=3 uid="uid://ctv4r5oi50oy1"]
 
-[ext_resource type="Script" path="res://_Features/activable/activable.gd" id="1_qm5le"]
-[ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_56nxk"]
-[ext_resource type="Script" path="res://_Features/activable/states/activable_state_idle.gd" id="3_fs8if"]
-[ext_resource type="Script" path="res://_Features/activable/states/activable_state_visible.gd" id="4_028q3"]
-[ext_resource type="Script" path="res://_Features/activable/states/activable_state_activated.gd" id="5_gx0th"]
-[ext_resource type="Script" path="res://_Features/activable/states/activable_state_deactivated.gd" id="6_1yq4v"]
-[ext_resource type="Script" path="res://_Features/activable/activable_label.gd" id="6_ao6xq"]
+[ext_resource type="Script" path="res://_Features/activables/activable/activable.gd" id="1_s7sqx"]
+[ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_oju4k"]
+[ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_idle.gd" id="3_eg2dy"]
+[ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_visible.gd" id="4_jqj2w"]
+[ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_activated.gd" id="5_ybc1y"]
+[ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_deactivated.gd" id="6_p1ox2"]
+[ext_resource type="Script" path="res://_Features/activables/activable/activable_label.gd" id="7_48efp"]
 
 [node name="Activable" type="Area3D"]
 collision_layer = 2
-script = ExtResource("1_qm5le")
+script = ExtResource("1_s7sqx")
 
 [node name="FiniteStateMachine" type="Node" parent="."]
-script = ExtResource("2_56nxk")
+script = ExtResource("2_oju4k")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("3_fs8if")
+script = ExtResource("3_eg2dy")
 
 [node name="Visible" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("4_028q3")
+script = ExtResource("4_jqj2w")
 
 [node name="Activated" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("5_gx0th")
+script = ExtResource("5_ybc1y")
 
 [node name="Deactivated" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("6_1yq4v")
+script = ExtResource("6_p1ox2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
 [node name="ActionLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.5, 0)
 text = "Probando cosa"
-script = ExtResource("6_ao6xq")
+script = ExtResource("7_48efp")

@@ -5,7 +5,6 @@ class_name Player extends CharacterBody3D
 @export var intertia := 15.0
 
 var desired_velocity := Vector2.ZERO
-var current_activable: Activable = null
 
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_controlled := $FiniteStateMachine/Controlled as PlayerState
@@ -14,8 +13,11 @@ var current_activable: Activable = null
 
 func _ready():
 	desired_velocity = Vector2.LEFT
-	SignalBus.tablet_closed.connect(_tablet_closed)
 
 
-func _tablet_closed() -> void:
+func go_controlled() -> void:
 	state_machine.transition_to(state_controlled.name)
+
+
+func go_puppet() -> void:
+	state_machine.transition_to(state_puppet.name)

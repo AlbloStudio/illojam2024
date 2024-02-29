@@ -18,3 +18,11 @@ func _ready() -> void:
 	label.text = activable_text
 	label.outline_modulate = Color.TRANSPARENT
 	label.modulate = Color.TRANSPARENT
+
+
+func change_current_activable() -> void:
+	SignalBus.current_activable_changed.emit(self)
+
+
+func stop_being_current() -> void:
+	state_machine.transition_to(state_idle.name)

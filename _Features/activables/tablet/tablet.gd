@@ -1,18 +1,16 @@
 extends Node
 
-@onready var tablet_label := $TabletLabel as Label3D
+@onready var tablet_screen := $TabletScreen as Control
 
 
 func _ready() -> void:
 	SignalBus.tablet_opened.connect(_tablet_opened)
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if tablet_label.visible and event.is_action_released("player_action"):
-		print("action!")
-		SignalBus.tablet_closed.emit()
-		tablet_label.visible = false
-
-
 func _tablet_opened() -> void:
-	tablet_label.visible = true
+	tablet_screen.visible = true
+
+
+func _tablet_closed() -> void:
+	SignalBus.tablet_closed.emit()
+	tablet_screen.visible = false

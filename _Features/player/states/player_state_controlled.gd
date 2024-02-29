@@ -1,14 +1,6 @@
 class_name PlayerStateControlled extends PlayerState
 
 
-func enter(_msg := {}) -> void:
-	SignalBus.activable_activated.connect(_activable_activated)
-
-
-func exit() -> void:
-	SignalBus.activable_activated.disconnect(_activable_activated)
-
-
 func physics_update(delta: float) -> void:
 	_calculate_velocity(delta)
 
@@ -32,14 +24,3 @@ func _calculate_velocity(delta: float) -> void:
 		state_owner.velocity = lerp(
 			state_owner.velocity, Vector3.ZERO, state_owner.intertia * delta
 		)
-
-
-func _activable_activated(activable_name: String) -> void:
-	match activable_name:
-		"Tablet":
-			_tablet()
-
-
-func _tablet() -> void:
-	state_machine.transition_to(state_owner.state_puppet.name)
-	SignalBus.tablet_opened.emit()
