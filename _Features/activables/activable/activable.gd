@@ -26,3 +26,11 @@ func change_current_activable() -> void:
 
 func stop_being_current() -> void:
 	state_machine.transition_to(state_idle.name)
+
+
+func deactivate() -> void:
+	state_machine.transition_to(state_deactivated.name)
+
+
+func reactivate() -> void:
+	state_machine.transition_to(state_idle.name)

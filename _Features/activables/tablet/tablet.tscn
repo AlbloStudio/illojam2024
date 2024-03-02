@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_04h7g"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t6nb5"]
-radius = 1.01384
+height = 0.61301
+radius = 0.55609
 
 [node name="Tablet" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.22552, 2.5, -0.943154)
