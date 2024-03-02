@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=6 format=3 uid="uid://b3hl0t3spppnd"]
 
+[ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="PackedScene" uid="uid://dmfuyspa54oal" path="res://_Features/rooms/setup/setup.tscn" id="1_12bv7"]
 [ext_resource type="PackedScene" uid="uid://dpkgwkvewfmuh" path="res://_Features/player/player.tscn" id="2_bfl1y"]
+[ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="4_nyxmf"]
 
 [sub_resource type="Environment" id="Environment_gtx4b"]
 background_energy_multiplier = 0.0
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_6gnox")
 
 [node name="Setup" parent="." instance=ExtResource("1_12bv7")]
 
@@ -14,7 +17,7 @@ background_energy_multiplier = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01093, 0.87875, 2.65274)
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.363614, 7.93225, -0.367664)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.363614, 10.4401, -0.367664)
 current = true
 fov = 37.8493
 
@@ -25,3 +28,5 @@ environment = SubResource("Environment_gtx4b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57964, 2.51881, 3.09965)
 light_energy = 1.37
 omni_range = 8.695
+
+[node name="Tablet" parent="." instance=ExtResource("4_nyxmf")]
