@@ -32,8 +32,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.042
 [node name="CollisionShape3D" parent="Tablet/Tablet" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.408002, 0.664923, -0.822002)
 
-[node name="ActionLabel" parent="Tablet/Tablet" index="2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.272364, 2.5, -0.943154)
+[node name="ActionLabel" parent="Tablet/Tablet/Node" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.911217, 2.5, -3.90278)
 
 [node name="CeilingLight2" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.81287, 2.57201)

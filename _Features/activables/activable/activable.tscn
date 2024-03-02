@@ -30,7 +30,9 @@ script = ExtResource("6_p1ox2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
-[node name="ActionLabel" type="Label3D" parent="."]
+[node name="Node" type="Node" parent="."]
+
+[node name="ActionLabel" type="Label3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.5, 0)
 text = "Probando cosa"
 script = ExtResource("7_48efp")
