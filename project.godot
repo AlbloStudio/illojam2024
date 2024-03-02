@@ -28,6 +28,10 @@ window/size/viewport_height=1080
 
 enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
+[filesystem]
+
+import/fbx/enabled=false
+
 [input]
 
 player_left={
@@ -72,3 +76,6 @@ player_action={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality.mobile=5
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=5
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality.mobile=5

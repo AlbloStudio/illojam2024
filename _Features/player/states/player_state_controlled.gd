@@ -3,6 +3,7 @@ class_name PlayerStateControlled extends PlayerState
 
 func physics_update(delta: float) -> void:
 	_calculate_velocity(delta)
+	_calculate_look_at()
 
 	state_owner.move_and_slide()
 
@@ -24,3 +25,16 @@ func _calculate_velocity(delta: float) -> void:
 		state_owner.velocity = lerp(
 			state_owner.velocity, Vector3.ZERO, state_owner.intertia * delta
 		)
+
+
+func _calculate_look_at() -> void:
+	var vector_to_look_to := (
+		state_owner.global_position
+		+ Vector3(
+			-state_owner.velocity.normalized().x,
+			state_owner.velocity.normalized().y,
+			-state_owner.velocity.normalized().z
+		)
+	)
+
+	state_owner.look_at(vector_to_look_to)
