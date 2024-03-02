@@ -32,7 +32,6 @@ func reset_closet() -> void:
 
 
 func make_clothes_appear() -> void:
-	print("yeah appear them")
 	clothes.visible = true
 
 	for cloth_name in cloth_names:

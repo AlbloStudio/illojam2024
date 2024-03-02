@@ -4,12 +4,9 @@
 [ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_bky17"]
 [ext_resource type="Script" path="res://_Features/player/states/player_state_controlled.gd" id="3_1flnn"]
 [ext_resource type="Script" path="res://_Features/player/states/player_state_puppet.gd" id="4_iboom"]
+[ext_resource type="PackedScene" uid="uid://dlr6fpfqigvrx" path="res://_Features/player/player_i.tscn" id="5_e0hf5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7fb6b"]
-radius = 0.4
-height = 1.75
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_e108d"]
 radius = 0.4
 height = 1.75
 
@@ -21,11 +18,11 @@ speed = 3.0
 acceleration = 8.0
 intertia = 10.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_7fb6b")
+[node name="model" parent="." instance=ExtResource("5_e0hf5")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_e108d")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.685339, 0)
+shape = SubResource("CapsuleShape3D_7fb6b")
 
 [node name="FiniteStateMachine" type="Node" parent="."]
 script = ExtResource("2_bky17")

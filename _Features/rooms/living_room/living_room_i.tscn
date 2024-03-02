@@ -1,8 +1,41 @@
-[gd_scene load_steps=11 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=22 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="3_t3t5u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lw5v0"]
+size = Vector3(8.59094, 2.91199, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_42tmc"]
+size = Vector3(0.184692, 3.0957, 10.2328)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nqkn0"]
+size = Vector3(0.184692, 3.0957, 10.2328)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_125yl"]
+size = Vector3(2.51807, 1.41602, 1.40088)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_brs2j"]
+size = Vector3(1, 0.948364, 2.01855)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71ncc"]
+size = Vector3(5.9314, 1.55811, 0.74707)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5apd"]
+size = Vector3(1, 0.964355, 3.64758)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lc3d1"]
+size = Vector3(1, 1.3822, 0.55365)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_otch5"]
+size = Vector3(1, 1.23584, 0.814941)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mtf2m"]
+size = Vector3(1, 1.33521, 0.832153)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0l1kt"]
+size = Vector3(1.60645, 1.73486, 3.90796)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5jb0e"]
 size = Vector3(0.195, 0.045, 0.115)
@@ -34,14 +67,37 @@ layers = 4
 [node name="StaticBody3D" parent="Plane_001" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Plane_001/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300752, 1.65112, -5.28724)
+shape = SubResource("BoxShape3D_lw5v0")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Plane_001/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17865, 1.43292, -0.057586)
+shape = SubResource("BoxShape3D_42tmc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Plane_001/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26221, 1.74077, 0.0360082)
+shape = SubResource("BoxShape3D_nqkn0")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Plane_001/StaticBody3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.262698, 1.61404, 5.52253)
+shape = SubResource("BoxShape3D_lw5v0")
+
 [node name="StaticBody3D" parent="Plane_003" index="0"]
 collision_layer = 4
 
 [node name="StaticBody3D" parent="Plane-col" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Plane-col/StaticBody3D" index="0"]
+shape = null
+
 [node name="StaticBody3D" parent="Plane_002" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Plane_002/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39597, 0.741494, -1.50752)
+shape = SubResource("BoxShape3D_125yl")
 
 [node name="StaticBody3D" parent="Plane_004" index="0"]
 collision_layer = 4
@@ -64,80 +120,166 @@ collision_layer = 4
 [node name="StaticBody3D" parent="Plane_010" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Plane_010/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0258179, -0.0200195)
+shape = SubResource("BoxShape3D_brs2j")
+
 [node name="StaticBody3D" parent="Plane_011" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Plane_011/StaticBody3D" index="0"]
+shape = null
 
 [node name="StaticBody3D" parent="Plane_012" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Plane_012/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00231922, 0.279053, 0.126465)
+shape = SubResource("BoxShape3D_71ncc")
+
 [node name="StaticBody3D" parent="Cylinder" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Cylinder/StaticBody3D" index="0"]
+shape = null
 
 [node name="StaticBody3D" parent="Plane_013" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Plane_013/StaticBody3D" index="0"]
+shape = null
+
 [node name="StaticBody3D" parent="Plane_015" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Plane_015/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132077, 0.733841, 0.262071)
+shape = SubResource("BoxShape3D_h5apd")
 
 [node name="StaticBody3D" parent="Plane_016" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Plane_016/StaticBody3D" index="0"]
+shape = null
+
 [node name="StaticBody3D" parent="Plane_017" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Plane_017/StaticBody3D" index="0"]
+shape = null
 
 [node name="StaticBody3D" parent="Cylinder_001" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Cylinder_001/StaticBody3D" index="0"]
+shape = null
+
 [node name="StaticBody3D" parent="Cylinder_002" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Cylinder_002/StaticBody3D" index="0"]
+shape = null
 
 [node name="StaticBody3D" parent="Plane_018" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Plane_018/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016333, -0.14256, 0.0951232)
+shape = SubResource("BoxShape3D_lc3d1")
+
 [node name="StaticBody3D" parent="Cylinder_003" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Cylinder_003/StaticBody3D" index="0"]
+shape = null
 
 [node name="StaticBody3D" parent="Cylinder_004" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Cylinder_004/StaticBody3D" index="0"]
+shape = null
+
 [node name="StaticBody3D" parent="Plane_019" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Plane_019/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11792, -0.0925293)
+shape = SubResource("BoxShape3D_otch5")
 
 [node name="StaticBody3D" parent="Cylinder_005" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Cylinder_005/StaticBody3D" index="0"]
+shape = null
+
 [node name="StaticBody3D" parent="Cylinder_006" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Cylinder_006/StaticBody3D" index="0"]
+shape = null
 
 [node name="StaticBody3D" parent="Plane_020" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Plane_020/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.106323, -0.0839233)
+shape = SubResource("BoxShape3D_mtf2m")
+
 [node name="StaticBody3D" parent="Plane_021" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Plane_021/StaticBody3D" index="0"]
+shape = null
 
 [node name="StaticBody3D" parent="Plane_014" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Plane_014/StaticBody3D" index="0"]
+shape = null
+
 [node name="StaticBody3D" parent="Plane_022" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Plane_022/StaticBody3D" index="0"]
+shape = null
 
 [node name="StaticBody3D" parent="Plane_023" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Plane_023/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0151367, 0.367432, 0.796509)
+shape = SubResource("BoxShape3D_0l1kt")
+
 [node name="StaticBody3D" parent="Plane_024" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Plane_024/StaticBody3D" index="0"]
+shape = null
 
 [node name="StaticBody3D" parent="Cube-col" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Cube-col/StaticBody3D" index="0"]
+shape = null
+
 [node name="StaticBody3D" parent="Cube_001" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Cube_001/StaticBody3D" index="0"]
+shape = null
 
 [node name="StaticBody3D" parent="Cube_002" index="0"]
 collision_layer = 4
 
+[node name="CollisionShape3D" parent="Cube_002/StaticBody3D" index="0"]
+shape = null
+
 [node name="StaticBody3D" parent="Cube_003" index="0"]
 collision_layer = 4
+
+[node name="CollisionShape3D" parent="Cube_003/StaticBody3D" index="0"]
+transform = Transform3D(1, 4.28408e-08, 0, -1.67638e-08, 1, 3.72529e-09, 0, 0, 1, 0, 0, 0)
+shape = null
 
 [node name="Closet" parent="." index="37"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.2, 1.6585, 1.27863, -4.69779)

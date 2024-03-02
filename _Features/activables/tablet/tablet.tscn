@@ -20,9 +20,6 @@ activable_text = "Leer chat"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19293, -0.968434)
 shape = SubResource("CylinderShape3D_t6nb5")
 
-[node name="ActionLabel" parent="Tablet" index="2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.22552, 2.5, -0.943154)
-
 [node name="TabletScreen" type="Control" parent="."]
 visible = false
 layout_mode = 3
