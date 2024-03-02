@@ -11,7 +11,7 @@ class_name Activable extends Area3D
 @onready var state_visible := $FiniteStateMachine/Visible as ActivableState
 @onready var state_idle := $FiniteStateMachine/Idle as ActivableState
 @onready var collision_shape_3d := $CollisionShape3D as CollisionShape3D
-@onready var label := $ActionLabel as ActivableLabel
+@onready var label := $Node/ActionLabel as ActivableLabel
 
 
 func _ready() -> void:
@@ -25,4 +25,12 @@ func change_current_activable() -> void:
 
 
 func stop_being_current() -> void:
+	state_machine.transition_to(state_idle.name)
+
+
+func deactivate() -> void:
+	state_machine.transition_to(state_deactivated.name)
+
+
+func reactivate() -> void:
 	state_machine.transition_to(state_idle.name)

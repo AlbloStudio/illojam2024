@@ -6,13 +6,16 @@
 [ext_resource type="Script" path="res://_Features/player/states/player_state_puppet.gd" id="4_iboom"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7fb6b"]
+radius = 0.4
 height = 1.75
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_e108d"]
+radius = 0.4
 height = 1.75
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0198236, -0.00924486, -0.0272166)
+collision_mask = 6
 script = ExtResource("1_nic3o")
 speed = 3.0
 acceleration = 8.0
