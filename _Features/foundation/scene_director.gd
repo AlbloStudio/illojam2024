@@ -10,6 +10,7 @@ func _ready():
 	SignalBus.tablet_closed.connect(_tablet_closed)
 	SignalBus.activable_activated.connect(_activable_activated)
 	SignalBus.current_activable_changed.connect(_set_current_activable)
+	SignalBus.clothes_wrong.connect(_clothes_wronged)
 
 
 func _activable_activated(activable_name: String) -> void:
@@ -53,3 +54,7 @@ func _get_player_naked() -> void:
 func _put_on_clothes(cloth_name: String) -> void:
 	player.put_some_clothes(cloth_name)
 	SignalBus.cloth_put.emit(cloth_name)
+
+
+func _clothes_wronged() -> void:
+	living_room.make_closet_disappear()

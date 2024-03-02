@@ -17,6 +17,11 @@ func make_closet_appear() -> void:
 	closet_activable.state_machine.transition_to(closet_activable.state_idle.name)
 
 
+func make_closet_disappear() -> void:
+	closet.visible = false
+	closet_activable.state_machine.transition_to(closet_activable.state_deactivated.name)
+
+
 func make_clothes_appear() -> void:
 	clothes.visible = true
 
