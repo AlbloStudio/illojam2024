@@ -1,11 +1,11 @@
 class_name LivingRoom extends Node3D
 
+var cloth_names = ["underwear", "pants", "tshirt"]
+
 @onready var closet = $Closet as MeshInstance3D
 @onready var closet_activable = $Closet/Activable as Activable
 
 @onready var clothes = $Closet/Node/Clothes as Node3D
-
-var cloth_names = ["underwear", "pants", "tshirt"]
 
 
 func _ready() -> void:
