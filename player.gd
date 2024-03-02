@@ -35,3 +35,5 @@ func put_some_clothes(cloth_name: String) -> void:
 	if clothes.size() == 3:
 		if clothes.find("underwear") > clothes.find("pants"):
 			SignalBus.clothes_wrong.emit()
+		else:
+			SignalBus.clothes_right.emit()

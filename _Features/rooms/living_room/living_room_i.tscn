@@ -140,7 +140,7 @@ collision_layer = 4
 collision_layer = 4
 
 [node name="Activable" parent="Closet" index="0" instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00131226, 0.000727713, -0.00709224)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.00131226, 0.000727713, -0.00709224)
 activable_name = "Get Naked"
 activable_text = "Desnudarse"
 
