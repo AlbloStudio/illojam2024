@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmx50pmosvfs6"]
+
+[ext_resource type="PackedScene" uid="uid://utkm5hrvggrj" path="res://_Features/rooms/living_room/SalonMirror (1).blend" id="1_hq22c"]
+
+[node name="SalonMirror (1)" instance=ExtResource("1_hq22c")]

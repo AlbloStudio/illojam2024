@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=10 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="PackedScene" uid="uid://dpkgwkvewfmuh" path="res://_Features/player/player.tscn" id="2_bfl1y"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_hsqid"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="4_nyxmf"]
 [ext_resource type="PackedScene" uid="uid://daj1yi4q8q4f" path="res://_Features/rooms/living_room/living_room_i.tscn" id="4_og77x"]
+[ext_resource type="PackedScene" uid="uid://bmx50pmosvfs6" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.tscn" id="5_0lx64"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_v8ayd"]
 
 [sub_resource type="Environment" id="Environment_gtx4b"]
 background_energy_multiplier = 0.0
@@ -12,13 +15,35 @@ fog_light_energy = 0.32
 fog_density = 0.0025
 volumetric_fog_density = 0.0
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_kn0ci"]
+size = Vector2(8.3, 13.8)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_6gnox")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.716386, 10.4401, -2.00866)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.08, 9.655, -1.641)
 current = true
-fov = 37.8493
+fov = 48.0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+script = ExtResource("2_hsqid")
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.08, 9.655, -1.641)
+script = ExtResource("6_v8ayd")
+priority_override = false
+priority = 0
+follow_mode = 2
+follow_target = NodePath("../Player")
+follow_parameters/target_offset = Vector3(0, 9.655, 0)
+follow_parameters/damping = true
+follow_parameters/damping_value = 10.0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08, 0, -1.641)
@@ -35,26 +60,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.408002, 0.664923, -0.822002
 [node name="ActionLabel" parent="Tablet/Tablet/Node" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.911217, 2.5, -3.90278)
 
-[node name="CeilingLight2" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.81287, 2.57201)
-shadow_enabled = true
+[node name="MoorGnivil" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1028)
+
+[node name="CeilingLight2" type="SpotLight3D" parent="MoorGnivil"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.81287, 2.57201)
 shadow_opacity = 0.3
 shadow_blur = 10.0
 spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 80.0
 
-[node name="CeilingLight1" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.81287, -2.60078)
+[node name="CeilingLight1" type="SpotLight3D" parent="MoorGnivil"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.0462, -2.60078)
 light_energy = 2.0
-shadow_enabled = true
 shadow_opacity = 0.31
 shadow_blur = 10.0
 spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 80.0
 
-[node name="LivingRoom" parent="." instance=ExtResource("4_og77x")]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MoorGnivil"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042685, 3.00791, 0.110247)
+mesh = SubResource("PlaneMesh_kn0ci")
+
+[node name="MoorGnivil" parent="MoorGnivil" instance=ExtResource("5_0lx64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.09053)
+
+[node name="LivingRoom" type="Node3D" parent="."]
+
+[node name="CeilingLight2" type="SpotLight3D" parent="LivingRoom"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.81287, 2.57201)
+shadow_opacity = 0.3
+shadow_blur = 10.0
+spot_range = 30.0
+spot_attenuation = 0.812252
+spot_angle = 80.0
+
+[node name="CeilingLight1" type="SpotLight3D" parent="LivingRoom"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.81287, -2.60078)
+light_energy = 2.0
+shadow_opacity = 0.31
+shadow_blur = 10.0
+spot_range = 30.0
+spot_attenuation = 0.812252
+spot_angle = 80.0
+
+[node name="LivingRoom" parent="LivingRoom" instance=ExtResource("4_og77x")]
 
 [editable path="Tablet"]
 [editable path="Tablet/Tablet"]

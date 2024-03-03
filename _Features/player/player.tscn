@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dpkgwkvewfmuh"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_nic3o"]
+[ext_resource type="Script" path="res://_Features/player/player.gd" id="1_nic3o"]
 [ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_bky17"]
 [ext_resource type="Script" path="res://_Features/player/states/player_state_controlled.gd" id="3_1flnn"]
 [ext_resource type="Script" path="res://_Features/player/states/player_state_puppet.gd" id="4_iboom"]

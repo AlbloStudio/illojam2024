@@ -3,7 +3,7 @@ extends Node
 var current_activable: Activable = null
 
 @onready var player := $Player as Player
-@onready var living_room := $LivingRoom as LivingRoom
+@onready var living_room := $LivingRoom/LivingRoom as LivingRoom
 
 
 func _ready():
@@ -59,6 +59,7 @@ func _put_on_clothes(cloth_name: String) -> void:
 
 func _clothes_wronged() -> void:
 	living_room.make_closet_disappear()
+	living_room.destroy_clothes()
 
 
 func _clothes_righted() -> void:

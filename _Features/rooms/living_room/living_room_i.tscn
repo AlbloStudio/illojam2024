@@ -302,7 +302,7 @@ activable_text = "Ponerse calzoncillos"
 initial_state = NodePath("Deactivated")
 
 [node name="CollisionShape3D" parent="Closet/Node/Clothes/underwear/Activable" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0286868, 0, -0.00393683)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0286869, 0, -0.00393677)
 shape = SubResource("BoxShape3D_b7a1v")
 
 [node name="ActionLabel" parent="Closet/Node/Clothes/underwear/Activable/Node" index="0"]
