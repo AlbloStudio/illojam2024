@@ -21,21 +21,23 @@ size = Vector2(8.3, 13.8)
 [node name="Main" type="Node3D"]
 script = ExtResource("1_6gnox")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="CameraGroup" type="Node" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.08, 9.655, -1.641)
 current = true
-fov = 48.0
+fov = 74.9989
 
-[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+[node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
-[node name="PhantomCamera3D" type="Node3D" parent="."]
+[node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.08, 9.655, -1.641)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0
 follow_mode = 2
-follow_target = NodePath("../Player")
+follow_target = NodePath("../../Player")
 follow_parameters/target_offset = Vector3(0, 9.655, 0)
 follow_parameters/damping = true
 follow_parameters/damping_value = 10.0
@@ -51,19 +53,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08, 0, -1.641)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")
 
-[node name="Tablet" parent="." instance=ExtResource("4_nyxmf")]
+[node name="Stage" type="Node" parent="."]
+
+[node name="Tablet" parent="Stage" instance=ExtResource("4_nyxmf")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0426037, 2.5, -5.29767)
 
-[node name="CollisionShape3D" parent="Tablet/Tablet" index="1"]
+[node name="CollisionShape3D" parent="Stage/Tablet/Tablet" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.408002, 0.664923, -0.822002)
 
-[node name="ActionLabel" parent="Tablet/Tablet/Node" index="0"]
+[node name="ActionLabel" parent="Stage/Tablet/Tablet/Node" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.911217, 2.5, -3.90278)
 
-[node name="MoorGnivil" type="Node3D" parent="."]
+[node name="MoorGnivil" type="Node3D" parent="Stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1028)
 
-[node name="CeilingLight2" type="SpotLight3D" parent="MoorGnivil"]
+[node name="CeilingLight2" type="SpotLight3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.81287, 2.57201)
 shadow_opacity = 0.3
 shadow_blur = 10.0
@@ -71,7 +75,7 @@ spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 80.0
 
-[node name="CeilingLight1" type="SpotLight3D" parent="MoorGnivil"]
+[node name="CeilingLight1" type="SpotLight3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.0462, -2.60078)
 light_energy = 2.0
 shadow_opacity = 0.31
@@ -80,16 +84,16 @@ spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 80.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MoorGnivil"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042685, 3.00791, 0.110247)
 mesh = SubResource("PlaneMesh_kn0ci")
 
-[node name="MoorGnivil" parent="MoorGnivil" instance=ExtResource("5_0lx64")]
+[node name="MoorGnivil" parent="Stage/MoorGnivil" instance=ExtResource("5_0lx64")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.09053)
 
-[node name="LivingRoom" type="Node3D" parent="."]
+[node name="LivingRoom" type="Node3D" parent="Stage"]
 
-[node name="CeilingLight2" type="SpotLight3D" parent="LivingRoom"]
+[node name="CeilingLight2" type="SpotLight3D" parent="Stage/LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.81287, 2.57201)
 shadow_opacity = 0.3
 shadow_blur = 10.0
@@ -97,7 +101,7 @@ spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 80.0
 
-[node name="CeilingLight1" type="SpotLight3D" parent="LivingRoom"]
+[node name="CeilingLight1" type="SpotLight3D" parent="Stage/LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.81287, -2.60078)
 light_energy = 2.0
 shadow_opacity = 0.31
@@ -106,7 +110,7 @@ spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 80.0
 
-[node name="LivingRoom" parent="LivingRoom" instance=ExtResource("4_og77x")]
+[node name="LivingRoom" parent="Stage/LivingRoom" instance=ExtResource("4_og77x")]
 
-[editable path="Tablet"]
-[editable path="Tablet/Tablet"]
+[editable path="Stage/Tablet"]
+[editable path="Stage/Tablet/Tablet"]

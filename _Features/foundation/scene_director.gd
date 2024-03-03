@@ -3,7 +3,7 @@ extends Node
 var current_activable: Activable = null
 
 @onready var player := $Player as Player
-@onready var living_room := $LivingRoom/LivingRoom as LivingRoom
+@onready var living_room := $Stage/LivingRoom/LivingRoom as LivingRoom
 
 
 func _ready():
