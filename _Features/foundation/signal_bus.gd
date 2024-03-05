@@ -9,3 +9,5 @@ signal tablet_closed
 signal clothes_wrong
 signal clothes_right
 signal cloth_put(name: String)
+
+signal awaked

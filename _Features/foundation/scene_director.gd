@@ -4,6 +4,7 @@ var current_activable: Activable = null
 
 @onready var player := $Player as Player
 @onready var living_room := $Stage/LivingRoom/LivingRoom as LivingRoom
+@onready var progress := $Control/Progress as Progress
 
 
 func _ready():
@@ -12,6 +13,7 @@ func _ready():
 	SignalBus.current_activable_changed.connect(_set_current_activable)
 	SignalBus.clothes_wrong.connect(_clothes_wronged)
 	SignalBus.clothes_right.connect(_clothes_righted)
+	SignalBus.awaked.connect(_awaked)
 
 
 func _activable_activated(activable_name: String) -> void:
@@ -60,7 +62,12 @@ func _put_on_clothes(cloth_name: String) -> void:
 func _clothes_wronged() -> void:
 	living_room.make_closet_disappear()
 	living_room.destroy_clothes()
+	SignalBus.awaked.emit()
 
 
 func _clothes_righted() -> void:
 	living_room.reset_closet()
+
+
+func _awaked() -> void:
+	progress.progress(1)
