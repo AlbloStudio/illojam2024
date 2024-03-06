@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2uyt4m0rq2fi"]
+
+[ext_resource type="Script" path="res://_Features/common/barrier/barrier_system.gd" id="1_7lcp5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oalpt"]
+size = Vector3(4.4, 3, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3cg61"]
+size = Vector3(4.4, 3, 0.01)
+
+[node name="BarrierSystem" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20007, 0, -6.33569)
+script = ExtResource("1_7lcp5")
+
+[node name="Entry" type="Area3D" parent="."]
+collision_layer = 8
+
+[node name="EntryCollisionShape" type="CollisionShape3D" parent="Entry"]
+shape = SubResource("BoxShape3D_oalpt")
+
+[node name="Exit" type="Area3D" parent="."]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+collision_layer = 8
+
+[node name="ExitCollisionShape" type="CollisionShape3D" parent="Exit"]
+shape = SubResource("BoxShape3D_3cg61")
+
+[connection signal="body_entered" from="Entry" to="." method="_on_entry_body_entered"]
+[connection signal="body_exited" from="Exit" to="." method="_on_exit_body_exited"]

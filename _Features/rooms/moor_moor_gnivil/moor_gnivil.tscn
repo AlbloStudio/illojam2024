@@ -1,5 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmx50pmosvfs6"]
+[gd_scene load_steps=4 format=3 uid="uid://bmx50pmosvfs6"]
 
 [ext_resource type="PackedScene" uid="uid://utkm5hrvggrj" path="res://_Features/rooms/living_room/SalonMirror (1).blend" id="1_hq22c"]
+[ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.gd" id="2_o1vd6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ur8yv"]
+size = Vector2(8.3, 10.59)
 
 [node name="SalonMirror (1)" instance=ExtResource("1_hq22c")]
+script = ExtResource("2_o1vd6")
+
+[node name="Ceiling" type="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013764, 3.16536, -0.211655)
+mesh = SubResource("PlaneMesh_ur8yv")
+skeleton = NodePath("../Plane_011_001")

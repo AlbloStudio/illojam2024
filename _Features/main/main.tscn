@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=17 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="PackedScene" uid="uid://dpkgwkvewfmuh" path="res://_Features/player/player.tscn" id="2_bfl1y"]
@@ -42,9 +42,6 @@ fog_light_color = Color(1, 1, 1, 1)
 fog_light_energy = 0.32
 fog_density = 0.0025
 volumetric_fog_density = 0.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_kn0ci"]
-size = Vector2(8.3, 13.8)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_6gnox")
@@ -104,7 +101,7 @@ layout_mode = 2
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.08, 9.655, -1.641)
 current = true
-fov = 74.6229
+fov = 74.9981
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -161,10 +158,6 @@ shadow_blur = 10.0
 spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 80.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Stage/MoorGnivil"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042685, 3.00791, 0.110247)
-mesh = SubResource("PlaneMesh_kn0ci")
 
 [node name="MoorGnivil" parent="Stage/MoorGnivil" instance=ExtResource("5_0lx64")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.09053)

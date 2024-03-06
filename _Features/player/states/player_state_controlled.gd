@@ -28,6 +28,9 @@ func _calculate_velocity(delta: float) -> void:
 
 
 func _calculate_look_at() -> void:
+	if state_owner.velocity.normalized() == Vector3.ZERO:
+		return
+
 	var vector_to_look_to := (
 		state_owner.global_position
 		+ Vector3(
