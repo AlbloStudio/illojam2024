@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=16 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="PackedScene" uid="uid://dpkgwkvewfmuh" path="res://_Features/player/player.tscn" id="2_bfl1y"]
@@ -17,16 +17,6 @@ colors = PackedColorArray(0.427493, 0.427493, 0.427493, 1, 0.203922, 0.203922, 0
 gradient = SubResource("Gradient_2kn1o")
 width = 500
 height = 50
-
-[sub_resource type="Gradient" id="Gradient_lxqms"]
-offsets = PackedFloat32Array(0, 0.099359, 0.951923, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 0.647059, 0.596078, 0, 1, 0.647059, 0.596078, 0, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_oawa5"]
-gradient = SubResource("Gradient_lxqms")
-width = 500
-height = 50
-fill_to = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_8j8jt"]
 colors = PackedColorArray(0.900993, 0.770286, 0, 1, 0.035599, 0.0250149, 1.50409e-09, 1)
@@ -73,13 +63,10 @@ offset_bottom = -50.0
 grow_horizontal = 0
 grow_vertical = 0
 max_value = 11.0
-value = 6.0
 texture_under = SubResource("GradientTexture2D_hr6dy")
-texture_over = SubResource("GradientTexture2D_oawa5")
 texture_progress = SubResource("GradientTexture2D_y8dw3")
 
-[node name="Despierta" type="PanelContainer" parent="Control"]
-visible = false
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,16 +74,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Control/Despierta"]
+[node name="Label" type="Label" parent="Control/PanelContainer"]
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("3_364do")
 theme_override_font_sizes/font_size = 40
 text = "D E S P I E R T A"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/Despierta"]
+[node name="TextureRect" type="TextureRect" parent="Control/PanelContainer"]
 layout_mode = 2
 
 [node name="CameraGroup" type="Node" parent="."]
@@ -104,7 +89,7 @@ layout_mode = 2
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.08, 9.655, -1.641)
 current = true
-fov = 74.6229
+fov = 74.657
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
