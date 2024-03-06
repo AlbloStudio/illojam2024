@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=16 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="PackedScene" uid="uid://dpkgwkvewfmuh" path="res://_Features/player/player.tscn" id="2_bfl1y"]
-[ext_resource type="Script" path="res://_Features/UI/progress_bar.gd" id="2_eofls"]
+[ext_resource type="Script" path="res://_Features/UI/ui.gd" id="2_eofls"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_hsqid"]
+[ext_resource type="FontFile" uid="uid://c1lyc6pbg4wwk" path="res://_Features/UI/aliengaucho-92.ttf" id="3_364do"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="4_nyxmf"]
 [ext_resource type="PackedScene" uid="uid://daj1yi4q8q4f" path="res://_Features/rooms/living_room/living_room_i.tscn" id="4_og77x"]
 [ext_resource type="PackedScene" uid="uid://bmx50pmosvfs6" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.tscn" id="5_0lx64"]
@@ -45,6 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_eofls")
 
 [node name="Progress" type="TextureProgressBar" parent="Control"]
 custom_minimum_size = Vector2(300, 50)
@@ -63,14 +65,31 @@ grow_vertical = 0
 max_value = 11.0
 texture_under = SubResource("GradientTexture2D_hr6dy")
 texture_progress = SubResource("GradientTexture2D_y8dw3")
-script = ExtResource("2_eofls")
+
+[node name="Despierta" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/Despierta"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_364do")
+theme_override_font_sizes/font_size = 40
+text = "D E S P I E R T A"
+
+[node name="TextureRect" type="TextureRect" parent="Control/Despierta"]
+layout_mode = 2
 
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.08, 9.655, -1.641)
 current = true
-fov = 74.9094
+fov = 74.6229
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")

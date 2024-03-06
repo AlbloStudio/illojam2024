@@ -4,7 +4,7 @@ var current_activable: Activable = null
 
 @onready var player := $Player as Player
 @onready var living_room := $Stage/LivingRoom/LivingRoom as LivingRoom
-@onready var progress := $Control/Progress as Progress
+@onready var ui := $Control as GameUI
 
 
 func _ready():
@@ -70,4 +70,5 @@ func _clothes_righted() -> void:
 
 
 func _awaked() -> void:
-	progress.progress(1)
+	ui.add_progress(1)
+	ui.awake()
