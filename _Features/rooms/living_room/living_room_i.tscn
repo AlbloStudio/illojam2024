@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=24 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
@@ -58,6 +58,9 @@ size = Vector3(0.499023, 1.01746, 0.326904)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nq1r0"]
 size = Vector3(3.72369, 1.50879, 2.87424)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_icqsy"]
+size = Vector3(0.537598, 1.95654, 1)
 
 [node name="Salon" instance=ExtResource("1_00744")]
 script = ExtResource("2_2xult")
@@ -367,7 +370,20 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.7517
 [node name="StaticBody3D" parent="Closet" index="2"]
 collision_layer = 4
 
+[node name="Activable" parent="." index="38" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79948, 4.76837e-07, 2.87959)
+activable_name = "ReadPoster"
+activable_text = "Leer"
+
+[node name="CollisionShape3D" parent="Activable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19867, 0.981626, -1.40064)
+shape = SubResource("BoxShape3D_icqsy")
+
+[node name="ActionLabel" parent="Activable/Node" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.45075, 2.5, 2.26461)
+
 [editable path="Closet/Node/Clothes/underwear/Activable"]
 [editable path="Closet/Node/Clothes/pants/Activable"]
 [editable path="Closet/Node/Clothes/tshirt/Activable"]
 [editable path="Closet/Activable"]
+[editable path="Activable"]

@@ -30,6 +30,8 @@ func _activable_activated(activable_name: String) -> void:
 			_put_on_clothes("pants")
 		"Put on Underwear":
 			_put_on_clothes("underwear")
+		"ReadPoster":
+			_read_poster()
 
 
 func _tablet_opened() -> void:
@@ -72,3 +74,7 @@ func _clothes_righted() -> void:
 func _awaked() -> void:
 	ui.add_progress(1)
 	ui.awake()
+
+
+func _read_poster() -> void:
+	player.say('"OGAC EM?" Qué significa eso?')

@@ -33,3 +33,10 @@ script = ExtResource("3_1flnn")
 
 [node name="Puppet" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("4_iboom")
+
+[node name="SpeechBubble" type="Node" parent="."]
+
+[node name="SpeechBubbleLabel" type="Label3D" parent="SpeechBubble"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.936825, 3.99076, -0.342462)
+visible = false
+text = "Holi, esto es un bocadillo de texto"
