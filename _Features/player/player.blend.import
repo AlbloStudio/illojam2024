@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://uuvs26kooi00"
+uid="uid://buw0qju6qx7cq"
 path="res://.godot/imported/player.blend-32461f89b5fa7403b9f7b162861e9876.scn"
 
 [deps]
@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/player.blend-32461f89b5fa7403b9f7b162861e9876
 
 nodes/root_type=""
 nodes/root_name=""
-nodes/apply_root_scale=false
+nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=false

@@ -12,6 +12,7 @@ var original_speech_bubble_position := Vector3.ZERO
 @onready var state_controlled := $FiniteStateMachine/Controlled as PlayerState
 @onready var state_puppet := $FiniteStateMachine/Puppet as PlayerState
 @onready var speech_bubble_label := $SpeechBubble/SpeechBubbleLabel as Label3D
+@onready var player_animation := $player/AnimationPlayer as AnimationPlayer
 
 
 func _ready():

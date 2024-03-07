@@ -4,8 +4,16 @@ class_name PlayerStateControlled extends PlayerState
 func physics_update(delta: float) -> void:
 	_calculate_velocity(delta)
 	_calculate_look_at()
+	_calculate_animations()
 
 	state_owner.move_and_slide()
+
+
+func _calculate_animations() -> void:
+	if state_owner.velocity.length() > 0.05:
+		state_owner.player_animation.play("Walk")
+	else:
+		state_owner.player_animation.play("Idle")
 
 
 func _calculate_velocity(delta: float) -> void:
