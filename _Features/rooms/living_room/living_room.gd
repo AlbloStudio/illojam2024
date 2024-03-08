@@ -9,6 +9,9 @@ var cloth_names := ["underwear", "pants", "tshirt"]
 
 @onready var clothes := $Clothes as Node3D
 
+@onready var char_activable_sit := $Activables/ChairActivableSit as Activable
+@onready var char_activable_getup := $Activables/ChairActivableGetUp as Activable
+
 
 func _ready() -> void:
 	closet.visible = false
@@ -61,3 +64,27 @@ func destroy_clothes() -> void:
 
 func _clothes_path(cloth: String, with_activable := true) -> String:
 	return "Clothes/" + cloth + ("/Activable" if with_activable else "")
+
+
+func sit_in_chair() -> void:
+	(
+		create_tween()
+		. tween_callback(
+			func(): char_activable_getup.state_machine.transition_to(
+				char_activable_getup.state_idle.name
+			)
+		)
+		. set_delay(1)
+	)
+
+
+func get_up_from_chair() -> void:
+	(
+		create_tween()
+		. tween_callback(
+			func(): char_activable_sit.state_machine.transition_to(
+				char_activable_sit.state_idle.name
+			)
+		)
+		. set_delay(1)
+	)

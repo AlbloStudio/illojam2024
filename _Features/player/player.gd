@@ -53,3 +53,13 @@ func say(text: String, delay := 3.0) -> void:
 	speech_bubble_label.visible = true
 	speech_bubble_label.text = text
 	create_tween().tween_callback(func(): speech_bubble_label.visible = false).set_delay(delay)
+
+
+func sit_on_chair() -> void:
+	if state_machine.is_in_state([state_controlled.name]):
+		go_puppet()
+
+
+func get_up_from_chair() -> void:
+	if state_machine.is_in_state([state_puppet.name]):
+		go_controlled()
