@@ -102,6 +102,6 @@ bones/95/rotation = Quaternion(-0.00295636, -0.000635303, -0.269178, 0.963086)
 
 [node name="AnimationPlayer" parent="player" index="1"]
 autoplay = "arms_skeleton_001|mixamo_com|Layer0"
-playback_default_blend_time = 0.2
+playback_default_blend_time = 0.1
 
 [editable path="player"]

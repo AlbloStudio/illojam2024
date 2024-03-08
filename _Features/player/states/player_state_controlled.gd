@@ -10,7 +10,7 @@ func physics_update(delta: float) -> void:
 
 
 func _calculate_animations() -> void:
-	if state_owner.velocity.length() > 0.05:
+	if state_owner.velocity.length() > 0.1:
 		state_owner.player_animation.play("Walk")
 	else:
 		state_owner.player_animation.play("Idle")
