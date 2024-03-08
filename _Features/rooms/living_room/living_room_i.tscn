@@ -5,6 +5,30 @@
 [ext_resource type="PackedScene" uid="uid://b2uyt4m0rq2fi" path="res://_Features/common/barrier/barrier_system.tscn" id="3_6s4fw"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="3_t3t5u"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_8f3t4"]
+size = Vector3(0.485, 0.045, 0.36)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vq6wj"]
+size = Vector3(0.515625, 0.761719, 0.344238)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uq87y"]
+size = Vector3(0.945, 0.045, 0.395)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i2fld"]
+size = Vector3(0.78833, 1, 0.815552)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5jb0e"]
+size = Vector3(0.195, 0.045, 0.115)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d51n7"]
+size = Vector3(1, 1, 0.340363)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sf51u"]
+size = Vector3(2.27856, 2.31848, 1.6001)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_icqsy"]
+size = Vector3(0.537598, 1.95654, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv3s4"]
 size = Vector3(5.38177, 3.50208, 0.224121)
 
@@ -47,37 +71,105 @@ size = Vector3(0.678173, 1.47945, 3.95889)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0vkcb"]
 size = Vector3(0.678173, 1.73277, 0.483619)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_icqsy"]
-size = Vector3(0.537598, 1.95654, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_k7482"]
 size = Vector3(2.22375, 2.26465, 0.78894)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_sf51u"]
-size = Vector3(2.27856, 2.31848, 1.6001)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8f3t4"]
-size = Vector3(0.485, 0.045, 0.36)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vq6wj"]
-size = Vector3(0.515625, 0.761719, 0.344238)
-
-[sub_resource type="BoxMesh" id="BoxMesh_uq87y"]
-size = Vector3(0.945, 0.045, 0.395)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_i2fld"]
-size = Vector3(0.78833, 1, 0.815552)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5jb0e"]
-size = Vector3(0.195, 0.045, 0.115)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d51n7"]
-size = Vector3(1, 1, 0.340363)
 
 [node name="Salon" instance=ExtResource("1_00744")]
 script = ExtResource("2_2xult")
 
-[node name="Colliders" type="Node3D" parent="." index="0"]
+[node name="Clothes" type="Node3D" parent="." index="0"]
+transform = Transform3D(0.990566, 0, 0, 0, 1.02941, 0, 0, 0, 1, 3.15314, 0.855384, -5.09497)
+
+[node name="tshirt" type="MeshInstance3D" parent="Clothes" index="0"]
+transform = Transform3D(0.992619, 0, -0.183971, 0, 0.97143, 0, 0.182235, 0, 0.983255, -0.870648, -0.823985, 4.42224)
+mesh = SubResource("BoxMesh_8f3t4")
+skeleton = NodePath("../../../../..")
+
+[node name="Activable" parent="Clothes/tshirt" index="0" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(0.983255, 0, 0.182235, 0, 1, 0, -0.182235, 0, 0.983255, -0.995846, 0.410123, -1.54621)
+activable_name = "Put on T-Shirt"
+activable_text = "Ponerse camiseta"
+
+[node name="FiniteStateMachine" parent="Clothes/tshirt/Activable" index="0"]
+initial_state = NodePath("Deactivated")
+
+[node name="CollisionShape3D" parent="Clothes/tshirt/Activable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.682238, 0.119141, 1.78488)
+shape = SubResource("BoxShape3D_vq6wj")
+
+[node name="ActionLabel" parent="Clothes/tshirt/Activable/Node" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.51197, 2.5, -1.12429)
+
+[node name="pants" type="MeshInstance3D" parent="Clothes" index="1"]
+transform = Transform3D(0.542416, 0, 0.851423, 0, 0.97143, 0, -0.843391, 0, 0.537299, -1.2095, -0.812455, 3.14221)
+mesh = SubResource("BoxMesh_uq87y")
+skeleton = NodePath("../underwear")
+
+[node name="Activable" parent="Clothes/pants" index="0" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(0.5373, 0, -0.843392, 0, 1, 0, 0.843392, 0, 0.5373, 0.161356, 0.398254, -0.531703)
+activable_name = "Put on Pants"
+activable_text = "Ponerse pantalones"
+
+[node name="FiniteStateMachine" parent="Clothes/pants/Activable" index="0"]
+initial_state = NodePath("Deactivated")
+
+[node name="CollisionShape3D" parent="Clothes/pants/Activable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287084, 1.19209e-07, 0.575614)
+shape = SubResource("BoxShape3D_i2fld")
+
+[node name="ActionLabel" parent="Clothes/pants/Activable/Node" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.13493, 2.5, -2.03068)
+
+[node name="underwear" type="MeshInstance3D" parent="Clothes" index="2"]
+transform = Transform3D(1.00952, 0, 0, 0, 0.97143, 0, 0, 0, 1, -1.33177, -0.81251, 2.33519)
+mesh = SubResource("BoxMesh_5jb0e")
+skeleton = NodePath("../tshirt")
+
+[node name="Activable" parent="Clothes/underwear" index="0" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.240621, 0.398311, 0.385248)
+activable_name = "Put on Underwear"
+activable_text = "Ponerse calzoncillos"
+
+[node name="FiniteStateMachine" parent="Clothes/underwear/Activable" index="0"]
+initial_state = NodePath("Deactivated")
+
+[node name="CollisionShape3D" parent="Clothes/underwear/Activable" index="1"]
+transform = Transform3D(0.999994, 0, 0, 0, 0.999994, 0, 0, 0, 1, 0.294259, 0.0118475, -0.461227)
+shape = SubResource("BoxShape3D_d51n7")
+
+[node name="ActionLabel" parent="Clothes/underwear/Activable/Node" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.7963, 2.5, -2.90733)
+
+[node name="Activables" type="Node3D" parent="." index="1"]
+
+[node name="ClosetActivable" parent="Activables" index="0" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.00130963, 0.000723362, -0.00708866)
+activable_name = "Get Naked"
+activable_text = "Desnudarse"
+
+[node name="FiniteStateMachine" parent="Activables/ClosetActivable" index="0"]
+initial_state = NodePath("Deactivated")
+
+[node name="CollisionShape3D" parent="Activables/ClosetActivable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87983, 1.14601, -4.1498)
+shape = SubResource("BoxShape3D_sf51u")
+
+[node name="ActionLabel" parent="Activables/ClosetActivable/Node" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.0027, 2.5, -3.76058)
+
+[node name="PosterActivable" parent="Activables" index="1" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00148, 1.43051e-06, 3.39715)
+activable_name = "ReadPoster"
+activable_text = "Leer"
+
+[node name="CollisionShape3D" parent="Activables/PosterActivable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19867, 0.981626, -1.40064)
+shape = SubResource("BoxShape3D_icqsy")
+
+[node name="ActionLabel" parent="Activables/PosterActivable/Node" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.45075, 2.5, 2.26461)
+
+[node name="Colliders" type="Node3D" parent="." index="2"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Colliders" index="0"]
 collision_layer = 4
@@ -146,112 +238,21 @@ shape = SubResource("BoxShape3D_0vkcb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71868, 0.366382, 0.738777)
 shape = SubResource("BoxShape3D_0vkcb")
 
-[node name="PosterActivable" parent="." index="1" instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00148, 1.43051e-06, 3.39715)
-activable_name = "ReadPoster"
-activable_text = "Leer"
-
-[node name="CollisionShape3D" parent="PosterActivable" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19867, 0.981626, -1.40064)
-shape = SubResource("BoxShape3D_icqsy")
-
-[node name="ActionLabel" parent="PosterActivable/Node" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.45075, 2.5, 2.26461)
-
-[node name="MirrorBarrier" parent="." index="2" instance=ExtResource("3_6s4fw")]
+[node name="MirrorBarrier" parent="." index="3" instance=ExtResource("3_6s4fw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56566, 1.23442, -5.78116)
 
-[node name="Plane_001" parent="." index="3"]
+[node name="Plane_001" parent="." index="4"]
 layers = 4
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Closet_001" index="0"]
+collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Closet_001/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027061, 0.161621, -0.0920839)
 shape = SubResource("BoxShape3D_k7482")
 
-[node name="Activable" parent="Closet_001" index="1" instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1.84596, -1.05932, 4.38145)
-activable_name = "Get Naked"
-activable_text = "Desnudarse"
-
-[node name="FiniteStateMachine" parent="Closet_001/Activable" index="0"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Closet_001/Activable" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87983, 1.14601, -4.1498)
-shape = SubResource("BoxShape3D_sf51u")
-
-[node name="ActionLabel" parent="Closet_001/Activable/Node" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.0027, 2.5, -3.76058)
-
-[node name="Node" type="Node" parent="Closet_001" index="2"]
-
-[node name="Clothes" type="Node3D" parent="Closet_001/Node" index="0"]
-transform = Transform3D(0.990566, 0, 0, 0, 1.02941, 0, 0, 0, 1, 3.15314, 0.855384, -5.09497)
-
-[node name="tshirt" type="MeshInstance3D" parent="Closet_001/Node/Clothes" index="0"]
-transform = Transform3D(0.992619, 0, -0.183971, 0, 0.97143, 0, 0.182235, 0, 0.983255, -0.870648, -0.823985, 4.42224)
-mesh = SubResource("BoxMesh_8f3t4")
-skeleton = NodePath("../../../../../../..")
-
-[node name="Activable" parent="Closet_001/Node/Clothes/tshirt" index="0" instance=ExtResource("3_t3t5u")]
-transform = Transform3D(0.983255, 0, 0.182235, 0, 1, 0, -0.182235, 0, 0.983255, -0.995846, 0.410123, -1.54621)
-activable_name = "Put on T-Shirt"
-activable_text = "Ponerse camiseta"
-
-[node name="FiniteStateMachine" parent="Closet_001/Node/Clothes/tshirt/Activable" index="0"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Closet_001/Node/Clothes/tshirt/Activable" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.682238, 0.119141, 1.78488)
-shape = SubResource("BoxShape3D_vq6wj")
-
-[node name="ActionLabel" parent="Closet_001/Node/Clothes/tshirt/Activable/Node" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.51197, 2.5, -1.12429)
-
-[node name="pants" type="MeshInstance3D" parent="Closet_001/Node/Clothes" index="1"]
-transform = Transform3D(0.542416, 0, 0.851423, 0, 0.97143, 0, -0.843391, 0, 0.537299, -1.2095, -0.812455, 3.14221)
-mesh = SubResource("BoxMesh_uq87y")
-skeleton = NodePath("../underwear")
-
-[node name="Activable" parent="Closet_001/Node/Clothes/pants" index="0" instance=ExtResource("3_t3t5u")]
-transform = Transform3D(0.5373, 0, -0.843392, 0, 1, 0, 0.843392, 0, 0.5373, 0.161356, 0.398254, -0.531703)
-activable_name = "Put on Pants"
-activable_text = "Ponerse pantalones"
-
-[node name="FiniteStateMachine" parent="Closet_001/Node/Clothes/pants/Activable" index="0"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Closet_001/Node/Clothes/pants/Activable" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287084, 1.19209e-07, 0.575614)
-shape = SubResource("BoxShape3D_i2fld")
-
-[node name="ActionLabel" parent="Closet_001/Node/Clothes/pants/Activable/Node" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.13493, 2.5, -2.03068)
-
-[node name="underwear" type="MeshInstance3D" parent="Closet_001/Node/Clothes" index="2"]
-transform = Transform3D(1.00952, 0, 0, 0, 0.97143, 0, 0, 0, 1, -1.33177, -0.81251, 2.33519)
-mesh = SubResource("BoxMesh_5jb0e")
-skeleton = NodePath("../tshirt")
-
-[node name="Activable" parent="Closet_001/Node/Clothes/underwear" index="0" instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.240621, 0.398311, 0.385248)
-activable_name = "Put on Underwear"
-activable_text = "Ponerse calzoncillos"
-
-[node name="FiniteStateMachine" parent="Closet_001/Node/Clothes/underwear/Activable" index="0"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Closet_001/Node/Clothes/underwear/Activable" index="1"]
-transform = Transform3D(0.999994, 0, 0, 0, 0.999994, 0, 0, 0, 1, 0.294259, 0.0118475, -0.461227)
-shape = SubResource("BoxShape3D_d51n7")
-
-[node name="ActionLabel" parent="Closet_001/Node/Clothes/underwear/Activable/Node" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.7963, 2.5, -2.90733)
-
-[editable path="PosterActivable"]
-[editable path="Closet_001/Activable"]
-[editable path="Closet_001/Node/Clothes/tshirt/Activable"]
-[editable path="Closet_001/Node/Clothes/pants/Activable"]
-[editable path="Closet_001/Node/Clothes/underwear/Activable"]
+[editable path="Clothes/tshirt/Activable"]
+[editable path="Clothes/pants/Activable"]
+[editable path="Clothes/underwear/Activable"]
+[editable path="Activables/ClosetActivable"]
+[editable path="Activables/PosterActivable"]

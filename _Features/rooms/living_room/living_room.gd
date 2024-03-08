@@ -5,9 +5,9 @@ var cloth_names := ["underwear", "pants", "tshirt"]
 @onready var closet := $Closet_001 as MeshInstance3D
 @onready var closet_handles := $Cube_005 as MeshInstance3D
 @onready var closet_collider := $Closet_001/StaticBody3D as StaticBody3D
-@onready var closet_activable := $Closet_001/Activable as Activable
+@onready var closet_activable := $Activables/ClosetActivable as Activable
 
-@onready var clothes := $Closet_001/Node/Clothes as Node3D
+@onready var clothes := $Clothes as Node3D
 
 
 func _ready() -> void:
@@ -60,4 +60,4 @@ func destroy_clothes() -> void:
 
 
 func _clothes_path(cloth: String, with_activable := true) -> String:
-	return "Closet_001/Node/Clothes/" + cloth + ("/Activable" if with_activable else "")
+	return "Clothes/" + cloth + ("/Activable" if with_activable else "")
