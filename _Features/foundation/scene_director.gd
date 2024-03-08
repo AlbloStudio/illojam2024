@@ -85,7 +85,7 @@ func _awaked() -> void:
 
 
 func _read_poster() -> void:
-	player.say('"OGAC EM?" Que significa eso?')
+	player.say('"¿OGAC EM?" ¿Qué significa eso?')
 
 
 func _sit_on_chair() -> void:

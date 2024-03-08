@@ -30,7 +30,7 @@ script = ExtResource("1_6gnox")
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.08, 9.655, -1.641)
 current = true
-fov = 74.8238
+fov = 74.5666
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -91,9 +91,7 @@ spot_angle = 80.0
 
 [node name="Ceiling" type="MeshInstance3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125176, 3.05618, 1.78071)
-visible = false
 mesh = SubResource("PlaneMesh_a8ryy")
-skeleton = NodePath("../Plane_011_001")
 
 [node name="Nolas" parent="Stage/MoorGnivil" instance=ExtResource("9_iwvg8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.88396)

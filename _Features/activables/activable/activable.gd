@@ -3,7 +3,9 @@ class_name Activable extends Area3D
 @export var activable_name: String
 @export var activable_alternative_name: String
 @export var forbidden := false
+@export var alternative := false
 @export var activable_text := "Realizar action"
+@export var times_to_unforbid := 5
 
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_deactivated := $FiniteStateMachine/Deactivated as ActivableState
@@ -15,9 +17,10 @@ class_name Activable extends Area3D
 
 
 func _ready() -> void:
-	label.text = activable_text
-	label.outline_modulate = Color.TRANSPARENT
-	label.modulate = Color.TRANSPARENT
+	var label_prefix = "🚫 " if forbidden else ""
+	label.text = label_prefix + activable_text
+	label.outline_modulate = label.get_color(false, alternative, forbidden)
+	label.modulate = label.get_color(false, alternative, forbidden)
 
 
 func change_current_activable() -> void:
