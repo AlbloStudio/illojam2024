@@ -103,4 +103,5 @@ func _sit_on_mirror_chair() -> void:
 
 
 func _read_mirror_poster() -> void:
-	SignalBus.awaked.emit()
+	player.say("ME CAGO", 2)
+	create_tween().tween_callback(func(): SignalBus.awaked.emit()).set_delay(2)
