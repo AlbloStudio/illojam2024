@@ -11,7 +11,7 @@ class_name Activable extends Area3D
 @onready var state_visible := $FiniteStateMachine/Visible as ActivableState
 @onready var state_idle := $FiniteStateMachine/Idle as ActivableState
 @onready var collision_shape_3d := $CollisionShape3D as CollisionShape3D
-@onready var label := $Node/ActionLabel as ActivableLabel
+@onready var label := $ActionLabel as ActivableLabel
 
 
 func _ready() -> void:

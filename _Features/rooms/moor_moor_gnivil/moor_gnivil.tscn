@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmx50pmosvfs6"]
+[gd_scene load_steps=3 format=3 uid="uid://3gob2kc275hr"]
 
 [ext_resource type="PackedScene" uid="uid://utkm5hrvggrj" path="res://_Features/rooms/living_room/SalonMirror (1).blend" id="1_hq22c"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.gd" id="2_o1vd6"]

@@ -4,7 +4,7 @@ var current_activable: Activable = null
 
 @onready var player := $Player as Player
 @onready var living_room := $Stage/LivingRoom/LivingRoom as LivingRoom
-@onready var ui := $Control as GameUI
+@onready var ui := $UI as GameUI
 
 
 func _ready():
@@ -36,6 +36,10 @@ func _activable_activated(activable_name: String) -> void:
 			_sit_on_chair()
 		"GetUp":
 			_get_up_from_chair()
+		"Tis":
+			_sit_on_mirror_chair()
+		"RetsopDear":
+			_read_mirror_poster()
 
 
 func _tablet_opened() -> void:
@@ -92,3 +96,11 @@ func _sit_on_chair() -> void:
 func _get_up_from_chair() -> void:
 	player.get_up_from_chair()
 	living_room.get_up_from_chair()
+
+
+func _sit_on_mirror_chair() -> void:
+	SignalBus.awaked.emit()
+
+
+func _read_mirror_poster() -> void:
+	SignalBus.awaked.emit()
