@@ -1,389 +1,257 @@
-[gd_scene load_steps=24 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=28 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
 [ext_resource type="PackedScene" uid="uid://b2uyt4m0rq2fi" path="res://_Features/common/barrier/barrier_system.tscn" id="3_6s4fw"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="3_t3t5u"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lw5v0"]
-size = Vector3(4.77289, 2.91199, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_bv3s4"]
+size = Vector3(5.38177, 3.50208, 0.224121)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_42tmc"]
-size = Vector3(0.184692, 3.0957, 10.2328)
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ox6x"]
+size = Vector3(0.202606, 3.50208, 10.3896)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nqkn0"]
-size = Vector3(0.184692, 3.0957, 10.2328)
+[sub_resource type="BoxShape3D" id="BoxShape3D_nkxcr"]
+size = Vector3(8.36974, 3.50208, 0.27829)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_125yl"]
-size = Vector3(2.51807, 1.41602, 1.40088)
+[sub_resource type="BoxShape3D" id="BoxShape3D_47wkk"]
+size = Vector3(0.224419, 3.50208, 10.3721)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_brs2j"]
-size = Vector3(1, 0.948364, 2.01855)
+[sub_resource type="BoxShape3D" id="BoxShape3D_cklyu"]
+size = Vector3(1.70108, 3.50208, 0.188469)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_71ncc"]
-size = Vector3(5.9314, 1.55811, 0.74707)
+[sub_resource type="BoxShape3D" id="BoxShape3D_n1hgb"]
+size = Vector3(6.02046, 1.62799, 1.04346)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h5apd"]
-size = Vector3(1, 0.964355, 3.64758)
+[sub_resource type="BoxShape3D" id="BoxShape3D_5sri6"]
+size = Vector3(1.34033, 1.62799, 3.01605)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lc3d1"]
-size = Vector3(1, 1.3822, 0.55365)
+[sub_resource type="BoxShape3D" id="BoxShape3D_vpb2a"]
+size = Vector3(6.21448, 1.62799, 1.11272)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_otch5"]
-size = Vector3(1, 1.23584, 0.814941)
+[sub_resource type="BoxShape3D" id="BoxShape3D_uworx"]
+size = Vector3(0.936495, 1.62799, 1.83977)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mtf2m"]
-size = Vector3(1, 1.33521, 0.832153)
+[sub_resource type="BoxShape3D" id="BoxShape3D_j8vw0"]
+size = Vector3(1.44383, 1.62799, 4.60789)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0l1kt"]
-size = Vector3(1.60645, 1.73486, 3.90796)
+[sub_resource type="BoxShape3D" id="BoxShape3D_kc411"]
+size = Vector3(2.50561, 1.62799, 1.45727)
 
-[sub_resource type="BoxMesh" id="BoxMesh_5jb0e"]
-size = Vector3(0.195, 0.045, 0.115)
+[sub_resource type="BoxShape3D" id="BoxShape3D_2apl1"]
+size = Vector3(0.53408, 2.60513, 0.713496)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_b7a1v"]
-size = Vector3(0.154053, 1, 0.130188)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ld6c6"]
+size = Vector3(0.678173, 1.47945, 3.95889)
 
-[sub_resource type="BoxMesh" id="BoxMesh_uq87y"]
-size = Vector3(0.945, 0.045, 0.395)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_cjlqj"]
-size = Vector3(1, 1, 0.436157)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8f3t4"]
-size = Vector3(0.485, 0.045, 0.36)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ehrcq"]
-size = Vector3(0.499023, 1.01746, 0.326904)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nq1r0"]
-size = Vector3(3.72369, 1.50879, 2.87424)
+[sub_resource type="BoxShape3D" id="BoxShape3D_0vkcb"]
+size = Vector3(0.678173, 1.73277, 0.483619)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_icqsy"]
 size = Vector3(0.537598, 1.95654, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_k7482"]
+size = Vector3(2.22375, 2.26465, 0.78894)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sf51u"]
+size = Vector3(2.27856, 2.31848, 1.6001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8f3t4"]
+size = Vector3(0.485, 0.045, 0.36)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vq6wj"]
+size = Vector3(0.515625, 0.761719, 0.344238)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uq87y"]
+size = Vector3(0.945, 0.045, 0.395)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i2fld"]
+size = Vector3(0.78833, 1, 0.815552)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5jb0e"]
+size = Vector3(0.195, 0.045, 0.115)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d51n7"]
+size = Vector3(1, 1, 0.340363)
+
 [node name="Salon" instance=ExtResource("1_00744")]
 script = ExtResource("2_2xult")
 
-[node name="Plane_001" parent="." index="0"]
-layers = 4
+[node name="Colliders" type="Node3D" parent="." index="0"]
 
-[node name="StaticBody3D" parent="Plane_001" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Colliders" index="0"]
 collision_layer = 4
 
-[node name="CollisionShape3D" parent="Plane_001/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20978, 1.65112, -5.28724)
-shape = SubResource("BoxShape3D_lw5v0")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Plane_001/StaticBody3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17865, 1.43292, -0.057586)
-shape = SubResource("BoxShape3D_42tmc")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Plane_001/StaticBody3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26221, 1.74077, 0.0360082)
-shape = SubResource("BoxShape3D_nqkn0")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Plane_001/StaticBody3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.262698, 1.61404, 5.52253)
-shape = SubResource("BoxShape3D_lw5v0")
-
-[node name="MirrorBarrier" parent="Plane_001/StaticBody3D" index="4" instance=ExtResource("3_6s4fw")]
-
-[node name="StaticBody3D" parent="Plane_003" index="0"]
-collision_layer = 4
-
-[node name="StaticBody3D" parent="Plane-col" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane-col/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Plane_002" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_002/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39597, 0.741494, -1.50752)
-shape = SubResource("BoxShape3D_125yl")
-
-[node name="StaticBody3D" parent="Plane_004" index="0"]
-collision_layer = 4
-
-[node name="StaticBody3D" parent="Plane_005" index="0"]
-collision_layer = 4
-
-[node name="StaticBody3D" parent="Plane_006" index="0"]
-collision_layer = 4
-
-[node name="StaticBody3D" parent="Plane_007" index="0"]
-collision_layer = 4
-
-[node name="StaticBody3D" parent="Plane_008" index="0"]
-collision_layer = 4
-
-[node name="StaticBody3D" parent="Plane_009" index="0"]
-collision_layer = 4
-
-[node name="StaticBody3D" parent="Plane_010" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_010/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0258179, -0.0200195)
-shape = SubResource("BoxShape3D_brs2j")
-
-[node name="StaticBody3D" parent="Plane_011" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_011/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Plane_012" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_012/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00231922, 0.279053, 0.126465)
-shape = SubResource("BoxShape3D_71ncc")
-
-[node name="StaticBody3D" parent="Cylinder" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Cylinder/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Plane_013" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_013/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Plane_015" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_015/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132077, 0.733841, 0.262071)
-shape = SubResource("BoxShape3D_h5apd")
-
-[node name="StaticBody3D" parent="Plane_016" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_016/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Plane_017" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_017/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Cylinder_001" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Cylinder_001/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Cylinder_002" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Cylinder_002/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Plane_018" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_018/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016333, -0.14256, 0.0951232)
-shape = SubResource("BoxShape3D_lc3d1")
-
-[node name="StaticBody3D" parent="Cylinder_003" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Cylinder_003/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Cylinder_004" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Cylinder_004/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Plane_019" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_019/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11792, -0.0925293)
-shape = SubResource("BoxShape3D_otch5")
-
-[node name="StaticBody3D" parent="Cylinder_005" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Cylinder_005/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Cylinder_006" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Cylinder_006/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Plane_020" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_020/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.106323, -0.0839233)
-shape = SubResource("BoxShape3D_mtf2m")
-
-[node name="StaticBody3D" parent="Plane_021" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_021/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Plane_014" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_014/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Plane_022" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_022/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Plane_023" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_023/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0151367, 0.367432, 0.796509)
-shape = SubResource("BoxShape3D_0l1kt")
-
-[node name="StaticBody3D" parent="Plane_024" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Plane_024/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Cube-col" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Cube-col/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Cube_001" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Cube_001/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Cube_002" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Cube_002/StaticBody3D" index="0"]
-shape = null
-
-[node name="StaticBody3D" parent="Cube_003" index="0"]
-collision_layer = 4
-
-[node name="CollisionShape3D" parent="Cube_003/StaticBody3D" index="0"]
-transform = Transform3D(1, 4.28408e-08, 0, -1.67638e-08, 1, 3.72529e-09, 0, 0, 1, 0, 0, 0)
-shape = null
-
-[node name="Closet" parent="." index="37"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.2, 1.6585, 1.27863, -4.69779)
-
-[node name="Node" type="Node" parent="Closet" index="0"]
-
-[node name="Clothes" type="Node3D" parent="Closet/Node" index="0"]
-transform = Transform3D(0.990566, 0, 0, 0, 1.02941, 0, 0, 0, 1, 1.55983, 0.438095, -2.72044)
-
-[node name="underwear" type="MeshInstance3D" parent="Closet/Node/Clothes" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.240621, -0.398311, -0.385248)
-mesh = SubResource("BoxMesh_5jb0e")
-skeleton = NodePath("../tshirt")
-
-[node name="Activable" parent="Closet/Node/Clothes/underwear" index="0" instance=ExtResource("3_t3t5u")]
-activable_name = "Put on Underwear"
-activable_text = "Ponerse calzoncillos"
-
-[node name="FiniteStateMachine" parent="Closet/Node/Clothes/underwear/Activable" index="0"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Closet/Node/Clothes/underwear/Activable" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0286869, 0, -0.00393677)
-shape = SubResource("BoxShape3D_b7a1v")
-
-[node name="ActionLabel" parent="Closet/Node/Clothes/underwear/Activable/Node" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.1599, 2.5, -3.38853)
-
-[node name="pants" type="MeshInstance3D" parent="Closet/Node/Clothes" index="1"]
-transform = Transform3D(0.537299, 0, 0.843391, 0, 1, 0, -0.843391, 0, 0.537299, 0.361737, -0.398254, 0.42177)
-mesh = SubResource("BoxMesh_uq87y")
-skeleton = NodePath("../underwear")
-
-[node name="Activable" parent="Closet/Node/Clothes/pants" index="0" instance=ExtResource("3_t3t5u")]
-activable_name = "Put on Pants"
-activable_text = "Ponerse pantalones"
-
-[node name="FiniteStateMachine" parent="Closet/Node/Clothes/pants/Activable" index="0"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Closet/Node/Clothes/pants/Activable" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, -2.98023e-08, 0, 1, 4.76837e-07, 0, 0.0121459)
-shape = SubResource("BoxShape3D_cjlqj")
-
-[node name="ActionLabel" parent="Closet/Node/Clothes/pants/Activable/Node" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.12667, 2.5, -2.49915)
-
-[node name="tshirt" type="MeshInstance3D" parent="Closet/Node/Clothes" index="2"]
-transform = Transform3D(0.983255, 0, -0.182235, 0, 1, 0, 0.182235, 0, 0.983255, 0.697396, -0.410123, 1.7018)
-mesh = SubResource("BoxMesh_8f3t4")
-skeleton = NodePath("../../../..")
-
-[node name="Activable" parent="Closet/Node/Clothes/tshirt" index="0" instance=ExtResource("3_t3t5u")]
-activable_name = "Put on T-Shirt"
-activable_text = "Ponerse camiseta"
-
-[node name="FiniteStateMachine" parent="Closet/Node/Clothes/tshirt/Activable" index="0"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Closet/Node/Clothes/tshirt/Activable" index="1"]
-transform = Transform3D(0.999999, 0, 3.27826e-07, 0, 1, 0, -7.15256e-07, 0, 0.999999, 0.0147154, 0.0122986, -0.0124774)
-shape = SubResource("BoxShape3D_ehrcq")
-
-[node name="ActionLabel" parent="Closet/Node/Clothes/tshirt/Activable/Node" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.5188, 2.5, -1.61209)
-
-[node name="Activable" parent="Closet" index="1" instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.00131226, 0.000727713, -0.00709224)
-activable_name = "Get Naked"
-activable_text = "Desnudarse"
-
-[node name="FiniteStateMachine" parent="Closet/Activable" index="0"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Closet/Activable" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999966, 1.10214, -0.126448, 0.157998)
-shape = SubResource("BoxShape3D_nq1r0")
-
-[node name="ActionLabel" parent="Closet/Activable/Node" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.75177, 2.5, -4.35737)
-
-[node name="StaticBody3D" parent="Closet" index="2"]
-collision_layer = 4
-
-[node name="Activable" parent="." index="38" instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79948, 4.76837e-07, 2.87959)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50031, 1.25104, -5.07222)
+shape = SubResource("BoxShape3D_bv3s4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0899, 1.25104, 0.0105124)
+shape = SubResource("BoxShape3D_1ox6x")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00633097, 1.25104, 5.06616)
+shape = SubResource("BoxShape3D_nkxcr")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06633, 1.25104, 0.0192785)
+shape = SubResource("BoxShape3D_47wkk")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.328, 1.25104, -5.07251)
+shape = SubResource("BoxShape3D_cklyu")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.941241, 0.313995, 1.4855)
+shape = SubResource("BoxShape3D_n1hgb")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53963, 0.313995, 2.4718)
+shape = SubResource("BoxShape3D_5sri6")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10255, 0.313995, 4.48808)
+shape = SubResource("BoxShape3D_vpb2a")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.539327, 0.313995, -1.98495)
+shape = SubResource("BoxShape3D_uworx")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24353, 0.313996, -2.64836)
+shape = SubResource("BoxShape3D_j8vw0")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71264, 0.313996, -4.22367)
+shape = SubResource("BoxShape3D_kc411")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.71933, 0.802567, 0.169765)
+shape = SubResource("BoxShape3D_2apl1")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.62168, 0.239723, -1.85282)
+shape = SubResource("BoxShape3D_ld6c6")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.965264, 0.366382, 0.738777)
+shape = SubResource("BoxShape3D_0vkcb")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.302467, 0.366382, 0.738777)
+shape = SubResource("BoxShape3D_0vkcb")
+
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71868, 0.366382, 0.738777)
+shape = SubResource("BoxShape3D_0vkcb")
+
+[node name="PosterActivable" parent="." index="1" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00148, 1.43051e-06, 3.39715)
 activable_name = "ReadPoster"
 activable_text = "Leer"
 
-[node name="CollisionShape3D" parent="Activable" index="1"]
+[node name="CollisionShape3D" parent="PosterActivable" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19867, 0.981626, -1.40064)
 shape = SubResource("BoxShape3D_icqsy")
 
-[node name="ActionLabel" parent="Activable/Node" index="0"]
+[node name="ActionLabel" parent="PosterActivable/Node" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.45075, 2.5, 2.26461)
 
-[editable path="Closet/Node/Clothes/underwear/Activable"]
-[editable path="Closet/Node/Clothes/pants/Activable"]
-[editable path="Closet/Node/Clothes/tshirt/Activable"]
-[editable path="Closet/Activable"]
-[editable path="Activable"]
+[node name="MirrorBarrier" parent="." index="2" instance=ExtResource("3_6s4fw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56566, 1.23442, -5.78116)
+
+[node name="Plane_001" parent="." index="3"]
+layers = 4
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Closet_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Closet_001/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027061, 0.161621, -0.0920839)
+shape = SubResource("BoxShape3D_k7482")
+
+[node name="Activable" parent="Closet_001" index="1" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1.84596, -1.05932, 4.38145)
+activable_name = "Get Naked"
+activable_text = "Desnudarse"
+
+[node name="FiniteStateMachine" parent="Closet_001/Activable" index="0"]
+initial_state = NodePath("Deactivated")
+
+[node name="CollisionShape3D" parent="Closet_001/Activable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87983, 1.14601, -4.1498)
+shape = SubResource("BoxShape3D_sf51u")
+
+[node name="ActionLabel" parent="Closet_001/Activable/Node" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.0027, 2.5, -3.76058)
+
+[node name="Node" type="Node" parent="Closet_001" index="2"]
+
+[node name="Clothes" type="Node3D" parent="Closet_001/Node" index="0"]
+transform = Transform3D(0.990566, 0, 0, 0, 1.02941, 0, 0, 0, 1, 3.15314, 0.855384, -5.09497)
+
+[node name="tshirt" type="MeshInstance3D" parent="Closet_001/Node/Clothes" index="0"]
+transform = Transform3D(0.992619, 0, -0.183971, 0, 0.97143, 0, 0.182235, 0, 0.983255, -0.870648, -0.823985, 4.42224)
+mesh = SubResource("BoxMesh_8f3t4")
+skeleton = NodePath("../../../../../../..")
+
+[node name="Activable" parent="Closet_001/Node/Clothes/tshirt" index="0" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(0.983255, 0, 0.182235, 0, 1, 0, -0.182235, 0, 0.983255, -0.995846, 0.410123, -1.54621)
+activable_name = "Put on T-Shirt"
+activable_text = "Ponerse camiseta"
+
+[node name="FiniteStateMachine" parent="Closet_001/Node/Clothes/tshirt/Activable" index="0"]
+initial_state = NodePath("Deactivated")
+
+[node name="CollisionShape3D" parent="Closet_001/Node/Clothes/tshirt/Activable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.682238, 0.119141, 1.78488)
+shape = SubResource("BoxShape3D_vq6wj")
+
+[node name="ActionLabel" parent="Closet_001/Node/Clothes/tshirt/Activable/Node" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.51197, 2.5, -1.12429)
+
+[node name="pants" type="MeshInstance3D" parent="Closet_001/Node/Clothes" index="1"]
+transform = Transform3D(0.542416, 0, 0.851423, 0, 0.97143, 0, -0.843391, 0, 0.537299, -1.2095, -0.812455, 3.14221)
+mesh = SubResource("BoxMesh_uq87y")
+skeleton = NodePath("../underwear")
+
+[node name="Activable" parent="Closet_001/Node/Clothes/pants" index="0" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(0.5373, 0, -0.843392, 0, 1, 0, 0.843392, 0, 0.5373, 0.161356, 0.398254, -0.531703)
+activable_name = "Put on Pants"
+activable_text = "Ponerse pantalones"
+
+[node name="FiniteStateMachine" parent="Closet_001/Node/Clothes/pants/Activable" index="0"]
+initial_state = NodePath("Deactivated")
+
+[node name="CollisionShape3D" parent="Closet_001/Node/Clothes/pants/Activable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287084, 1.19209e-07, 0.575614)
+shape = SubResource("BoxShape3D_i2fld")
+
+[node name="ActionLabel" parent="Closet_001/Node/Clothes/pants/Activable/Node" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.13493, 2.5, -2.03068)
+
+[node name="underwear" type="MeshInstance3D" parent="Closet_001/Node/Clothes" index="2"]
+transform = Transform3D(1.00952, 0, 0, 0, 0.97143, 0, 0, 0, 1, -1.33177, -0.81251, 2.33519)
+mesh = SubResource("BoxMesh_5jb0e")
+skeleton = NodePath("../tshirt")
+
+[node name="Activable" parent="Closet_001/Node/Clothes/underwear" index="0" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.240621, 0.398311, 0.385248)
+activable_name = "Put on Underwear"
+activable_text = "Ponerse calzoncillos"
+
+[node name="FiniteStateMachine" parent="Closet_001/Node/Clothes/underwear/Activable" index="0"]
+initial_state = NodePath("Deactivated")
+
+[node name="CollisionShape3D" parent="Closet_001/Node/Clothes/underwear/Activable" index="1"]
+transform = Transform3D(0.999994, 0, 0, 0, 0.999994, 0, 0, 0, 1, 0.294259, 0.0118475, -0.461227)
+shape = SubResource("BoxShape3D_d51n7")
+
+[node name="ActionLabel" parent="Closet_001/Node/Clothes/underwear/Activable/Node" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.7963, 2.5, -2.90733)
+
+[editable path="PosterActivable"]
+[editable path="Closet_001/Activable"]
+[editable path="Closet_001/Node/Clothes/tshirt/Activable"]
+[editable path="Closet_001/Node/Clothes/pants/Activable"]
+[editable path="Closet_001/Node/Clothes/underwear/Activable"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=19 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="PackedScene" uid="uid://dpkgwkvewfmuh" path="res://_Features/player/player.tscn" id="2_bfl1y"]
@@ -7,8 +7,9 @@
 [ext_resource type="FontFile" uid="uid://c1lyc6pbg4wwk" path="res://_Features/UI/aliengaucho-92.ttf" id="3_364do"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="4_nyxmf"]
 [ext_resource type="PackedScene" uid="uid://daj1yi4q8q4f" path="res://_Features/rooms/living_room/living_room_i.tscn" id="4_og77x"]
-[ext_resource type="PackedScene" uid="uid://bmx50pmosvfs6" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.tscn" id="5_0lx64"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_v8ayd"]
+[ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.gd" id="8_ku7b2"]
+[ext_resource type="PackedScene" uid="uid://qjsegh5fj7ua" path="res://_Features/rooms/moor_moor_gnivil/i_moor_gnivil.tscn" id="9_vm2eu"]
 
 [sub_resource type="Gradient" id="Gradient_2kn1o"]
 colors = PackedColorArray(0.427493, 0.427493, 0.427493, 1, 0.203922, 0.203922, 0.203922, 1)
@@ -42,6 +43,9 @@ fog_light_color = Color(1, 1, 1, 1)
 fog_light_energy = 0.32
 fog_density = 0.0025
 volumetric_fog_density = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a8ryy"]
+size = Vector2(8.3, 10.59)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_6gnox")
@@ -101,7 +105,7 @@ layout_mode = 2
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.08, 9.655, -1.641)
 current = true
-fov = 74.6032
+fov = 74.8382
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -141,6 +145,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.911
 
 [node name="MoorGnivil" type="Node3D" parent="Stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1028)
+script = ExtResource("8_ku7b2")
 
 [node name="CeilingLight2" type="SpotLight3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.81287, 2.57201)
@@ -159,8 +164,13 @@ spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 80.0
 
-[node name="MoorGnivil" parent="Stage/MoorGnivil" instance=ExtResource("5_0lx64")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.09053)
+[node name="Ceiling" type="MeshInstance3D" parent="Stage/MoorGnivil"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125176, 3.05618, 1.78071)
+mesh = SubResource("PlaneMesh_a8ryy")
+skeleton = NodePath("../Plane_011_001")
+
+[node name="MoorGnivil" parent="Stage/MoorGnivil" instance=ExtResource("9_vm2eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 1.68866)
 
 [node name="LivingRoom" type="Node3D" parent="Stage"]
 
