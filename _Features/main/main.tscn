@@ -30,7 +30,7 @@ script = ExtResource("1_6gnox")
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.08, 9.655, -1.641)
 current = true
-fov = 74.5666
+fov = 74.717
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")

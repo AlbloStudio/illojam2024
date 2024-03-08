@@ -16,7 +16,7 @@ func get_color(is_visible: bool, is_alternative: bool, is_forbidden: bool) -> Co
 
 	var color := Color(1.0, 1.0, 1.0, a)
 	if is_alternative:
-		color = Color(Color.PURPLE.r, Color.PURPLE.g, Color.PURPLE.b, a)
+		color = Color(Color.LIGHT_SALMON.r, Color.LIGHT_SALMON.g, Color.LIGHT_SALMON.b, a)
 	elif is_forbidden:
 		color = Color(0.5, 0.5, 0.5, a)
 
