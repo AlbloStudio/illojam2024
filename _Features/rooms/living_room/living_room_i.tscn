@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=36 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
@@ -23,6 +23,15 @@ size = Vector3(0.195, 0.045, 0.115)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d51n7"]
 size = Vector3(1, 1, 0.340363)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_td5vw"]
+size = Vector3(0.730224, 2.31848, 2.91956)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e66va"]
+size = Vector3(0.552978, 2.31848, 2.91956)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5777h"]
+size = Vector3(2.70288, 2.31848, 2.91956)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_sf51u"]
 size = Vector3(2.27856, 2.31848, 1.6001)
 
@@ -34,6 +43,15 @@ size = Vector3(1.16251, 1.95654, 0.960022)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ets3k"]
 size = Vector3(1.16251, 1.95654, 0.960022)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iji4e"]
+size = Vector3(1.52648, 2.47904, 0.102234)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_847qj"]
+size = Vector3(0.0539386, 3.72858, 2.90393)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pfyse"]
+size = Vector3(0.0539386, 3.72858, 2.90393)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv3s4"]
 size = Vector3(5.38177, 3.50208, 0.224121)
@@ -148,7 +166,49 @@ shape = SubResource("BoxShape3D_d51n7")
 
 [node name="Activables" type="Node3D" parent="." index="1"]
 
-[node name="ClosetActivable" parent="Activables" index="0" instance=ExtResource("3_t3t5u")]
+[node name="SofaActivableLayUpWall" parent="Activables" index="0" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999992, 0.010477, 0.0057869, -0.0567091)
+activable_name = "Lay up wall"
+activable_text = "Levantarse"
+
+[node name="ActionLabel" parent="Activables/SofaActivableLayUpWall" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.98324, 2.5, -2.37931)
+
+[node name="FiniteStateMachine" parent="Activables/SofaActivableLayUpWall" index="1"]
+initial_state = NodePath("Deactivated")
+
+[node name="CollisionShape3D" parent="Activables/SofaActivableLayUpWall" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.79889, 1.14601, -1.85885)
+shape = SubResource("BoxShape3D_td5vw")
+
+[node name="SofaActivableLayUp" parent="Activables" index="1" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999996, 0.00523852, 0.00289345, -0.0283546)
+activable_name = "Lay up"
+activable_text = "Levantarse"
+
+[node name="ActionLabel" parent="Activables/SofaActivableLayUp" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.72417, 2.5, -1.78269)
+
+[node name="FiniteStateMachine" parent="Activables/SofaActivableLayUp" index="1"]
+initial_state = NodePath("Deactivated")
+
+[node name="CollisionShape3D" parent="Activables/SofaActivableLayUp" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44122, 1.14601, -1.8666)
+shape = SubResource("BoxShape3D_e66va")
+
+[node name="SofaActivableLayDown" parent="Activables" index="2" instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, 0.00261926, 0.00144672, -0.0141773)
+activable_name = "Lay down"
+activable_text = "Acostarse"
+
+[node name="ActionLabel" parent="Activables/SofaActivableLayDown" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.72417, 2.5, -1.78269)
+
+[node name="CollisionShape3D" parent="Activables/SofaActivableLayDown" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51618, 1.14601, -1.8666)
+shape = SubResource("BoxShape3D_5777h")
+
+[node name="ClosetActivable" parent="Activables" index="3" instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.00130963, 0.000723362, -0.00708866)
 activable_name = "Get Naked"
 activable_text = "Desnudarse"
@@ -163,7 +223,7 @@ initial_state = NodePath("Deactivated")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87983, 1.14601, -4.1498)
 shape = SubResource("BoxShape3D_sf51u")
 
-[node name="PosterActivable" parent="Activables" index="1" instance=ExtResource("3_t3t5u")]
+[node name="PosterActivable" parent="Activables" index="4" instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00148, 1.43051e-06, 3.39715)
 activable_name = "ReadPoster"
 activable_text = "Leer"
@@ -175,7 +235,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.3880
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19867, 0.981626, -1.40064)
 shape = SubResource("BoxShape3D_icqsy")
 
-[node name="ChairActivableSit" parent="Activables" index="2" instance=ExtResource("3_t3t5u")]
+[node name="ChairActivableSit" parent="Activables" index="5" instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00148, 1.43051e-06, 3.39715)
 activable_name = "Sit"
 activable_text = "Sentarse en taburete"
@@ -187,7 +247,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.853
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98385, 0.981626, -2.87732)
 shape = SubResource("BoxShape3D_bfyvg")
 
-[node name="ChairActivableGetUp" parent="Activables" index="3" instance=ExtResource("3_t3t5u")]
+[node name="ChairActivableGetUp" parent="Activables" index="6" instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00148, 1.43051e-06, 3.39715)
 activable_name = "GetUp"
 activable_text = "Levantarse del taburete"
@@ -202,7 +262,37 @@ initial_state = NodePath("Deactivated")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98318, 0.981633, -2.88632)
 shape = SubResource("BoxShape3D_ets3k")
 
-[node name="Colliders" type="Node3D" parent="." index="2"]
+[node name="CollidersLayed" type="Node3D" parent="." index="2"]
+
+[node name="upMarker" type="Marker3D" parent="CollidersLayed" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64303, 0, -2.1184)
+
+[node name="wallMarker" type="Marker3D" parent="CollidersLayed" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0585, 0, -2.0164)
+
+[node name="layMarker" type="Marker3D" parent="CollidersLayed" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55884, 0, -2.15505)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CollidersLayed" index="3"]
+collision_layer = 4
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="CollidersLayed/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2051, 1.65081, -0.514824)
+shape = SubResource("BoxShape3D_iji4e")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="CollidersLayed/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.22334, 1.65081, -3.35505)
+shape = SubResource("BoxShape3D_iji4e")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CollidersLayed/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46882, 1.03398, -1.93179)
+shape = SubResource("BoxShape3D_847qj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollidersLayed/StaticBody3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92547, 1.02184, -1.89252)
+shape = SubResource("BoxShape3D_pfyse")
+
+[node name="Colliders" type="Node3D" parent="." index="3"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Colliders" index="0"]
 collision_layer = 4
@@ -271,13 +361,13 @@ shape = SubResource("BoxShape3D_0vkcb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71868, 0.366382, 0.738777)
 shape = SubResource("BoxShape3D_0vkcb")
 
-[node name="MirrorBarrier" parent="." index="3" instance=ExtResource("3_6s4fw")]
+[node name="MirrorBarrier" parent="." index="4" instance=ExtResource("3_6s4fw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56566, 1.23442, -5.78116)
 
-[node name="Plane_001" parent="." index="4"]
+[node name="Plane_001" parent="." index="5"]
 layers = 4
 
-[node name="Plane_010" parent="." index="13"]
+[node name="Plane_010" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.495647, 0.3, -1.94848)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Closet_001" index="0"]
@@ -290,6 +380,9 @@ shape = SubResource("BoxShape3D_k7482")
 [editable path="Clothes/tshirt/Activable"]
 [editable path="Clothes/pants/Activable"]
 [editable path="Clothes/underwear/Activable"]
+[editable path="Activables/SofaActivableLayUpWall"]
+[editable path="Activables/SofaActivableLayUp"]
+[editable path="Activables/SofaActivableLayDown"]
 [editable path="Activables/ClosetActivable"]
 [editable path="Activables/PosterActivable"]
 [editable path="Activables/ChairActivableSit"]

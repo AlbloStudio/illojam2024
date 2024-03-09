@@ -12,6 +12,16 @@ var cloth_names := ["underwear", "pants", "tshirt"]
 @onready var char_activable_sit := $Activables/ChairActivableSit as Activable
 @onready var char_activable_getup := $Activables/ChairActivableGetUp as Activable
 
+@onready var colliders := $Colliders as Node3D
+@onready var colliders_body := $Colliders/StaticBody3D as StaticBody3D
+@onready var colliders_layed := $CollidersLayed/StaticBody3D as StaticBody3D
+@onready var sofa_activable_lay_down := $Activables/SofaActivableLayDown as Activable
+@onready var sofa_activable_lay_up := $Activables/SofaActivableLayUp as Activable
+@onready var sofa_activable_lay_up_wall := $Activables/SofaActivableLayUpWall as Activable
+@onready var sofa_pos := $CollidersLayed/layMarker as Marker3D
+@onready var wall_pos := $CollidersLayed/wallMarker as Marker3D
+@onready var up_pos := $CollidersLayed/upMarker as Marker3D
+
 
 func _ready() -> void:
 	closet.visible = false
@@ -88,3 +98,30 @@ func get_up_from_chair() -> void:
 		)
 		. set_delay(1)
 	)
+
+
+func switch_to_layed_mode() -> void:
+	colliders_body.collision_layer = 0
+	colliders_layed.collision_layer = 4
+	sofa_activable_lay_up.reactivate()
+	sofa_activable_lay_up_wall.reactivate()
+
+
+func switch_to_up_mode() -> void:
+	colliders_body.collision_layer = 4
+	colliders_layed.collision_layer = 0
+	sofa_activable_lay_up.deactivate()
+	sofa_activable_lay_up_wall.deactivate()
+	sofa_activable_lay_down.reactivate()
+
+
+func get_layed_position() -> Vector3:
+	return sofa_pos.global_position
+
+
+func get_up_position() -> Vector3:
+	return up_pos.global_position
+
+
+func get_wall_position() -> Vector3:
+	return wall_pos.global_position

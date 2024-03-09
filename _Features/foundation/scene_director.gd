@@ -40,6 +40,12 @@ func _activable_activated(activable_name: String) -> void:
 			_sit_on_mirror_chair()
 		"RetsopDear":
 			_read_mirror_poster()
+		"Lay down":
+			_sofa_lay_down()
+		"Lay up":
+			_sofa_lay_up()
+		"Lay up wall":
+			_sofa_lay_up_wall()
 
 
 func _tablet_opened() -> void:
@@ -105,3 +111,24 @@ func _sit_on_mirror_chair() -> void:
 func _read_mirror_poster() -> void:
 	player.say("ME CAGO", 2)
 	create_tween().tween_callback(func(): SignalBus.awaked.emit()).set_delay(2)
+
+
+func _sofa_lay_down() -> void:
+	player.lay_down_on_sofa()
+	player.global_position = living_room.get_layed_position()
+	living_room.switch_to_layed_mode()
+
+
+func _sofa_lay_up() -> void:
+	player.global_position = living_room.get_up_position()
+	_sofa_lay_up_generic()
+
+
+func _sofa_lay_up_wall() -> void:
+	player.global_position = living_room.get_wall_position()
+	_sofa_lay_up_generic()
+
+
+func _sofa_lay_up_generic() -> void:
+	player.lay_up_from_sofa()
+	living_room.switch_to_up_mode()

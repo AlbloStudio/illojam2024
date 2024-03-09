@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody3D
 
-@export var speed = 300.0
+@export var speed = 3.0
+@export var speed_slow = 0.5
 @export var acceleration := 10.0
 @export var intertia := 15.0
 
@@ -63,3 +64,19 @@ func sit_on_chair() -> void:
 func get_up_from_chair() -> void:
 	if state_machine.is_in_state([state_puppet.name]):
 		go_controlled()
+
+
+func lay_down_on_sofa() -> void:
+	if state_machine.is_in_state([state_controlled.name]):
+		_change_player_speed()
+
+
+func lay_up_from_sofa() -> void:
+	if state_machine.is_in_state([state_controlled.name]):
+		_change_player_speed()
+
+
+func _change_player_speed() -> void:
+	var previous_speed = speed
+	speed = speed_slow
+	speed_slow = previous_speed
