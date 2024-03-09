@@ -6,6 +6,7 @@ class_name Activable extends Area3D
 @export var alternative := false
 @export var activable_text := "Realizar action"
 @export var times_to_unforbid := 5
+@export var time_to_alternate := 3.0
 
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_deactivated := $FiniteStateMachine/Deactivated as ActivableState
