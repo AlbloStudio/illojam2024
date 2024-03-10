@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=18 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="PackedScene" uid="uid://ccopiuj5gnm7m" path="res://_Features/UI/ui.tscn" id="2_7rttm"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_v8ayd"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.gd" id="8_ku7b2"]
 [ext_resource type="PackedScene" uid="uid://cb0311e3f7has" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil_i.tscn" id="9_iwvg8"]
+[ext_resource type="Script" path="res://_Features/rooms/setup/setup.gd" id="10_42hop"]
+[ext_resource type="PackedScene" uid="uid://eey6l7a03sjc" path="res://_Features/rooms/setup/setup.blend" id="10_bwj83"]
 
 [sub_resource type="Environment" id="Environment_gtx4b"]
 background_energy_multiplier = 0.0
@@ -16,6 +18,18 @@ fog_light_color = Color(1, 1, 1, 1)
 fog_light_energy = 0.32
 fog_density = 0.0025
 volumetric_fog_density = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jau8k"]
+size = Vector3(17.4316, 3.50208, 0.224121)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k34d7"]
+size = Vector3(16.1826, 3.50208, 1.10425)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i8yqo"]
+size = Vector3(0.220024, 3.50208, 13.9919)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q6i7a"]
+size = Vector3(0.220024, 3.50208, 10.1202)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a8ryy"]
 size = Vector2(8.3, 10.59)
@@ -30,7 +44,7 @@ script = ExtResource("1_6gnox")
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.08, 9.655, -1.641)
 current = true
-fov = 74.9333
+fov = 74.4101
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -59,6 +73,24 @@ environment = SubResource("Environment_gtx4b")
 
 [node name="Stage" type="Node" parent="."]
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Stage"]
+
+[node name="externalWall" type="CollisionShape3D" parent="Stage/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7349, 1.25104, -5.08222)
+shape = SubResource("BoxShape3D_jau8k")
+
+[node name="externalWall2" type="CollisionShape3D" parent="Stage/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.161, 1.25104, 4.65441)
+shape = SubResource("BoxShape3D_k34d7")
+
+[node name="externalWall3" type="CollisionShape3D" parent="Stage/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17967, 1.25104, -0.724903)
+shape = SubResource("BoxShape3D_i8yqo")
+
+[node name="externalWall4" type="CollisionShape3D" parent="Stage/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4554, 1.25104, -6.03532)
+shape = SubResource("BoxShape3D_q6i7a")
+
 [node name="Tablet" parent="Stage" instance=ExtResource("4_nyxmf")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0426037, 2.5, -5.29767)
 
@@ -72,23 +104,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.408002, 0.664923, -0.822002
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1028)
 script = ExtResource("8_ku7b2")
 
-[node name="CeilingLight2" type="SpotLight3D" parent="Stage/MoorGnivil"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.81287, 2.57201)
-shadow_opacity = 0.3
-shadow_blur = 10.0
-spot_range = 30.0
-spot_attenuation = 0.812252
-spot_angle = 80.0
-
-[node name="CeilingLight1" type="SpotLight3D" parent="Stage/MoorGnivil"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.0462, -2.60078)
-light_energy = 2.0
-shadow_opacity = 0.31
-shadow_blur = 10.0
-spot_range = 30.0
-spot_attenuation = 0.812252
-spot_angle = 80.0
-
 [node name="Ceiling" type="MeshInstance3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125176, 3.05618, 1.78071)
 mesh = SubResource("PlaneMesh_a8ryy")
@@ -96,26 +111,99 @@ mesh = SubResource("PlaneMesh_a8ryy")
 [node name="Nolas" parent="Stage/MoorGnivil" instance=ExtResource("9_iwvg8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.88396)
 
-[node name="LivingRoom" type="Node3D" parent="Stage"]
-
-[node name="CeilingLight2" type="SpotLight3D" parent="Stage/LivingRoom"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.81287, 2.57201)
+[node name="CeilingLight4" type="SpotLight3D" parent="Stage/MoorGnivil"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.182893, 1.01303, 5.03192)
+light_energy = 2.0
+shadow_bias = 0.161
+shadow_normal_bias = 0.699
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = -2.875
 shadow_opacity = 0.3
 shadow_blur = 10.0
+distance_fade_length = 0.0
 spot_range = 30.0
 spot_attenuation = 0.812252
-spot_angle = 80.0
+spot_angle = 89.99
+
+[node name="CeilingLight2" type="SpotLight3D" parent="Stage/MoorGnivil"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.21567, 3.61381, -0.952699)
+light_energy = 2.0
+shadow_bias = 0.161
+shadow_normal_bias = 0.699
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = -2.875
+shadow_opacity = 0.3
+shadow_blur = 10.0
+distance_fade_length = 0.0
+spot_range = 30.0
+spot_attenuation = 0.812252
+spot_angle = 89.99
+
+[node name="LivingRoom" type="Node3D" parent="Stage"]
+
+[node name="CeilingLight3" type="SpotLight3D" parent="Stage/LivingRoom"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0327773, 1.01303, 3.38384)
+light_energy = 2.0
+shadow_bias = 0.161
+shadow_normal_bias = 0.699
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = -2.875
+shadow_opacity = 0.3
+shadow_blur = 10.0
+distance_fade_length = 0.0
+spot_range = 30.0
+spot_attenuation = 0.812252
+spot_angle = 89.99
 
 [node name="CeilingLight1" type="SpotLight3D" parent="Stage/LivingRoom"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.81287, -2.60078)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.61381, -2.60078)
 light_energy = 2.0
-shadow_opacity = 0.31
+shadow_bias = 0.161
+shadow_normal_bias = 0.699
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = -2.875
+shadow_opacity = 0.3
 shadow_blur = 10.0
+distance_fade_length = 0.0
 spot_range = 30.0
 spot_attenuation = 0.812252
-spot_angle = 80.0
+spot_angle = 89.99
 
 [node name="LivingRoom" parent="Stage/LivingRoom" instance=ExtResource("4_og77x")]
+
+[node name="Setup" type="Node3D" parent="Stage"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.0907, 0, 1.58796)
+script = ExtResource("10_42hop")
+
+[node name="Setup" parent="Stage/Setup" instance=ExtResource("10_bwj83")]
+
+[node name="CeilingLight5" type="SpotLight3D" parent="Stage/Setup"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00315571, 1.01303, 2.65494)
+light_energy = 2.0
+shadow_bias = 0.161
+shadow_normal_bias = 0.699
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = -2.875
+shadow_opacity = 0.3
+shadow_blur = 10.0
+distance_fade_length = 0.0
+spot_range = 30.0
+spot_attenuation = 0.812252
+spot_angle = 89.99
+
+[node name="CeilingLight6" type="SpotLight3D" parent="Stage/Setup"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0359335, 3.61381, -3.32968)
+light_energy = 2.0
+shadow_bias = 0.161
+shadow_normal_bias = 0.699
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = -2.875
+shadow_opacity = 0.3
+shadow_blur = 10.0
+distance_fade_length = 0.0
+spot_range = 30.0
+spot_attenuation = 0.812252
+spot_angle = 89.99
 
 [editable path="Stage/Tablet"]
 [editable path="Stage/Tablet/Tablet"]

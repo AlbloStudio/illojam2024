@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cgrdwoy18c7vd"
-path="res://.godot/imported/Another bedroom.blend-3dae6b81f065bd01bbccde27148e4f1e.scn"
+uid="uid://eey6l7a03sjc"
+path="res://.godot/imported/setup.blend-a1333817bab8af0e630f5e278f0cde82.scn"
 
 [deps]
 
-source_file="res://_Features/room/Another bedroom.blend"
-dest_files=["res://.godot/imported/Another bedroom.blend-3dae6b81f065bd01bbccde27148e4f1e.scn"]
+source_file="res://_Features/rooms/setup/setup.blend"
+dest_files=["res://.godot/imported/setup.blend-a1333817bab8af0e630f5e278f0cde82.scn"]
 
 [params]
 
