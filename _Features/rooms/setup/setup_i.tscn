@@ -1,13 +1,76 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0bdwlue70wgp"]
+[gd_scene load_steps=6 format=3 uid="uid://c0bdwlue70wgp"]
 
 [ext_resource type="PackedScene" uid="uid://eey6l7a03sjc" path="res://_Features/rooms/setup/setup.blend" id="1_8c4o6"]
+[ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_n3fv0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tc74h"]
+size = Vector3(1, 2.23132, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qjbfh"]
+size = Vector3(1.00049, 2.23132, 0.366974)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s1fqm"]
+size = Vector3(1.00049, 2.23132, 0.366974)
 
 [node name="setup" instance=ExtResource("1_8c4o6")]
 
-[node name="cable raton" parent="." index="52"]
+[node name="Colliders" type="Node3D" parent="." index="0"]
+
+[node name="Activables" type="Node3D" parent="." index="1"]
+
+[node name="WallsUpActivable" parent="Activables" index="0" instance=ExtResource("2_n3fv0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.08159, 0.453387, -4.20817)
+activable_name = "Tocar la pared"
+activable_alternative_name = "Subir por la pared"
+
+[node name="ActionLabel" parent="Activables/WallsUpActivable" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.795094, 2.5, -0.154641)
+
+[node name="CollisionShape3D" parent="Activables/WallsUpActivable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.474822, 0.615662, 0.785882)
+shape = SubResource("BoxShape3D_tc74h")
+
+[node name="ExitWindowActivable" parent="Activables" index="1" instance=ExtResource("2_n3fv0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.982227, 0.453387, 3.56018)
+activable_name = "Salir por la ventana"
+forbidden = true
+
+[node name="ActionLabel" parent="Activables/ExitWindowActivable" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.35687, 0.238513)
+
+[node name="CollisionShape3D" parent="Activables/ExitWindowActivable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.123947, 0.615662, 1.53299)
+shape = SubResource("BoxShape3D_tc74h")
+
+[node name="BlindersUpActivable" parent="Activables" index="2" instance=ExtResource("2_n3fv0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.982227, 0.453387, 3.56018)
+activable_name = "Levantar la p ersiana"
+
+[node name="ActionLabel" parent="Activables/BlindersUpActivable" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.305902, 2.5, 1.39338)
+
+[node name="CollisionShape3D" parent="Activables/BlindersUpActivable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021472, 0.800177, 2.6659)
+shape = SubResource("BoxShape3D_qjbfh")
+
+[node name="BlindersDownActivable" parent="Activables" index="3" instance=ExtResource("2_n3fv0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.982227, 0.453387, 3.56018)
+activable_name = "Bajar la persiana"
+
+[node name="ActionLabel" parent="Activables/BlindersDownActivable" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.3, 2.5, 1.4)
+
+[node name="FiniteStateMachine" parent="Activables/BlindersDownActivable" index="1"]
+initial_state = NodePath("Deactivated")
+
+[node name="CollisionShape3D" parent="Activables/BlindersDownActivable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021472, 0.800177, 2.6659)
+shape = SubResource("BoxShape3D_s1fqm")
+
+[node name="cable raton" parent="." index="54"]
 visible = false
 
-[node name="neon twitch normal" parent="." index="57"]
+[node name="neon twitch normal" parent="." index="59"]
 visible = false
 
 [node name="Skeleton3D" parent="Armature" index="0"]
@@ -53,10 +116,15 @@ bones/44/rotation = Quaternion(-0.00831831, 0.141788, 0.989458, 0.0282747)
 bones/45/rotation = Quaternion(-0.304093, 0.112556, 0.0299572, 0.945495)
 bones/46/rotation = Quaternion(0.566216, -0.103342, -0.0318874, 0.817131)
 
-[node name="BezierCurve_002" parent="." index="79"]
+[node name="BezierCurve_002" parent="." index="81"]
 transform = Transform3D(0, 0.430258, 0, -0.430218, 0, 0.00590222, 0.00590222, 0, 0.430218, 2.5, 2.16297, 1.3225)
 visible = false
 
-[node name="BezierCurve_003" parent="." index="80"]
+[node name="BezierCurve_003" parent="." index="82"]
 transform = Transform3D(0, 0.430258, 0, -0.430218, 0, 0.00590222, 0.00590222, 0, 0.430218, 2.5, 2.16297, 1.3225)
 visible = false
+
+[editable path="Activables/WallsUpActivable"]
+[editable path="Activables/ExitWindowActivable"]
+[editable path="Activables/BlindersUpActivable"]
+[editable path="Activables/BlindersDownActivable"]
