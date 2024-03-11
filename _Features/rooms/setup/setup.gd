@@ -4,6 +4,8 @@ class_name Setup extends Node3D
 @onready var stream_out_pos := $StreamOutMarker as Marker3D
 @onready var stream_wrong_pos := $StreamWrongMarker as Marker3D
 @onready var walls_up_marker := $WallsUpMarker as Marker3D
+@onready var walls_down_marker := $WallsDownMarker as Marker3D
+@onready var penetration_marker := $PenetrationMarker as Marker3D
 
 @onready var stream_in_activable := $Activables/StreamInActivable as Activable
 @onready var stream_out_activable := $Activables/StreamOutActivable as Activable
@@ -13,6 +15,7 @@ class_name Setup extends Node3D
 @onready var exit_window_activable := $Activables/ExitWindowActivable as Activable
 @onready var blinders_up_activable := $Activables/BlindersUpActivable as Activable
 @onready var blinders_down_activable := $Activables/BlindersDownActivable as Activable
+@onready var jump_down_activable := $Activables/JumpDownActivable as Activable
 
 @onready var colliders := $Colliders/StaticBody3D as StaticBody3D
 @onready var colliders_up := $CollidersUp/StaticBody3D as StaticBody3D
@@ -32,6 +35,14 @@ func get_stream_position_wrong() -> Vector3:
 
 func get_walls_up_position() -> Vector3:
 	return walls_up_marker.global_position
+
+
+func get_penetration_position() -> Vector3:
+	return penetration_marker.global_position
+
+
+func get_walls_down_position() -> Vector3:
+	return walls_down_marker.global_position
 
 
 func activate_stream_out_activable() -> void:
@@ -61,6 +72,9 @@ func activate_blinders_down_activable() -> void:
 func activate_blinders_up_activable() -> void:
 	blinders_up_activable.reactivate()
 
+func activate_jump_down_activable() -> void:
+	jump_down_activable.reactivate()
+
 
 func allow_exit_window() -> void:
 	exit_window_activable.forbidden = false
@@ -73,8 +87,10 @@ func forbid_exit_window() -> void:
 func switch_to_up_mode() -> void:
 	colliders.collision_layer = 0
 	colliders_up.collision_layer = 4
+	jump_down_activable.reactivate()
 
 
 func switch_to_normal_mode() -> void:
 	colliders.collision_layer = 4
 	colliders_up.collision_layer = 0
+	activate_touch_wall_activable()

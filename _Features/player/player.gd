@@ -110,3 +110,11 @@ func get_up_from_streaming_wrong(new_position: Vector3) -> void:
 
 func set_up_walls(new_position: Vector3) -> void:
 	global_position = new_position
+
+
+func set_down_wall(new_position: Vector3) -> void:
+	global_position = new_position
+
+
+func penetrate(new_position: Vector3) -> void:
+	global_position = new_position

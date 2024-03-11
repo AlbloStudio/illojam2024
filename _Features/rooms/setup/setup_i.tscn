@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c0bdwlue70wgp"]
+[gd_scene load_steps=26 format=3 uid="uid://c0bdwlue70wgp"]
 
 [ext_resource type="PackedScene" uid="uid://eey6l7a03sjc" path="res://_Features/rooms/setup/setup.blend" id="1_8c4o6"]
 [ext_resource type="Script" path="res://_Features/rooms/setup/setup.gd" id="2_42fvx"]
@@ -29,16 +29,19 @@ size = Vector3(0.789019, 3.50208, 5.91484)
 size = Vector3(1.05022, 3.50208, 0.882977)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_304dh"]
-size = Vector3(4.35384, 3.50208, 7.63239)
+size = Vector3(5.10715, 5.12116, 8.11554)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6o23c"]
-size = Vector3(2.77844, 3.50208, 0.224121)
+size = Vector3(5.912, 4.86713, 0.224121)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_17vcf"]
-size = Vector3(0.224258, 3.50208, 8.17847)
+[sub_resource type="BoxShape3D" id="BoxShape3D_psyju"]
+size = Vector3(0.467178, 4.86713, 10.3911)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_oi1b1"]
-size = Vector3(0.224258, 3.50208, 8.17847)
+[sub_resource type="BoxShape3D" id="BoxShape3D_p35k4"]
+size = Vector3(0.467178, 4.86713, 10.6099)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mis7"]
+size = Vector3(5.73682, 4.86713, 0.224121)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8yxuw"]
 size = Vector3(1.44977, 2.23132, 1.65662)
@@ -53,7 +56,10 @@ size = Vector3(1, 2.23132, 1.10474)
 size = Vector3(1, 2.23132, 1.10474)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k13vm"]
-size = Vector3(1.14063, 2.23132, 1.92639)
+size = Vector3(1.14063, 1.8309, 1.92639)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dpuim"]
+size = Vector3(0.958557, 2.23132, 1.92639)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kgij0"]
 size = Vector3(1.33545, 3.39719, 1.26199)
@@ -77,9 +83,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.542691, 0, -1.2049)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20883, 0, -0.04051)
 
 [node name="WallsUpMarker" type="Marker3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.867798, 3.01253, -4.03065)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.867798, 3.01253, -4.54622)
 
-[node name="Colliders" type="Node3D" parent="." index="4"]
+[node name="WallsDownMarker" type="Marker3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.868, 0, -3.17138)
+
+[node name="PenetrationMarker" type="Marker3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.797652, -1.39287, -3.01525)
+
+[node name="Colliders" type="Node3D" parent="." index="6"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Colliders" index="0"]
 collision_layer = 4
@@ -120,28 +132,32 @@ shape = SubResource("BoxShape3D_7po3e")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0167873, 1.25104, 1.75213)
 shape = SubResource("BoxShape3D_bct7i")
 
-[node name="CollidersUp" type="Node3D" parent="." index="5"]
+[node name="CollidersUp" type="Node3D" parent="." index="7"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CollidersUp" index="0"]
 collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollidersUp/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.091132, 1.29087, 0.0420258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0435191, 2.10041, 0.00661397)
 shape = SubResource("BoxShape3D_304dh")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="CollidersUp/StaticBody3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20018, 1.25104, -4.02996)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0206881, 1.93356, -5.19219)
 shape = SubResource("BoxShape3D_6o23c")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="CollidersUp/StaticBody3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54409, 1.25104, -0.0375528)
-shape = SubResource("BoxShape3D_17vcf")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87336, 1.93356, 0.292196)
+shape = SubResource("BoxShape3D_psyju")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="CollidersUp/StaticBody3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4896, 1.25104, -0.0375528)
-shape = SubResource("BoxShape3D_oi1b1")
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="CollidersUp/StaticBody3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.54628, 1.93356, 0.119253)
+shape = SubResource("BoxShape3D_p35k4")
 
-[node name="Activables" type="Node3D" parent="." index="6"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="CollidersUp/StaticBody3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038064, 1.93356, 5.05628)
+shape = SubResource("BoxShape3D_3mis7")
+
+[node name="Activables" type="Node3D" parent="." index="8"]
 
 [node name="StreamInActivable" parent="Activables" index="0" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.871468, 0.690414, -0.560438)
@@ -203,18 +219,34 @@ shape = SubResource("BoxShape3D_mt51r")
 [node name="WallsUpActivable" parent="Activables" index="4" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.08159, 0.690414, -4.20817)
 activable_name = "TouchWall"
-activable_alternative_name = "UpWall"
 activable_text = "Tocar la pared"
 activable_alternative_text = "Subir la pared"
+alternative = true
 
 [node name="ActionLabel" parent="Activables/WallsUpActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.795094, 2.5, -0.154641)
 
 [node name="CollisionShape3D" parent="Activables/WallsUpActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545135, 0.615662, 0.375054)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545135, 0.133652, 0.375053)
 shape = SubResource("BoxShape3D_k13vm")
 
-[node name="ExitWindowActivable" parent="Activables" index="5" instance=ExtResource("2_n3fv0")]
+[node name="JumpDownActivable" parent="Activables" index="5" instance=ExtResource("2_n3fv0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.08159, 0.690414, -4.20817)
+activable_name = "Jump Down"
+activable_text = "Bajar pared"
+activable_alternative_text = "Saltar"
+
+[node name="ActionLabel" parent="Activables/JumpDownActivable" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.795094, 2.5, -0.154641)
+
+[node name="FiniteStateMachine" parent="Activables/JumpDownActivable" index="1"]
+initial_state = NodePath("Deactivated")
+
+[node name="CollisionShape3D" parent="Activables/JumpDownActivable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0746469, 3.39957, 0.375053)
+shape = SubResource("BoxShape3D_dpuim")
+
+[node name="ExitWindowActivable" parent="Activables" index="6" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.982227, 1.69041, 3.56018)
 activable_name = "Exit Window"
 activable_text = "Salir por la ventana"
@@ -226,7 +258,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.327864, 0.0784359, 1.51659)
 shape = SubResource("BoxShape3D_kgij0")
 
-[node name="BlindersUpActivable" parent="Activables" index="6" instance=ExtResource("2_n3fv0")]
+[node name="BlindersUpActivable" parent="Activables" index="7" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.982227, 0.690414, 3.56018)
 activable_name = "Blinders Up"
 activable_text = "Levantar la persiana"
@@ -241,7 +273,7 @@ initial_state = NodePath("Deactivated")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0214708, 0.800177, 3.10001)
 shape = SubResource("BoxShape3D_qjbfh")
 
-[node name="BlindersDownActivable" parent="Activables" index="7" instance=ExtResource("2_n3fv0")]
+[node name="BlindersDownActivable" parent="Activables" index="8" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.982227, 0.690414, 3.56018)
 activable_name = "Blinders Down"
 activable_text = "Bajar la persiana"
@@ -253,10 +285,10 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.3, 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0214708, 0.800177, 3.0972)
 shape = SubResource("BoxShape3D_s1fqm")
 
-[node name="cable raton" parent="." index="59"]
+[node name="cable raton" parent="." index="61"]
 visible = false
 
-[node name="neon twitch normal" parent="." index="64"]
+[node name="neon twitch normal" parent="." index="66"]
 visible = false
 
 [node name="Skeleton3D" parent="Armature" index="0"]
@@ -302,11 +334,11 @@ bones/44/rotation = Quaternion(-0.00831831, 0.141788, 0.989458, 0.0282747)
 bones/45/rotation = Quaternion(-0.304093, 0.112556, 0.0299572, 0.945495)
 bones/46/rotation = Quaternion(0.566216, -0.103342, -0.0318874, 0.817131)
 
-[node name="BezierCurve_002" parent="." index="86"]
+[node name="BezierCurve_002" parent="." index="88"]
 transform = Transform3D(0, 0.430258, 0, -0.430218, 0, 0.00590222, 0.00590222, 0, 0.430218, 2.5, 2.16297, 1.3225)
 visible = false
 
-[node name="BezierCurve_003" parent="." index="87"]
+[node name="BezierCurve_003" parent="." index="89"]
 transform = Transform3D(0, 0.430258, 0, -0.430218, 0, 0.00590222, 0.00590222, 0, 0.430218, 2.5, 2.16297, 1.3225)
 visible = false
 
@@ -315,6 +347,7 @@ visible = false
 [editable path="Activables/StreamInIncorrectActivable"]
 [editable path="Activables/StreamOutInCorrectActivable"]
 [editable path="Activables/WallsUpActivable"]
+[editable path="Activables/JumpDownActivable"]
 [editable path="Activables/ExitWindowActivable"]
 [editable path="Activables/BlindersUpActivable"]
 [editable path="Activables/BlindersDownActivable"]

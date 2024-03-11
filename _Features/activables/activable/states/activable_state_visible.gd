@@ -55,4 +55,4 @@ func _check_should_activate() -> void:
 	)
 
 	if should_transition:
-		SignalBus.activable_activated.emit(state_owner.activable_name)
+		SignalBus.activable_activated.emit(state_owner.activable_name, state_owner.alternative)

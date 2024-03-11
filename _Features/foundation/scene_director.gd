@@ -17,7 +17,7 @@ func _ready():
 	SignalBus.awaked.connect(_awaked)
 
 
-func _activable_activated(activable_name: String) -> void:
+func _activable_activated(activable_name: String, alternative: bool) -> void:
 	if !current_activable || current_activable.activable_name != activable_name:
 		return
 
@@ -59,15 +59,21 @@ func _activable_activated(activable_name: String) -> void:
 		"StreamOutWrong":
 			_stream_out_wrong()
 		"TouchWall":
-			_touch_wall()
-		"UpWall":
-			_up_wall()
+			if alternative:
+				_up_wall()
+			else:
+				_touch_wall()
 		"Exit Window":
 			_exit_window()
 		"Blinders Up":
 			_bilders_up()
 		"Blinders Down":
 			_blinders_down()
+		"Jump Down":
+			if alternative:
+				_jump_down()
+			else:
+				_down_wall()
 
 
 func _tablet_opened() -> void:
@@ -200,3 +206,13 @@ func _blinders_down() -> void:
 	player.say("Bajé la persiana")
 	setup.forbid_exit_window()
 	setup.activate_blinders_up_activable()
+
+
+func _jump_down() -> void:
+	player.penetrate(setup.get_penetration_position())
+	setup.switch_to_normal_mode()
+
+
+func _down_wall() -> void:
+	player.set_down_wall(setup.get_walls_down_position())
+	setup.switch_to_normal_mode()

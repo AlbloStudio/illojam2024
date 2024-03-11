@@ -1,6 +1,6 @@
 extends Node
 
-signal activable_activated(name: String)
+signal activable_activated(name: String, alternative: bool)
 signal current_activable_changed(new_activable: Activable)
 
 signal tablet_opened

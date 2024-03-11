@@ -1,7 +1,6 @@
 class_name Activable extends Area3D
 
 @export var activable_name: String
-@export var activable_alternative_name: String
 @export var activable_text := "Realizar action"
 @export var activable_alternative_text := "Realizar action"
 @export var times_to_unforbid := 5
