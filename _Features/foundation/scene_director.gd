@@ -18,7 +18,6 @@ func _ready():
 
 
 func _activable_activated(activable_name: String) -> void:
-	print(current_activable.activable_name)
 	if !current_activable || current_activable.activable_name != activable_name:
 		return
 
@@ -183,7 +182,8 @@ func _touch_wall() -> void:
 
 
 func _up_wall() -> void:
-	pass
+	setup.switch_to_up_mode()
+	player.set_up_walls(setup.get_walls_up_position())
 
 
 func _exit_window() -> void:

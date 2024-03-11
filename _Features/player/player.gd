@@ -106,3 +106,7 @@ func get_up_from_streaming_wrong(new_position: Vector3) -> void:
 	if state_machine.is_in_state([state_puppet.name]):
 		global_position = new_position
 		go_controlled()
+
+
+func set_up_walls(new_position: Vector3) -> void:
+	global_position = new_position

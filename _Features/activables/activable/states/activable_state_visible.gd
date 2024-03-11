@@ -23,7 +23,6 @@ func update(delta: float) -> void:
 		time_pressing += delta
 		if time_pressing >= state_owner.time_to_alternate:
 			state_owner.alternative = !state_owner.alternative
-			state_owner.label.make_visible(true, state_owner.alternative, state_owner.forbidden)
 			is_alternative_set = true
 			time_pressing = 0.0
 

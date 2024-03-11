@@ -3,7 +3,7 @@ class_name Setup extends Node3D
 @onready var stream_pos := $StreamMarker as Marker3D
 @onready var stream_out_pos := $StreamOutMarker as Marker3D
 @onready var stream_wrong_pos := $StreamWrongMarker as Marker3D
-@onready var stream := $StreamWrongMarker as Marker3D
+@onready var walls_up_marker := $WallsUpMarker as Marker3D
 
 @onready var stream_in_activable := $Activables/StreamInActivable as Activable
 @onready var stream_out_activable := $Activables/StreamOutActivable as Activable
@@ -13,6 +13,9 @@ class_name Setup extends Node3D
 @onready var exit_window_activable := $Activables/ExitWindowActivable as Activable
 @onready var blinders_up_activable := $Activables/BlindersUpActivable as Activable
 @onready var blinders_down_activable := $Activables/BlindersDownActivable as Activable
+
+@onready var colliders := $Colliders/StaticBody3D as StaticBody3D
+@onready var colliders_up := $CollidersUp/StaticBody3D as StaticBody3D
 
 
 func get_stream_position() -> Vector3:
@@ -25,6 +28,10 @@ func get_stream_out_position() -> Vector3:
 
 func get_stream_position_wrong() -> Vector3:
 	return stream_wrong_pos.global_position
+
+
+func get_walls_up_position() -> Vector3:
+	return walls_up_marker.global_position
 
 
 func activate_stream_out_activable() -> void:
@@ -61,3 +68,13 @@ func allow_exit_window() -> void:
 
 func forbid_exit_window() -> void:
 	exit_window_activable.forbidden = true
+
+
+func switch_to_up_mode() -> void:
+	colliders.collision_layer = 0
+	colliders_up.collision_layer = 4
+
+
+func switch_to_normal_mode() -> void:
+	colliders.collision_layer = 4
+	colliders_up.collision_layer = 0

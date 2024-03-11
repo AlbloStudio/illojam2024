@@ -2,11 +2,19 @@ class_name Activable extends Area3D
 
 @export var activable_name: String
 @export var activable_alternative_name: String
-@export var forbidden := false
-@export var alternative := false
 @export var activable_text := "Realizar action"
+@export var activable_alternative_text := "Realizar action"
 @export var times_to_unforbid := 5
 @export var time_to_alternate := 3.0
+@export var alternative := false:
+	set(value):
+		alternative = value
+		reset_label()
+
+@export var forbidden := false:
+	set(value):
+		forbidden = value
+		reset_label()
 
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_deactivated := $FiniteStateMachine/Deactivated as ActivableState
@@ -18,10 +26,9 @@ class_name Activable extends Area3D
 
 
 func _ready() -> void:
-	var label_prefix = "🚫 " if forbidden else ""
-	label.text = label_prefix + activable_text
 	label.outline_modulate = label.get_color(false, alternative, forbidden)
-	label.modulate = label.get_color(false, alternative, forbidden)
+
+	reset_label()
 
 
 func change_current_activable() -> void:
@@ -42,3 +49,33 @@ func reactivate() -> void:
 
 func activate() -> void:
 	state_machine.transition_to(state_activated.name)
+
+
+func switch_alternative() -> void:
+	alternative = !alternative
+	reset_label()
+
+
+func reset_label() -> void:
+	if !label:
+		return
+
+	set_label_text()
+	set_label_colors()
+
+
+func set_label_colors() -> void:
+	if !label:
+		return
+
+	var should_be_visible = state_machine.is_in_state([state_visible.name])
+	label.modulate = label.get_color(should_be_visible, alternative, forbidden)
+
+
+func set_label_text() -> void:
+	if !label:
+		return
+
+	var label_prefix = "🚫 " if forbidden else ""
+	var label_text = activable_alternative_text if alternative else activable_text
+	label.text = label_prefix + label_text

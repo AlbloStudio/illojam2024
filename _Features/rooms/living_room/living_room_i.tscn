@@ -169,8 +169,8 @@ shape = SubResource("BoxShape3D_d51n7")
 [node name="SofaActivableLayUpWall" parent="Activables" index="0" instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999992, 0.010477, 0.0057869, -0.0567091)
 activable_name = "Lay up wall"
-forbidden = true
 activable_text = "Levantarse"
+forbidden = true
 
 [node name="ActionLabel" parent="Activables/SofaActivableLayUpWall" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.98324, 2.5, -2.37931)
