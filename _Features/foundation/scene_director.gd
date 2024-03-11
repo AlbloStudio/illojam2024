@@ -4,6 +4,7 @@ var current_activable: Activable = null
 
 @onready var player := $Player as Player
 @onready var living_room := $Stage/LivingRoom/LivingRoom as LivingRoom
+@onready var setup := $Stage/Setup/setup as Setup
 @onready var ui := $UI as GameUI
 
 
@@ -17,7 +18,11 @@ func _ready():
 
 
 func _activable_activated(activable_name: String) -> void:
-	current_activable = null
+	print(current_activable.activable_name)
+	if !current_activable || current_activable.activable_name != activable_name:
+		return
+
+	current_activable.activate()
 
 	match activable_name:
 		"Tablet":
@@ -46,6 +51,24 @@ func _activable_activated(activable_name: String) -> void:
 			_sofa_lay_up()
 		"Lay up wall":
 			_sofa_lay_up_wall()
+		"StreamIn":
+			_stream_in()
+		"StreamOut":
+			_stream_out()
+		"StreamWrong":
+			_stream_in_wrong()
+		"StreamOutWrong":
+			_stream_out_wrong()
+		"TouchWall":
+			_touch_wall()
+		"UpWall":
+			_up_wall()
+		"Exit Window":
+			_exit_window()
+		"Blinders Up":
+			_bilders_up()
+		"Blinders Down":
+			_blinders_down()
 
 
 func _tablet_opened() -> void:
@@ -59,6 +82,9 @@ func _tablet_closed() -> void:
 
 
 func _set_current_activable(new_activable: Activable) -> void:
+	if current_activable == new_activable:
+		return
+
 	if current_activable:
 		current_activable.stop_being_current()
 	current_activable = new_activable
@@ -114,21 +140,63 @@ func _read_mirror_poster() -> void:
 
 
 func _sofa_lay_down() -> void:
-	player.lay_down_on_sofa()
-	player.global_position = living_room.get_layed_position()
+	player.lay_down_on_sofa(living_room.get_layed_position())
 	living_room.switch_to_layed_mode()
 
 
 func _sofa_lay_up() -> void:
-	player.global_position = living_room.get_up_position()
-	_sofa_lay_up_generic()
+	_sofa_lay_up_generic(living_room.get_up_position())
 
 
 func _sofa_lay_up_wall() -> void:
-	player.global_position = living_room.get_wall_position()
-	_sofa_lay_up_generic()
+	_sofa_lay_up_generic(living_room.get_wall_position())
 
 
-func _sofa_lay_up_generic() -> void:
-	player.lay_up_from_sofa()
+func _sofa_lay_up_generic(position: Vector3) -> void:
+	player.lay_up_from_sofa(position)
 	living_room.switch_to_up_mode()
+
+
+func _stream_in() -> void:
+	player.sit_to_stream(setup.get_stream_position())
+	setup.activate_stream_out_activable()
+
+
+func _stream_out() -> void:
+	player.get_up_from_streaming(setup.get_stream_out_position())
+	setup.activate_stream_in_activable()
+
+
+func _stream_in_wrong() -> void:
+	player.sit_to_stream_wrong(setup.get_stream_position_wrong())
+	setup.activate_stream_out_wrong_activable()
+
+
+func _stream_out_wrong() -> void:
+	player.get_up_from_streaming_wrong(setup.get_stream_out_position())
+	setup.activate_stream_in_wrong_activable()
+
+
+func _touch_wall() -> void:
+	player.say("Otia, una pared")
+	create_tween().tween_callback(func(): setup.activate_touch_wall_activable()).set_delay(2)
+
+
+func _up_wall() -> void:
+	pass
+
+
+func _exit_window() -> void:
+	pass
+
+
+func _bilders_up() -> void:
+	player.say("Subí la persiana")
+	setup.allow_exit_window()
+	setup.activate_blinders_down_activable()
+
+
+func _blinders_down() -> void:
+	player.say("Bajé la persiana")
+	setup.forbid_exit_window()
+	setup.activate_blinders_up_activable()

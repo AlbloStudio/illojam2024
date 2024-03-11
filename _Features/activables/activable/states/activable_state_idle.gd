@@ -12,5 +12,5 @@ func exit(_msg := {}) -> void:
 
 func _on_activable_body_entered(_body: Node3D) -> void:
 	if _body is Player:
-		state_owner.change_current_activable()
 		state_machine.transition_to(state_owner.state_visible.name)
+		state_owner.change_current_activable()

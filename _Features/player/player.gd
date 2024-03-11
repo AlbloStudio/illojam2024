@@ -66,17 +66,43 @@ func get_up_from_chair() -> void:
 		go_controlled()
 
 
-func lay_down_on_sofa() -> void:
+func lay_down_on_sofa(new_position: Vector3) -> void:
 	if state_machine.is_in_state([state_controlled.name]):
 		_change_player_speed()
+		global_position = new_position
 
 
-func lay_up_from_sofa() -> void:
+func lay_up_from_sofa(new_position: Vector3) -> void:
 	if state_machine.is_in_state([state_controlled.name]):
 		_change_player_speed()
+		global_position = new_position
 
 
 func _change_player_speed() -> void:
 	var previous_speed = speed
 	speed = speed_slow
 	speed_slow = previous_speed
+
+
+func sit_to_stream(new_position: Vector3) -> void:
+	if state_machine.is_in_state([state_controlled.name]):
+		global_position = new_position
+		go_puppet()
+
+
+func get_up_from_streaming(new_position: Vector3) -> void:
+	if state_machine.is_in_state([state_puppet.name]):
+		global_position = new_position
+		go_controlled()
+
+
+func sit_to_stream_wrong(new_position: Vector3) -> void:
+	if state_machine.is_in_state([state_controlled.name]):
+		global_position = new_position
+		go_puppet()
+
+
+func get_up_from_streaming_wrong(new_position: Vector3) -> void:
+	if state_machine.is_in_state([state_puppet.name]):
+		global_position = new_position
+		go_controlled()

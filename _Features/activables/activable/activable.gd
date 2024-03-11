@@ -38,3 +38,7 @@ func deactivate() -> void:
 
 func reactivate() -> void:
 	state_machine.transition_to(state_idle.name)
+
+
+func activate() -> void:
+	state_machine.transition_to(state_activated.name)
