@@ -18,10 +18,8 @@ func _ready():
 
 
 func _activable_activated(activable_name: String, alternative: bool) -> void:
-	if !current_activable || current_activable.activable_name != activable_name:
+	if current_activable == null || current_activable.activable_name != activable_name:
 		return
-
-	current_activable.activate()
 
 	match activable_name:
 		"Tablet":
@@ -90,8 +88,9 @@ func _set_current_activable(new_activable: Activable) -> void:
 	if current_activable == new_activable:
 		return
 
-	if current_activable:
+	if current_activable != null:
 		current_activable.stop_being_current()
+
 	current_activable = new_activable
 
 

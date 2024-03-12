@@ -72,6 +72,7 @@ func activate_blinders_down_activable() -> void:
 func activate_blinders_up_activable() -> void:
 	blinders_up_activable.reactivate()
 
+
 func activate_jump_down_activable() -> void:
 	jump_down_activable.reactivate()
 

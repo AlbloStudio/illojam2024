@@ -35,7 +35,8 @@ func change_current_activable() -> void:
 
 
 func stop_being_current() -> void:
-	state_machine.transition_to(state_idle.name)
+	if state_machine.is_in_state([state_visible.name]):
+		state_machine.transition_to(state_idle.name)
 
 
 func deactivate() -> void:
@@ -44,10 +45,6 @@ func deactivate() -> void:
 
 func reactivate() -> void:
 	state_machine.transition_to(state_idle.name)
-
-
-func activate() -> void:
-	state_machine.transition_to(state_activated.name)
 
 
 func switch_alternative() -> void:

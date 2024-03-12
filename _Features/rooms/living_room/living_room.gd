@@ -43,6 +43,7 @@ func make_closet_appear() -> void:
 func make_closet_disappear() -> void:
 	closet.queue_free()
 	closet_handles.queue_free()
+	closet_activable.queue_free()
 
 
 func reset_closet() -> void:
@@ -70,6 +71,10 @@ func make_cloth_disappear(cloth_name: String) -> void:
 
 func destroy_clothes() -> void:
 	clothes.queue_free()
+
+	for cloth_name in cloth_names:
+		var clothe_activable = get_node(_clothes_path(cloth_name)) as Activable
+		clothe_activable.queue_free()
 
 
 func _clothes_path(cloth: String, with_activable := true) -> String:

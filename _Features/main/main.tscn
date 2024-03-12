@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=18 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="PackedScene" uid="uid://ccopiuj5gnm7m" path="res://_Features/UI/ui.tscn" id="2_7rttm"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_v8ayd"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.gd" id="8_ku7b2"]
 [ext_resource type="PackedScene" uid="uid://cb0311e3f7has" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil_i.tscn" id="9_iwvg8"]
-[ext_resource type="Script" path="res://_Features/rooms/setup/setup.gd" id="10_42hop"]
 [ext_resource type="PackedScene" uid="uid://c0bdwlue70wgp" path="res://_Features/rooms/setup/setup_i.tscn" id="11_qjeg8"]
 
 [sub_resource type="Environment" id="Environment_gtx4b"]
@@ -50,15 +49,15 @@ script = ExtResource("1_6gnox")
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.8771, 9.655, 1.75192)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.1964, 9.655, 1.88037)
 current = true
-fov = 74.552
+fov = 74.9254
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.8771, 9.655, 1.75192)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.1964, 9.655, 1.88037)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0
@@ -74,7 +73,7 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.8771, 4.76837e-07, 1.75192)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1964, -1.43051e-06, 1.88037)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")
@@ -185,7 +184,6 @@ spot_angle = 77.8
 
 [node name="Setup" type="Node3D" parent="Stage"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.0907, 0, 1.58796)
-script = ExtResource("10_42hop")
 
 [node name="CeilingLight5" type="SpotLight3D" parent="Stage/Setup"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00315571, 1.01303, 2.65494)

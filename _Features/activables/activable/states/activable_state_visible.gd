@@ -13,6 +13,7 @@ var is_pressing: bool:
 
 
 func enter(_msg := {}) -> void:
+	state_owner.change_current_activable()
 	state_owner.label.make_visible(true, state_owner.alternative, state_owner.forbidden)
 	state_owner.body_exited.connect(_on_activable_body_exited)
 	times_pressed = 0
@@ -55,4 +56,4 @@ func _check_should_activate() -> void:
 	)
 
 	if should_transition:
-		SignalBus.activable_activated.emit(state_owner.activable_name, state_owner.alternative)
+		state_machine.transition_to(state_owner.state_activated.name)

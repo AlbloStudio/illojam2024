@@ -7,7 +7,7 @@ func make_visible(
 	var color := get_color(is_visible, is_alternative, is_forbidden)
 
 	var color_tween = create_tween()
-	if color_tween:
+	if color_tween != null:
 		color_tween.tween_property(self, "modulate", color, time)
 
 
