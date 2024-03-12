@@ -16,6 +16,9 @@ class_name Setup extends Node3D
 @onready var blinders_up_activable := $Activables/BlindersUpActivable as Activable
 @onready var blinders_down_activable := $Activables/BlindersDownActivable as Activable
 @onready var jump_down_activable := $Activables/JumpDownActivable as Activable
+@onready var move_chair_activable := $Activables/MoveChairActivable as Activable
+
+@onready var move_chair_animation := $MoveChairAnimation as AnimationPlayer
 
 @onready var colliders := $Colliders/StaticBody3D as StaticBody3D
 @onready var colliders_up := $CollidersUp/StaticBody3D as StaticBody3D
@@ -95,3 +98,14 @@ func switch_to_normal_mode() -> void:
 	colliders.collision_layer = 4
 	colliders_up.collision_layer = 0
 	activate_touch_wall_activable()
+
+
+func move_chair() -> void:
+	move_chair_animation.play("move_chair")
+
+
+func activate_wrong_streams() -> void:
+	stream_in_activable.deactivate()
+	stream_out_activable.deactivate()
+	stream_in_incorrect_activable.reactivate()
+	stream_out_incorrect_activable.reactivate()

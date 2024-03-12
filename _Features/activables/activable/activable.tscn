@@ -11,6 +11,7 @@
 [node name="Activable" type="Area3D"]
 collision_layer = 2
 script = ExtResource("1_s7sqx")
+time_to_alternate = 2.0
 
 [node name="ActionLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.5, 0)

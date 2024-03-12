@@ -1,6 +1,16 @@
 extends Node
 
 var current_activable: Activable = null
+var awakes = {
+	"wall": false,
+	"jump": false,
+	"stream": false,
+	"window": false,
+	"clothes": false,
+	"poster": false,
+	"sit": false,
+	"sofa": false,
+}
 
 @onready var player := $Player as Player
 @onready var living_room := $Stage/LivingRoom/LivingRoom as LivingRoom
@@ -14,7 +24,6 @@ func _ready():
 	SignalBus.current_activable_changed.connect(_set_current_activable)
 	SignalBus.clothes_wrong.connect(_clothes_wronged)
 	SignalBus.clothes_right.connect(_clothes_righted)
-	SignalBus.awaked.connect(_awaked)
 
 
 func _activable_activated(activable_name: String, alternative: bool) -> void:
@@ -72,6 +81,8 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_jump_down()
 			else:
 				_down_wall()
+		"Move Chair":
+			_move_chair()
 
 
 func _tablet_opened() -> void:
@@ -108,16 +119,18 @@ func _put_on_clothes(cloth_name: String) -> void:
 func _clothes_wronged() -> void:
 	living_room.make_closet_disappear()
 	living_room.destroy_clothes()
-	SignalBus.awaked.emit()
+	_awaked("clothes")
 
 
 func _clothes_righted() -> void:
 	living_room.reset_closet()
 
 
-func _awaked() -> void:
-	ui.add_progress(1)
-	ui.awake()
+func _awaked(awake_name: String) -> void:
+	if !awakes[awake_name]:
+		ui.add_progress(1)
+		ui.awake()
+		awakes[awake_name] = true
 
 
 func _read_poster() -> void:
@@ -135,12 +148,12 @@ func _get_up_from_chair() -> void:
 
 
 func _sit_on_mirror_chair() -> void:
-	SignalBus.awaked.emit()
+	_awaked("sit")
 
 
 func _read_mirror_poster() -> void:
 	player.say("ME CAGO", 2)
-	create_tween().tween_callback(func(): SignalBus.awaked.emit()).set_delay(2)
+	create_tween().tween_callback(func(): _awaked("poster")).set_delay(2)
 
 
 func _sofa_lay_down() -> void:
@@ -154,7 +167,7 @@ func _sofa_lay_up() -> void:
 
 func _sofa_lay_up_wall() -> void:
 	_sofa_lay_up_generic(living_room.get_wall_position())
-
+	_awaked("sofa")
 
 func _sofa_lay_up_generic(position: Vector3) -> void:
 	player.lay_up_from_sofa(position)
@@ -174,6 +187,7 @@ func _stream_out() -> void:
 func _stream_in_wrong() -> void:
 	player.sit_to_stream_wrong(setup.get_stream_position_wrong())
 	setup.activate_stream_out_wrong_activable()
+	_awaked("stream")
 
 
 func _stream_out_wrong() -> void:
@@ -189,10 +203,11 @@ func _touch_wall() -> void:
 func _up_wall() -> void:
 	setup.switch_to_up_mode()
 	player.set_up_walls(setup.get_walls_up_position())
+	_awaked("wall")
 
 
 func _exit_window() -> void:
-	pass
+	_awaked("window")
 
 
 func _bilders_up() -> void:
@@ -210,8 +225,14 @@ func _blinders_down() -> void:
 func _jump_down() -> void:
 	player.penetrate(setup.get_penetration_position())
 	setup.switch_to_normal_mode()
+	_awaked("jump")
 
 
 func _down_wall() -> void:
 	player.set_down_wall(setup.get_walls_down_position())
 	setup.switch_to_normal_mode()
+
+
+func _move_chair() -> void:
+	setup.move_chair()
+	setup.activate_wrong_streams()
