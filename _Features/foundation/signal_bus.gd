@@ -17,3 +17,8 @@ signal awaked(awake_name: String)
 
 signal layed_down
 signal layed_up
+
+signal streaming
+signal stopped_streaming
+signal streaming_wrong
+signal stopped_streaming_wrong

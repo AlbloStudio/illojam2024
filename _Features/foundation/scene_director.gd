@@ -28,6 +28,10 @@ func _ready():
 	SignalBus.awaked.connect(_awaked)
 	SignalBus.layed_down.connect(_layed_down)
 	SignalBus.layed_up.connect(_layed_up)
+	SignalBus.streaming.connect(_streaming)
+	SignalBus.stopped_streaming.connect(_stopped_streaming)
+	SignalBus.streaming_wrong.connect(_streaming_wrong)
+	SignalBus.stopped_streaming_wrong.connect(_stopped_streaming_wrong)
 
 
 func _activable_activated(activable_name: String, alternative: bool) -> void:
@@ -182,22 +186,34 @@ func _layed_up() -> void:
 
 func _stream_in() -> void:
 	player.sit_to_stream(setup.get_stream_position())
-	setup.activate_stream_out_activable()
 
 
 func _stream_out() -> void:
-	player.get_up_from_streaming(setup.get_stream_out_position())
-	setup.activate_stream_in_activable()
+	player.get_up_from_streaming()
 
 
 func _stream_in_wrong() -> void:
 	player.sit_to_stream_wrong(setup.get_stream_position_wrong())
+
+
+func _stream_out_wrong() -> void:
+	player.get_up_from_streaming_wrong()
+
+
+func _streaming() -> void:
+	setup.activate_stream_out_activable()
+
+
+func _stopped_streaming() -> void:
+	setup.activate_stream_in_activable()
+
+
+func _streaming_wrong() -> void:
 	setup.activate_stream_out_wrong_activable()
 	_awaked("stream")
 
 
-func _stream_out_wrong() -> void:
-	player.get_up_from_streaming_wrong(setup.get_stream_out_position())
+func _stopped_streaming_wrong() -> void:
 	setup.activate_stream_in_wrong_activable()
 
 

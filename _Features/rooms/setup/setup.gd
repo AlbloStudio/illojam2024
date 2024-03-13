@@ -108,4 +108,3 @@ func activate_wrong_streams() -> void:
 	stream_in_activable.deactivate()
 	stream_out_activable.deactivate()
 	stream_in_incorrect_activable.reactivate()
-	stream_out_incorrect_activable.reactivate()

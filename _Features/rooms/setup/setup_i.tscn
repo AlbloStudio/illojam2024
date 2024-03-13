@@ -138,13 +138,13 @@ light_size = 0.26
 spot_angle = 79.69
 
 [node name="StreamMarker" type="Marker3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.283096, 0, 0.067403)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0, -0.03)
 
 [node name="StreamOutMarker" type="Marker3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.542691, 0, -1.2049)
 
 [node name="StreamWrongMarker" type="Marker3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20883, 0, -0.04051)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.405, 0, -0.03)
 
 [node name="WallsUpMarker" type="Marker3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4935, 3.01253, -4.54622)
@@ -240,7 +240,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.637519, 0.615662, 0.555268
 shape = SubResource("BoxShape3D_8yxuw")
 
 [node name="MoveChairActivable" parent="Activables" index="1" instance=ExtResource("2_n3fv0")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.871468, 0.690414, -0.560438)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.871468, 1.19041, -0.560438)
 activable_name = "Move Chair"
 activable_text = "Mover la silla"
 activable_alternative_text = ""
@@ -249,7 +249,7 @@ activable_alternative_text = ""
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
 
 [node name="CollisionShape3D" parent="Activables/MoveChairActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.637519, -2.11637, 0.555268)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.404452, -2.11637, 0.555268)
 shape = SubResource("BoxShape3D_k3t1c")
 
 [node name="StreamOutActivable" parent="Activables" index="2" instance=ExtResource("2_n3fv0")]
@@ -294,7 +294,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1148
 initial_state = NodePath("Deactivated")
 
 [node name="CollisionShape3D" parent="Activables/StreamOutInCorrectActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.587561, 0.615662, 0.564118)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.587561, 0.400477, 0.564118)
 shape = SubResource("BoxShape3D_mt51r")
 
 [node name="WallsUpActivable" parent="Activables" index="5" instance=ExtResource("2_n3fv0")]

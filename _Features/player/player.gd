@@ -110,27 +110,47 @@ func _layed_up() -> void:
 
 
 func sit_to_stream(new_position: Vector3) -> void:
-	if state_machine.is_in_state([state_controlled.name]):
-		global_position = new_position
-		go_puppet()
+	animate(
+		"SitOnChair",
+		new_position,
+		Vector3(0, PI, 0),
+		state_puppet.name,
+		false,
+		func(): SignalBus.streaming.emit()
+	)
 
 
-func get_up_from_streaming(new_position: Vector3) -> void:
-	if state_machine.is_in_state([state_puppet.name]):
-		global_position = new_position
-		go_controlled()
+func get_up_from_streaming() -> void:
+	animate(
+		"SitOnChair",
+		previous_position,
+		Vector3(0, PI, 0),
+		state_controlled.name,
+		true,
+		func(): SignalBus.stopped_streaming.emit()
+	)
 
 
 func sit_to_stream_wrong(new_position: Vector3) -> void:
-	if state_machine.is_in_state([state_controlled.name]):
-		global_position = new_position
-		go_puppet()
+	animate(
+		"SitOnChair",
+		new_position,
+		Vector3.ZERO,
+		state_puppet.name,
+		false,
+		func(): SignalBus.streaming_wrong.emit()
+	)
 
 
-func get_up_from_streaming_wrong(new_position: Vector3) -> void:
-	if state_machine.is_in_state([state_puppet.name]):
-		global_position = new_position
-		go_controlled()
+func get_up_from_streaming_wrong() -> void:
+	animate(
+		"SitOnChair",
+		previous_position,
+		Vector3.ZERO,
+		state_controlled.name,
+		true,
+		func(): SignalBus.stopped_streaming_wrong.emit()
+	)
 
 
 func set_up_walls(new_position: Vector3) -> void:
