@@ -73,6 +73,8 @@ camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48576, 4.76839e-07, -1.47964)
+speed = 3.0
+speed_slow = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")

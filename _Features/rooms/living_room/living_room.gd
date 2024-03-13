@@ -18,9 +18,10 @@ var cloth_names := ["underwear", "pants", "tshirt"]
 @onready var sofa_activable_lay_down := $Activables/SofaActivableLayDown as Activable
 @onready var sofa_activable_lay_up := $Activables/SofaActivableLayUp as Activable
 @onready var sofa_activable_lay_up_wall := $Activables/SofaActivableLayUpWall as Activable
-@onready var sofa_pos := $CollidersLayed/layMarker as Marker3D
-@onready var wall_pos := $CollidersLayed/wallMarker as Marker3D
-@onready var up_pos := $CollidersLayed/upMarker as Marker3D
+
+@onready var sofa_marker := $Markers/layMarker as Marker3D
+@onready var wall_marker := $Markers/wallMarker as Marker3D
+@onready var up_marker := $Markers/upMarker as Marker3D
 
 
 func _ready() -> void:
@@ -121,12 +122,16 @@ func switch_to_up_mode() -> void:
 
 
 func get_layed_position() -> Vector3:
-	return sofa_pos.global_position
+	return sofa_marker.global_position
 
 
 func get_up_position() -> Vector3:
-	return up_pos.global_position
+	return up_marker.global_position
 
 
 func get_wall_position() -> Vector3:
-	return wall_pos.global_position
+	return wall_marker.global_position
+
+
+func get_marker_position(marker_name: String) -> Vector3:
+	return get_node("Markers/" + marker_name).global_position

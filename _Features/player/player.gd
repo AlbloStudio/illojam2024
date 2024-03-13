@@ -8,6 +8,7 @@ class_name Player extends CharacterBody3D
 var desired_velocity := Vector2.ZERO
 var clothes = ["underwear", "pants", "tshirt"]
 var original_speech_bubble_position := Vector3.ZERO
+var previous_position := Vector3.ZERO
 
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_controlled := $FiniteStateMachine/Controlled as PlayerState
@@ -56,14 +57,13 @@ func say(text: String, delay := 3.0) -> void:
 	create_tween().tween_callback(func(): speech_bubble_label.visible = false).set_delay(delay)
 
 
-func sit_on_chair() -> void:
+func sit_on_chair(sit_position: Vector3) -> void:
 	if state_machine.is_in_state([state_controlled.name]):
-		go_puppet()
+		animate("SitOnChair", sit_position, Vector3.ZERO, state_puppet.name)
 
 
 func get_up_from_chair() -> void:
-	if state_machine.is_in_state([state_puppet.name]):
-		go_controlled()
+	animate("SitOnChair", previous_position, Vector3.ZERO, state_controlled.name, true)
 
 
 func lay_down_on_sofa(new_position: Vector3) -> void:
@@ -118,3 +118,33 @@ func set_down_wall(new_position: Vector3) -> void:
 
 func penetrate(new_position: Vector3) -> void:
 	global_position = new_position
+
+
+func animate(
+	animation_name: String,
+	position_target: Vector3,
+	rotation_target: Vector3,
+	target_state_name: String,
+	backwards := false,
+	walking_target = null
+) -> void:
+	previous_position = global_position
+
+	go_puppet()
+
+	if walking_target != null:
+		create_tween().tween_property(self, "global_position", walking_target, 1.2)
+
+	var animation_tweener = create_tween()
+	animation_tweener.set_parallel(true)
+	animation_tweener.tween_property(self, "global_position", position_target, 1.2)
+	animation_tweener.tween_property(self, "rotation", rotation_target, 1.2)
+
+	player_animation.animation_finished.connect(
+		func(_animation): state_machine.transition_to(target_state_name), CONNECT_ONE_SHOT
+	)
+
+	if !backwards:
+		player_animation.play(animation_name)
+	else:
+		player_animation.play_backwards(animation_name)

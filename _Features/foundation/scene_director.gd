@@ -138,7 +138,7 @@ func _read_poster() -> void:
 
 
 func _sit_on_chair() -> void:
-	player.sit_on_chair()
+	player.sit_on_chair(living_room.get_marker_position("chairMarker"))
 	living_room.sit_in_chair()
 
 
@@ -168,6 +168,7 @@ func _sofa_lay_up() -> void:
 func _sofa_lay_up_wall() -> void:
 	_sofa_lay_up_generic(living_room.get_wall_position())
 	_awaked("sofa")
+
 
 func _sofa_lay_up_generic(position: Vector3) -> void:
 	player.lay_up_from_sofa(position)

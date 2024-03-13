@@ -386,9 +386,6 @@ visible = false
 [node name="Armature" parent="." index="120"]
 transform = Transform3D(0, -1.12986, -6.73446e-08, 6.73446e-08, 0, -1.12986, 1.12986, 6.73446e-08, 0, -0.57901, 0.14708, 1.75362)
 
-[node name="Luisillo" parent="Armature" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
 [node name="Skeleton3D" parent="Armature" index="1"]
 bones/0/position = Vector3(0.000290527, -0.000467621, -0.642891)
 bones/0/rotation = Quaternion(-0.706068, -0.00401005, -0.00426121, 0.70812)
