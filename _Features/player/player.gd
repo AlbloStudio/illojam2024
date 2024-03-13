@@ -68,31 +68,45 @@ func get_up_from_chair() -> void:
 
 func sit_on_mirror_chair(sit_position: Vector3) -> void:
 	if state_machine.is_in_state([state_controlled.name]):
-		player_animation.animation_finished.connect(after_mirror_chair, CONNECT_ONE_SHOT)
-		animate("SitOnChair", sit_position, Vector3(0, PI, 0), state_puppet.name)
+		animate(
+			"SitOnChair",
+			sit_position,
+			Vector3(0, PI, 0),
+			state_puppet.name,
+			false,
+			after_mirror_chair
+		)
 
 
-func after_mirror_chair(_anim_name) -> void:
+func after_mirror_chair() -> void:
 	SignalBus.awaked.emit("sit")
 	animate("SitOnChair", previous_position, Vector3(0, PI, 0), state_controlled.name, true)
 
 
 func lay_down_on_sofa(new_position: Vector3) -> void:
-	if state_machine.is_in_state([state_controlled.name]):
-		_change_player_speed()
-		global_position = new_position
+	animate("LayUp", new_position, Vector3.ZERO, state_controlled.name, true, _layed_down)
 
 
-func lay_up_from_sofa(new_position: Vector3) -> void:
-	if state_machine.is_in_state([state_controlled.name]):
-		_change_player_speed()
-		global_position = new_position
+func lay_up_from_sofa(new_position: Vector3, is_wall := false) -> void:
+	animate("LayUp", new_position, Vector3.ZERO, state_controlled.name, false, _layed_up)
+	if is_wall:
+		SignalBus.awaked.emit("sofa")
 
 
 func _change_player_speed() -> void:
 	var previous_speed = speed
 	speed = speed_slow
 	speed_slow = previous_speed
+
+
+func _layed_down() -> void:
+	_change_player_speed()
+	SignalBus.layed_down.emit()
+
+
+func _layed_up() -> void:
+	_change_player_speed()
+	SignalBus.layed_up.emit()
 
 
 func sit_to_stream(new_position: Vector3) -> void:
@@ -137,6 +151,7 @@ func animate(
 	rotation_target: Vector3,
 	target_state_name: String,
 	backwards := false,
+	on_finished := func(): pass,
 	walking_target = null
 ) -> void:
 	previous_position = global_position
@@ -146,18 +161,30 @@ func animate(
 	if walking_target != null:
 		create_tween().tween_property(self, "global_position", walking_target, 1.2)
 
-	var target_ang = global_rotation.y + wrapf(rotation_target.y - global_rotation.y, -PI, PI)
-
-	var animation_tweener = create_tween()
-	animation_tweener.set_parallel(true)
-	animation_tweener.tween_property(self, "global_position", position_target, 1.2)
-	animation_tweener.tween_property(self, "global_rotation", Vector3(0, target_ang, 0), 1.2)
-
-	player_animation.animation_finished.connect(
-		func(_animation): state_machine.transition_to(target_state_name), CONNECT_ONE_SHOT
-	)
-
 	if !backwards:
 		player_animation.play(animation_name)
 	else:
 		player_animation.play_backwards(animation_name)
+
+	var animation_length = player_animation.current_animation_length
+
+	var target_ang = global_rotation.y + wrapf(rotation_target.y - global_rotation.y, -PI, PI)
+
+	var animation_tweener = create_tween()
+	animation_tweener.set_parallel(true)
+	animation_tweener.tween_property(self, "global_position", position_target, animation_length)
+	animation_tweener.tween_property(
+		self, "global_rotation", Vector3(0, target_ang, 0), animation_length
+	)
+
+	player_animation.animation_finished.connect(
+		func(_animation): after_animate(target_state_name, on_finished), CONNECT_ONE_SHOT
+	)
+
+
+func after_animate(
+	target_state_name: String,
+	on_finished := func(): pass,
+) -> void:
+	state_machine.transition_to(target_state_name)
+	on_finished.call()

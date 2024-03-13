@@ -14,3 +14,6 @@ signal barrier_entered(barrier_name: String)
 signal barrier_exited(barrier_name: String)
 
 signal awaked(awake_name: String)
+
+signal layed_down
+signal layed_up

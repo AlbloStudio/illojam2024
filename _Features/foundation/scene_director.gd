@@ -26,6 +26,8 @@ func _ready():
 	SignalBus.clothes_wrong.connect(_clothes_wronged)
 	SignalBus.clothes_right.connect(_clothes_righted)
 	SignalBus.awaked.connect(_awaked)
+	SignalBus.layed_down.connect(_layed_down)
+	SignalBus.layed_up.connect(_layed_up)
 
 
 func _activable_activated(activable_name: String, alternative: bool) -> void:
@@ -160,20 +162,21 @@ func _read_mirror_poster() -> void:
 
 func _sofa_lay_down() -> void:
 	player.lay_down_on_sofa(living_room.get_layed_position())
-	living_room.switch_to_layed_mode()
 
 
 func _sofa_lay_up() -> void:
-	_sofa_lay_up_generic(living_room.get_up_position())
+	player.lay_up_from_sofa(living_room.get_up_position())
 
 
 func _sofa_lay_up_wall() -> void:
-	_sofa_lay_up_generic(living_room.get_wall_position())
-	_awaked("sofa")
+	player.lay_up_from_sofa(living_room.get_wall_position(), true)
 
 
-func _sofa_lay_up_generic(position: Vector3) -> void:
-	player.lay_up_from_sofa(position)
+func _layed_down() -> void:
+	living_room.switch_to_layed_mode()
+
+
+func _layed_up() -> void:
 	living_room.switch_to_up_mode()
 
 
