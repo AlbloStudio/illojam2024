@@ -66,6 +66,17 @@ func get_up_from_chair() -> void:
 	animate("SitOnChair", previous_position, Vector3.ZERO, state_controlled.name, true)
 
 
+func sit_on_mirror_chair(sit_position: Vector3) -> void:
+	if state_machine.is_in_state([state_controlled.name]):
+		player_animation.animation_finished.connect(after_mirror_chair, CONNECT_ONE_SHOT)
+		animate("SitOnChair", sit_position, Vector3(0, PI, 0), state_puppet.name)
+
+
+func after_mirror_chair(_anim_name) -> void:
+	SignalBus.awaked.emit("sit")
+	animate("SitOnChair", previous_position, Vector3(0, PI, 0), state_controlled.name, true)
+
+
 func lay_down_on_sofa(new_position: Vector3) -> void:
 	if state_machine.is_in_state([state_controlled.name]):
 		_change_player_speed()
@@ -135,10 +146,12 @@ func animate(
 	if walking_target != null:
 		create_tween().tween_property(self, "global_position", walking_target, 1.2)
 
+	var target_ang = global_rotation.y + wrapf(rotation_target.y - global_rotation.y, -PI, PI)
+
 	var animation_tweener = create_tween()
 	animation_tweener.set_parallel(true)
 	animation_tweener.tween_property(self, "global_position", position_target, 1.2)
-	animation_tweener.tween_property(self, "rotation", rotation_target, 1.2)
+	animation_tweener.tween_property(self, "global_rotation", Vector3(0, target_ang, 0), 1.2)
 
 	player_animation.animation_finished.connect(
 		func(_animation): state_machine.transition_to(target_state_name), CONNECT_ONE_SHOT

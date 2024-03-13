@@ -6,8 +6,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_s1add"]
 size = Vector3(0.537598, 1.95654, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uiprv"]
-size = Vector3(1.16251, 1.95654, 0.960022)
+[sub_resource type="BoxShape3D" id="BoxShape3D_4uo8q"]
+size = Vector3(1.16251, 1.95654, 0.529785)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kc5t6"]
 size = Vector3(5.38177, 3.50208, 0.224121)
@@ -53,7 +53,12 @@ size = Vector3(0.678173, 1.73277, 0.483619)
 
 [node name="Nolas" instance=ExtResource("1_anjvf")]
 
-[node name="Activables" type="Node3D" parent="." index="0"]
+[node name="Markers" type="Node3D" parent="." index="0"]
+
+[node name="chairMarker" type="Marker3D" parent="Markers" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054, 0.283, -0.898277)
+
+[node name="Activables" type="Node3D" parent="." index="1"]
 
 [node name="PosterActivable" parent="Activables" index="0" instance=ExtResource("2_lb8q8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7091, 9.53673e-07, -0.731702)
@@ -70,17 +75,17 @@ shape = SubResource("BoxShape3D_s1add")
 [node name="ChairActivableSit" parent="Activables" index="1" instance=ExtResource("2_lb8q8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11605, 1.90735e-06, 2.16466)
 activable_name = "Tis"
-forbidden = true
 activable_text = "eterubat ne esratenetS"
+forbidden = true
 
 [node name="ActionLabel" parent="Activables/ChairActivableSit" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.98669, 2.5, -3.21188)
 
 [node name="CollisionShape3D" parent="Activables/ChairActivableSit" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10052, 0.973446, -2.73841)
-shape = SubResource("BoxShape3D_uiprv")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10052, 0.973446, -2.95353)
+shape = SubResource("BoxShape3D_4uo8q")
 
-[node name="Colliders" type="Node3D" parent="." index="1"]
+[node name="Colliders" type="Node3D" parent="." index="2"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Colliders" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
@@ -138,22 +143,27 @@ shape = SubResource("BoxShape3D_iuely")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.62168, 0.239723, -1.85282)
 shape = SubResource("BoxShape3D_1tn2y")
 
-[node name="CollisionShape3D14" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.965264, 0.366382, 0.738777)
-shape = SubResource("BoxShape3D_hu7ut")
-
-[node name="CollisionShape3D15" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="14"]
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.302467, 0.366382, 0.738777)
 shape = SubResource("BoxShape3D_hu7ut")
 
-[node name="CollisionShape3D16" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="15"]
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71868, 0.366382, 0.738777)
 shape = SubResource("BoxShape3D_hu7ut")
 
-[node name="Closet_002" parent="." index="38"]
+[node name="Cylinder_010" parent="." index="20"]
 visible = false
 
-[node name="Cube_011" parent="." index="57"]
+[node name="Cylinder_011" parent="." index="21"]
+visible = false
+
+[node name="Plane_051" parent="." index="22"]
+visible = false
+
+[node name="Closet_002" parent="." index="39"]
+visible = false
+
+[node name="Cube_011" parent="." index="58"]
 visible = false
 
 [editable path="Activables/PosterActivable"]

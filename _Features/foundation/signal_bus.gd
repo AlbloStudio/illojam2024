@@ -12,3 +12,5 @@ signal cloth_put(name: String)
 
 signal barrier_entered(barrier_name: String)
 signal barrier_exited(barrier_name: String)
+
+signal awaked(awake_name: String)

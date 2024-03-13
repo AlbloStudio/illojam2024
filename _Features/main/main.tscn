@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=19 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="PackedScene" uid="uid://ccopiuj5gnm7m" path="res://_Features/UI/ui.tscn" id="2_7rttm"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_v8ayd"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.gd" id="8_ku7b2"]
 [ext_resource type="PackedScene" uid="uid://cb0311e3f7has" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil_i.tscn" id="9_iwvg8"]
+[ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/nolas.gd" id="9_l32nb"]
 [ext_resource type="PackedScene" uid="uid://c0bdwlue70wgp" path="res://_Features/rooms/setup/setup_i.tscn" id="11_qjeg8"]
 
 [sub_resource type="Environment" id="Environment_gtx4b"]
@@ -51,6 +52,7 @@ script = ExtResource("1_6gnox")
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.48576, 9.655, -1.47964)
 current = true
+fov = 74.8747
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -73,8 +75,6 @@ camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48576, 4.76839e-07, -1.47964)
-speed = 3.0
-speed_slow = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")
@@ -120,6 +120,7 @@ skeleton = NodePath("")
 
 [node name="Nolas" parent="Stage/MoorGnivil" instance=ExtResource("9_iwvg8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.88396)
+script = ExtResource("9_l32nb")
 
 [node name="CeilingLight4" type="SpotLight3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.182893, 1.01303, 5.03192)

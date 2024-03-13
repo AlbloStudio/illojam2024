@@ -14,6 +14,7 @@ var awakes = {
 
 @onready var player := $Player as Player
 @onready var living_room := $Stage/LivingRoom/LivingRoom as LivingRoom
+@onready var nolas := $Stage/MoorGnivil/Nolas as Nolas
 @onready var setup := $Stage/Setup/setup as Setup
 @onready var ui := $UI as GameUI
 
@@ -24,6 +25,7 @@ func _ready():
 	SignalBus.current_activable_changed.connect(_set_current_activable)
 	SignalBus.clothes_wrong.connect(_clothes_wronged)
 	SignalBus.clothes_right.connect(_clothes_righted)
+	SignalBus.awaked.connect(_awaked)
 
 
 func _activable_activated(activable_name: String, alternative: bool) -> void:
@@ -148,7 +150,7 @@ func _get_up_from_chair() -> void:
 
 
 func _sit_on_mirror_chair() -> void:
-	_awaked("sit")
+	player.sit_on_mirror_chair(nolas.get_marker_position("chairMarker"))
 
 
 func _read_mirror_poster() -> void:

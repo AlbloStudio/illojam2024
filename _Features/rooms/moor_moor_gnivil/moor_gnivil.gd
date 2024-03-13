@@ -1,4 +1,4 @@
-extends Node3D
+class_name MoorGnivil extends Node3D
 
 @onready var ceiling := $Ceiling as MeshInstance3D
 
