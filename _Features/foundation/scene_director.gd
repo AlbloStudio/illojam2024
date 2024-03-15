@@ -131,7 +131,7 @@ func _put_on_clothes(cloth_name: String) -> void:
 func _clothes_wronged() -> void:
 	living_room.make_closet_disappear()
 	living_room.destroy_clothes()
-	_awaked("clothes")
+	SignalBus.awaked.emit("clothes")
 
 
 func _clothes_righted() -> void:
@@ -214,7 +214,7 @@ func _stopped_streaming() -> void:
 
 func _streaming_wrong() -> void:
 	setup.activate_stream_out_wrong_activable()
-	_awaked("stream")
+	SignalBus.awaked.emit("stream")
 
 
 func _stopped_streaming_wrong() -> void:
@@ -229,7 +229,7 @@ func _touch_wall() -> void:
 func _up_wall() -> void:
 	setup.switch_to_up_mode()
 	player.set_up_walls(setup.get_walls_up_position())
-	_awaked("wall")
+	SignalBus.awaked.emit("wall")
 
 
 func _exit_window() -> void:
@@ -252,7 +252,7 @@ func _entered_window() -> void:
 
 func _exited_window() -> void:
 	setup.activate_enter_window_activable()
-	_awaked("window")
+	SignalBus.awaked.emit("window")
 
 
 func _bilders_up() -> void:
