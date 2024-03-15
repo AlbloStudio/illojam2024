@@ -117,15 +117,14 @@ bus = &"DESPIERTA"
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.319, 9.66002, 1.69371)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.833313, 9.66002, -1.92898)
 current = true
-fov = 74.9686
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.319, 9.66002, 1.69371)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.833313, 9.66002, -1.92898)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0
@@ -141,7 +140,7 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.319, 0.00501966, 1.69371)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.833313, 0.00502157, -1.92898)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")
@@ -184,7 +183,6 @@ script = ExtResource("8_ku7b2")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125176, 3.05618, 1.78071)
-visible = false
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_a8ryy")
 skeleton = NodePath("")

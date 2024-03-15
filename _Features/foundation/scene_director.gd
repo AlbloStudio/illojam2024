@@ -105,6 +105,7 @@ func _tablet_opened() -> void:
 func _tablet_closed() -> void:
 	player.go_controlled()
 	living_room.make_closet_appear()
+	nolas.make_closet_appear()
 
 
 func _set_current_activable(new_activable: Activable) -> void:
@@ -129,6 +130,7 @@ func _put_on_clothes(cloth_name: String) -> void:
 
 
 func _clothes_wronged() -> void:
+	nolas.make_closet_disappear()
 	living_room.make_closet_disappear()
 	living_room.destroy_clothes()
 	SignalBus.awaked.emit("clothes")
