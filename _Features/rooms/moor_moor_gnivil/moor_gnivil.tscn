@@ -5,3 +5,7 @@
 
 [node name="SalonMirror (1)" instance=ExtResource("1_hq22c")]
 script = ExtResource("2_o1vd6")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="65"]
+transform = Transform3D(1, 0, 0, 0, -0.0348993, 0.999391, 0, -0.999391, -0.0348993, 1.54865, 2.1951, 1.27381)
+light_energy = 7.65
