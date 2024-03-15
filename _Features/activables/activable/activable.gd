@@ -22,6 +22,7 @@ class_name Activable extends Area3D
 @onready var state_idle := $FiniteStateMachine/Idle as ActivableState
 @onready var collision_shape_3d := $CollisionShape3D as CollisionShape3D
 @onready var label := $ActionLabel as ActivableLabel
+@onready var indicator := $Indicator as MeshInstance3D
 
 
 func _ready() -> void:
@@ -75,3 +76,19 @@ func set_label_text() -> void:
 	var label_prefix = "🚫 " if forbidden else ""
 	var label_text = activable_alternative_text if alternative else activable_text
 	label.text = label_prefix + label_text
+
+
+func _on_indicator_trigger_area_entered(body) -> void:
+	if body is Player && !state_machine.is_in_state([state_deactivated.name]):
+		indicator.visible = true
+	# create_tween().tween_method(change_indicator_transparency, 0, 1, 0.4)
+
+
+func _on_indicator_trigger_area_exited(body) -> void:
+	if body is Player:
+		indicator.visible = false
+
+	# create_tween().tween_method(change_indicator_transparency, 1, 0, 0.4)
+
+# func change_indicator_transparency(value: float) -> void:
+# 	indicator.get_surface_override_material(0).albedo_color.a = value
