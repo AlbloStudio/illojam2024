@@ -166,6 +166,13 @@ func _sit_on_mirror_chair() -> void:
 func _read_mirror_poster() -> void:
 	player.say("ME CAGO", 2)
 	create_tween().tween_callback(func(): _awaked("poster")).set_delay(2)
+	(
+		create_tween()
+		. tween_callback(
+			func(): player.say("Puedo forzar una acción prohibida pulsando 5 veces????", 4)
+		)
+		. set_delay(3)
+	)
 
 
 func _sofa_lay_down() -> void:
@@ -236,6 +243,21 @@ func _exit_window() -> void:
 	if setup.exit_window_activable.forbidden:
 		player.exit_window()
 		setup.show_secret_room()
+
+		(
+			create_tween()
+			. tween_callback(
+				func(): (
+					player
+					. say(
+						"Puedo hacer acción alternativa dejando pulsado el boton 3 segundos sobre una acción",
+						4
+					)
+				)
+			)
+			. set_delay(2)
+		)
+
 	else:
 		player.say("Ni de coña salgo por una ventana abierta")
 		create_tween().tween_callback(func(): setup.activate_exit_window_activable()).set_delay(1)
