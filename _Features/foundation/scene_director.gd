@@ -32,6 +32,8 @@ func _ready():
 	SignalBus.stopped_streaming.connect(_stopped_streaming)
 	SignalBus.streaming_wrong.connect(_streaming_wrong)
 	SignalBus.stopped_streaming_wrong.connect(_stopped_streaming_wrong)
+	SignalBus.exited_window.connect(_exited_window)
+	SignalBus.entered_window.connect(_entered_window)
 
 
 func _activable_activated(activable_name: String, alternative: bool) -> void:
@@ -80,6 +82,8 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_touch_wall()
 		"Exit Window":
 			_exit_window()
+		"Enter Window":
+			_enter_window()
 		"Blinders Up":
 			_bilders_up()
 		"Blinders Down":
@@ -229,6 +233,17 @@ func _up_wall() -> void:
 
 
 func _exit_window() -> void:
+	player.exit_window()
+
+
+func _enter_window() -> void:
+	player.enter_window()
+
+func _entered_window() -> void:
+	setup.activate_exit_window_activable()
+
+func _exited_window() -> void:
+	setup.activate_enter_window_activable()
 	_awaked("window")
 
 

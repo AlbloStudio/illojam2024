@@ -165,6 +165,34 @@ func penetrate(new_position: Vector3) -> void:
 	global_position = new_position
 
 
+func exit_window() -> void:
+	global_rotation.y = -PI / 2
+	var new_position = global_position - Vector3(1.5, 0, 0)
+
+	animate(
+		"JumpWindow",
+		new_position,
+		global_rotation,
+		state_controlled.name,
+		false,
+		func(): SignalBus.exited_window.emit()
+	)
+
+
+func enter_window() -> void:
+	global_rotation.y = PI / 2
+	var new_position = global_position + Vector3(1.5, 0, 0)
+
+	animate(
+		"JumpWindow",
+		new_position,
+		global_rotation,
+		state_controlled.name,
+		false,
+		func(): SignalBus.entered_window.emit()
+	)
+
+
 func animate(
 	animation_name: String,
 	position_target: Vector3,

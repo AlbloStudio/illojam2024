@@ -13,6 +13,7 @@ class_name Setup extends Node3D
 @onready var stream_out_incorrect_activable := $Activables/StreamOutInCorrectActivable as Activable
 @onready var walls_up_activable := $Activables/WallsUpActivable as Activable
 @onready var exit_window_activable := $Activables/ExitWindowActivable as Activable
+@onready var enter_window_activable := $Activables/EnterWindowActivable as Activable
 @onready var blinders_up_activable := $Activables/BlindersUpActivable as Activable
 @onready var blinders_down_activable := $Activables/BlindersDownActivable as Activable
 @onready var jump_down_activable := $Activables/JumpDownActivable as Activable
@@ -78,6 +79,14 @@ func activate_blinders_up_activable() -> void:
 
 func activate_jump_down_activable() -> void:
 	jump_down_activable.reactivate()
+
+
+func activate_exit_window_activable() -> void:
+	exit_window_activable.reactivate()
+
+
+func activate_enter_window_activable() -> void:
+	enter_window_activable.reactivate()
 
 
 func allow_exit_window() -> void:

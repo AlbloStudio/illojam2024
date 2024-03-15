@@ -22,3 +22,6 @@ signal streaming
 signal stopped_streaming
 signal streaming_wrong
 signal stopped_streaming_wrong
+
+signal exited_window
+signal entered_window
