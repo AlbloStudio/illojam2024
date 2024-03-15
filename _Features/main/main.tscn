@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=34 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="Script" path="res://_Features/audio/audio.gd" id="2_3jmlc"]
 [ext_resource type="PackedScene" uid="uid://ccopiuj5gnm7m" path="res://_Features/UI/ui.tscn" id="2_7rttm"]
 [ext_resource type="PackedScene" uid="uid://dpkgwkvewfmuh" path="res://_Features/player/player.tscn" id="2_bfl1y"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_hsqid"]
+[ext_resource type="Shader" path="res://_Features/shaders/main.gdshader" id="2_o8u0n"]
 [ext_resource type="AudioStream" uid="uid://bj6rm642ytjq6" path="res://_Features/audio/dream1.mp3" id="3_prhnp"]
 [ext_resource type="AudioStream" uid="uid://digx8u3lgsnih" path="res://_Features/audio/dream3.mp3" id="4_f8et4"]
 [ext_resource type="AudioStream" uid="uid://tiomex1q22bg" path="res://_Features/audio/dream5.mp3" id="4_j7770"]
@@ -22,6 +23,42 @@
 [ext_resource type="AudioStream" uid="uid://bp2khi66b0g7t" path="res://_Features/audio/dream12.mp3" id="11_r4hg3"]
 [ext_resource type="AudioStream" uid="uid://8w1bdecx6ld" path="res://_Features/audio/despierta.mp3" id="12_bx7a7"]
 [ext_resource type="AudioStream" uid="uid://bpduxd4es20o4" path="res://_Features/audio/dream13.mp3" id="12_nchqr"]
+
+[sub_resource type="Gradient" id="Gradient_n7fhn"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gteco"]
+gradient = SubResource("Gradient_n7fhn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhrax"]
+shader = ExtResource("2_o8u0n")
+shader_parameter/overall_effect = 0.256
+shader_parameter/pallete_effect = 0.0
+shader_parameter/overall_brightness = -3.0
+shader_parameter/scan_brightness = 1.0
+shader_parameter/pallette_brightness = 1.0
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.559
+shader_parameter/scanlines_width = 0.278
+shader_parameter/grille_opacity = 0.181
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 2.0
+shader_parameter/roll_size = 6.477
+shader_parameter/roll_variation = 2.886
+shader_parameter/distort_intensity = 0.025
+shader_parameter/noise_opacity = 0.065
+shader_parameter/noise_speed = 3.05
+shader_parameter/static_noise_intensity = 0.091
+shader_parameter/aberration = 4.75e-08
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.006
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.585
+shader_parameter/vignette_opacity = 0.141
+shader_parameter/pixel = 1.0
+shader_parameter/pallete = SubResource("GradientTexture2D_gteco")
 
 [sub_resource type="Environment" id="Environment_gtx4b"]
 background_mode = 1
@@ -56,6 +93,15 @@ size = Vector2(8.3, 10.59)
 [node name="Main" type="Node3D"]
 script = ExtResource("1_6gnox")
 
+[node name="Scan" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_yhrax")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("2_3jmlc")
 song_layers = Array[AudioStream]([ExtResource("3_prhnp"), ExtResource("4_f8et4"), ExtResource("4_j7770"), ExtResource("6_q0q4b"), ExtResource("7_x34ob"), ExtResource("9_785vu"), ExtResource("10_pl0ge"), ExtResource("11_r4hg3"), ExtResource("12_nchqr")])
@@ -73,7 +119,7 @@ bus = &"DESPIERTA"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.319, 9.66002, 1.69371)
 current = true
-fov = 74.4606
+fov = 74.7441
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
