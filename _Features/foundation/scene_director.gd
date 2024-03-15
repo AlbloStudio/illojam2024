@@ -17,6 +17,7 @@ var awakes = {
 @onready var nolas := $Stage/MoorGnivil/Nolas as Nolas
 @onready var setup := $Stage/Setup/setup as Setup
 @onready var ui := $UI as GameUI
+@onready var scan := $Scan as ColorRect
 
 
 func _ready():
@@ -145,6 +146,15 @@ func _awaked(awake_name: String) -> void:
 		ui.add_progress(1)
 		ui.awake()
 		awakes[awake_name] = true
+
+	var scan_material := scan.material as ShaderMaterial
+	var overall_effect = scan_material.get_shader_parameter("overall_effect")
+	var pallete_effect = scan_material.get_shader_parameter("pallete_effect")
+	var scan_brightness = scan_material.get_shader_parameter("scan_brightness")
+
+	scan_material.set_shader_parameter("overall_effect", overall_effect + 0.1)
+	scan_material.set_shader_parameter("pallete_effect", pallete_effect + 0.1)
+	scan_material.set_shader_parameter("scan_brightness", scan_brightness - 0.02)
 
 
 func _read_poster() -> void:
