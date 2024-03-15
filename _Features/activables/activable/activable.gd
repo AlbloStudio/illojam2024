@@ -30,7 +30,6 @@ func _ready() -> void:
 
 	reset_label()
 
-
 func change_current_activable() -> void:
 	SignalBus.current_activable_changed.emit(self)
 

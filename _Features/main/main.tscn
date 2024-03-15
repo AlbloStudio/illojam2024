@@ -117,14 +117,15 @@ bus = &"DESPIERTA"
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.833313, 9.66002, -1.92898)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.659527, 9.65312, -1.64795)
 current = true
+fov = 74.3961
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.833313, 9.66002, -1.92898)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.659527, 9.65312, -1.64795)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0
@@ -140,7 +141,7 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.833313, 0.00502157, -1.92898)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.659527, -0.00187541, -1.64795)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")
@@ -148,6 +149,7 @@ environment = SubResource("Environment_gtx4b")
 [node name="Stage" type="Node" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Stage"]
+collision_layer = 4
 
 [node name="externalWall" type="CollisionShape3D" parent="Stage/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7349, 1.25104, -5.08222)
