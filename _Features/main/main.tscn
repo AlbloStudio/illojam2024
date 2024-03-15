@@ -50,15 +50,15 @@ script = ExtResource("1_6gnox")
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.4913, 9.655, 1.47888)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -24.1298, 9.66002, 2.20666)
 current = true
-fov = 74.9344
+fov = 74.723
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.4913, 9.655, 1.47888)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -24.1298, 9.66002, 2.20666)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0
@@ -74,7 +74,7 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4913, 1.81899e-12, 1.47888)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1298, 0.00501966, 2.20666)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")

@@ -24,6 +24,9 @@ class_name Setup extends Node3D
 @onready var colliders := $Colliders/StaticBody3D as StaticBody3D
 @onready var colliders_up := $CollidersUp/StaticBody3D as StaticBody3D
 
+@onready var blinders := $"Ventana 1" as MeshInstance3D
+@onready var secret_room := $"IlloRoom_004" as MeshInstance3D
+
 
 func get_stream_position() -> Vector3:
 	return stream_pos.global_position
@@ -95,6 +98,22 @@ func allow_exit_window() -> void:
 
 func forbid_exit_window() -> void:
 	exit_window_activable.forbidden = true
+
+
+func show_secret_room() -> void:
+	secret_room.visible = true
+
+
+func hide_secret_room() -> void:
+	secret_room.visible = false
+
+
+func blinders_up() -> void:
+	blinders.scale.y = 0.1
+
+
+func blinders_down() -> void:
+	blinders.scale.y = 1
 
 
 func switch_to_up_mode() -> void:

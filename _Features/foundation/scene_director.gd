@@ -233,7 +233,12 @@ func _up_wall() -> void:
 
 
 func _exit_window() -> void:
-	player.exit_window()
+	if setup.exit_window_activable.forbidden:
+		player.exit_window()
+		setup.show_secret_room()
+	else:
+		player.say("Ni de coña salgo por una ventana abierta")
+		create_tween().tween_callback(func(): setup.activate_exit_window_activable()).set_delay(1)
 
 
 func _enter_window() -> void:
@@ -242,6 +247,7 @@ func _enter_window() -> void:
 
 func _entered_window() -> void:
 	setup.activate_exit_window_activable()
+	setup.hide_secret_room()
 
 
 func _exited_window() -> void:
@@ -250,13 +256,13 @@ func _exited_window() -> void:
 
 
 func _bilders_up() -> void:
-	player.say("Subí la persiana")
+	setup.blinders_up()
 	setup.allow_exit_window()
 	setup.activate_blinders_down_activable()
 
 
 func _blinders_down() -> void:
-	player.say("Bajé la persiana")
+	setup.blinders_down()
 	setup.forbid_exit_window()
 	setup.activate_blinders_up_activable()
 
