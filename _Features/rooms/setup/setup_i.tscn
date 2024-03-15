@@ -156,7 +156,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4935, 3.01253, -4.54622)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21572, 0, -2.5634)
 
 [node name="PenetrationMarker" type="Marker3D" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2829, -1.39287, -2.58652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.675586, -1.39287, -2.13373)
 
 [node name="Colliders" type="Node3D" parent="." index="7"]
 

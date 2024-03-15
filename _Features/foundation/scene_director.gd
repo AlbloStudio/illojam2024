@@ -239,8 +239,10 @@ func _exit_window() -> void:
 func _enter_window() -> void:
 	player.enter_window()
 
+
 func _entered_window() -> void:
 	setup.activate_exit_window_activable()
+
 
 func _exited_window() -> void:
 	setup.activate_enter_window_activable()
@@ -262,7 +264,6 @@ func _blinders_down() -> void:
 func _jump_down() -> void:
 	player.penetrate(setup.get_penetration_position())
 	setup.switch_to_normal_mode()
-	_awaked("jump")
 
 
 func _down_wall() -> void:

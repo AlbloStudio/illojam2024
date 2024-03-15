@@ -162,7 +162,14 @@ func set_down_wall(new_position: Vector3) -> void:
 
 
 func penetrate(new_position: Vector3) -> void:
-	global_position = new_position
+	animate(
+		"JumpWall",
+		new_position,
+		Vector3(0, 2 * PI, 0),
+		state_controlled.name,
+		false,
+		func(): SignalBus.awaked.emit("jump")
+	)
 
 
 func exit_window() -> void:
