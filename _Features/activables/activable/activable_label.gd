@@ -18,6 +18,6 @@ func get_color(is_visible: bool, is_alternative: bool, is_forbidden: bool) -> Co
 	if is_alternative:
 		color = Color(Color.LIGHT_SALMON.r, Color.LIGHT_SALMON.g, Color.LIGHT_SALMON.b, a)
 	elif is_forbidden:
-		color = Color(0.5, 0.5, 0.5, a)
+		color = Color(0.7, 0.7, 0.7, a)
 
 	return color

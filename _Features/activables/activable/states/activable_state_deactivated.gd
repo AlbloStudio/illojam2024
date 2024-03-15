@@ -4,6 +4,7 @@ class_name ActivableStateDeactivated extends ActivableState
 func enter(_msg := {}) -> void:
 	state_owner.label.make_visible(false, state_owner.alternative, state_owner.forbidden)
 	set_collision_shape_activation.call_deferred(true)
+	state_owner.indicator.visible = false
 
 
 func exit(_msg := {}) -> void:

@@ -11,13 +11,15 @@ class_name Setup extends Node3D
 @onready var stream_out_activable := $Activables/StreamOutActivable as Activable
 @onready var stream_in_incorrect_activable := $Activables/StreamInIncorrectActivable as Activable
 @onready var stream_out_incorrect_activable := $Activables/StreamOutInCorrectActivable as Activable
-@onready var walls_up_activable := $Activables/WallsUpActivable as Activable
+@onready var walls_up_activable := $WallsUpActivable as Activable
 @onready var exit_window_activable := $Activables/ExitWindowActivable as Activable
 @onready var enter_window_activable := $Activables/EnterWindowActivable as Activable
 @onready var blinders_up_activable := $Activables/BlindersUpActivable as Activable
 @onready var blinders_down_activable := $Activables/BlindersDownActivable as Activable
 @onready var jump_down_activable := $Activables/JumpDownActivable as Activable
-@onready var move_chair_activable := $Activables/MoveChairActivable as Activable
+@onready var move_chair_activable := $ActivablesPenetrated/MoveChairActivable as Activable
+@onready var activables := $Activables as Node3D
+@onready var activables_penetrated := $ActivablesPenetrated as Node3D
 
 @onready var move_chair_animation := $MoveChairAnimation as AnimationPlayer
 
@@ -25,7 +27,7 @@ class_name Setup extends Node3D
 @onready var colliders_up := $CollidersUp/StaticBody3D as StaticBody3D
 
 @onready var blinders := $"Ventana 1" as MeshInstance3D
-@onready var secret_room := $"IlloRoom_004" as MeshInstance3D
+@onready var setup_ceiling := $SetupCeiling as MeshInstance3D
 
 
 func get_stream_position() -> Vector3:
@@ -46,6 +48,16 @@ func get_walls_up_position() -> Vector3:
 
 func get_penetration_position() -> Vector3:
 	return penetration_marker.global_position
+
+
+func switch_to_penetration() -> void:
+	activables_penetrated.process_mode = Node.PROCESS_MODE_INHERIT
+	activables.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func switch_to_normal() -> void:
+	activables_penetrated.process_mode = Node.PROCESS_MODE_DISABLED
+	activables.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func get_walls_down_position() -> Vector3:
@@ -101,11 +113,11 @@ func forbid_exit_window() -> void:
 
 
 func show_secret_room() -> void:
-	secret_room.visible = true
+	setup_ceiling.visible = false
 
 
 func hide_secret_room() -> void:
-	secret_room.visible = false
+	setup_ceiling.visible = true
 
 
 func blinders_up() -> void:
@@ -136,3 +148,19 @@ func activate_wrong_streams() -> void:
 	stream_in_activable.deactivate()
 	stream_out_activable.deactivate()
 	stream_in_incorrect_activable.reactivate()
+
+
+func awake_wall() -> void:
+	pass
+
+
+func awake_jump() -> void:
+	pass
+
+
+func awake_stream() -> void:
+	pass
+
+
+func awake_window() -> void:
+	pass

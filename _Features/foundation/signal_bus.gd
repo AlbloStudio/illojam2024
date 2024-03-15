@@ -25,3 +25,5 @@ signal stopped_streaming_wrong
 
 signal exited_window
 signal entered_window
+
+signal jumped_down

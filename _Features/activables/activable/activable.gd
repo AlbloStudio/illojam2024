@@ -1,8 +1,8 @@
 class_name Activable extends Area3D
 
 @export var activable_name: String
-@export var activable_text := "Realizar action"
-@export var activable_alternative_text := "Realizar action"
+@export var activable_text := "..."
+@export var activable_alternative_text := "..."
 @export var times_to_unforbid := 5
 @export var time_to_alternate := 3.0
 @export var alternative := false:
@@ -22,13 +22,14 @@ class_name Activable extends Area3D
 @onready var state_idle := $FiniteStateMachine/Idle as ActivableState
 @onready var collision_shape_3d := $CollisionShape3D as CollisionShape3D
 @onready var label := $ActionLabel as ActivableLabel
-@onready var indicator := $Indicator as MeshInstance3D
+@onready var indicator := $Indicator as Node3D
 
 
 func _ready() -> void:
 	label.outline_modulate = label.get_color(false, alternative, forbidden)
 
 	reset_label()
+
 
 func change_current_activable() -> void:
 	SignalBus.current_activable_changed.emit(self)

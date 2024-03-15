@@ -163,13 +163,13 @@ func set_down_wall(new_position: Vector3) -> void:
 
 func penetrate(new_position: Vector3) -> void:
 	animate(
-		"JumpWall",
-		new_position,
-		Vector3(0, 2 * PI, 0),
-		state_controlled.name,
-		false,
-		func(): SignalBus.awaked.emit("jump")
+		"JumpWall", new_position, Vector3(0, 2 * PI, 0), state_controlled.name, false, penetrated
 	)
+
+
+func penetrated() -> void:
+	SignalBus.awaked.emit("jump")
+	SignalBus.jumped_down.emit()
 
 
 func exit_window() -> void:

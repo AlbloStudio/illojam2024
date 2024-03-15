@@ -52,16 +52,13 @@ script = ExtResource("6_p1ox2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
-[node name="Indicator" type="Node3D" parent="."]
+[node name="Indicator" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("SphereMesh_ew0qg")
 script = ExtResource("8_ss0ve")
 
-[node name="IndicatorMesh" type="MeshInstance3D" parent="Indicator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_ew0qg")
-skeleton = NodePath("../..")
-
 [node name="IndicatorTrigger" type="Area3D" parent="Indicator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Indicator/IndicatorTrigger"]

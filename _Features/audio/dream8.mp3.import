@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/dream8.mp3-16ec81910b0617512ddc7142cb9d8dcf.m
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

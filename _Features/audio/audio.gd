@@ -1,27 +1,23 @@
-extends Node
+class_name Audio extends Node
 
 @export var song_layers: Array[AudioStream]
 
 var bpm = 130.0
 var level = 0
 
-@onready var current_song = $MainMusic
-@onready var plas = $Plas
+@onready var current_song := $MainMusic as AudioStreamPlayer
+@onready var plas := $Plas as AudioStreamPlayer
 
 
 func _ready():
-	SignalBus.awaked.connect(_advance_level)
+	current_song.finished.connect(_song_finished)
 	_play_level_music()
 
 
-func _advance_level(_name):
+func advance_level(_name):
 	plas.play()
 	level += 1
 	_play_level_music()
-
-
-func _get_song_position(song_t):
-	return (song_t * bpm) / 60.0
 
 
 func _play_level_music():
@@ -31,3 +27,7 @@ func _play_level_music():
 		current_song.stop()
 	current_song.stream = song_layers[level]
 	current_song.play(time)
+
+
+func _song_finished():
+	current_song.play(0)

@@ -1,6 +1,7 @@
 class_name LivingRoom extends Node3D
 
 var cloth_names := ["underwear", "pants", "tshirt"]
+var poster_awaken := false
 
 @onready var closet := $Closet_001 as MeshInstance3D
 @onready var closet_handles := $Cube_005 as MeshInstance3D
@@ -18,6 +19,9 @@ var cloth_names := ["underwear", "pants", "tshirt"]
 @onready var sofa_activable_lay_down := $Activables/SofaActivableLayDown as Activable
 @onready var sofa_activable_lay_up := $Activables/SofaActivableLayUp as Activable
 @onready var sofa_activable_lay_up_wall := $Activables/SofaActivableLayUpWall as Activable
+
+@onready var pennywise := $Pennywise as MeshInstance3D
+@onready var picture := $Plane_030 as MeshInstance3D
 
 @onready var sofa_marker := $Markers/layMarker as Marker3D
 @onready var wall_marker := $Markers/wallMarker as Marker3D
@@ -135,3 +139,20 @@ func get_wall_position() -> Vector3:
 
 func get_marker_position(marker_name: String) -> Vector3:
 	return get_node("Markers/" + marker_name).global_position
+
+
+func awake_poster() -> void:
+	pennywise.visible = true
+	picture.global_rotation.z += PI / 2.4
+
+
+func awake_sit() -> void:
+	pass
+
+
+func awake_sofa() -> void:
+	pass
+
+
+func awake_clothes() -> void:
+	pass

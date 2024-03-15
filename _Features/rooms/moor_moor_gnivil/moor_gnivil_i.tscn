@@ -22,7 +22,7 @@ size = Vector3(8.36974, 3.50208, 0.27829)
 size = Vector3(0.224419, 3.50208, 10.3721)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ehsfs"]
-size = Vector3(1.70108, 3.50208, 0.188469)
+size = Vector3(0.615188, 3.50208, 0.188469)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qn3k1"]
 size = Vector3(6.02046, 1.62799, 1.04346)
@@ -114,7 +114,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06633, 1.25104, 0.0192785)
 shape = SubResource("BoxShape3D_olxsm")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.328, 1.25104, -5.07251)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87095, 1.25104, -5.07251)
 shape = SubResource("BoxShape3D_ehsfs")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="5"]
@@ -157,19 +157,7 @@ shape = SubResource("BoxShape3D_hu7ut")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71868, 0.366382, 0.738777)
 shape = SubResource("BoxShape3D_hu7ut")
 
-[node name="Cylinder_010" parent="." index="20"]
-visible = false
-
-[node name="Cylinder_011" parent="." index="21"]
-visible = false
-
-[node name="Plane_051" parent="." index="22"]
-visible = false
-
-[node name="Closet_002" parent="." index="39"]
-visible = false
-
-[node name="Cube_011" parent="." index="58"]
+[node name="Cylinder_010" parent="." index="45"]
 visible = false
 
 [editable path="Activables/PosterActivable"]

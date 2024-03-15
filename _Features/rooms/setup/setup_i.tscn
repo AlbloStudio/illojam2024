@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c0bdwlue70wgp"]
+[gd_scene load_steps=36 format=3 uid="uid://c0bdwlue70wgp"]
 
 [ext_resource type="PackedScene" uid="uid://eey6l7a03sjc" path="res://_Features/rooms/setup/setup.blend" id="1_8c4o6"]
 [ext_resource type="Script" path="res://_Features/rooms/setup/setup.gd" id="2_42fvx"]
@@ -6,6 +6,15 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ljiy"]
 size = Vector3(5.14087, 3.50208, 0.224121)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nojtg"]
+size = Vector3(5.14087, 3.50208, 0.224121)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xxsv"]
+size = Vector3(0.313599, 3.50208, 3.40649)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0jgi0"]
+size = Vector3(0.313599, 3.50208, 3.40649)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgh2r"]
 size = Vector3(2.77844, 3.50208, 0.224121)
@@ -46,10 +55,13 @@ size = Vector3(0.467178, 4.86713, 10.6099)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3mis7"]
 size = Vector3(5.73682, 4.86713, 0.224121)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8yxuw"]
-size = Vector3(1.44977, 2.23132, 1.65662)
+[sub_resource type="BoxShape3D" id="BoxShape3D_k13vm"]
+size = Vector3(1.14063, 1.8309, 0.55194)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k3t1c"]
+size = Vector3(1.44977, 2.23132, 1.65662)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8yxuw"]
 size = Vector3(1.44977, 2.23132, 1.65662)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tc74h"]
@@ -60,9 +72,6 @@ size = Vector3(1.27881, 2.23132, 1.10474)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mt51r"]
 size = Vector3(1, 2.23132, 1.10474)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_k13vm"]
-size = Vector3(1.14063, 1.8309, 0.55194)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dpuim"]
 size = Vector3(0.958557, 2.23132, 1.92639)
@@ -123,6 +132,16 @@ _data = {
 "move_chair": SubResource("Animation_7seyn")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pld4w"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.2, 0.2, 0.2, 1)
+disable_receive_shadows = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kvtyt"]
+material = SubResource("StandardMaterial3D_pld4w")
+size = Vector2(10.605, 10.59)
+
 [node name="setup" instance=ExtResource("1_8c4o6")]
 script = ExtResource("2_42fvx")
 
@@ -167,39 +186,51 @@ collision_layer = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0109638, 1.25104, 4.05034)
 shape = SubResource("BoxShape3D_1ljiy")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="1"]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0109638, 1.25104, 7.58887)
+shape = SubResource("BoxShape3D_nojtg")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5004, 1.62497, 5.77781)
+shape = SubResource("BoxShape3D_6xxsv")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.58199, 1.62497, 5.77781)
+shape = SubResource("BoxShape3D_0jgi0")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27393, 1.25104, -4.02996)
 shape = SubResource("BoxShape3D_sgh2r")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="2"]
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09345, 1.25104, -4.02996)
 shape = SubResource("BoxShape3D_dx31t")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="3"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54409, 1.25104, -0.0375528)
 shape = SubResource("BoxShape3D_ealo4")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="4"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4896, 1.25104, -0.0375528)
 shape = SubResource("BoxShape3D_ealo4")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="5"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67462, 1.25104, 0.551943)
 shape = SubResource("BoxShape3D_4td12")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="6"]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26734, 1.25104, 3.22116)
 shape = SubResource("BoxShape3D_xjbd3")
 
-[node name="chairCollider" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="7"]
+[node name="chairCollider" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.326925, 0)
 shape = SubResource("BoxShape3D_c47ex")
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="8"]
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07557, 1.25104, -0.108303)
 shape = SubResource("BoxShape3D_7po3e")
 
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="9"]
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.422687, 1.25104, 1.75213)
 shape = SubResource("BoxShape3D_bct7i")
 
@@ -228,7 +259,45 @@ shape = SubResource("BoxShape3D_p35k4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038064, 1.93356, 5.05628)
 shape = SubResource("BoxShape3D_3mis7")
 
-[node name="Activables" type="Node3D" parent="." index="9"]
+[node name="WallsUpActivable" parent="." index="9" instance=ExtResource("2_n3fv0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.48246, 0.690414, -4.20817)
+activable_name = "TouchWall"
+activable_text = "Tocar la pared"
+activable_alternative_text = "Subir la pared"
+
+[node name="ActionLabel" parent="WallsUpActivable" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.1639, 2.5, 0.819902)
+
+[node name="CollisionShape3D" parent="WallsUpActivable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545135, 0.133652, 1.06228)
+shape = SubResource("BoxShape3D_k13vm")
+
+[node name="Indicator" parent="WallsUpActivable" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.816459, -0.648323, 0.908755)
+visible = false
+
+[node name="ActivablesPenetrated" type="Node3D" parent="." index="10"]
+process_mode = 4
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.435332, 3.04728, 3.26018)
+
+[node name="MoveChairActivable" parent="ActivablesPenetrated" index="0" instance=ExtResource("2_n3fv0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.82062, 1.3068, -1.85687)
+activable_name = "Move Chair"
+activable_text = "Mover la silla"
+activable_alternative_text = ""
+
+[node name="ActionLabel" parent="ActivablesPenetrated/MoveChairActivable" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
+
+[node name="CollisionShape3D" parent="ActivablesPenetrated/MoveChairActivable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.404452, -2.11637, 0.555268)
+shape = SubResource("BoxShape3D_k3t1c")
+
+[node name="Indicator" parent="ActivablesPenetrated/MoveChairActivable" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170369, -0.764796, 0.75149)
+visible = false
+
+[node name="Activables" type="Node3D" parent="." index="11"]
 
 [node name="StreamInActivable" parent="Activables" index="0" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.871468, 0.690414, -0.560438)
@@ -243,25 +312,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.637519, 0.615662, 0.555268
 shape = SubResource("BoxShape3D_8yxuw")
 
 [node name="Indicator" parent="Activables/StreamInActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.643317, 1.05876, 0.902702)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.643317, 1.01746, 0.902702)
+visible = false
 
-[node name="MoveChairActivable" parent="Activables" index="1" instance=ExtResource("2_n3fv0")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.871468, 1.19041, -0.560438)
-activable_name = "Move Chair"
-activable_text = "Mover la silla"
-activable_alternative_text = ""
+[node name="IndicatorMesh" parent="Activables/StreamInActivable/Indicator" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="ActionLabel" parent="Activables/MoveChairActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
+[node name="CollisionShape3D" parent="Activables/StreamInActivable/Indicator/IndicatorTrigger" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.67981, 0)
 
-[node name="CollisionShape3D" parent="Activables/MoveChairActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.404452, -2.11637, 0.555268)
-shape = SubResource("BoxShape3D_k3t1c")
-
-[node name="Indicator" parent="Activables/MoveChairActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170369, -0.764796, 0.75149)
-
-[node name="StreamOutActivable" parent="Activables" index="2" instance=ExtResource("2_n3fv0")]
+[node name="StreamOutActivable" parent="Activables" index="1" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.871468, 0.690414, -0.560438)
 activable_name = "StreamOut"
 activable_text = "Dejar de hacer stream"
@@ -277,9 +337,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.587561, 0.615662, 0.564118
 shape = SubResource("BoxShape3D_tc74h")
 
 [node name="Indicator" parent="Activables/StreamOutActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.261502, 0.667797, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.261502, -0.332203, 1)
+visible = false
 
-[node name="StreamInIncorrectActivable" parent="Activables" index="3" instance=ExtResource("2_n3fv0")]
+[node name="StreamInIncorrectActivable" parent="Activables" index="2" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.636316, 0.690414, -0.661427)
 activable_name = "StreamWrong"
 activable_text = "ssHssascssser ssStressams"
@@ -295,9 +356,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.614661, 0.615662, 0.564118
 shape = SubResource("BoxShape3D_maox8")
 
 [node name="Indicator" parent="Activables/StreamInIncorrectActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514856, 0.719968, 0.477434)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514856, -0.682797, 0.477434)
+visible = false
 
-[node name="StreamOutInCorrectActivable" parent="Activables" index="4" instance=ExtResource("2_n3fv0")]
+[node name="StreamOutInCorrectActivable" parent="Activables" index="3" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.636316, 0.690414, -0.661427)
 activable_name = "StreamOutWrong"
 activable_text = "Dssesjssasr sdses shssascser streamsss"
@@ -313,25 +375,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.587561, 0.400477, 0.564118
 shape = SubResource("BoxShape3D_mt51r")
 
 [node name="Indicator" parent="Activables/StreamOutInCorrectActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514856, 0.719968, 0.477434)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514856, -0.680032, 0.477434)
+visible = false
 
-[node name="WallsUpActivable" parent="Activables" index="5" instance=ExtResource("2_n3fv0")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.48246, 0.690414, -4.20817)
-activable_name = "TouchWall"
-activable_text = "Tocar la pared"
-activable_alternative_text = "Subir la pared"
-
-[node name="ActionLabel" parent="Activables/WallsUpActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.1639, 2.5, 0.819902)
-
-[node name="CollisionShape3D" parent="Activables/WallsUpActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545135, 0.133652, 1.06228)
-shape = SubResource("BoxShape3D_k13vm")
-
-[node name="Indicator" parent="Activables/WallsUpActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.816459, 1, 0.908755)
-
-[node name="JumpDownActivable" parent="Activables" index="6" instance=ExtResource("2_n3fv0")]
+[node name="JumpDownActivable" parent="Activables" index="4" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.86413, 0.690414, -2.6524)
 activable_name = "Jump Down"
 activable_text = "Bajar pared"
@@ -348,24 +395,26 @@ transform = Transform3D(0.00963406, 0, -0.999954, 0, 1, 0, 0.999954, 0, 0.009634
 shape = SubResource("BoxShape3D_dpuim")
 
 [node name="Indicator" parent="Activables/JumpDownActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0417688, 2.44516, 0.400519)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0417688, 1.59521, 0.400519)
+visible = false
 
-[node name="ExitWindowActivable" parent="Activables" index="7" instance=ExtResource("2_n3fv0")]
+[node name="ExitWindowActivable" parent="Activables" index="5" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.982227, 1.69041, 3.56018)
 activable_name = "Exit Window"
 activable_text = "Salir por la ventana"
 
 [node name="ActionLabel" parent="Activables/ExitWindowActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.3, 1.35687, 0.338513)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.3, 1.35687, 1.41756)
 
 [node name="CollisionShape3D" parent="Activables/ExitWindowActivable" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074995, 0.0784359, 1.62159)
 shape = SubResource("BoxShape3D_kgij0")
 
 [node name="Indicator" parent="Activables/ExitWindowActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.644618, -0.252598, 2.04046)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.644618, -1.65716, 2.04046)
+visible = false
 
-[node name="EnterWindowActivable" parent="Activables" index="8" instance=ExtResource("2_n3fv0")]
+[node name="EnterWindowActivable" parent="Activables" index="6" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.982227, 1.69041, 3.56018)
 activable_name = "Enter Window"
 activable_text = "Volver"
@@ -382,8 +431,12 @@ shape = SubResource("BoxShape3D_lm23x")
 
 [node name="Indicator" parent="Activables/EnterWindowActivable" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35538, -0.252598, 2.04046)
+visible = false
 
-[node name="BlindersUpActivable" parent="Activables" index="9" instance=ExtResource("2_n3fv0")]
+[node name="CollisionShape3D" parent="Activables/EnterWindowActivable/Indicator/IndicatorTrigger" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.45138, 0)
+
+[node name="BlindersUpActivable" parent="Activables" index="7" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.27228, 0.686402, -3.53155)
 activable_name = "Blinders Up"
 activable_text = "Levantar la persiana"
@@ -399,9 +452,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0214708, 0.800177, 3.10001
 shape = SubResource("BoxShape3D_qjbfh")
 
 [node name="Indicator" parent="Activables/BlindersUpActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300907, 1.08152, 3.19868)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300907, -0.673056, 3.19868)
+visible = false
 
-[node name="BlindersDownActivable" parent="Activables" index="10" instance=ExtResource("2_n3fv0")]
+[node name="BlindersDownActivable" parent="Activables" index="8" instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.27228, 0.686402, -3.53155)
 activable_name = "Blinders Down"
 activable_text = "Bajar la persiana"
@@ -414,55 +468,59 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0214708, 0.800177, 3.0972)
 shape = SubResource("BoxShape3D_s1fqm")
 
 [node name="Indicator" parent="Activables/BlindersDownActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300907, 1.08152, 3.19868)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300907, -0.634854, 3.19868)
+visible = false
 
-[node name="Cajonera Ventan" parent="." index="22"]
+[node name="Cajonera Ventan" parent="." index="24"]
 transform = Transform3D(-4.37114e-08, 0, 1.39383, 0, 1, 0, -1, 0, -6.09262e-08, 2.02009, 0.398512, 1.763)
 
-[node name="MoveChairAnimation" type="AnimationPlayer" parent="." index="27"]
+[node name="MoveChairAnimation" type="AnimationPlayer" parent="." index="29"]
 root_node = NodePath("../Silla Principal")
 libraries = {
 "": SubResource("AnimationLibrary_oxbg3")
 }
 
-[node name="Silla Principal" parent="." index="28"]
+[node name="Silla Principal" parent="." index="30"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.326925, 0)
 
-[node name="Silla Secundaria" parent="." index="29"]
+[node name="Silla Secundaria" parent="." index="31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.607101, 0.239884, 1.758)
 
-[node name="Ventana 1" parent="." index="39"]
+[node name="Ventana 1" parent="." index="41"]
 transform = Transform3D(1.223, 0, 0, 0, 0.2, 0, 0, 0, 1, -0.280445, 2.48639, 4.02552)
 
-[node name="NeveraMahou" parent="." index="40"]
+[node name="NeveraMahou" parent="." index="42"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.10048, 1.14958, 1.84731)
 
-[node name="cable raton" parent="." index="58"]
+[node name="cable raton" parent="." index="60"]
 visible = false
 
-[node name="neon twitch normal" parent="." index="60"]
+[node name="neon twitch normal" parent="." index="62"]
 visible = false
 
-[node name="VideogameBox_5_001" parent="." index="116"]
+[node name="VideogameBox_5_001" parent="." index="118"]
 transform = Transform3D(0.314475, 0, 0, 0, 0.830166, 0, 0, 0, 0.426444, 1.70578, 0.626472, 1.61724)
 
-[node name="Cube_004" parent="." index="146"]
+[node name="Cube_004" parent="." index="148"]
 visible = false
 
-[node name="Cube_008" parent="." index="147"]
+[node name="Cube_008" parent="." index="149"]
 visible = false
 
-[node name="Cube_011" parent="." index="148"]
+[node name="Cube_011" parent="." index="150"]
 visible = false
 
-[node name="Puerta_002" parent="." index="149"]
+[node name="Puerta_002" parent="." index="151"]
 visible = false
 
-[node name="Puerta_003" parent="." index="150"]
+[node name="Puerta_003" parent="." index="152"]
 visible = false
 
-[node name="Armature" parent="." index="151"]
+[node name="Armature" parent="." index="153"]
 transform = Transform3D(0, -1.12986, -6.73446e-08, 6.73446e-08, 0, -1.12986, 1.12986, 6.73446e-08, 0, -0.57901, 0.14708, 1.75362)
+
+[node name="Luisillo_002" parent="Armature" index="1"]
+visible = false
 
 [node name="Skeleton3D" parent="Armature" index="2"]
 bones/0/position = Vector3(0.000290527, -0.000467621, -0.642891)
@@ -529,15 +587,21 @@ bones/46/rotation = Quaternion(0.566216, -0.103342, -0.0318874, 0.817131)
 bones/46/scale = Vector3(1, 1, 1)
 bones/47/rotation = Quaternion(0.241564, 0.0547086, -0.0136417, 0.968745)
 
-[node name="Sphere" parent="." index="158"]
+[node name="Sphere" parent="." index="160"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.12226, 1.49904, 1.84575)
 
+[node name="SetupCeiling" type="MeshInstance3D" parent="." index="174"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.123302, 3.05618, 9.51134)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_kvtyt")
+skeleton = NodePath("")
+
+[editable path="WallsUpActivable"]
+[editable path="ActivablesPenetrated/MoveChairActivable"]
 [editable path="Activables/StreamInActivable"]
-[editable path="Activables/MoveChairActivable"]
 [editable path="Activables/StreamOutActivable"]
 [editable path="Activables/StreamInIncorrectActivable"]
 [editable path="Activables/StreamOutInCorrectActivable"]
-[editable path="Activables/WallsUpActivable"]
 [editable path="Activables/JumpDownActivable"]
 [editable path="Activables/ExitWindowActivable"]
 [editable path="Activables/EnterWindowActivable"]

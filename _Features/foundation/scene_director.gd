@@ -17,6 +17,7 @@ var awakes = {
 @onready var nolas := $Stage/MoorGnivil/Nolas as Nolas
 @onready var setup := $Stage/Setup/setup as Setup
 @onready var ui := $UI as GameUI
+@onready var audio := $Audio as Audio
 @onready var scan := $Scan as ColorRect
 
 
@@ -35,6 +36,7 @@ func _ready():
 	SignalBus.stopped_streaming_wrong.connect(_stopped_streaming_wrong)
 	SignalBus.exited_window.connect(_exited_window)
 	SignalBus.entered_window.connect(_entered_window)
+	SignalBus.jumped_down.connect(_jumped_down)
 
 
 func _activable_activated(activable_name: String, alternative: bool) -> void:
@@ -146,6 +148,7 @@ func _awaked(awake_name: String) -> void:
 		ui.add_progress(1)
 		ui.awake()
 		awakes[awake_name] = true
+		audio.advance_level(awake_name)
 
 	var scan_material := scan.material as ShaderMaterial
 	var overall_effect = scan_material.get_shader_parameter("overall_effect")
@@ -154,7 +157,25 @@ func _awaked(awake_name: String) -> void:
 
 	scan_material.set_shader_parameter("overall_effect", overall_effect + 0.1)
 	scan_material.set_shader_parameter("pallete_effect", pallete_effect + 0.1)
-	scan_material.set_shader_parameter("scan_brightness", scan_brightness - 0.02)
+	scan_material.set_shader_parameter("scan_brightness", scan_brightness - 0.012)
+
+	match awake_name:
+		"wall":
+			setup.awake_wall()
+		"jump":
+			setup.awake_jump()
+		"stream":
+			setup.awake_stream()
+		"window":
+			setup.awake_window()
+		"clothes":
+			living_room.awake_clothes()
+		"poster":
+			living_room.awake_poster()
+		"sit":
+			living_room.awake_sit()
+		"sofa":
+			living_room.awake_sofa()
 
 
 func _read_poster() -> void:
@@ -306,9 +327,14 @@ func _jump_down() -> void:
 	setup.switch_to_normal_mode()
 
 
+func _jumped_down() -> void:
+	setup.switch_to_penetration()
+
+
 func _down_wall() -> void:
 	player.set_down_wall(setup.get_walls_down_position())
 	setup.switch_to_normal_mode()
+	setup.switch_to_normal()
 
 
 func _move_chair() -> void:
