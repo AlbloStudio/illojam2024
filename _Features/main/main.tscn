@@ -6,23 +6,23 @@
 [ext_resource type="PackedScene" uid="uid://dpkgwkvewfmuh" path="res://_Features/player/player.tscn" id="2_bfl1y"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_hsqid"]
 [ext_resource type="Shader" path="res://_Features/shaders/main.gdshader" id="2_o8u0n"]
-[ext_resource type="AudioStream" uid="uid://bj6rm642ytjq6" path="res://_Features/audio/dream1.mp3" id="3_prhnp"]
-[ext_resource type="AudioStream" uid="uid://digx8u3lgsnih" path="res://_Features/audio/dream3.mp3" id="4_f8et4"]
-[ext_resource type="AudioStream" uid="uid://tiomex1q22bg" path="res://_Features/audio/dream5.mp3" id="4_j7770"]
+[ext_resource type="AudioStream" uid="uid://cit1i7ncdx4f" path="res://_Features/audio/dream1.mp3" id="3_prhnp"]
+[ext_resource type="AudioStream" uid="uid://jval2fa4776l" path="res://_Features/audio/dream3.mp3" id="4_f8et4"]
+[ext_resource type="AudioStream" uid="uid://bn2dwbajil1as" path="res://_Features/audio/dream5.mp3" id="4_j7770"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="4_nyxmf"]
 [ext_resource type="PackedScene" uid="uid://daj1yi4q8q4f" path="res://_Features/rooms/living_room/living_room_i.tscn" id="4_og77x"]
-[ext_resource type="AudioStream" uid="uid://dnf5y07xi5np2" path="res://_Features/audio/dream7.mp3" id="6_q0q4b"]
+[ext_resource type="AudioStream" uid="uid://n5q1vmi85jkl" path="res://_Features/audio/dream7.mp3" id="6_q0q4b"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_v8ayd"]
-[ext_resource type="AudioStream" uid="uid://c3nkypx3kcrfi" path="res://_Features/audio/dream8.mp3" id="7_x34ob"]
+[ext_resource type="AudioStream" uid="uid://bft0p6ghd8hu7" path="res://_Features/audio/dream8.mp3" id="7_x34ob"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.gd" id="8_ku7b2"]
-[ext_resource type="AudioStream" uid="uid://dta1hmrha3dtj" path="res://_Features/audio/dream10.mp3" id="9_785vu"]
+[ext_resource type="AudioStream" uid="uid://tikf3g6hxf3j" path="res://_Features/audio/dream10.mp3" id="9_785vu"]
 [ext_resource type="PackedScene" uid="uid://cb0311e3f7has" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil_i.tscn" id="9_iwvg8"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/nolas.gd" id="9_l32nb"]
-[ext_resource type="AudioStream" uid="uid://5lbycd3ur8if" path="res://_Features/audio/dream11.mp3" id="10_pl0ge"]
+[ext_resource type="AudioStream" uid="uid://byd5j83axjxbg" path="res://_Features/audio/dream11.mp3" id="10_pl0ge"]
 [ext_resource type="PackedScene" uid="uid://c0bdwlue70wgp" path="res://_Features/rooms/setup/setup_i.tscn" id="11_qjeg8"]
-[ext_resource type="AudioStream" uid="uid://bp2khi66b0g7t" path="res://_Features/audio/dream12.mp3" id="11_r4hg3"]
-[ext_resource type="AudioStream" uid="uid://8w1bdecx6ld" path="res://_Features/audio/despierta.mp3" id="12_bx7a7"]
-[ext_resource type="AudioStream" uid="uid://bpduxd4es20o4" path="res://_Features/audio/dream13.mp3" id="12_nchqr"]
+[ext_resource type="AudioStream" uid="uid://m7oax2by6piw" path="res://_Features/audio/dream12.mp3" id="11_r4hg3"]
+[ext_resource type="AudioStream" uid="uid://drmnieapiewxo" path="res://_Features/audio/despierta.mp3" id="12_bx7a7"]
+[ext_resource type="AudioStream" uid="uid://b4x4go7yxbinu" path="res://_Features/audio/dream13.mp3" id="12_nchqr"]
 
 [sub_resource type="Gradient" id="Gradient_n7fhn"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
@@ -119,7 +119,7 @@ bus = &"DESPIERTA"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.319, 9.66002, 1.69371)
 current = true
-fov = 74.9978
+fov = 74.9686
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")

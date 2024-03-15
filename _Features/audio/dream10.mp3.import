@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://dta1hmrha3dtj"
+uid="uid://tikf3g6hxf3j"
 path="res://.godot/imported/dream10.mp3-948570f193ba269dedd78a259966a950.mp3str"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/dream10.mp3-948570f193ba269dedd78a259966a950.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0
