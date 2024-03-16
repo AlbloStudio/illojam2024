@@ -1,7 +1,7 @@
 class_name Tablet extends Node
 
-@onready var tablet_screen := $TabletScreen as Control
 
+@onready var speech_bubble_label := $SpeechBubble/SpeechBubbleLabel as Label3D
 
 func say(text: String, delay := 3.0) -> void:
 	pass
