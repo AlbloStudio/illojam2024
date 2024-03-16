@@ -30,7 +30,6 @@ var poster_awaken := false
 @onready var start_marker := $Markers/startMarker as Marker3D
 
 
-
 func _ready() -> void:
 	closet.visible = false
 	closet_handles.visible = false
@@ -138,6 +137,7 @@ func get_up_position() -> Vector3:
 
 func get_up_init_position() -> Vector3:
 	return up_init_marker.global_position
+
 
 func get_start_position() -> Vector3:
 	return start_marker.global_position

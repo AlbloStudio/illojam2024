@@ -194,17 +194,56 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 
 
 func _tablet_living_room_opened() -> void:
-	tablet_living_room.say("TEXTO DE LA PRIMERA TABLET")
-	create_tween().tween_callback(living_room.make_closet_appear).set_delay(3.0)
-	create_tween().tween_callback(nolas.make_closet_appear).set_delay(3.0)
+	(
+		tablet_living_room
+		. say(
+			[
+				"Hola, soy LMDSHOW... Estás atrapado en un sueño. Lo sé, rarete. Pero quiero ayudarte.",
+				"En la vida real hay normas, leyes, principios que nos gobiernan. En los sueños, todo eso se desmorona. Sigo?",
+				"La clave para despertar es hacer cosas inusuales e ilógicas, cosas que no harías en la vida real.",
+				"Y... por dónde empezar? Tal vez, ese.... ese armario. Sí, el armario.",
+				"En los useñós, lo ordinario puede convertirse en extraordinario.",
+				"Adelante, es solo un paso. Espero que esto te guíe hacia la luz de la realidad. AIIIPS"
+			],
+			[
+				4.0,
+				4.0,
+				4.0,
+				4.0,
+				4.0,
+				4.0,
+			]
+		)
+	)
+	create_tween().tween_callback(living_room.make_closet_appear).set_delay(24.0)
+	create_tween().tween_callback(nolas.make_closet_appear).set_delay(24.0)
+	create_tween().tween_callback(tablet_living_room.activate).set_delay(26.0)
 
 
 func _tablet_nolas_opened() -> void:
-	tablet_nolas.say("TEXTO DE LA SEGUNDA TABLET")
+	(
+		tablet_nolas
+		. say(
+			[
+				"Has visto que hay acciones deshabilitadas, o prohibidas?",
+				"Dale 5 veces... y las forzarás."
+			],
+			[
+				4.0,
+				6.0,
+			]
+		)
+	)
 
 
 func _tablet_secret_opened() -> void:
-	tablet_secret.say("TEXTO DE LA TERCERA TABLET")
+	tablet_secret.say(
+		[
+			"Deja pulsado durante 3 segundos sobre una acción y...",
+			"Podrás hacer una acción alternativa."
+		],
+		[5.0, 4.0]
+	)
 
 
 func _set_current_activable(new_activable: Activable) -> void:
@@ -295,13 +334,7 @@ func _sit_on_mirror_chair() -> void:
 func _read_mirror_poster() -> void:
 	player.say("ME CAGO", 2)
 	create_tween().tween_callback(func(): _awaked("poster")).set_delay(2)
-	(
-		create_tween()
-		. tween_callback(
-			func(): player.say("Puedo forzar una acción prohibida pulsando 5 veces????", 4)
-		)
-		. set_delay(3)
-	)
+	tablet_nolas.visible = true
 
 
 func _sofa_lay_down() -> void:

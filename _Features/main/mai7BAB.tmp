@@ -134,7 +134,7 @@ bus = &"DESPIERTA"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -3.21053, 9.65312, -2.40769)
 current = true
-fov = 74.5936
+fov = 74.9986
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -188,13 +188,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.7371)
 script = ExtResource("8_ku7b2")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Stage/MoorGnivil"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00467682, 3.05618, 1.36269)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00467682, 3.05618, 1.78071)
+visible = false
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_a8ryy")
 skeleton = NodePath("")
 
 [node name="Nolas" parent="Stage/MoorGnivil" instance=ExtResource("9_iwvg8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.48041)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.74871)
 script = ExtResource("9_l32nb")
 
 [node name="CeilingLight4" type="SpotLight3D" parent="Stage/MoorGnivil"]
@@ -230,7 +231,6 @@ spot_angle = 77.8
 
 [node name="TabletNolas" parent="Stage/MoorGnivil" instance=ExtResource("4_nyxmf")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.01423, 0.621368, 5.74418)
-visible = false
 
 [node name="SpeechBubbleLabel" parent="Stage/MoorGnivil/TabletNolas/SpeechBubble" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.45305, 3.14042, -6.45379)
@@ -357,7 +357,6 @@ activable_name = "TabletSecret"
 activable_text = "Activar"
 
 [node name="Indicator" parent="Stage/Setup/TabletSecret/Tablet" index="3"]
-transform = Transform3D(1, -6.38378e-15, 0, 6.66134e-16, 1, 0, 0, 0, 1, -0.717073, -4.47035e-08, -0.353103)
 visible = false
 
 [node name="MeshInstance3D" parent="Stage/Setup/TabletSecret" index="2"]
