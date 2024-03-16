@@ -16,13 +16,13 @@ var awakes = {
 @onready var living_room := $Stage/LivingRoom/LivingRoom as LivingRoom
 @onready var nolas := $Stage/MoorGnivil/Nolas as Nolas
 @onready var setup := $Stage/Setup/setup as Setup
+@onready var tablet_1 := $Stage/Tablet1 as Tablet
 @onready var ui := $UI as GameUI
 @onready var audio := $Audio as Audio
 @onready var scan := $Scan as ColorRect
 
 
 func _ready():
-	SignalBus.tablet_closed.connect(_tablet_closed)
 	SignalBus.activable_activated.connect(_activable_activated)
 	SignalBus.current_activable_changed.connect(_set_current_activable)
 	SignalBus.clothes_wrong.connect(_clothes_wronged)
@@ -174,14 +174,9 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 
 
 func _tablet_opened() -> void:
-	player.go_puppet()
-	SignalBus.tablet_opened.emit()
-
-
-func _tablet_closed() -> void:
-	player.go_controlled()
-	living_room.make_closet_appear()
-	nolas.make_closet_appear()
+	tablet_1.say("TEXTO DE LA PRIMERA TABLET")
+	create_tween().tween_callback(living_room.make_closet_appear).set_delay(3.0)
+	create_tween().tween_callback(nolas.make_closet_appear).set_delay(3.0)
 
 
 func _set_current_activable(new_activable: Activable) -> void:
