@@ -26,6 +26,9 @@ var poster_awaken := false
 @onready var sofa_marker := $Markers/layMarker as Marker3D
 @onready var wall_marker := $Markers/wallMarker as Marker3D
 @onready var up_marker := $Markers/upMarker as Marker3D
+@onready var up_init_marker := $Markers/layInitMarker as Marker3D
+@onready var start_marker := $Markers/startMarker as Marker3D
+
 
 
 func _ready() -> void:
@@ -131,6 +134,13 @@ func get_layed_position() -> Vector3:
 
 func get_up_position() -> Vector3:
 	return up_marker.global_position
+
+
+func get_up_init_position() -> Vector3:
+	return up_init_marker.global_position
+
+func get_start_position() -> Vector3:
+	return start_marker.global_position
 
 
 func get_wall_position() -> Vector3:

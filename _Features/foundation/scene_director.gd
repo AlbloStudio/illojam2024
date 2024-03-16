@@ -25,6 +25,9 @@ var awakes = {
 
 
 func _ready():
+	player.global_position = living_room.get_start_position()
+	player.lay_up_from_sofa_init(living_room.get_up_init_position())
+
 	SignalBus.activable_activated.connect(_activable_activated)
 	SignalBus.current_activable_changed.connect(_set_current_activable)
 	SignalBus.clothes_wrong.connect(_clothes_wronged)
@@ -41,6 +44,11 @@ func _ready():
 	SignalBus.jumped_down.connect(_jumped_down)
 	SignalBus.upped_wall.connect(_upped_wall)
 	SignalBus.downed_wall.connect(_downed_wall)
+	SignalBus.started.connect(_started)
+
+
+func _started() -> void:
+	player.collision_layer = 1
 
 
 func _activable_activated(activable_name: String, alternative: bool) -> void:

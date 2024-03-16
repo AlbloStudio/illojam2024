@@ -133,6 +133,21 @@ func lay_down_on_sofa(new_position: Vector3, is_wall := false) -> void:
 		)
 
 
+func lay_up_from_sofa_init(new_position: Vector3) -> void:
+	go_puppet()
+	global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
+	animate(
+		"LayingSofa",
+		new_position,
+		global_rotation,
+		state_controlled.name,
+		true,
+		_layed_up_init,
+		null,
+		0.3
+	)
+
+
 func lay_up_from_sofa(new_position: Vector3, is_wall := false) -> void:
 	global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
 	animate(
@@ -167,6 +182,11 @@ func _layed_up() -> void:
 	_change_player_speed()
 	SignalBus.layed_up.emit()
 	dont_animate_movement = false
+
+
+func _layed_up_init() -> void:
+	SignalBus.started.emit()
+	SignalBus.layed_up.emit()
 
 
 func sit_to_stream(new_position: Vector3) -> void:
@@ -268,7 +288,7 @@ func animate(
 	backwards := false,
 	on_finished := func(): pass,
 	walking_target = null,
-	blend := -1
+	blend := -1.0
 ) -> void:
 	previous_position = global_position
 

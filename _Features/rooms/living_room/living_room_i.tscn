@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=44 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
@@ -41,6 +41,9 @@ size = Vector3(0.773407, 2.31848, 2.91956)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3bcoa"]
 size = Vector3(0.257309, 2.31848, 2.91956)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uwu8x"]
+radius = 2.02685
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sf51u"]
 size = Vector3(2.27856, 2.31848, 1.6001)
@@ -131,15 +134,21 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8f3dp")
 [node name="Markers" type="Node" parent="." index="1"]
 
 [node name="upMarker" type="Marker3D" parent="Markers" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64303, 0, -2.1184)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49683, 0, -2.15252)
 
 [node name="wallMarker" type="Marker3D" parent="Markers" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.57292, 0, -2.0164)
 
-[node name="layMarker" type="Marker3D" parent="Markers" index="2"]
+[node name="startMarker" type="Marker3D" parent="Markers" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91945, 0, -3.09237)
+
+[node name="layInitMarker" type="Marker3D" parent="Markers" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85732, 0, -2.89713)
+
+[node name="layMarker" type="Marker3D" parent="Markers" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8564, 0, -2.15505)
 
-[node name="chairMarker" type="Marker3D" parent="Markers" index="3"]
+[node name="chairMarker" type="Marker3D" parent="Markers" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.039, 0.398, 0.682079)
 
 [node name="Clothes" type="Node3D" parent="." index="2"]
@@ -278,6 +287,10 @@ shape = SubResource("BoxShape3D_3bcoa")
 [node name="Indicator" parent="Activables/SofaActivableLayDownWall" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67534, -0.188388, -1.83375)
 visible = false
+
+[node name="CollisionShape3D" parent="Activables/SofaActivableLayDownWall/Indicator/IndicatorTrigger" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5412, -2.38419e-07, -0.298642)
+shape = SubResource("CylinderShape3D_uwu8x")
 
 [node name="ClosetActivable" parent="Activables" index="4" instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.00130963, 0.000723362, -0.00708866)

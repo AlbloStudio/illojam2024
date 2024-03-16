@@ -27,3 +27,5 @@ signal jumped_down
 
 signal upped_wall
 signal downed_wall
+
+signal started
