@@ -294,7 +294,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.404452, -2.11637, 0.555268)
 shape = SubResource("BoxShape3D_k3t1c")
 
 [node name="Indicator" parent="ActivablesPenetrated/MoveChairActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170369, -0.764796, 0.75149)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170369, -1.65448, 0.75149)
 visible = false
 
 [node name="Activables" type="Node3D" parent="." index="11"]
@@ -316,7 +316,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.643317, 1.01746, 0.902702)
 visible = false
 
 [node name="IndicatorMesh" parent="Activables/StreamInActivable/Indicator" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, -1, 0)
 
 [node name="CollisionShape3D" parent="Activables/StreamInActivable/Indicator/IndicatorTrigger" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.67981, 0)

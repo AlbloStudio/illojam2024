@@ -1,5 +1,6 @@
 class_name Player extends CharacterBody3D
 
+@export var naked_texture: Texture
 @export var speed = 3.0
 @export var speed_slow = 0.5
 @export var acceleration := 10.0
@@ -10,12 +11,17 @@ var clothes = ["underwear", "pants", "tshirt"]
 var original_speech_bubble_position := Vector3.ZERO
 var previous_position := Vector3.ZERO
 var dont_animate_movement := false
+var original_hoodie_texture: Texture
+var original_pants_texture: Texture
 
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_controlled := $FiniteStateMachine/Controlled as PlayerState
 @onready var state_puppet := $FiniteStateMachine/Puppet as PlayerState
 @onready var speech_bubble_label := $SpeechBubble/SpeechBubbleLabel as Label3D
 @onready var player_animation := $player/AnimationPlayer as AnimationPlayer
+
+@onready var body := $player/arms_skeleton/Skeleton3D/body2 as MeshInstance3D
+@onready var pixelation := $Pixelation as MeshInstance3D
 
 
 func _ready():
@@ -39,13 +45,26 @@ func go_puppet() -> void:
 
 func get_naked() -> void:
 	clothes = []
+	var hoodie_material := body.get_active_material(1)
+	original_hoodie_texture = hoodie_material.albedo_texture
+	hoodie_material.albedo_texture = naked_texture
+	var pants_material := body.get_active_material(2)
+	original_pants_texture = pants_material.albedo_texture
+	pants_material.albedo_texture = naked_texture
+	pixelation.visible = true
 
 
 func put_some_clothes(cloth_name: String) -> void:
 	if not clothes.has(cloth_name):
 		clothes.append(cloth_name)
+		if cloth_name == "pants":
+			body.get_active_material(2).albedo_texture = original_pants_texture
+		elif cloth_name == "tshirt":
+			body.get_active_material(1).albedo_texture = original_hoodie_texture
 
 	if clothes.size() == 3:
+		pixelation.visible = false
+
 		if clothes.find("underwear") > clothes.find("pants"):
 			SignalBus.clothes_wrong.emit()
 		else:

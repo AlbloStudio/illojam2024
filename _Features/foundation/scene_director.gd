@@ -45,61 +45,130 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 
 	match activable_name:
 		"Tablet":
-			_tablet_opened()
+			if alternative:
+				pass
+			else:
+				_tablet_opened()
 		"Get Naked":
-			_get_player_naked()
+			if alternative:
+				pass
+			else:
+				_get_player_naked()
 		"Put on T-Shirt":
-			_put_on_clothes("tshirt")
+			if alternative:
+				pass
+			else:
+				_put_on_clothes("tshirt")
 		"Put on Pants":
-			_put_on_clothes("pants")
+			if alternative:
+				pass
+			else:
+				_put_on_clothes("pants")
 		"Put on Underwear":
-			_put_on_clothes("underwear")
+			if alternative:
+				pass
+			else:
+				_put_on_clothes("underwear")
 		"ReadPoster":
-			_read_poster()
+			if alternative:
+				pass
+			else:
+				_read_poster()
 		"Sit":
-			_sit_on_chair()
+			if alternative:
+				pass
+			else:
+				_sit_on_chair()
 		"GetUp":
-			_get_up_from_chair()
+			if alternative:
+				pass
+			else:
+				_get_up_from_chair()
 		"Tis":
-			_sit_on_mirror_chair()
+			if alternative:
+				pass
+			else:
+				_sit_on_mirror_chair()
 		"RetsopDear":
-			_read_mirror_poster()
+			if alternative:
+				pass
+			else:
+				_read_mirror_poster()
 		"Lay down":
-			_sofa_lay_down()
+			if alternative:
+				pass
+			else:
+				_sofa_lay_down()
 		"Lay down wall":
-			_sofa_lay_down_wall()
+			if alternative:
+				pass
+			else:
+				_sofa_lay_down_wall()
 		"Lay up":
-			_sofa_lay_up()
+			if alternative:
+				pass
+			else:
+				_sofa_lay_up()
 		"Lay up wall":
-			_sofa_lay_up_wall()
+			if alternative:
+				pass
+			else:
+				_sofa_lay_up_wall()
 		"StreamIn":
-			_stream_in()
+			if alternative:
+				pass
+			else:
+				_stream_in()
 		"StreamOut":
-			_stream_out()
+			if alternative:
+				pass
+			else:
+				_stream_out()
 		"StreamWrong":
-			_stream_in_wrong()
+			if alternative:
+				pass
+			else:
+				_stream_in_wrong()
 		"StreamOutWrong":
-			_stream_out_wrong()
+			if alternative:
+				pass
+			else:
+				_stream_out_wrong()
 		"TouchWall":
 			if alternative:
 				_up_wall()
 			else:
 				_touch_wall()
 		"Exit Window":
-			_exit_window()
+			if alternative:
+				pass
+			else:
+				_exit_window()
 		"Enter Window":
-			_enter_window()
+			if alternative:
+				pass
+			else:
+				_enter_window()
 		"Blinders Up":
-			_bilders_up()
+			if alternative:
+				pass
+			else:
+				_bilders_up()
 		"Blinders Down":
-			_blinders_down()
+			if alternative:
+				pass
+			else:
+				_blinders_down()
 		"Jump Down":
 			if alternative:
 				_jump_down()
 			else:
 				_down_wall()
 		"Move Chair":
-			_move_chair()
+			if alternative:
+				pass
+			else:
+				_move_chair()
 
 
 func _tablet_opened() -> void:
@@ -213,8 +282,10 @@ func _read_mirror_poster() -> void:
 func _sofa_lay_down() -> void:
 	player.lay_down_on_sofa(living_room.get_layed_position())
 
+
 func _sofa_lay_down_wall() -> void:
 	player.lay_down_on_sofa(living_room.get_layed_position(), true)
+
 
 func _sofa_lay_up() -> void:
 	player.lay_up_from_sofa(living_room.get_up_position())
@@ -274,6 +345,7 @@ func _up_wall() -> void:
 	setup.switch_to_up_mode()
 	player.set_up_walls(setup.get_walls_up_position())
 	SignalBus.awaked.emit("wall")
+	setup.switch_to_normal()
 
 
 func _exit_window() -> void:
@@ -338,7 +410,6 @@ func _jumped_down() -> void:
 func _down_wall() -> void:
 	player.set_down_wall(setup.get_walls_down_position())
 	setup.switch_to_normal_mode()
-	setup.switch_to_normal()
 
 
 func _move_chair() -> void:

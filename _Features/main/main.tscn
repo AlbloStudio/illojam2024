@@ -10,12 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="4_nyxmf"]
 [ext_resource type="PackedScene" uid="uid://daj1yi4q8q4f" path="res://_Features/rooms/living_room/living_room_i.tscn" id="4_og77x"]
 [ext_resource type="AudioStream" uid="uid://c2gih22b1rxfb" path="res://_Features/audio/dream2.mp3" id="5_eo21i"]
-[ext_resource type="AudioStream" uid="uid://bv1q0nrtlprpr" path="res://_Features/audio/dream4.mp3" id="6_qcnn2"]
+[ext_resource type="AudioStream" uid="uid://jval2fa4776l" path="res://_Features/audio/dream3.mp3" id="6_3nhco"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_v8ayd"]
-[ext_resource type="AudioStream" uid="uid://cwe5fggyyhwa7" path="res://_Features/audio/dream6.mp3" id="7_dxmvt"]
-[ext_resource type="AudioStream" uid="uid://bft0p6ghd8hu7" path="res://_Features/audio/dream8.mp3" id="7_x34ob"]
+[ext_resource type="AudioStream" uid="uid://bn2dwbajil1as" path="res://_Features/audio/dream5.mp3" id="7_3aj0d"]
+[ext_resource type="AudioStream" uid="uid://n5q1vmi85jkl" path="res://_Features/audio/dream7.mp3" id="8_g4ua3"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.gd" id="8_ku7b2"]
-[ext_resource type="AudioStream" uid="uid://tikf3g6hxf3j" path="res://_Features/audio/dream10.mp3" id="9_785vu"]
+[ext_resource type="AudioStream" uid="uid://dx7cph4eee7ok" path="res://_Features/audio/dream9.mp3" id="9_8pkpd"]
 [ext_resource type="PackedScene" uid="uid://cb0311e3f7has" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil_i.tscn" id="9_iwvg8"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/nolas.gd" id="9_l32nb"]
 [ext_resource type="AudioStream" uid="uid://byd5j83axjxbg" path="res://_Features/audio/dream11.mp3" id="10_pl0ge"]
@@ -104,7 +104,7 @@ color = Color(1, 1, 1, 0)
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("2_3jmlc")
-song_layers = Array[AudioStream]([ExtResource("3_prhnp"), ExtResource("5_eo21i"), ExtResource("6_qcnn2"), ExtResource("7_dxmvt"), ExtResource("7_x34ob"), ExtResource("9_785vu"), ExtResource("10_pl0ge"), ExtResource("11_r4hg3"), ExtResource("12_nchqr")])
+song_layers = Array[AudioStream]([ExtResource("3_prhnp"), ExtResource("5_eo21i"), ExtResource("6_3nhco"), ExtResource("7_3aj0d"), ExtResource("8_g4ua3"), ExtResource("9_8pkpd"), ExtResource("10_pl0ge"), ExtResource("11_r4hg3"), ExtResource("12_nchqr")])
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="Audio"]
 
@@ -117,15 +117,15 @@ bus = &"DESPIERTA"
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.894121, 9.65312, -0.382864)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.96749, 9.65312, -3.18704)
 current = true
-fov = 74.4306
+fov = 74.7729
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.894121, 9.65312, -0.382864)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -1.96749, 9.65312, -3.18704)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0
@@ -141,7 +141,7 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.894121, -0.00187636, -0.382864)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96749, -0.00187636, -3.18704)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")
@@ -178,13 +178,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.408002, 0.664923, -0.822002
 
 [node name="Indicator" parent="Stage/Tablet/Tablet" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.428793)
+visible = false
 
 [node name="MoorGnivil" type="Node3D" parent="Stage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1028)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.7371)
 script = ExtResource("8_ku7b2")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00467682, 3.05618, 1.78071)
+visible = false
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_a8ryy")
 skeleton = NodePath("")
