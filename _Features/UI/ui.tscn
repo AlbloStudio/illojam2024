@@ -1,16 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccopiuj5gnm7m"]
+[gd_scene load_steps=6 format=3 uid="uid://ccopiuj5gnm7m"]
 
 [ext_resource type="Script" path="res://_Features/UI/ui.gd" id="1_634ex"]
 [ext_resource type="Texture2D" uid="uid://bygk6tvwikn0j" path="res://_Features/UI/DESPIERTA Upper Text.svg" id="2_ys5nf"]
 [ext_resource type="Texture2D" uid="uid://ctwesjymkyff0" path="res://_Features/UI/DESPIERTA Under Text.svg" id="3_aiw18"]
-
-[sub_resource type="Gradient" id="Gradient_2kn1o"]
-colors = PackedColorArray(0.427493, 0.427493, 0.427493, 1, 0.203922, 0.203922, 0.203922, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hr6dy"]
-gradient = SubResource("Gradient_2kn1o")
-width = 500
-height = 50
 
 [sub_resource type="Gradient" id="Gradient_lxqms"]
 offsets = PackedFloat32Array(0, 0.099359, 0.951923, 1)
@@ -21,14 +13,6 @@ gradient = SubResource("Gradient_lxqms")
 width = 500
 height = 50
 fill_to = Vector2(0, 1)
-
-[sub_resource type="Gradient" id="Gradient_8j8jt"]
-colors = PackedColorArray(0.900993, 0.770286, 0, 1, 0.035599, 0.0250149, 1.50409e-09, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y8dw3"]
-gradient = SubResource("Gradient_8j8jt")
-width = 500
-height = 50
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -54,9 +38,9 @@ offset_bottom = -50.0
 grow_horizontal = 0
 grow_vertical = 0
 max_value = 8.0
-texture_under = SubResource("GradientTexture2D_hr6dy")
+texture_under = ExtResource("3_aiw18")
 texture_over = SubResource("GradientTexture2D_oawa5")
-texture_progress = SubResource("GradientTexture2D_y8dw3")
+texture_progress = ExtResource("2_ys5nf")
 
 [node name="Despierta" type="PanelContainer" parent="."]
 visible = false
