@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cyukv423m7172"
+path="res://.godot/imported/join call.mp3-97e806dbc1a8e568fbc750b5e5999773.mp3str"
+
+[deps]
+
+source_file="res://_Features/audio/join call.mp3"
+dest_files=["res://.godot/imported/join call.mp3-97e806dbc1a8e568fbc750b5e5999773.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
