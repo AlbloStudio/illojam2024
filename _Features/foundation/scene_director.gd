@@ -37,6 +37,8 @@ func _ready():
 	SignalBus.exited_window.connect(_exited_window)
 	SignalBus.entered_window.connect(_entered_window)
 	SignalBus.jumped_down.connect(_jumped_down)
+	SignalBus.upped_wall.connect(_upped_wall)
+	SignalBus.downed_wall.connect(_downed_wall)
 
 
 func _activable_activated(activable_name: String, alternative: bool) -> void:
@@ -342,10 +344,13 @@ func _touch_wall() -> void:
 
 
 func _up_wall() -> void:
-	setup.switch_to_up_mode()
 	player.set_up_walls(setup.get_walls_up_position())
+
+
+func _upped_wall() -> void:
 	SignalBus.awaked.emit("wall")
 	setup.switch_to_normal()
+	setup.switch_to_up_mode()
 
 
 func _exit_window() -> void:
@@ -408,8 +413,13 @@ func _jumped_down() -> void:
 
 
 func _down_wall() -> void:
-	player.set_down_wall(setup.get_walls_down_position())
 	setup.switch_to_normal_mode()
+
+	player.set_down_wall(setup.get_walls_down_position())
+
+
+func _downed_wall() -> void:
+	pass
 
 
 func _move_chair() -> void:

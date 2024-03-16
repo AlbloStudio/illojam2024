@@ -27,3 +27,6 @@ signal exited_window
 signal entered_window
 
 signal jumped_down
+
+signal upped_wall
+signal downed_wall

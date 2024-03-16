@@ -20,7 +20,10 @@ var original_pants_texture: Texture
 @onready var speech_bubble_label := $SpeechBubble/SpeechBubbleLabel as Label3D
 @onready var player_animation := $player/AnimationPlayer as AnimationPlayer
 
+@onready var arms := $player/arms_skeleton/Skeleton3D/arms as MeshInstance3D
 @onready var body := $player/arms_skeleton/Skeleton3D/body2 as MeshInstance3D
+@onready var hair := $player/arms_skeleton/Skeleton3D/hair_005 as MeshInstance3D
+@onready var head := $player/arms_skeleton/Skeleton3D/head_001 as MeshInstance3D
 @onready var pixelation := $Pixelation as MeshInstance3D
 
 
@@ -211,11 +214,11 @@ func get_up_from_streaming_wrong() -> void:
 
 
 func set_up_walls(new_position: Vector3) -> void:
-	global_position = new_position
+	vanish(new_position, func(): SignalBus.upped_wall.emit())
 
 
 func set_down_wall(new_position: Vector3) -> void:
-	global_position = new_position
+	vanish(new_position, func(): SignalBus.downed_wall.emit())
 
 
 func penetrate(new_position: Vector3) -> void:
@@ -305,3 +308,27 @@ func after_animate(
 
 func get_target_ang(rotation_target: float) -> float:
 	return global_rotation.y + wrapf(rotation_target - global_rotation.y, -PI, PI)
+
+
+func vanish(new_position: Vector3, on_end: Callable) -> void:
+	var disappear_tween := create_tween()
+	disappear_tween.finished.connect(_on_disappear.bind(new_position, on_end))
+
+	disappear_tween.set_parallel(true)
+	disappear_tween.tween_property(arms, "transparency", 1.0, 1.0)
+	disappear_tween.tween_property(body, "transparency", 1.0, 1.0)
+	disappear_tween.tween_property(hair, "transparency", 1.0, 1.0)
+	disappear_tween.tween_property(head, "transparency", 1.0, 1.0)
+
+
+func _on_disappear(new_position: Vector3, on_end: Callable) -> void:
+	global_position = new_position
+
+	var appear_tween := create_tween()
+	appear_tween.finished.connect(on_end)
+
+	appear_tween.set_parallel(true)
+	appear_tween.tween_property(arms, "transparency", 0.0, 1.0)
+	appear_tween.tween_property(body, "transparency", 0.0, 1.0)
+	appear_tween.tween_property(hair, "transparency", 0.0, 1.0)
+	appear_tween.tween_property(head, "transparency", 0.0, 1.0)
