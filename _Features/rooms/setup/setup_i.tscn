@@ -286,7 +286,6 @@ transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.82062, 1.3068, -1.85687)
 activable_name = "Move Chair"
 activable_text = "Mover la silla"
-activable_alternative_text = ""
 
 [node name="ActionLabel" parent="ActivablesPenetrated/MoveChairActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
@@ -305,6 +304,7 @@ visible = false
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.871468, 0.690414, -0.560438)
 activable_name = "StreamIn"
 activable_text = "Hacer Stream"
+activable_alternative_text = "Mover la silla"
 
 [node name="ActionLabel" parent="Activables/StreamInActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
@@ -326,6 +326,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.67981, 0)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.871468, 0.690414, -0.560438)
 activable_name = "StreamOut"
 activable_text = "Dejar de hacer stream"
+activable_alternative_text = "Echar una cabezadita"
 
 [node name="ActionLabel" parent="Activables/StreamOutActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
@@ -345,6 +346,7 @@ visible = false
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.636316, 0.690414, -0.661427)
 activable_name = "StreamWrong"
 activable_text = "ssHssascssser ssStressams"
+activable_alternative_text = "ffFMooffverfff ffLa Sffifflfllaa"
 
 [node name="ActionLabel" parent="Activables/StreamInIncorrectActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
@@ -364,6 +366,7 @@ visible = false
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.636316, 0.690414, -0.661427)
 activable_name = "StreamOutWrong"
 activable_text = "Dssesjssasr sdses shssascser streamsss"
+activable_alternative_text = "Ecffhffar funfa cffabezffffaditaffff"
 
 [node name="ActionLabel" parent="Activables/StreamOutInCorrectActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
@@ -403,6 +406,7 @@ visible = false
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.982227, 1.69041, 3.56018)
 activable_name = "Exit Window"
 activable_text = "Salir por la ventana"
+activable_alternative_text = "Asomarse"
 
 [node name="ActionLabel" parent="Activables/ExitWindowActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.3, 1.35687, 1.41756)
@@ -419,6 +423,7 @@ visible = false
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.982227, 1.69041, 3.56018)
 activable_name = "Enter Window"
 activable_text = "Volver"
+activable_alternative_text = "Asomarse"
 
 [node name="ActionLabel" parent="Activables/EnterWindowActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.1947, 1.35687, 1.6294)
@@ -440,6 +445,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.45138, 0)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.27228, 0.686402, -3.53155)
 activable_name = "Blinders Up"
 activable_text = "Levantar la persiana"
+activable_alternative_text = "Cuestionarse el cordelito"
 
 [node name="ActionLabel" parent="Activables/BlindersUpActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.16504, 2.5, 3.18097)
@@ -459,6 +465,7 @@ visible = false
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.27228, 0.686402, -3.53155)
 activable_name = "Blinders Down"
 activable_text = "Bajar la persiana"
+activable_alternative_text = "Cuestionarse el cordelito"
 
 [node name="ActionLabel" parent="Activables/BlindersDownActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.1, 2.5, 3.2)

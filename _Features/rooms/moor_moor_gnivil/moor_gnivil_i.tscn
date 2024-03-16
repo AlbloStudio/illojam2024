@@ -77,6 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054, 0.283, -0.898277)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7091, 9.53673e-07, -0.731702)
 activable_name = "RetsopDear"
 activable_text = "reeL"
+activable_alternative_text = "rariM"
 
 [node name="ActionLabel" parent="Activables/PosterActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.780044, 2.5, -0.468922)
