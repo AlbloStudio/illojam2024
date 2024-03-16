@@ -54,6 +54,7 @@ script = ExtResource("8_ss0ve")
 
 [node name="IndicatorMesh" type="MeshInstance3D" parent="Indicator"]
 transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, 1, 0)
+layers = 4
 mesh = SubResource("PlaneMesh_rv4fl")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8w3c1")

@@ -1,9 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb43tlfgdsw7r"]
+[gd_scene load_steps=11 format=3 uid="uid://bb43tlfgdsw7r"]
 
 [ext_resource type="Script" path="res://_Features/activables/tablet/tablet.gd" id="1_qxtak"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_04h7g"]
-[ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="3_wob0v"]
-[ext_resource type="Texture2D" uid="uid://hkygyyh1qllt" path="res://_Features/UI/Text Box RightRed.svg" id="4_vff8x"]
+[ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="2_7iick"]
+[ext_resource type="Texture2D" uid="uid://y7eip61yk0cu" path="res://_Features/UI/Text BoxRed.svg" id="3_qsr3f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihbs6"]
+render_priority = 2
+transparency = 1
+albedo_texture = ExtResource("3_qsr3f")
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+clearcoat_roughness = 0.0
+texture_repeat = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yp37t"]
+material = SubResource("StandardMaterial3D_ihbs6")
+size = Vector2(2.875, 1.535)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t6nb5"]
 height = 0.61301
@@ -19,21 +32,31 @@ albedo_color = Color(0.270588, 0.270588, 0.270588, 1)
 material = SubResource("StandardMaterial3D_n1rs8")
 size = Vector3(0.3, 0.02, 0.26)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihbs6"]
-transparency = 1
-albedo_texture = ExtResource("4_vff8x")
-emission = Color(1, 1, 1, 1)
-emission_operator = 1
-clearcoat_roughness = 0.0
-texture_repeat = false
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ovsk0"]
-material = SubResource("StandardMaterial3D_ihbs6")
-size = Vector2(2.875, 1.535)
-
 [node name="Tablet" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_qxtak")
+
+[node name="SpeechBubble" type="Node" parent="."]
+
+[node name="SpeechBubbleLabel" type="Label3D" parent="SpeechBubble"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.790019, 2.51155, -0.588013)
+double_sided = false
+outline_modulate = Color(0, 0, 0, 0)
+text = "Holi, esto es un bocadillo de texto muy largo y queremos probar el tema del word wrap a ver qué tal"
+font = ExtResource("2_7iick")
+autowrap_mode = 2
+width = 454.82
+
+[node name="SpeechBubbleBubble" type="MeshInstance3D" parent="SpeechBubble/SpeechBubbleLabel"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0300701, -0.21186, 0)
+layers = 2
+mesh = SubResource("PlaneMesh_yp37t")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SpeechBubble/SpeechBubbleLabel"]
+transform = Transform3D(-0.994522, 0, -0.104528, -0.104528, -4.37114e-08, 0.994522, -4.56907e-09, 1, 4.34719e-08, 0.197354, -0.367381, 0.934128)
+light_cull_mask = 4293918722
+omni_range = 4096.0
+omni_attenuation = 0.148651
 
 [node name="Tablet" parent="." instance=ExtResource("2_04h7g")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

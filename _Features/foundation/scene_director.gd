@@ -16,7 +16,9 @@ var awakes = {
 @onready var living_room := $Stage/LivingRoom/LivingRoom as LivingRoom
 @onready var nolas := $Stage/MoorGnivil/Nolas as Nolas
 @onready var setup := $Stage/Setup/setup as Setup
-@onready var tablet_1 := $Stage/LivingRoom/Tablet1 as Tablet
+@onready var tablet_living_room := $Stage/LivingRoom/TabletLivingRoom as Tablet
+@onready var tablet_nolas := $Stage/MoorGnivil/TabletNolas as Tablet
+@onready var tablet_secret := $Stage/Setup/TabletSecret as Tablet
 @onready var ui := $UI as GameUI
 @onready var audio := $Audio as Audio
 @onready var scan := $Scan as ColorRect
@@ -46,11 +48,21 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 		return
 
 	match activable_name:
-		"Tablet":
+		"TabletLivingRoom":
 			if alternative:
 				pass
 			else:
-				_tablet_opened()
+				_tablet_living_room_opened()
+		"TabletNolas":
+			if alternative:
+				pass
+			else:
+				_tablet_nolas_opened()
+		"TabletSecret":
+			if alternative:
+				pass
+			else:
+				_tablet_secret_opened()
 		"Get Naked":
 			if alternative:
 				pass
@@ -173,10 +185,18 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_move_chair()
 
 
-func _tablet_opened() -> void:
-	tablet_1.say("TEXTO DE LA PRIMERA TABLET")
+func _tablet_living_room_opened() -> void:
+	tablet_living_room.say("TEXTO DE LA PRIMERA TABLET")
 	create_tween().tween_callback(living_room.make_closet_appear).set_delay(3.0)
 	create_tween().tween_callback(nolas.make_closet_appear).set_delay(3.0)
+
+
+func _tablet_nolas_opened() -> void:
+	tablet_nolas.say("TEXTO DE LA SEGUNDA TABLET")
+
+
+func _tablet_secret_opened() -> void:
+	tablet_secret.say("TEXTO DE LA TERCERA TABLET")
 
 
 func _set_current_activable(new_activable: Activable) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=37 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="Script" path="res://_Features/audio/audio.gd" id="2_3jmlc"]
@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://m7oax2by6piw" path="res://_Features/audio/dream12.mp3" id="11_r4hg3"]
 [ext_resource type="AudioStream" uid="uid://drmnieapiewxo" path="res://_Features/audio/despierta.mp3" id="12_bx7a7"]
 [ext_resource type="AudioStream" uid="uid://b4x4go7yxbinu" path="res://_Features/audio/dream13.mp3" id="12_nchqr"]
+[ext_resource type="Texture2D" uid="uid://y7eip61yk0cu" path="res://_Features/UI/Text BoxRed.svg" id="22_mfdw5"]
 
 [sub_resource type="Gradient" id="Gradient_n7fhn"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
@@ -90,6 +91,19 @@ disable_receive_shadows = true
 material = SubResource("StandardMaterial3D_jw0lm")
 size = Vector2(10.605, 10.59)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihbs6"]
+render_priority = 2
+transparency = 1
+albedo_texture = ExtResource("22_mfdw5")
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+clearcoat_roughness = 0.0
+texture_repeat = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_am4ps"]
+material = SubResource("StandardMaterial3D_ihbs6")
+size = Vector2(2.875, 1.535)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_6gnox")
 
@@ -118,15 +132,15 @@ bus = &"DESPIERTA"
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, 2.69028, 9.65312, 0.89187)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.2928, 9.65312, -2.44514)
 current = true
-fov = 74.5032
+fov = 74.44
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, 2.69028, 9.65312, 0.89187)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.29276, 9.65312, -2.44516)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0
@@ -142,7 +156,7 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69028, -0.00187636, 0.89187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29252, -0.00187636, -2.44531)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")
@@ -186,6 +200,7 @@ script = ExtResource("9_l32nb")
 [node name="CeilingLight4" type="SpotLight3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.182893, 3.12979, 5.03192)
 light_energy = 2.0
+light_cull_mask = 4294966273
 shadow_enabled = true
 shadow_bias = 0.07
 shadow_normal_bias = 3.604
@@ -200,6 +215,7 @@ spot_angle = 77.8
 [node name="CeilingLight2" type="SpotLight3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.21567, 2.93938, -0.952699)
 light_energy = 2.0
+light_cull_mask = 4294966273
 shadow_enabled = true
 shadow_bias = 0.07
 shadow_normal_bias = 3.604
@@ -212,24 +228,32 @@ spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 77.8
 
-[node name="Tablet2" parent="Stage/MoorGnivil" instance=ExtResource("4_nyxmf")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.365335, 2.5, 4.47527)
+[node name="TabletNolas" parent="Stage/MoorGnivil" instance=ExtResource("4_nyxmf")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.01423, 0.621368, 5.74418)
 
-[node name="ActionLabel" parent="Stage/MoorGnivil/Tablet2/Tablet" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0538203, 2.5, -0.978088)
-
-[node name="CollisionShape3D" parent="Stage/MoorGnivil/Tablet2/Tablet" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.408002, 0.664923, -0.822002)
-
-[node name="Indicator" parent="Stage/MoorGnivil/Tablet2/Tablet" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.428793)
+[node name="SpeechBubbleLabel" parent="Stage/MoorGnivil/TabletNolas/SpeechBubble" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.45305, 3.14042, -6.45379)
 visible = false
+
+[node name="SpeechBubbleBubble" parent="Stage/MoorGnivil/TabletNolas/SpeechBubble/SpeechBubbleLabel" index="0"]
+mesh = SubResource("PlaneMesh_am4ps")
+
+[node name="Tablet" parent="Stage/MoorGnivil/TabletNolas" index="1"]
+activable_name = "TabletNolas"
+activable_text = "Activar"
+
+[node name="Indicator" parent="Stage/MoorGnivil/TabletNolas/Tablet" index="3"]
+visible = false
+
+[node name="MeshInstance3D" parent="Stage/MoorGnivil/TabletNolas" index="2"]
+transform = Transform3D(0.866025, 0, -0.5, -0.5, -4.37114e-08, -0.866025, -2.18557e-08, 1, -3.78552e-08, 0, 0, 0)
 
 [node name="LivingRoom" type="Node3D" parent="Stage"]
 
 [node name="CeilingLight3" type="SpotLight3D" parent="Stage/LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.406277, 3.02204, 2.89688)
 light_energy = 2.0
+light_cull_mask = 4294966273
 shadow_enabled = true
 shadow_bias = 0.07
 shadow_normal_bias = 3.604
@@ -245,6 +269,7 @@ spot_angle = 77.8
 [node name="CeilingLight1" type="SpotLight3D" parent="Stage/LivingRoom"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.61381, -2.60078)
 light_energy = 2.0
+light_cull_mask = 4294966273
 shadow_enabled = true
 shadow_bias = 0.07
 shadow_normal_bias = 3.604
@@ -258,13 +283,21 @@ spot_angle = 77.8
 
 [node name="LivingRoom" parent="Stage/LivingRoom" instance=ExtResource("4_og77x")]
 
-[node name="Tablet1" parent="Stage/LivingRoom" instance=ExtResource("4_nyxmf")]
+[node name="TabletLivingRoom" parent="Stage/LivingRoom" instance=ExtResource("4_nyxmf")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.98031, 0.621368, -4.07085)
 
-[node name="Indicator" parent="Stage/LivingRoom/Tablet1/Tablet" index="3"]
+[node name="SpeechBubbleLabel" parent="Stage/LivingRoom/TabletLivingRoom/SpeechBubble" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.53245, 3.10003, -4.75718)
 visible = false
 
-[node name="MeshInstance3D" parent="Stage/LivingRoom/Tablet1" index="1"]
+[node name="Tablet" parent="Stage/LivingRoom/TabletLivingRoom" index="1"]
+activable_name = "TabletLivingRoom"
+activable_text = "Activar"
+
+[node name="Indicator" parent="Stage/LivingRoom/TabletLivingRoom/Tablet" index="3"]
+visible = false
+
+[node name="MeshInstance3D" parent="Stage/LivingRoom/TabletLivingRoom" index="2"]
 transform = Transform3D(0.866025, 0, -0.5, -0.5, -4.37114e-08, -0.866025, -2.18557e-08, 1, -3.78552e-08, 0, 0, 0)
 
 [node name="Setup" type="Node3D" parent="Stage"]
@@ -273,6 +306,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.09
 [node name="CeilingLight5" type="SpotLight3D" parent="Stage/Setup"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.16548, 2.53399, 2.21761)
 light_color = Color(0.419608, 0.419608, 0.419608, 1)
+light_cull_mask = 4294966273
 shadow_enabled = true
 shadow_bias = 0.07
 shadow_normal_bias = 3.604
@@ -288,6 +322,7 @@ spot_angle = 77.8
 [node name="CeilingLight6" type="SpotLight3D" parent="Stage/Setup"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28532, 2.27513, -1.91125)
 light_color = Color(0.419608, 0.419608, 0.419608, 1)
+light_cull_mask = 4294966273
 shadow_enabled = true
 shadow_bias = 0.07
 shadow_normal_bias = 3.604
@@ -301,7 +336,30 @@ spot_angle = 77.8
 
 [node name="setup" parent="Stage/Setup" instance=ExtResource("11_qjeg8")]
 
-[editable path="Stage/MoorGnivil/Tablet2"]
-[editable path="Stage/MoorGnivil/Tablet2/Tablet"]
-[editable path="Stage/LivingRoom/Tablet1"]
-[editable path="Stage/LivingRoom/Tablet1/Tablet"]
+[node name="TabletSecret" parent="Stage/Setup" instance=ExtResource("4_nyxmf")]
+transform = Transform3D(0.0163181, -0.999867, 0, -4.37056e-08, -7.13287e-10, 1, -0.999867, -0.0163181, -4.37114e-08, -0.425479, 0.0301816, 5.79743)
+
+[node name="SpeechBubbleLabel" parent="Stage/Setup/TabletSecret/SpeechBubble" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -29.963, 3.14042, 0.338977)
+visible = false
+
+[node name="SpeechBubbleBubble" parent="Stage/Setup/TabletSecret/SpeechBubble/SpeechBubbleLabel" index="0"]
+mesh = SubResource("PlaneMesh_am4ps")
+
+[node name="Tablet" parent="Stage/Setup/TabletSecret" index="1"]
+transform = Transform3D(1, 2.88658e-15, 0, 0, -4.37114e-08, -1, 7.10724e-15, 1, -4.37114e-08, 0.549484, -0.103274, -0.066297)
+activable_name = "TabletSecret"
+activable_text = "Activar"
+
+[node name="Indicator" parent="Stage/Setup/TabletSecret/Tablet" index="3"]
+visible = false
+
+[node name="MeshInstance3D" parent="Stage/Setup/TabletSecret" index="2"]
+transform = Transform3D(0.866025, 0, -0.5, -0.5, -4.37114e-08, -0.866025, -2.18557e-08, 1, -3.78552e-08, 0, 0, 0)
+
+[editable path="Stage/MoorGnivil/TabletNolas"]
+[editable path="Stage/MoorGnivil/TabletNolas/Tablet"]
+[editable path="Stage/LivingRoom/TabletLivingRoom"]
+[editable path="Stage/LivingRoom/TabletLivingRoom/Tablet"]
+[editable path="Stage/Setup/TabletSecret"]
+[editable path="Stage/Setup/TabletSecret/Tablet"]
