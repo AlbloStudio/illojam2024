@@ -120,7 +120,7 @@ bus = &"DESPIERTA"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, 2.69028, 9.65312, 0.89187)
 current = true
-fov = 74.9769
+fov = 74.5032
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -168,25 +168,13 @@ shape = SubResource("BoxShape3D_i8yqo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4554, 0.5, -6.03532)
 shape = SubResource("BoxShape3D_q6i7a")
 
-[node name="Tablet" parent="Stage" instance=ExtResource("4_nyxmf")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0426037, 2.5, -5.29767)
-
-[node name="ActionLabel" parent="Stage/Tablet/Tablet" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0538203, 2.5, -0.978088)
-
-[node name="CollisionShape3D" parent="Stage/Tablet/Tablet" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.408002, 0.664923, -0.822002)
-
-[node name="Indicator" parent="Stage/Tablet/Tablet" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.428793)
-visible = false
-
 [node name="MoorGnivil" type="Node3D" parent="Stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.7371)
 script = ExtResource("8_ku7b2")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00467682, 3.05618, 1.78071)
+visible = false
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_a8ryy")
 skeleton = NodePath("")
@@ -224,6 +212,19 @@ spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 77.8
 
+[node name="Tablet2" parent="Stage/MoorGnivil" instance=ExtResource("4_nyxmf")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.365335, 2.5, 4.47527)
+
+[node name="ActionLabel" parent="Stage/MoorGnivil/Tablet2/Tablet" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0538203, 2.5, -0.978088)
+
+[node name="CollisionShape3D" parent="Stage/MoorGnivil/Tablet2/Tablet" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.408002, 0.664923, -0.822002)
+
+[node name="Indicator" parent="Stage/MoorGnivil/Tablet2/Tablet" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.428793)
+visible = false
+
 [node name="LivingRoom" type="Node3D" parent="Stage"]
 
 [node name="CeilingLight3" type="SpotLight3D" parent="Stage/LivingRoom"]
@@ -256,6 +257,15 @@ spot_attenuation = 0.812252
 spot_angle = 77.8
 
 [node name="LivingRoom" parent="Stage/LivingRoom" instance=ExtResource("4_og77x")]
+
+[node name="Tablet1" parent="Stage/LivingRoom" instance=ExtResource("4_nyxmf")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.98031, 0.621368, -4.07085)
+
+[node name="Indicator" parent="Stage/LivingRoom/Tablet1/Tablet" index="3"]
+visible = false
+
+[node name="MeshInstance3D" parent="Stage/LivingRoom/Tablet1" index="1"]
+transform = Transform3D(0.866025, 0, -0.5, -0.5, -4.37114e-08, -0.866025, -2.18557e-08, 1, -3.78552e-08, 0, 0, 0)
 
 [node name="Setup" type="Node3D" parent="Stage"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.0907, 0, 1.58796)
@@ -291,5 +301,7 @@ spot_angle = 77.8
 
 [node name="setup" parent="Stage/Setup" instance=ExtResource("11_qjeg8")]
 
-[editable path="Stage/Tablet"]
-[editable path="Stage/Tablet/Tablet"]
+[editable path="Stage/MoorGnivil/Tablet2"]
+[editable path="Stage/MoorGnivil/Tablet2/Tablet"]
+[editable path="Stage/LivingRoom/Tablet1"]
+[editable path="Stage/LivingRoom/Tablet1/Tablet"]

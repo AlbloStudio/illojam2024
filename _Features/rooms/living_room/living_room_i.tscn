@@ -206,9 +206,6 @@ shape = SubResource("BoxShape3D_d51n7")
 [node name="Indicator" parent="Clothes/underwear/Activable" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.260035, 0.295817, -0.396384)
 
-[node name="IndicatorMesh" parent="Clothes/underwear/Activable/Indicator" index="0"]
-transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, 1, 0)
-
 [node name="Activables" type="Node3D" parent="." index="3"]
 
 [node name="SofaActivableLayUpWall" parent="Activables" index="0" instance=ExtResource("3_t3t5u")]
@@ -468,6 +465,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.588453, 0, -0.250247)
 
 [node name="Plane_018" parent="." index="26"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0529, 0.842855, 0.23389)
+
+[node name="tablet" parent="." index="40"]
+visible = false
 
 [node name="Closet_001" parent="." index="41"]
 visible = false
