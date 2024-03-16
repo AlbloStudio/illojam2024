@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccopiuj5gnm7m"]
+[gd_scene load_steps=10 format=3 uid="uid://ccopiuj5gnm7m"]
 
 [ext_resource type="Script" path="res://_Features/UI/ui.gd" id="1_634ex"]
-[ext_resource type="FontFile" uid="uid://c1lyc6pbg4wwk" path="res://_Features/UI/aliengaucho-92.ttf" id="2_ayjmb"]
+[ext_resource type="Texture2D" uid="uid://bygk6tvwikn0j" path="res://_Features/UI/DESPIERTA Upper Text.svg" id="2_ys5nf"]
+[ext_resource type="Texture2D" uid="uid://ctwesjymkyff0" path="res://_Features/UI/DESPIERTA Under Text.svg" id="3_aiw18"]
 
 [sub_resource type="Gradient" id="Gradient_2kn1o"]
 colors = PackedColorArray(0.427493, 0.427493, 0.427493, 1, 0.203922, 0.203922, 0.203922, 1)
@@ -66,14 +67,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Despierta"]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("2_ayjmb")
-theme_override_font_sizes/font_size = 40
-text = "D E S P I E R T A"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="TextureRect" type="TextureRect" parent="Despierta"]
 layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Despierta"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Despierta/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 35
+
+[node name="Label2" type="TextureRect" parent="Despierta/CenterContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_aiw18")
+
+[node name="Label" type="TextureRect" parent="Despierta/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_ys5nf")

@@ -6,7 +6,7 @@ class_name GameUI extends Control
 var initial_despierta_label_position: Vector2
 
 @onready var despierta := $Despierta as PanelContainer
-@onready var despierta_label := $Despierta/Label as Label
+@onready var despierta_label := $Despierta/CenterContainer as CenterContainer
 @onready var progress_bar := $Progress as TextureProgressBar
 
 
