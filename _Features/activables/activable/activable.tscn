@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctv4r5oi50oy1"]
+[gd_scene load_steps=13 format=3 uid="uid://ctv4r5oi50oy1"]
 
 [ext_resource type="Script" path="res://_Features/activables/activable/activable.gd" id="1_s7sqx"]
 [ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_oju4k"]
@@ -8,18 +8,15 @@
 [ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_deactivated.gd" id="6_p1ox2"]
 [ext_resource type="Script" path="res://_Features/activables/activable/activable_label.gd" id="7_48efp"]
 [ext_resource type="Script" path="res://_Features/activables/activable/indicator.gd" id="8_ss0ve"]
+[ext_resource type="Texture2D" uid="uid://ctelq83bfqylp" path="res://_Features/UI/Interaction Circle.svg" id="9_drbhc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvekq"]
-albedo_color = Color(0.298039, 1, 0.901961, 1)
+[sub_resource type="PlaneMesh" id="PlaneMesh_rv4fl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8w3c1"]
+transparency = 1
+albedo_texture = ExtResource("9_drbhc")
 emission_enabled = true
-emission = Color(0.529412, 0.509804, 0.0117647, 1)
-emission_energy_multiplier = 16.0
-disable_receive_shadows = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_ew0qg"]
-material = SubResource("StandardMaterial3D_kvekq")
-radius = 0.1
-height = 0.2
+emission = Color(0.956863, 0.956863, 0, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_aa503"]
 radius = 2.02685
@@ -56,9 +53,10 @@ script = ExtResource("6_p1ox2")
 script = ExtResource("8_ss0ve")
 
 [node name="IndicatorMesh" type="MeshInstance3D" parent="Indicator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_ew0qg")
+transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, 1, 0)
+mesh = SubResource("PlaneMesh_rv4fl")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8w3c1")
 
 [node name="IndicatorTrigger" type="Area3D" parent="Indicator"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

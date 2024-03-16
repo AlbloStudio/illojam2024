@@ -9,6 +9,7 @@ var desired_velocity := Vector2.ZERO
 var clothes = ["underwear", "pants", "tshirt"]
 var original_speech_bubble_position := Vector3.ZERO
 var previous_position := Vector3.ZERO
+var dont_animate_movement := false
 
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_controlled := $FiniteStateMachine/Controlled as PlayerState
@@ -83,12 +84,45 @@ func after_mirror_chair() -> void:
 	animate("SitOnChair", previous_position, Vector3(0, PI, 0), state_controlled.name, true)
 
 
-func lay_down_on_sofa(new_position: Vector3) -> void:
-	animate("LayUp", new_position, Vector3.ZERO, state_controlled.name, true, _layed_down)
+func lay_down_on_sofa(new_position: Vector3, is_wall := false) -> void:
+	print(global_position)
+
+	if !is_wall:
+		global_position.x -= 0.9
+		global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
+		animate(
+			"LayingSofa",
+			new_position,
+			global_rotation,
+			state_controlled.name,
+			false,
+			_layed_down,
+		)
+	else:
+		global_position.x += 0.9
+		global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
+		animate(
+			"LayingSofaWall",
+			new_position,
+			global_rotation,
+			state_controlled.name,
+			false,
+			_layed_down,
+		)
 
 
 func lay_up_from_sofa(new_position: Vector3, is_wall := false) -> void:
-	animate("LayUp", new_position, Vector3.ZERO, state_controlled.name, false, _layed_up)
+	global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
+	animate(
+		"LayingSofa" if !is_wall else "LayingSofaWall",
+		new_position,
+		global_rotation,
+		state_controlled.name,
+		true,
+		_layed_up,
+		null,
+		0
+	)
 	if is_wall:
 		SignalBus.awaked.emit("sofa")
 
@@ -102,11 +136,15 @@ func _change_player_speed() -> void:
 func _layed_down() -> void:
 	_change_player_speed()
 	SignalBus.layed_down.emit()
+	global_rotation = Vector3(0, get_target_ang(0), 0)
+	dont_animate_movement = true
+	player_animation.play("LayingDownIddle", 0)
 
 
 func _layed_up() -> void:
 	_change_player_speed()
 	SignalBus.layed_up.emit()
+	dont_animate_movement = false
 
 
 func sit_to_stream(new_position: Vector3) -> void:
@@ -173,7 +211,7 @@ func penetrated() -> void:
 
 
 func exit_window() -> void:
-	global_rotation.y = -PI / 2
+	global_rotation.y = get_target_ang(-PI / 2)
 	var new_position = global_position - Vector3(1.5, 0, 0)
 
 	animate(
@@ -207,7 +245,8 @@ func animate(
 	target_state_name: String,
 	backwards := false,
 	on_finished := func(): pass,
-	walking_target = null
+	walking_target = null,
+	blend := -1
 ) -> void:
 	previous_position = global_position
 
@@ -217,13 +256,13 @@ func animate(
 		create_tween().tween_property(self, "global_position", walking_target, 1.2)
 
 	if !backwards:
-		player_animation.play(animation_name)
+		player_animation.play(animation_name, blend)
 	else:
-		player_animation.play_backwards(animation_name)
+		player_animation.play_backwards(animation_name, blend)
 
 	var animation_length = player_animation.current_animation_length
 
-	var target_ang = global_rotation.y + wrapf(rotation_target.y - global_rotation.y, -PI, PI)
+	var target_ang = get_target_ang(rotation_target.y)
 
 	var animation_tweener = create_tween()
 	animation_tweener.set_parallel(true)
@@ -243,3 +282,7 @@ func after_animate(
 ) -> void:
 	state_machine.transition_to(target_state_name)
 	on_finished.call()
+
+
+func get_target_ang(rotation_target: float) -> float:
+	return global_rotation.y + wrapf(rotation_target - global_rotation.y, -PI, PI)
