@@ -66,6 +66,8 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 			_read_mirror_poster()
 		"Lay down":
 			_sofa_lay_down()
+		"Lay down wall":
+			_sofa_lay_down_wall()
 		"Lay up":
 			_sofa_lay_up()
 		"Lay up wall":
@@ -211,6 +213,8 @@ func _read_mirror_poster() -> void:
 func _sofa_lay_down() -> void:
 	player.lay_down_on_sofa(living_room.get_layed_position())
 
+func _sofa_lay_down_wall() -> void:
+	player.lay_down_on_sofa(living_room.get_layed_position(), true)
 
 func _sofa_lay_up() -> void:
 	player.lay_up_from_sofa(living_room.get_up_position())
