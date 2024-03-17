@@ -166,6 +166,7 @@ script = ExtResource("2_3jmlc")
 song_layers = Array[AudioStream]([ExtResource("3_prhnp"), ExtResource("5_eo21i"), ExtResource("6_3nhco"), ExtResource("7_3aj0d"), ExtResource("8_g4ua3"), ExtResource("9_8pkpd"), ExtResource("10_pl0ge"), ExtResource("11_r4hg3"), ExtResource("12_nchqr")])
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="Audio"]
+volume_db = -13.131
 
 [node name="Plas" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("12_bx7a7")
@@ -178,7 +179,7 @@ bus = &"DESPIERTA"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.0627, 8.99813, -2.59619)
 current = true
-fov = 74.6587
+fov = 74.9701
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
