@@ -64,10 +64,24 @@ shader_parameter/pallete = SubResource("GradientTexture2D_gteco")
 [sub_resource type="Environment" id="Environment_gtx4b"]
 background_mode = 1
 background_color = Color(0.2, 0.2, 0.2, 1)
-fog_light_color = Color(1, 1, 1, 1)
+ssr_enabled = true
+ssao_enabled = true
+ssao_intensity = 3.35
+ssao_detail = 0.92
+ssao_sharpness = 0.27
+ssil_enabled = true
+ssil_radius = 0.81
+ssil_intensity = 1.45
+glow_enabled = true
+glow_strength = 1.28
+glow_bloom = 0.01
+fog_enabled = true
+fog_light_color = Color(0.356863, 0.356863, 0.356863, 1)
 fog_light_energy = 0.32
-fog_density = 0.0025
-volumetric_fog_density = 0.0
+fog_density = 0.0125
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.2, 0.2, 0.2, 1)
+volumetric_fog_emission = Color(0.2, 0.2, 0.2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jau8k"]
 size = Vector3(17.4316, 2, 0.224121)
@@ -108,7 +122,6 @@ size = Vector2(2.875, 1.535)
 script = ExtResource("1_6gnox")
 
 [node name="Scan" type="ColorRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_yhrax")
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,9 +145,15 @@ bus = &"DESPIERTA"
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
+<<<<<<< Updated upstream
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -3.21053, 9.65312, -2.40769)
 current = true
 fov = 74.5936
+=======
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 2.69028, 9.65312, 0.89187)
+current = true
+fov = 69.2089
+>>>>>>> Stashed changes
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -188,7 +207,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.7371)
 script = ExtResource("8_ku7b2")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Stage/MoorGnivil"]
+<<<<<<< Updated upstream
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00467682, 3.05618, 1.36269)
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00467682, 3.05618, 1.46719)
+>>>>>>> Stashed changes
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_a8ryy")
 skeleton = NodePath("")
@@ -197,6 +220,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.48041)
 script = ExtResource("9_l32nb")
 
+<<<<<<< Updated upstream
 [node name="CeilingLight4" type="SpotLight3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.182893, 3.12979, 5.03192)
 light_energy = 2.0
@@ -282,6 +306,10 @@ spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 77.8
 
+=======
+[node name="LivingRoom" type="Node3D" parent="Stage"]
+
+>>>>>>> Stashed changes
 [node name="LivingRoom" parent="Stage/LivingRoom" instance=ExtResource("4_og77x")]
 
 [node name="TabletLivingRoom" parent="Stage/LivingRoom" instance=ExtResource("4_nyxmf")]
@@ -308,6 +336,7 @@ transform = Transform3D(0.866025, 0, -0.5, -0.5, -4.37114e-08, -0.866025, -2.185
 [node name="Setup" type="Node3D" parent="Stage"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.0907, 0, 1.58796)
 
+<<<<<<< Updated upstream
 [node name="CeilingLight5" type="SpotLight3D" parent="Stage/Setup"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.16548, 2.53399, 2.21761)
 light_color = Color(0.419608, 0.419608, 0.419608, 1)
@@ -339,6 +368,8 @@ spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 77.8
 
+=======
+>>>>>>> Stashed changes
 [node name="setup" parent="Stage/Setup" instance=ExtResource("11_qjeg8")]
 
 [node name="TabletSecret" parent="Stage/Setup" instance=ExtResource("4_nyxmf")]

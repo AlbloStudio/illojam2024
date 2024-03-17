@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://s4ih86hooy3"
+path="res://.godot/imported/no me puedo quitar.mp3-b9082112008f2537b3eebd9955619693.mp3str"
+
+[deps]
+
+source_file="res://_Features/audio/no me puedo quitar.mp3"
+dest_files=["res://.godot/imported/no me puedo quitar.mp3-b9082112008f2537b3eebd9955619693.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

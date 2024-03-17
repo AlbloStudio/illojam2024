@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccopiuj5gnm7m"]
+[gd_scene load_steps=7 format=3 uid="uid://ccopiuj5gnm7m"]
 
 [ext_resource type="Script" path="res://_Features/UI/ui.gd" id="1_634ex"]
 [ext_resource type="Texture2D" uid="uid://bygk6tvwikn0j" path="res://_Features/UI/DESPIERTA Upper Text.svg" id="2_ys5nf"]
 [ext_resource type="Texture2D" uid="uid://ctwesjymkyff0" path="res://_Features/UI/DESPIERTA Under Text.svg" id="3_aiw18"]
+[ext_resource type="FontFile" uid="uid://dm3avbcvhbwqs" path="res://_Features/UI/HelpMe.ttf" id="4_eroa2"]
 
 [sub_resource type="Gradient" id="Gradient_lxqms"]
 offsets = PackedFloat32Array(0, 0.099359, 0.951923, 1)
@@ -52,6 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Despierta"]
+visible = false
 layout_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="Despierta"]
@@ -62,10 +64,9 @@ layout_mode = 2
 theme_override_constants/margin_left = 45
 theme_override_constants/margin_top = 35
 
-[node name="Label2" type="TextureRect" parent="Despierta/CenterContainer/MarginContainer"]
+[node name="Label" type="Label" parent="Despierta/CenterContainer/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("3_aiw18")
-
-[node name="Label" type="TextureRect" parent="Despierta/CenterContainer"]
-layout_mode = 2
-texture = ExtResource("2_ys5nf")
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_eroa2")
+theme_override_font_sizes/font_size = 135
+text = "DESPIERTA"

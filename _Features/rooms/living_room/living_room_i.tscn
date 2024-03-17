@@ -500,11 +500,51 @@ collision_layer = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027061, 0.161621, -0.0920839)
 shape = SubResource("BoxShape3D_k7482")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Sphere_006" index="0"]
+transform = Transform3D(19.8211, 0, 0, 0, 0.0339052, -19.821, 0, 19.821, 0.0339052, -0.0487671, -5.35033, -0.0447617)
+light_color = Color(0.811765, 0.721569, 0.643137, 1)
+light_energy = 3.739
+light_cull_mask = 4294967289
+shadow_enabled = true
+shadow_blur = 10.0
+
 [node name="Pennywise" type="MeshInstance3D" parent="." index="72"]
 transform = Transform3D(0.00200873, -0.999998, -4.74728e-10, -0.0100427, -1.52312e-05, -0.622244, 1.15077, 0.00174541, -0.00543026, 3.50785, 1.69184, -1.74533)
 visible = false
 mesh = SubResource("PlaneMesh_bqp4g")
 surface_material_override/0 = SubResource("StandardMaterial3D_4gha0")
+
+[node name="CeilingLight1" type="SpotLight3D" parent="." index="73"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.68929, -2.12626)
+light_color = Color(1, 1, 0.956863, 1)
+light_cull_mask = 4294967289
+shadow_enabled = true
+shadow_bias = 0.07
+shadow_normal_bias = 3.604
+shadow_reverse_cull_face = true
+shadow_opacity = 0.75
+distance_fade_length = 0.0
+spot_range = 30.0
+spot_attenuation = 0.812252
+spot_angle = 77.8
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CeilingLight1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.410153, -6.36028, -1.66665)
+light_color = Color(0.698039, 0.831373, 0.87451, 1)
+light_energy = 0.25
+light_specular = 0.0
+light_cull_mask = 4294967289
+shadow_enabled = true
+spot_angle = 79.902
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CeilingLight1/SpotLight3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90594, -0.257629, -0.0140388)
+light_color = Color(0.698039, 0.831373, 0.87451, 1)
+light_energy = 0.25
+light_specular = 0.0
+light_cull_mask = 4294967289
+shadow_enabled = true
+spot_angle = 79.902
 
 [editable path="Clothes/tshirt/Activable"]
 [editable path="Clothes/pants/Activable"]

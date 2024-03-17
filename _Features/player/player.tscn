@@ -23,7 +23,11 @@ shader_parameter/pixel_size = 8
 radius = 0.4
 height = 1.75
 
+<<<<<<< Updated upstream
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfshd"]
+=======
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnaw3"]
+>>>>>>> Stashed changes
 transparency = 1
 albedo_texture = ExtResource("8_h5crk")
 emission = Color(1, 1, 1, 1)
@@ -32,7 +36,11 @@ clearcoat_roughness = 0.0
 texture_repeat = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wvj6b"]
+<<<<<<< Updated upstream
 material = SubResource("StandardMaterial3D_lfshd")
+=======
+material = SubResource("StandardMaterial3D_hnaw3")
+>>>>>>> Stashed changes
 size = Vector2(2.875, 1.535)
 
 [node name="Player" type="CharacterBody3D"]
