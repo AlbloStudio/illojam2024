@@ -193,7 +193,47 @@ transform = Transform3D(3.84839, 0, 0, 0, 1, 0, 0, 0, 4.78644, -0.0260781, 3.001
 mesh = SubResource("PlaneMesh_gi85j")
 surface_material_override/0 = SubResource("StandardMaterial3D_el5bf")
 
-[node name="CeilingLight4" type="SpotLight3D" parent="." index="69"]
+[node name="SpotLight3D2" type="SpotLight3D" parent="." index="69"]
+transform = Transform3D(-1, -8.74227e-08, -1.4955e-10, 1.38778e-17, -0.00171065, 0.999999, -8.74228e-08, 0.999999, 0.00171065, -2.85209, 1.90223, -4.46405)
+light_color = Color(0.768627, 0.87451, 0.905882, 1)
+light_energy = 0.5
+light_specular = 0.0
+light_cull_mask = 4294967289
+shadow_enabled = true
+spot_angle = 79.902
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="." index="70"]
+transform = Transform3D(-1, -8.74227e-08, -1.4955e-10, 5.55112e-17, -0.00171065, 0.999999, -8.74228e-08, 0.999999, 0.00171065, -0.87125, 1.78743, -4.74539)
+light_color = Color(0.768627, 0.87451, 0.905882, 1)
+light_energy = 0.5
+light_specular = 0.0
+light_cull_mask = 4294967289
+shadow_enabled = true
+spot_angle = 79.902
+
+[node name="CeilingLight2" type="SpotLight3D" parent="." index="71"]
+transform = Transform3D(-1, 1.49547e-10, -8.74227e-08, -8.74228e-08, -0.00171065, 0.999999, -3.32569e-15, 0.999999, 0.00171065, 2.84005, 2.87722, -2.37751)
+light_color = Color(1, 1, 0.956863, 1)
+light_energy = 1.2
+light_cull_mask = 4294967289
+shadow_enabled = true
+shadow_bias = 0.07
+shadow_normal_bias = 3.604
+shadow_reverse_cull_face = true
+shadow_opacity = 0.75
+distance_fade_length = 0.0
+spot_range = 30.0
+spot_attenuation = 0.812252
+spot_angle = 77.8
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="72"]
+transform = Transform3D(1, 0, 0, 0, -0.00171065, 0.999999, 0, -0.999999, -0.00171065, 3.38242, 2.37816, 4.42485)
+light_color = Color(0.811765, 0.721569, 0.643137, 1)
+light_energy = 3.739
+shadow_enabled = true
+shadow_blur = 10.0
+
+[node name="CeilingLight4" type="SpotLight3D" parent="." index="73"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.182893, 2.99068, 1.58592)
 light_color = Color(1, 1, 0.956863, 1)
 shadow_enabled = true
@@ -206,13 +246,6 @@ distance_fade_length = 0.0
 spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 77.8
-
-[node name="SpotLight3D" type="SpotLight3D" parent="CeilingLight4" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0.00171061, 0, -0.00171061, 0.999999, 3.19953, -2.83893, -0.612517)
-light_color = Color(0.811765, 0.721569, 0.643137, 1)
-light_energy = 3.739
-shadow_enabled = true
-shadow_blur = 10.0
 
 [editable path="Activables/PosterActivable"]
 [editable path="Activables/ChairActivableSit"]
