@@ -11,6 +11,7 @@ var awakes = {
 	"clothes": false,
 	"poster": false,
 	"sit": false,
+	"talk": false,
 	"sofa": false,
 }
 
@@ -76,7 +77,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 					"No me puedo quitar lo que ya me he quitado... espabila.",
 					"QuitarseRopcaSinRopa"
 				)
-				living_room.activate_clothe("tshirt", 2.0)
+				living_room.activate_clothe("tshirt", 6.0)
 			else:
 				_put_on_clothes("tshirt")
 		"Put on Pants":
@@ -85,7 +86,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 					"No me puedo quitar lo que ya me he quitado... espabila.",
 					"QuitarseRopcaSinRopa"
 				)
-				living_room.activate_clothe("pants", 2.0)
+				living_room.activate_clothe("pants", 6.0)
 			else:
 				_put_on_clothes("pants")
 		"Put on Underwear":
@@ -94,7 +95,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 					"No me puedo quitar lo que ya me he quitado... espabila.",
 					"QuitarseRopcaSinRopa"
 				)
-				living_room.activate_clothe("underwear", 2.0)
+				living_room.activate_clothe("underwear", 6.0)
 			else:
 				_put_on_clothes("underwear")
 		"ReadPoster":
@@ -106,13 +107,14 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						"ContemplarPoster"
 					)
 				)
-				living_room.activate_activable("PosterActivable", 2.0)
+				living_room.activate_activable("PosterActivable", 6.0)
 			else:
 				_read_poster()
-				living_room.activate_activable("PosterActivable", 2.0)
+				living_room.activate_activable("PosterActivable", 6.0)
 		"Sit":
 			if alternative:
 				player.say("Qué pasa, taburte? TABURRES?", "TabureteAlternativo")
+				create_tween().tween_callback(func(): _awaked("talk")).set_delay(3.0)
 			else:
 				_sit_on_chair()
 		"GetUp":
@@ -124,7 +126,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 		"Tis":
 			if alternative:
 				player.say("?SERRUBAT ?etrubat ,asap euQ", "TabureteAlternativo")
-				nolas.activate_activable("ChairActivableSit", 2.0)
+				nolas.activate_activable("ChairActivableSit", 5.0)
 			else:
 				_sit_on_mirror_chair()
 		"RetsopDear":
@@ -136,7 +138,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						"ContemplarPoster"
 					)
 				)
-				nolas.activate_activable("PosterActivable", 2.0)
+				nolas.activate_activable("PosterActivable", 5.0)
 			else:
 				_read_mirror_poster()
 		"Lay down":
@@ -152,13 +154,13 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 		"Lay up":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "")
-				living_room.activate_activable("SofaActivableLayUp", 2.0)
+				living_room.activate_activable("SofaActivableLayUp", 5.0)
 			else:
 				_sofa_lay_up()
 		"Lay up wall":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "")
-				living_room.activate_activable("SofaActivableLayUpWall", 2.0)
+				living_room.activate_activable("SofaActivableLayUpWall", 5.0)
 			else:
 				_sofa_lay_up_wall()
 		"StreamIn":
@@ -166,13 +168,13 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				player.say(
 					"No puedo desede aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
 				)
-				setup.activate_activable("StreamInActivable", 2.0)
+				setup.activate_activable("StreamInActivable", 5.0)
 			else:
 				_stream_in()
 		"StreamOut":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "")
-				setup.activate_activable("StreamOutActivable", 2.0)
+				setup.activate_activable("StreamOutActivable", 5.0)
 			else:
 				_stream_out()
 		"StreamWrong":
@@ -180,13 +182,13 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				player.say(
 					"No puedo desede aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
 				)
-				setup.activate_activable("StreamInIncorrectActivable", 2.0)
+				setup.activate_activable("StreamInIncorrectActivable", 5.0)
 			else:
 				_stream_in_wrong()
 		"StreamOutWrong":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "")
-				setup.activate_activable("StreamOutInCorrectActivable", 2.0)
+				setup.activate_activable("StreamOutInCorrectActivable", 5.0)
 			else:
 				_stream_out_wrong()
 		"TouchWall":
@@ -203,13 +205,13 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						"AsomarsePorLaVentana"
 					)
 				)
-				setup.activate_activable("ExitWindowActivable", 2.0)
+				setup.activate_activable("ExitWindowActivable", 5.0)
 			else:
 				_exit_window()
 		"Enter Window":
 			if alternative:
 				player.say("MI CASA ILLO", "AsomarseDesdeFuera")
-				setup.activate_activable("EnterWindowActivable", 2.0)
+				setup.activate_activable("EnterWindowActivable", 5.0)
 			else:
 				_enter_window()
 		"Blinders Up":
@@ -218,10 +220,11 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 					player
 					. say(
 						"Que hace aquí el cordelillo de bajar la persiana? Por la cara. Y la músia tétrica esta? Hermano, cabeza fría, te lo juro",
-						"cordelillopersianaDialogo"
+						"cordelillopersianaDialogo",
+						7
 					)
 				)
-				setup.activate_activable("BlindersUpActivable", 2.0)
+				setup.activate_activable("BlindersUpActivable", 7.0)
 			else:
 				_bilders_up()
 		"Blinders Down":
@@ -233,7 +236,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						"cordelillopersianaDialogo"
 					)
 				)
-				setup.activate_activable("BlindersDownActivable", 2.0)
+				setup.activate_activable("BlindersDownActivable", 5.0)
 			else:
 				_blinders_down()
 		"Jump Down":
@@ -261,19 +264,20 @@ func _tablet_living_room_opened() -> void:
 				"En los sueños, lo ordinario puede convertirse en extraordinario.",
 				"Adelante, es solo un paso. Espero que esto te guíe hacia la luz de la realidad. AIIIPS"
 			],
+			"IlloIntroCompleta",
 			[
+				8.0,
+				9.0,
+				6.5,
+				5.0,
 				4.0,
-				4.0,
-				4.0,
-				4.0,
-				4.0,
-				4.0,
+				6.0,
 			]
 		)
 	)
-	create_tween().tween_callback(living_room.make_closet_appear).set_delay(12.0)
-	create_tween().tween_callback(nolas.make_closet_appear).set_delay(12.0)
-	create_tween().tween_callback(tablet_living_room.activate).set_delay(26.0)
+	create_tween().tween_callback(living_room.make_closet_appear).set_delay(26.0)
+	create_tween().tween_callback(nolas.make_closet_appear).set_delay(26.0)
+	create_tween().tween_callback(tablet_living_room.activate).set_delay(38.0)
 
 
 func _tablet_nolas_opened() -> void:
@@ -284,6 +288,7 @@ func _tablet_nolas_opened() -> void:
 				"Has visto que hay acciones deshabilitadas, o prohibidas?",
 				"Dale 5 veces... y las forzarás."
 			],
+			"DaleCincoVeces",
 			[
 				4.0,
 				6.0,
@@ -299,6 +304,7 @@ func _tablet_secret_opened() -> void:
 			"Deja pulsado durante 3 segundos sobre una acción y...",
 			"Podrás hacer una acción alternativa."
 		],
+		"AcciónAlternativa",
 		[5.0, 4.0]
 	)
 	create_tween().tween_callback(tablet_living_room.activate).set_delay(11.0)

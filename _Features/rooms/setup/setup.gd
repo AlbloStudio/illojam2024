@@ -1,6 +1,5 @@
 class_name Setup extends Node3D
 
-
 @onready var stream_pos := $StreamMarker as Marker3D
 @onready var stream_out_pos := $StreamOutMarker as Marker3D
 @onready var stream_wrong_pos := $StreamWrongMarker as Marker3D
@@ -123,6 +122,7 @@ func hide_secret_room() -> void:
 
 func blinders_up() -> void:
 	blinders.scale.y = 0.1
+
 
 func blinders_down() -> void:
 	blinders.scale.y = 1

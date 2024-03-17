@@ -98,7 +98,7 @@ func load_mp3(path):
 	return sound
 
 
-func say(text: String, audio: String, delay := 3.0) -> void:
+func say(text: String, audio: String, delay := 6) -> void:
 	speech_bubble_label.visible = true
 	speech_bubble_label.text = text
 	create_tween().tween_callback(func(): speech_bubble_label.visible = false).set_delay(delay)

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_bky17"]
 [ext_resource type="Texture2D" uid="uid://bcqu5yfbo7isa" path="res://_Features/player/textures/nakedbody.png" id="2_n00nq"]
 [ext_resource type="Script" path="res://_Features/player/states/player_state_controlled.gd" id="3_1flnn"]
-[ext_resource type="AudioStream" uid="uid://buqtws3fnss88" path="res://_Features/audio/pantaloneslargos.mp3" id="3_pvfp2"]
+[ext_resource type="AudioStream" path="res://_Features/audio/pantaloneslargos.mp3" id="3_pvfp2"]
 [ext_resource type="Script" path="res://_Features/player/states/player_state_puppet.gd" id="4_iboom"]
 [ext_resource type="PackedScene" uid="uid://bwc8d10l0135e" path="res://_Features/player/player_i.tscn" id="5_e0hf5"]
 [ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="7_2b0gq"]
