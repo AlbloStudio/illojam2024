@@ -17,6 +17,7 @@ var poster_awaken := false
 @onready var colliders_body := $Colliders/StaticBody3D as StaticBody3D
 @onready var colliders_layed := $CollidersLayed/StaticBody3D as StaticBody3D
 @onready var sofa_activable_lay_down := $Activables/SofaActivableLayDown as Activable
+@onready var sofa_activable_lay_down_wall := $Activables/SofaActivableLayDownWall as Activable
 @onready var sofa_activable_lay_up := $Activables/SofaActivableLayUp as Activable
 @onready var sofa_activable_lay_up_wall := $Activables/SofaActivableLayUpWall as Activable
 
@@ -129,6 +130,8 @@ func switch_to_layed_mode() -> void:
 	colliders_layed.collision_layer = 4
 	sofa_activable_lay_up.reactivate()
 	sofa_activable_lay_up_wall.reactivate()
+	sofa_activable_lay_down.deactivate()
+	sofa_activable_lay_down_wall.deactivate()
 
 
 func switch_to_up_mode() -> void:
@@ -137,6 +140,16 @@ func switch_to_up_mode() -> void:
 	sofa_activable_lay_up.deactivate()
 	sofa_activable_lay_up_wall.deactivate()
 	sofa_activable_lay_down.reactivate()
+	sofa_activable_lay_down_wall.reactivate()
+
+
+func switch_to_none_mode() -> void:
+	colliders_body.collision_layer = 0
+	colliders_layed.collision_layer = 0
+	sofa_activable_lay_up.deactivate()
+	sofa_activable_lay_up_wall.deactivate()
+	sofa_activable_lay_down.deactivate()
+	sofa_activable_lay_down_wall.deactivate()
 
 
 func get_layed_position() -> Vector3:

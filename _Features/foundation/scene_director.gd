@@ -355,18 +355,22 @@ func _read_mirror_poster() -> void:
 
 func _sofa_lay_down() -> void:
 	player.lay_down_on_sofa(living_room.get_layed_position())
+	living_room.switch_to_none_mode()
 
 
 func _sofa_lay_down_wall() -> void:
 	player.lay_down_on_sofa(living_room.get_layed_position(), true)
+	living_room.switch_to_none_mode()
 
 
 func _sofa_lay_up() -> void:
 	player.lay_up_from_sofa(living_room.get_up_position())
+	living_room.switch_to_none_mode()
 
 
 func _sofa_lay_up_wall() -> void:
 	player.lay_up_from_sofa(living_room.get_wall_position(), true)
+	living_room.switch_to_none_mode()
 
 
 func _layed_down() -> void:
@@ -413,7 +417,6 @@ func _stopped_streaming_wrong() -> void:
 func _touch_wall() -> void:
 	player.say("Otia, una pared", una_pared)
 	create_tween().tween_callback(func(): setup.activate_touch_wall_activable()).set_delay(2)
-
 
 
 func _exit_window() -> void:
@@ -466,12 +469,15 @@ func _blinders_down() -> void:
 	setup.forbid_exit_window()
 	create_tween().tween_callback(func(): setup.activate_blinders_up_activable()).set_delay(2.0)
 
+
 func _up_wall() -> void:
 	player.set_up_walls(setup.get_walls_up_position(), func(): setup.switch_to_up_mode())
 	setup.switch_to_normal()
 
+
 func _upped_wall() -> void:
 	SignalBus.awaked.emit("wall")
+
 
 func _jump_down() -> void:
 	player.penetrate(setup.get_penetration_position())

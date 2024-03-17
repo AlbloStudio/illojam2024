@@ -15,6 +15,8 @@ class_name Activable extends Area3D
 		forbidden = value
 		reset_label()
 
+var player: Player
+
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_deactivated := $FiniteStateMachine/Deactivated as ActivableState
 @onready var state_activated := $FiniteStateMachine/Activated as ActivableState

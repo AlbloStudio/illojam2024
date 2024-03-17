@@ -10,6 +10,7 @@ func exit(_msg := {}) -> void:
 	state_owner.body_entered.disconnect(_on_activable_body_entered)
 
 
-func _on_activable_body_entered(_body: Node3D) -> void:
-	if _body is Player:
+func _on_activable_body_entered(body: Node3D) -> void:
+	if body is Player:
+		state_owner.player = body as Player
 		state_machine.transition_to(state_owner.state_visible.name)

@@ -9,7 +9,6 @@ func enter(_msg := {}) -> void:
 
 func exit(_msg := {}) -> void:
 	set_collision_shape_activation.call_deferred(false)
-	state_owner.indicator.visible = true
 
 
 func set_collision_shape_activation(activate: bool) -> void:

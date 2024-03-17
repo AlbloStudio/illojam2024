@@ -3,6 +3,7 @@ class_name Player extends CharacterBody3D
 @export var naked_texture: Texture
 @export var speed = 3.0
 @export var speed_slow = 0.5
+@export var speed_fast = 3.0
 @export var acceleration := 10.0
 @export var intertia := 15.0
 
@@ -47,6 +48,10 @@ func go_puppet() -> void:
 	state_machine.transition_to(state_puppet.name)
 
 
+func is_puppet() -> bool:
+	return state_machine.is_in_state([state_puppet.name])
+
+
 func get_naked() -> void:
 	clothes = []
 	var hoodie_material := body.get_active_material(1)
@@ -81,6 +86,7 @@ func say(text: String, audio: AudioStream, delay := 3.0) -> void:
 	create_tween().tween_callback(func(): speech_bubble_label.visible = false).set_delay(delay)
 	audiostream_player.stream = audio
 	audiostream_player.play()
+
 
 func sit_on_chair(sit_position: Vector3) -> void:
 	if state_machine.is_in_state([state_controlled.name]):
@@ -166,14 +172,12 @@ func lay_up_from_sofa(new_position: Vector3, is_wall := false) -> void:
 		SignalBus.awaked.emit("sofa")
 
 
-func _change_player_speed() -> void:
-	var previous_speed = speed
-	speed = speed_slow
-	speed_slow = previous_speed
+func _change_player_speed(new_speed: float) -> void:
+	speed = new_speed
 
 
 func _layed_down() -> void:
-	_change_player_speed()
+	_change_player_speed(speed_slow)
 	SignalBus.layed_down.emit()
 	global_rotation = Vector3(0, get_target_ang(0), 0)
 	dont_animate_movement = true
@@ -181,7 +185,7 @@ func _layed_down() -> void:
 
 
 func _layed_up() -> void:
-	_change_player_speed()
+	_change_player_speed(speed_fast)
 	SignalBus.layed_up.emit()
 	dont_animate_movement = false
 
