@@ -8,6 +8,8 @@ var initial_despierta_label_position: Vector2
 @onready var despierta := $Despierta as PanelContainer
 @onready var despierta_label := $Despierta/CenterContainer as CenterContainer
 @onready var progress_bar := $Progress as TextureProgressBar
+@onready var video := $Video as VideoStreamPlayer
+@onready var mierda := $Mierda as Panel
 
 
 func _process(_delta: float) -> void:
@@ -39,3 +41,19 @@ func awake() -> void:
 
 func _hide_awake() -> void:
 	despierta.visible = false
+
+
+func show_mierda() -> void:
+	mierda.visible = true
+
+
+func hide_mierda() -> void:
+	mierda.visible = false
+
+
+func hide_ui() -> void:
+	progress_bar.visible = false
+
+
+func start_video() -> void:
+	video.play()

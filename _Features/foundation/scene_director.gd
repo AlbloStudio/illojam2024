@@ -29,6 +29,7 @@ var awakes = {
 
 
 func _ready():
+	# player.collision_layer = 0
 	# player.global_position = living_room.get_start_position()
 	# player.lay_up_from_sofa_init(living_room.get_up_init_position())
 
@@ -563,6 +564,7 @@ func _on_button_pressed() -> void:
 
 
 func _despierta() -> void:
+	player.collision_layer = 0
 	player.stop_talking()
 	player.global_position = living_room.get_start_position()
 	player.lay_up_from_sofa_end(living_room.get_up_init_position())
@@ -577,3 +579,11 @@ func _despierta() -> void:
 
 func _started_end() -> void:
 	player.say("Uf, por fin. Me desperté. Me desperté? %*%*(@#", "porfinmedesperte")
+	await get_tree().create_timer(4.5).timeout
+	ui.show_mierda()
+	ui.hide_ui()
+	audio.stop()
+	player.go_puppet()
+	await get_tree().create_timer(1.7).timeout
+	ui.hide_mierda()
+	ui.start_video()

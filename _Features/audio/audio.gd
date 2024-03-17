@@ -36,3 +36,7 @@ func _play_level_music():
 
 func _song_finished():
 	current_song.play(0)
+
+
+func stop() -> void:
+	current_song.stop()
