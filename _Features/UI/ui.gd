@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 
 
 func set_total_progress(amount: float) -> void:
-	progress_bar.max_value(amount)
+	progress_bar.max_value = amount
 
 
 func add_progress(amount: float) -> void:

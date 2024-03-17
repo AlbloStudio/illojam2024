@@ -54,6 +54,11 @@ func _ready():
 	ui.set_total_progress(awakes.size())
 
 
+func _unhandled_input(event):
+	if event.is_action_pressed("pause"):
+		SignalBus.paused.emit()
+
+
 func _started() -> void:
 	player.collision_layer = 1
 	_tablet_living_room_opened()
@@ -549,3 +554,7 @@ func _downed_wall() -> void:
 func _move_chair() -> void:
 	setup.move_chair()
 	setup.activate_wrong_streams()
+
+
+func _on_button_pressed() -> void:
+	get_tree().quit()
