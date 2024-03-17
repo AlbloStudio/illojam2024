@@ -143,19 +143,22 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8f3dp")
 [node name="upMarker" type="Marker3D" parent="Markers" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49683, 0, -2.15252)
 
-[node name="wallMarker" type="Marker3D" parent="Markers" index="1"]
+[node name="exitDreamMarker" type="Marker3D" parent="Markers" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04906, 4.76837e-07, -7.23905)
+
+[node name="wallMarker" type="Marker3D" parent="Markers" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.57292, 0, -2.0164)
 
-[node name="startMarker" type="Marker3D" parent="Markers" index="2"]
+[node name="startMarker" type="Marker3D" parent="Markers" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91945, 0, -3.09237)
 
-[node name="layInitMarker" type="Marker3D" parent="Markers" index="3"]
+[node name="layInitMarker" type="Marker3D" parent="Markers" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85732, 0, -2.89713)
 
-[node name="layMarker" type="Marker3D" parent="Markers" index="4"]
+[node name="layMarker" type="Marker3D" parent="Markers" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8564, 0, -2.15505)
 
-[node name="chairMarker" type="Marker3D" parent="Markers" index="5"]
+[node name="chairMarker" type="Marker3D" parent="Markers" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.039, 0.398, 0.682079)
 
 [node name="Clothes" type="Node3D" parent="." index="2"]

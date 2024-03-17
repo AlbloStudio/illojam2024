@@ -65,23 +65,14 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 
 	match activable_name:
 		"TabletLivingRoom":
-			if alternative:
-				pass
-			else:
-				_tablet_living_room_opened()
+			_tablet_living_room_opened()
 		"TabletNolas":
-			if alternative:
-				pass
-			else:
-				_tablet_nolas_opened()
+			_tablet_nolas_opened()
 		"TabletSecret":
-			if alternative:
-				pass
-			else:
-				_tablet_secret_opened()
+			_tablet_secret_opened()
 		"Get Naked":
 			if alternative:
-				pass
+				player.exit_dream(living_room.get_marker_position("exitDreamMarker"))
 			else:
 				_get_player_naked()
 		"Put on T-Shirt":
@@ -111,7 +102,8 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_sit_on_chair()
 		"GetUp":
 			if alternative:
-				pass
+				player.say("ZZzzzZzZZzZ")
+				living_room.activate_activable("ChairActivableGetUp", 2.0)
 			else:
 				_get_up_from_chair()
 		"Tis":

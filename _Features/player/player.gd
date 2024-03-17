@@ -31,13 +31,13 @@ var original_pants_texture: Texture
 
 func _ready():
 	desired_velocity = Vector2.LEFT
-	original_speech_bubble_position = speech_bubble_label.position
+	original_speech_bubble_position = speech_bubble_label.global_position
 
 
 func _process(_delta: float) -> void:
 	if speech_bubble_label.visible:
-		speech_bubble_label.position.x = original_speech_bubble_position.x + position.x
-		speech_bubble_label.position.z = original_speech_bubble_position.z + position.z
+		speech_bubble_label.global_position.x = original_speech_bubble_position.x + global_position.x
+		speech_bubble_label.global_position.z =  original_speech_bubble_position.z + global_position.z
 
 
 func go_controlled() -> void:
@@ -80,12 +80,14 @@ func put_some_clothes(cloth_name: String) -> void:
 			SignalBus.clothes_right.emit()
 
 
-func say(text: String, audio: AudioStream, delay := 3.0) -> void:
+func say(text: String, audio: AudioStream = null, delay := 3.0) -> void:
 	speech_bubble_label.visible = true
 	speech_bubble_label.text = text
 	create_tween().tween_callback(func(): speech_bubble_label.visible = false).set_delay(delay)
-	audiostream_player.stream = audio
-	audiostream_player.play()
+
+	if AudioStream != null:
+		audiostream_player.stream = audio
+		audiostream_player.play()
 
 
 func sit_on_chair(sit_position: Vector3) -> void:
@@ -359,3 +361,7 @@ func _on_disappear(new_position: Vector3, on_middle: Callable, on_end: Callable)
 	appear_tween.tween_property(body, "transparency", 0.0, 1.0)
 	appear_tween.tween_property(hair, "transparency", 0.0, 1.0)
 	appear_tween.tween_property(head, "transparency", 0.0, 1.0)
+
+
+func exit_dream(new_position: Vector3) -> void:
+	animate("Walk", new_position, Vector3(0.0, PI, 0.0), state_puppet.name, false)
