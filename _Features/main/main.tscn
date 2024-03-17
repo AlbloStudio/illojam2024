@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=42 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="Script" path="res://_Features/audio/audio.gd" id="2_3jmlc"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://m7oax2by6piw" path="res://_Features/audio/dream12.mp3" id="11_r4hg3"]
 [ext_resource type="AudioStream" uid="uid://drmnieapiewxo" path="res://_Features/audio/despierta.mp3" id="12_bx7a7"]
 [ext_resource type="AudioStream" uid="uid://b4x4go7yxbinu" path="res://_Features/audio/dream13.mp3" id="12_nchqr"]
+[ext_resource type="AudioStream" uid="uid://yiwv5rxinwuw" path="res://_Features/audio/LoHombreLlevanPantalone.mp3" id="19_gmslu"]
 [ext_resource type="Texture2D" uid="uid://y7eip61yk0cu" path="res://_Features/UI/Text BoxRed.svg" id="22_mfdw5"]
 
 [sub_resource type="Gradient" id="Gradient_n7fhn"]
@@ -179,7 +180,7 @@ bus = &"DESPIERTA"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.0627, 8.99813, -2.59619)
 current = true
-fov = 74.9701
+fov = 74.0027
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -202,6 +203,7 @@ camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9855, -0.00187445, -5.60301)
+zarzillos = ExtResource("19_gmslu")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")

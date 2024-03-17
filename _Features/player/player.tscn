@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_bky17"]
 [ext_resource type="Texture2D" uid="uid://bcqu5yfbo7isa" path="res://_Features/player/textures/nakedbody.png" id="2_n00nq"]
 [ext_resource type="Script" path="res://_Features/player/states/player_state_controlled.gd" id="3_1flnn"]
-[ext_resource type="AudioStream" path="res://_Features/audio/pantaloneslargos.mp3" id="3_pvfp2"]
+[ext_resource type="AudioStream" uid="uid://yiwv5rxinwuw" path="res://_Features/audio/LoHombreLlevanPantalone.mp3" id="3_ryi5q"]
 [ext_resource type="Script" path="res://_Features/player/states/player_state_puppet.gd" id="4_iboom"]
 [ext_resource type="PackedScene" uid="uid://bwc8d10l0135e" path="res://_Features/player/player_i.tscn" id="5_e0hf5"]
 [ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="7_2b0gq"]
@@ -46,7 +46,7 @@ script = ExtResource("1_nic3o")
 naked_texture = ExtResource("2_n00nq")
 acceleration = 8.0
 intertia = 10.0
-zarzillos = ExtResource("3_pvfp2")
+zarzillos = ExtResource("3_ryi5q")
 
 [node name="Pixelation" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.000772856, 1.15027, 0.00735266)
