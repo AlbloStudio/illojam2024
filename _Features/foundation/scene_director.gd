@@ -29,9 +29,9 @@ var awakes = {
 
 
 func _ready():
-	# player.collision_layer = 0
-	# player.global_position = living_room.get_start_position()
-	# player.lay_up_from_sofa_init(living_room.get_up_init_position())
+	player.collision_layer = 0
+	player.global_position = living_room.get_start_position()
+	player.lay_up_from_sofa_init(living_room.get_up_init_position())
 
 	SignalBus.activable_activated.connect(_activable_activated)
 	SignalBus.current_activable_changed.connect(_set_current_activable)
@@ -512,7 +512,7 @@ func _exit_window() -> void:
 		player.exit_window()
 		setup.show_secret_room()
 	else:
-		player.say("Ni de coña salgo por una ventana abierta.", "")
+		player.say("Ni de coña salgo por una ventana abierta.", "NiDeCoñaSalgo")
 		create_tween().tween_callback(func(): setup.activate_exit_window_activable()).set_delay(3)
 
 
