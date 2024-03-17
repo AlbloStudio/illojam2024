@@ -609,7 +609,7 @@ mesh = SubResource("PlaneMesh_kvtyt")
 skeleton = NodePath("")
 
 [node name="CeilingLight5" type="SpotLight3D" parent="." index="176"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.16548, 2.53399, 1.96487)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.683881, 2.53399, 1.96487)
 light_color = Color(0.419608, 0.419608, 0.419608, 1)
 light_energy = 0.3
 shadow_enabled = true
@@ -625,7 +625,7 @@ spot_attenuation = 0.812252
 spot_angle = 77.8
 
 [node name="CeilingLight6" type="SpotLight3D" parent="." index="177"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28532, 2.27513, -1.91125)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.803721, 2.27513, -1.91125)
 light_color = Color(0.419608, 0.419608, 0.419608, 1)
 light_energy = 0.3
 shadow_enabled = true
