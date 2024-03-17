@@ -1,13 +1,6 @@
 extends Node
 
-@export var ogac_em: AudioStream
-@export var me_cago: AudioStream
-@export var una_pared: AudioStream
-@export var ventana_abierta: AudioStream
 @export var discord_call: AudioStream
-@export var alternativa: AudioStream
-@export var quitarse_ropa: AudioStream
-@export var contemplar: AudioStream
 
 var current_activable: Activable = null
 var awakes = {
@@ -79,48 +72,70 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_get_player_naked()
 		"Put on T-Shirt":
 			if alternative:
-				player.say("No me puedo quitar lo que ya me he quitado... espabila.", quitarse_ropa)
+				player.say(
+					"No me puedo quitar lo que ya me he quitado... espabila.",
+					"QuitarseRopcaSinRopa"
+				)
 				living_room.activate_clothe("tshirt", 2.0)
 			else:
 				_put_on_clothes("tshirt")
 		"Put on Pants":
 			if alternative:
-				player.say("No me puedo quitar lo que ya me he quitado... espabila.", quitarse_ropa)
+				player.say(
+					"No me puedo quitar lo que ya me he quitado... espabila.",
+					"QuitarseRopcaSinRopa"
+				)
 				living_room.activate_clothe("pants", 2.0)
 			else:
 				_put_on_clothes("pants")
 		"Put on Underwear":
 			if alternative:
-				player.say("No me puedo quitar lo que ya me he quitado... espabila.", quitarse_ropa)
+				player.say(
+					"No me puedo quitar lo que ya me he quitado... espabila.",
+					"QuitarseRopcaSinRopa"
+				)
 				living_room.activate_clothe("underwear", 2.0)
 			else:
 				_put_on_clothes("underwear")
 		"ReadPoster":
 			if alternative:
-				player.say("Ese soy yo?", contemplar)
+				(
+					player
+					. say(
+						"Dios, hermano, qué guapo se me ve en el poster. Y porque no se me ve el culo, si no... vaya culito",
+						"ContemplarPoster"
+					)
+				)
 				living_room.activate_activable("PosterActivable", 2.0)
 			else:
 				_read_poster()
 				living_room.activate_activable("PosterActivable", 2.0)
 		"Sit":
 			if alternative:
-				pass
+				player.say("Qué pasa, taburte? TABURRES?", "TabureteAlternativo")
 			else:
 				_sit_on_chair()
 		"GetUp":
 			if alternative:
-				player.say("ZZzzzZzZZzZ")
+				player.say("ZZzzzZzZZzZ", "")
 				living_room.activate_activable("ChairActivableGetUp", 2.0)
 			else:
 				_get_up_from_chair()
 		"Tis":
 			if alternative:
+				player.say("?SERRUBAT ?etrubat ,asap euQ", "TabureteAlternativo")
 				nolas.activate_activable("ChairActivableSit", 2.0)
 			else:
 				_sit_on_mirror_chair()
 		"RetsopDear":
 			if alternative:
-				player.say("oy yos ese?Ese soy yo?", contemplar)
+				(
+					player
+					. say(
+						"oticuluc ayav ...on is ,oluc le ev em es on euqrop Y .retsoP le ne ev em es apuog euq ,onamreh ,soiD",
+						"ContemplarPoster"
+					)
+				)
 				nolas.activate_activable("PosterActivable", 2.0)
 			else:
 				_read_mirror_poster()
@@ -136,31 +151,41 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_sofa_lay_down_wall()
 		"Lay up":
 			if alternative:
+				player.say("ZZzzzZzZZzZ", "")
 				living_room.activate_activable("SofaActivableLayUp", 2.0)
 			else:
 				_sofa_lay_up()
 		"Lay up wall":
 			if alternative:
+				player.say("ZZzzzZzZZzZ", "")
 				living_room.activate_activable("SofaActivableLayUpWall", 2.0)
 			else:
 				_sofa_lay_up_wall()
 		"StreamIn":
 			if alternative:
+				player.say(
+					"No puedo desede aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
+				)
 				setup.activate_activable("StreamInActivable", 2.0)
 			else:
 				_stream_in()
 		"StreamOut":
 			if alternative:
+				player.say("ZZzzzZzZZzZ", "")
 				setup.activate_activable("StreamOutActivable", 2.0)
 			else:
 				_stream_out()
 		"StreamWrong":
 			if alternative:
+				player.say(
+					"No puedo desede aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
+				)
 				setup.activate_activable("StreamInIncorrectActivable", 2.0)
 			else:
 				_stream_in_wrong()
 		"StreamOutWrong":
 			if alternative:
+				player.say("ZZzzzZzZZzZ", "")
 				setup.activate_activable("StreamOutInCorrectActivable", 2.0)
 			else:
 				_stream_out_wrong()
@@ -171,21 +196,43 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_touch_wall()
 		"Exit Window":
 			if alternative:
+				(
+					player
+					. say(
+						"Hostia.... eso que se ve desde aquí es rarísimo. La gente tira cualquier porquería al suelo",
+						"AsomarsePorLaVentana"
+					)
+				)
 				setup.activate_activable("ExitWindowActivable", 2.0)
 			else:
 				_exit_window()
 		"Enter Window":
 			if alternative:
+				player.say("MI CASA ILLO", "AsomarseDesdeFuera")
 				setup.activate_activable("EnterWindowActivable", 2.0)
 			else:
 				_enter_window()
 		"Blinders Up":
 			if alternative:
+				(
+					player
+					. say(
+						"Que hace aquí el cordelillo de bajar la persiana? Por la cara. Y la músia tétrica esta? Hermano, cabeza fría, te lo juro",
+						"cordelillopersianaDialogo"
+					)
+				)
 				setup.activate_activable("BlindersUpActivable", 2.0)
 			else:
 				_bilders_up()
 		"Blinders Down":
 			if alternative:
+				(
+					player
+					. say(
+						"Que hace aquí el cordelillo de bajar la persiana? Por la cara. Y la músia tétrica esta? Hermano, cabeza fría, te lo juro",
+						"cordelillopersianaDialogo"
+					)
+				)
 				setup.activate_activable("BlindersDownActivable", 2.0)
 			else:
 				_blinders_down()
@@ -196,6 +243,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_down_wall()
 		"Move Chair":
 			if alternative:
+				player.say("...", " ")
 				setup.activate_penetrated_activable("MoveChairActivable", 2.0)
 			else:
 				_move_chair()
@@ -330,7 +378,7 @@ func _awaked(awake_name: String) -> void:
 
 
 func _read_poster() -> void:
-	player.say('"¿OGAC EM?" ¿Qué significa eso?', ogac_em)
+	player.say('"¿OGAC EM?" ¿Qué significa eso?', "OGACEM")
 
 
 func _sit_on_chair() -> void:
@@ -348,7 +396,7 @@ func _sit_on_mirror_chair() -> void:
 
 
 func _read_mirror_poster() -> void:
-	player.say("ME CAGO", me_cago, 2)
+	player.say("ME CAGO", "MeCago2", 2)
 	create_tween().tween_callback(func(): _awaked("poster")).set_delay(2)
 	tablet_nolas.visible = true
 
@@ -415,7 +463,7 @@ func _stopped_streaming_wrong() -> void:
 
 
 func _touch_wall() -> void:
-	player.say("Otia, una pared", una_pared)
+	player.say("Otia, una pared", "HostiaUnaPared")
 	create_tween().tween_callback(func(): setup.activate_touch_wall_activable()).set_delay(2)
 
 
@@ -423,24 +471,9 @@ func _exit_window() -> void:
 	if setup.exit_window_activable.forbidden:
 		player.exit_window()
 		setup.show_secret_room()
-
-		(
-			create_tween()
-			. tween_callback(
-				func(): (
-					player
-					. say(
-						"Puedo hacer acción alternativa dejando pulsado el boton 3 segundos sobre una acción",
-						alternativa,
-						4
-					)
-				)
-			)
-			. set_delay(2)
-		)
-
 	else:
-		player.say("Ni de coña salgo por una ventana abierta", me_cago)
+		player.exit_window()
+		player.global_position = living_room.get_start_position()
 		create_tween().tween_callback(func(): setup.activate_exit_window_activable()).set_delay(1)
 
 

@@ -459,7 +459,7 @@ activable_text = "Salir por la ventana"
 activable_alternative_text = "Asomarse"
 
 [node name="ActionLabel" parent="Activables/ExitWindowActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.89211, 1.35687, 2.24353)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.3, 1.35687, 1.41756)
 modulate = Color(1, 1, 0.698039, 1)
 font = ExtResource("4_bnti0")
 font_size = 50
@@ -480,7 +480,7 @@ activable_text = "Volver"
 activable_alternative_text = "Asomarse"
 
 [node name="ActionLabel" parent="Activables/EnterWindowActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.85487, 1.35687, 2.34536)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.1947, 1.35687, 1.6294)
 modulate = Color(1, 1, 0.698039, 1)
 font = ExtResource("4_bnti0")
 font_size = 50
@@ -506,7 +506,7 @@ activable_text = "Levantar la persiana"
 activable_alternative_text = "Cuestionarse el cordelito"
 
 [node name="ActionLabel" parent="Activables/BlindersUpActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.965003, 2.5, 3.95198)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.16504, 2.5, 3.18097)
 modulate = Color(1, 1, 0.698039, 1)
 font = ExtResource("4_bnti0")
 font_size = 50
@@ -530,7 +530,7 @@ activable_text = "Bajar la persiana"
 activable_alternative_text = "Cuestionarse el cordelito"
 
 [node name="ActionLabel" parent="Activables/BlindersDownActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.899963, 2.5, 3.97101)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.1, 2.5, 3.2)
 modulate = Color(1, 1, 0.698039, 1)
 font = ExtResource("4_bnti0")
 font_size = 50

@@ -97,7 +97,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.795422, 1.21022, -1.2)
 [node name="ChairActivableSit" parent="Activables" index="1" instance=ExtResource("2_lb8q8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11605, 1.90735e-06, 2.16466)
 activable_name = "Tis"
-activable_text = "eterubat ne esratenetS"
+activable_text = "eterubat ne esratneS"
+activable_alternative_text = "eterubat noc rablaH"
 forbidden = true
 
 [node name="ActionLabel" parent="Activables/ChairActivableSit" index="0"]

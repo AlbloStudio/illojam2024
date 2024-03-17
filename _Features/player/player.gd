@@ -88,13 +88,24 @@ func put_some_clothes(cloth_name: String) -> void:
 			SignalBus.clothes_right.emit()
 
 
-func say(text: String, audio: AudioStream = null, delay := 3.0) -> void:
+func load_mp3(path):
+	var file = FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		return null
+
+	var sound = AudioStreamMP3.new()
+	sound.data = file.get_buffer(file.get_length())
+	return sound
+
+
+func say(text: String, audio: String, delay := 3.0) -> void:
 	speech_bubble_label.visible = true
 	speech_bubble_label.text = text
 	create_tween().tween_callback(func(): speech_bubble_label.visible = false).set_delay(delay)
 
-	if AudioStream != null:
-		audiostream_player.stream = audio
+	var sound = load_mp3("res://_Features/audio/" + audio + ".mp3")
+	if sound != null:
+		audiostream_player.stream = sound
 		audiostream_player.play()
 
 

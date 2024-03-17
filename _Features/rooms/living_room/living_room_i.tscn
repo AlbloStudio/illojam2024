@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=47 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
