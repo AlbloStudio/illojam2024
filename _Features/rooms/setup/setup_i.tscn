@@ -140,7 +140,7 @@ emission_energy_multiplier = 2.2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kdxx3"]
 emission_enabled = true
 emission = Color(0.796078, 0.658824, 0.909804, 1)
-emission_energy_multiplier = 1.32
+emission_energy_multiplier = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pld4w"]
 albedo_color = Color(0, 0, 0, 1)
