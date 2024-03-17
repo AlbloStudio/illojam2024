@@ -49,7 +49,7 @@ func get_walls_up_position() -> Vector3:
 func get_penetration_position() -> Vector3:
 	return penetration_marker.global_position
 
-
+ 
 func switch_to_penetration() -> void:
 	activables_penetrated.process_mode = Node.PROCESS_MODE_INHERIT
 	activables.process_mode = Node.PROCESS_MODE_DISABLED

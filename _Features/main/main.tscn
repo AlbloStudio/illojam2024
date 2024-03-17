@@ -124,6 +124,7 @@ material = SubResource("StandardMaterial3D_ihbs6")
 size = Vector2(2.875, 1.535)
 
 [node name="Main" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0482, 0, 3.00682)
 script = ExtResource("1_6gnox")
 ogac_em = ExtResource("2_tlgac")
 me_cago = ExtResource("3_2fru8")
@@ -155,7 +156,7 @@ bus = &"DESPIERTA"
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.906355, 9.65312, -1.55198)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -20.9545, 9.65312, 1.45483)
 current = true
 fov = 74.6161
 
@@ -163,7 +164,7 @@ fov = 74.6161
 script = ExtResource("2_hsqid")
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.906355, 9.65312, -1.55198)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -20.9545, 9.65312, 1.45483)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0

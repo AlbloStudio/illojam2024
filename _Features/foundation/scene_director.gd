@@ -415,13 +415,6 @@ func _touch_wall() -> void:
 	create_tween().tween_callback(func(): setup.activate_touch_wall_activable()).set_delay(2)
 
 
-func _up_wall() -> void:
-	player.set_up_walls(setup.get_walls_up_position(), func(): setup.switch_to_up_mode())
-
-
-func _upped_wall() -> void:
-	SignalBus.awaked.emit("wall")
-
 
 func _exit_window() -> void:
 	if setup.exit_window_activable.forbidden:
@@ -473,6 +466,12 @@ func _blinders_down() -> void:
 	setup.forbid_exit_window()
 	create_tween().tween_callback(func(): setup.activate_blinders_up_activable()).set_delay(2.0)
 
+func _up_wall() -> void:
+	player.set_up_walls(setup.get_walls_up_position(), func(): setup.switch_to_up_mode())
+	setup.switch_to_normal()
+
+func _upped_wall() -> void:
+	SignalBus.awaked.emit("wall")
 
 func _jump_down() -> void:
 	player.penetrate(setup.get_penetration_position())
