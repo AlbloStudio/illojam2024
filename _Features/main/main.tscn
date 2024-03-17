@@ -7,9 +7,9 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_hsqid"]
 [ext_resource type="Shader" path="res://_Features/shaders/main.gdshader" id="2_o8u0n"]
 [ext_resource type="AudioStream" uid="uid://cwloxdykrvunw" path="res://_Features/audio/OGACEM.wav" id="2_tlgac"]
-[ext_resource type="AudioStream" uid="uid://cqi44v53b24lr" path="res://_Features/audio/MeCago2.mp3" id="3_2fru8"]
+[ext_resource type="AudioStream" uid="uid://d2mefj35uib15" path="res://_Features/audio/MeCago2.mp3" id="3_2fru8"]
 [ext_resource type="AudioStream" uid="uid://cit1i7ncdx4f" path="res://_Features/audio/dream1.mp3" id="3_prhnp"]
-[ext_resource type="AudioStream" uid="uid://41r8bbvbjcge" path="res://_Features/audio/HostiaUnaPared.mp3" id="4_3chw6"]
+[ext_resource type="AudioStream" uid="uid://dosoyg0iolyr7" path="res://_Features/audio/HostiaUnaPared.mp3" id="4_3chw6"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="4_nyxmf"]
 [ext_resource type="PackedScene" uid="uid://daj1yi4q8q4f" path="res://_Features/rooms/living_room/living_room_i.tscn" id="4_og77x"]
 [ext_resource type="AudioStream" uid="uid://cuk1tniwd3pdb" path="res://_Features/audio/Discord Call.mp3" id="5_22t2j"]
@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://dpoly61h7h4p1" path="res://_Features/audio/QuitarseRopcaSinRopa.mp3" id="7_eqqja"]
 [ext_resource type="AudioStream" uid="uid://n5q1vmi85jkl" path="res://_Features/audio/dream7.mp3" id="8_g4ua3"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.gd" id="8_ku7b2"]
-[ext_resource type="AudioStream" uid="uid://clh3gbbv628bv" path="res://_Features/audio/UyQueFrio1.mp3" id="8_rrrcb"]
+[ext_resource type="AudioStream" uid="uid://226qd7ev805" path="res://_Features/audio/UyQueFrio1.mp3" id="8_rrrcb"]
 [ext_resource type="AudioStream" uid="uid://dx7cph4eee7ok" path="res://_Features/audio/dream9.mp3" id="9_8pkpd"]
 [ext_resource type="PackedScene" uid="uid://cb0311e3f7has" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil_i.tscn" id="9_iwvg8"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/nolas.gd" id="9_l32nb"]
@@ -174,7 +174,7 @@ bus = &"DESPIERTA"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.0627, 9.65312, -2.59619)
 current = true
-fov = 74.3756
+fov = 74.0814
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
