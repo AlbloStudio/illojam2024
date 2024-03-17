@@ -76,6 +76,7 @@ script = ExtResource("4_iboom")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.68767, 3.99076, -1.1012)
 visible = false
 double_sided = false
+render_priority = 2
 outline_modulate = Color(0, 0, 0, 0)
 text = "Holi, esto es un bocadillo de texto muy largo y queremos probar el tema del word wrap a ver qué tal"
 font = ExtResource("7_2b0gq")
@@ -84,7 +85,7 @@ autowrap_mode = 2
 width = 454.82
 
 [node name="SpeechBubbleBubble" type="MeshInstance3D" parent="SpeechBubble/SpeechBubbleLabel"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.139708, -0.201596, -0.038825)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.139708, -0.201596, -0.0563345)
 layers = 2
 mesh = SubResource("PlaneMesh_wvj6b")
 

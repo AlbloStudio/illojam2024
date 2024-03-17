@@ -3,8 +3,6 @@ class_name LivingRoom extends Node3D
 var cloth_names := ["underwear", "pants", "tshirt"]
 var poster_awaken := false
 
-@onready var mirror_collider = $MirrorSalonMesh/MirrorCollider as StaticBody3D
-
 @onready var closet := $Closet_001 as MeshInstance3D
 
 @onready var closet_handles := $Cube_005 as MeshInstance3D
@@ -26,6 +24,11 @@ var poster_awaken := false
 
 @onready var pennywise := $Pennywise as MeshInstance3D
 @onready var picture := $Plane_030 as MeshInstance3D
+@onready var sofa01 := $Plane_002 as MeshInstance3D
+@onready var sofa02 := $Plane_011 as MeshInstance3D
+@onready var sofa03 := $Plane_023 as MeshInstance3D
+@onready var sofa04 := $Plane_022 as MeshInstance3D
+@onready var sofa05 := $Plane_017 as MeshInstance3D
 
 @onready var sofa_marker := $Markers/layMarker as Marker3D
 @onready var wall_marker := $Markers/wallMarker as Marker3D
@@ -38,7 +41,6 @@ func _ready() -> void:
 	closet.visible = false
 	closet_handles.visible = false
 	clothes.visible = false
-	mirror_collider.get_node("CollisionMirrorShape").disabled = false
 
 	closet_collider.process_mode = Node.PROCESS_MODE_DISABLED
 
@@ -68,7 +70,6 @@ func on_closet_disappeared() -> void:
 	closet.queue_free()
 	closet_handles.queue_free()
 	closet_activable.queue_free()
-	mirror_collider.get_node("CollisionMirrorShape").disabled = true
 
 
 func reset_closet() -> void:
@@ -212,3 +213,39 @@ func awake_sofa() -> void:
 
 func awake_clothes() -> void:
 	pass
+
+
+func get_new_rotation_vector() -> Vector3:
+	var x = randf_range(-2 * PI, 2 * PI)
+	var y = randf_range(-2 * PI, 2 * PI)
+	var z = randf_range(-2 * PI, 2 * PI)
+
+	return Vector3(x, y, z)
+
+
+func rotate_sofa() -> void:
+	var rotation_tween = create_tween()
+	rotation_tween.set_parallel(true)
+	rotation_tween.set_ease(Tween.EASE_IN_OUT)
+
+	rotation_tween.tween_property(sofa01, "global_rotation", get_new_rotation_vector(), 1.0)
+	rotation_tween.tween_property(sofa02, "global_rotation", get_new_rotation_vector(), 1.0)
+	rotation_tween.tween_property(sofa03, "global_rotation", get_new_rotation_vector(), 1.0)
+	rotation_tween.tween_property(sofa04, "global_rotation", get_new_rotation_vector(), 1.0)
+	rotation_tween.tween_property(sofa05, "global_rotation", get_new_rotation_vector(), 1.0)
+
+	create_tween().tween_callback(return_sofa).set_delay(4.0)
+
+
+func return_sofa() -> void:
+	var rotation_tween = create_tween()
+	rotation_tween.set_parallel(true)
+	rotation_tween.set_ease(Tween.EASE_IN_OUT)
+
+	rotation_tween.tween_property(sofa01, "global_rotation", Vector3.ZERO, 0.4)
+	rotation_tween.tween_property(sofa02, "global_rotation", Vector3.ZERO, 0.4)
+	rotation_tween.tween_property(sofa03, "global_rotation", Vector3.ZERO, 0.4)
+	rotation_tween.tween_property(sofa04, "global_rotation", Vector3.ZERO, 0.4)
+	rotation_tween.tween_property(sofa05, "global_rotation", Vector3.ZERO, 0.4)
+
+	create_tween().tween_callback(func(): SignalBus.awaked.emit("rotation")).set_delay(0.5)

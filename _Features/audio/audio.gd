@@ -1,4 +1,4 @@
-class_name Audio extends Node
+class_name Audios extends Node
 
 @export var song_layers: Array[AudioStream]
 

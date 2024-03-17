@@ -9,7 +9,8 @@
 render_priority = 2
 transparency = 1
 albedo_texture = ExtResource("3_qsr3f")
-emission = Color(1, 1, 1, 1)
+emission_enabled = true
+emission = Color(0.815686, 0.964706, 0.952941, 1)
 emission_operator = 1
 clearcoat_roughness = 0.0
 texture_repeat = false
@@ -23,7 +24,7 @@ height = 0.61301
 radius = 0.930026
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g51m3"]
-radius = 2.02685
+radius = 3.4979
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1rs8"]
 albedo_color = Color(0.270588, 0.270588, 0.270588, 1)
@@ -36,25 +37,27 @@ size = Vector3(0.3, 0.02, 0.26)
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_qxtak")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
 [node name="SpeechBubble" type="Node" parent="."]
 
 [node name="SpeechBubbleLabel" type="Label3D" parent="SpeechBubble"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.790019, 2.51155, -0.588013)
 visible = false
-double_sided = false
-outline_modulate = Color(0, 0, 0, 0)
+render_priority = 4
+outline_modulate = Color(0.0383972, 0.0383972, 0.0383972, 0)
 text = "Holi, esto es un bocadillo de texto muy largo y queremos probar el tema del word wrap a ver qué tal"
 font = ExtResource("2_7iick")
 autowrap_mode = 2
 width = 454.82
 
 [node name="SpeechBubbleBubble" type="MeshInstance3D" parent="SpeechBubble/SpeechBubbleLabel"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0300701, -0.21186, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0300701, -0.21186, -0.0534995)
 layers = 2
 mesh = SubResource("PlaneMesh_yp37t")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="SpeechBubble/SpeechBubbleLabel"]
-transform = Transform3D(-0.994522, 0, -0.104528, -0.104528, -4.37114e-08, 0.994522, -4.56907e-09, 1, 4.34719e-08, 0.197354, -0.367381, 0.934128)
+transform = Transform3D(-0.994522, -4.85822e-15, -0.104528, -0.104528, -4.37114e-08, 0.994522, -4.56907e-09, 1, 4.34719e-08, 0.197354, -0.367381, 0.934128)
 light_cull_mask = 4293918722
 omni_range = 4096.0
 omni_attenuation = 0.148651

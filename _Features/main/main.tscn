@@ -14,17 +14,18 @@
 [ext_resource type="AudioStream" uid="uid://jval2fa4776l" path="res://_Features/audio/dream3.mp3" id="6_3nhco"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_v8ayd"]
 [ext_resource type="AudioStream" uid="uid://bn2dwbajil1as" path="res://_Features/audio/dream5.mp3" id="7_3aj0d"]
+[ext_resource type="AudioStream" uid="uid://bv1q0nrtlprpr" path="res://_Features/audio/dream4.mp3" id="8_fiqc0"]
 [ext_resource type="AudioStream" uid="uid://n5q1vmi85jkl" path="res://_Features/audio/dream7.mp3" id="8_g4ua3"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.gd" id="8_ku7b2"]
 [ext_resource type="AudioStream" uid="uid://dx7cph4eee7ok" path="res://_Features/audio/dream9.mp3" id="9_8pkpd"]
 [ext_resource type="PackedScene" uid="uid://cb0311e3f7has" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil_i.tscn" id="9_iwvg8"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/nolas.gd" id="9_l32nb"]
+[ext_resource type="AudioStream" uid="uid://cwe5fggyyhwa7" path="res://_Features/audio/dream6.mp3" id="10_gllsq"]
 [ext_resource type="AudioStream" uid="uid://byd5j83axjxbg" path="res://_Features/audio/dream11.mp3" id="10_pl0ge"]
 [ext_resource type="PackedScene" uid="uid://c0bdwlue70wgp" path="res://_Features/rooms/setup/setup_i.tscn" id="11_qjeg8"]
 [ext_resource type="AudioStream" uid="uid://m7oax2by6piw" path="res://_Features/audio/dream12.mp3" id="11_r4hg3"]
 [ext_resource type="AudioStream" uid="uid://drmnieapiewxo" path="res://_Features/audio/despierta.mp3" id="12_bx7a7"]
 [ext_resource type="AudioStream" uid="uid://b4x4go7yxbinu" path="res://_Features/audio/dream13.mp3" id="12_nchqr"]
-[ext_resource type="AudioStream" uid="uid://yiwv5rxinwuw" path="res://_Features/audio/LoHombreLlevanPantalone.mp3" id="19_gmslu"]
 [ext_resource type="Texture2D" uid="uid://y7eip61yk0cu" path="res://_Features/UI/Text BoxRed.svg" id="22_mfdw5"]
 
 [sub_resource type="Gradient" id="Gradient_n7fhn"]
@@ -145,9 +146,6 @@ emission = Color(0.909804, 1, 1, 1)
 emission_energy_multiplier = 0.11
 refraction_scale = 0.21
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_a85as"]
-size = Vector3(2.17917, 0.948517, 1)
-
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0482, 0, 3.00682)
 script = ExtResource("1_6gnox")
@@ -164,7 +162,7 @@ color = Color(1, 1, 1, 0)
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("2_3jmlc")
-song_layers = Array[AudioStream]([ExtResource("3_prhnp"), ExtResource("5_eo21i"), ExtResource("6_3nhco"), ExtResource("7_3aj0d"), ExtResource("8_g4ua3"), ExtResource("9_8pkpd"), ExtResource("10_pl0ge"), ExtResource("11_r4hg3"), ExtResource("12_nchqr")])
+song_layers = Array[AudioStream]([ExtResource("3_prhnp"), ExtResource("5_eo21i"), ExtResource("6_3nhco"), ExtResource("8_fiqc0"), ExtResource("7_3aj0d"), ExtResource("10_gllsq"), ExtResource("8_g4ua3"), ExtResource("9_8pkpd"), ExtResource("10_pl0ge"), ExtResource("11_r4hg3"), ExtResource("12_nchqr")])
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="Audio"]
 volume_db = -13.131
@@ -178,15 +176,15 @@ bus = &"DESPIERTA"
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.0627, 8.99813, -2.59619)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, 2.10338, 8.99813, -3.68777)
 current = true
-fov = 74.0027
+fov = 74.4124
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.0627, 8.99813, -2.59619)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, 2.10338, 8.99813, -3.68777)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0
@@ -202,8 +200,7 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9855, -0.00187445, -5.60301)
-zarzillos = ExtResource("19_gmslu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1516, -0.00187445, -6.69459)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")
@@ -247,14 +244,17 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.453
 [node name="SpeechBubbleBubble" parent="Stage/MoorGnivil/TabletNolas/SpeechBubble/SpeechBubbleLabel" index="0"]
 mesh = SubResource("PlaneMesh_am4ps")
 
-[node name="Tablet" parent="Stage/MoorGnivil/TabletNolas" index="1"]
+[node name="Tablet" parent="Stage/MoorGnivil/TabletNolas" index="2"]
 activable_name = "TabletNolas"
 activable_text = "Activar"
 
 [node name="Indicator" parent="Stage/MoorGnivil/TabletNolas/Tablet" index="3"]
 visible = false
 
-[node name="MeshInstance3D" parent="Stage/MoorGnivil/TabletNolas" index="2"]
+[node name="CollisionShape3D" parent="Stage/MoorGnivil/TabletNolas/Tablet/Indicator/IndicatorTrigger" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17751, 0, -2.86542)
+
+[node name="MeshInstance3D" parent="Stage/MoorGnivil/TabletNolas" index="3"]
 transform = Transform3D(0.907895, 0, 0.419199, 0.419199, -4.37114e-08, -0.907895, 1.83238e-08, 1, -3.96853e-08, 0, 0, 0)
 
 [node name="Ceiling" type="MeshInstance3D" parent="Stage/MoorGnivil"]
@@ -278,14 +278,6 @@ transform = Transform3D(1.23121, 0, 0, 0, -4.37114e-08, -1.37692, 0, 1, -6.01869
 mesh = SubResource("PlaneMesh_u5dyn")
 surface_material_override/0 = SubResource("StandardMaterial3D_s78er")
 
-[node name="MirrorCollider" type="StaticBody3D" parent="Stage/LivingRoom/LivingRoom/MirrorSalonMesh"]
-collision_layer = 7
-collision_mask = 0
-
-[node name="CollisionMirrorShape" type="CollisionShape3D" parent="Stage/LivingRoom/LivingRoom/MirrorSalonMesh/MirrorCollider"]
-transform = Transform3D(0.999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.0187531, 0.0371633, 0)
-shape = SubResource("BoxShape3D_a85as")
-
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Stage/LivingRoom/LivingRoom"]
 transform = Transform3D(1.23121, 0, 0, 0, -4.37114e-08, -1.37692, 0, 1, -6.01869e-08, 2.3917, 1.381, -5.09583)
 visible = false
@@ -296,10 +288,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_s78er")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.98031, 0.621368, -4.07085)
 
 [node name="SpeechBubbleLabel" parent="Stage/LivingRoom/TabletLivingRoom/SpeechBubble" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.53245, 3.10003, -4.75718)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.61087, 3.20003, -4.40399)
 text = "a"
 
-[node name="Tablet" parent="Stage/LivingRoom/TabletLivingRoom" index="1"]
+[node name="Tablet" parent="Stage/LivingRoom/TabletLivingRoom" index="2"]
 activable_name = "TabletLivingRoom"
 activable_text = "Activar"
 
@@ -307,10 +299,13 @@ activable_text = "Activar"
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.201257, 2.5, 0.513412)
 modulate = Color(1, 1, 0.698039, 1)
 
+[node name="FiniteStateMachine" parent="Stage/LivingRoom/TabletLivingRoom/Tablet" index="1"]
+initial_state = NodePath("Deactivated")
+
 [node name="Indicator" parent="Stage/LivingRoom/TabletLivingRoom/Tablet" index="3"]
 visible = false
 
-[node name="MeshInstance3D" parent="Stage/LivingRoom/TabletLivingRoom" index="2"]
+[node name="MeshInstance3D" parent="Stage/LivingRoom/TabletLivingRoom" index="3"]
 transform = Transform3D(0.907037, 0, 0.421052, 0.421052, -4.37114e-08, -0.907037, 1.84048e-08, 1, -3.96478e-08, 0, 0, 0)
 
 [node name="Setup" type="Node3D" parent="Stage"]
@@ -327,7 +322,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -29.96
 [node name="SpeechBubbleBubble" parent="Stage/Setup/TabletSecret/SpeechBubble/SpeechBubbleLabel" index="0"]
 mesh = SubResource("PlaneMesh_am4ps")
 
-[node name="Tablet" parent="Stage/Setup/TabletSecret" index="1"]
+[node name="Tablet" parent="Stage/Setup/TabletSecret" index="2"]
 transform = Transform3D(1, 2.88658e-15, 0, 0, -4.37114e-08, -1, 7.10724e-15, 1, -4.37114e-08, 0.549484, -0.103274, -0.066297)
 activable_name = "TabletSecret"
 activable_text = "Activar"
@@ -336,7 +331,7 @@ activable_text = "Activar"
 transform = Transform3D(1, -6.38378e-15, 0, 6.66134e-16, 1, 0, 0, 0, 1, -0.717073, -4.47035e-08, -0.353103)
 visible = false
 
-[node name="MeshInstance3D" parent="Stage/Setup/TabletSecret" index="2"]
+[node name="MeshInstance3D" parent="Stage/Setup/TabletSecret" index="3"]
 transform = Transform3D(0.951509, -2.83107e-15, 0.307622, 0.307622, -4.37114e-08, -0.951509, 1.34466e-08, 1, -4.15918e-08, 0, 0, 0)
 
 [editable path="Stage/MoorGnivil/TabletNolas"]
