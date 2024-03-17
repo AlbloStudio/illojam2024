@@ -1,10 +1,11 @@
-[gd_scene load_steps=45 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=46 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
 [ext_resource type="PackedScene" uid="uid://b2uyt4m0rq2fi" path="res://_Features/common/barrier/barrier_system.tscn" id="3_6s4fw"]
 [ext_resource type="PackedScene" uid="uid://d3rkq03p0oela" path="res://_Features/rooms/living_room/clothes/t-shirt.blend" id="3_ldumg"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="3_t3t5u"]
+[ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="5_8ovyx"]
 [ext_resource type="PackedScene" uid="uid://krfftilrej8q" path="res://_Features/rooms/living_room/clothes/trousers.blend" id="5_v7b18"]
 [ext_resource type="PackedScene" uid="uid://bn3rgui88uyr0" path="res://_Features/rooms/living_room/clothes/underpants.blend" id="6_lembl"]
 [ext_resource type="Texture2D" uid="uid://bnhb1b0b3nb4p" path="res://_Features/rooms/living_room/pennywise.png" id="8_0j6pt"]
@@ -158,7 +159,11 @@ activable_text = "Ponerse camiseta"
 activable_alternative_text = "Quitarse camiseta"
 
 [node name="ActionLabel" parent="Clothes/tshirt/Activable" index="0"]
-transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, 0.6, 0, -0.6, -2.62268e-08, -0.225697, 1.48059, -0.339623)
+transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, 0.6, 0, -0.6, -2.62268e-08, -0.693586, 1.59972, 0.158729)
+modulate = Color(1, 1, 0.741176, 1)
+font = ExtResource("5_8ovyx")
+font_size = 50
+outline_size = 0
 
 [node name="FiniteStateMachine" parent="Clothes/tshirt/Activable" index="1"]
 initial_state = NodePath("Deactivated")
@@ -179,7 +184,11 @@ activable_text = "Ponerse pantalones"
 activable_alternative_text = "Quitarse pantalones"
 
 [node name="ActionLabel" parent="Clothes/pants/Activable" index="0"]
-transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, 0.6, 0, -0.6, -2.62268e-08, 0.0692136, 1.09644, 0.0885167)
+transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, 0.6, 0, -0.6, -2.62268e-08, 0.0656605, 1.33558, 0.228191)
+modulate = Color(1, 1, 0.741176, 1)
+font = ExtResource("5_8ovyx")
+font_size = 50
+outline_size = 0
 
 [node name="FiniteStateMachine" parent="Clothes/pants/Activable" index="1"]
 initial_state = NodePath("Deactivated")
@@ -201,7 +210,11 @@ activable_text = "Ponerse calzoncillos"
 activable_alternative_text = "Quitarse calzoncillos"
 
 [node name="ActionLabel" parent="Clothes/underwear/Activable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.344035, 2.5, -0.485579)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.00706, 2.66916, -0.485579)
+modulate = Color(1, 1, 0.741176, 1)
+font = ExtResource("5_8ovyx")
+font_size = 50
+outline_size = 0
 
 [node name="FiniteStateMachine" parent="Clothes/underwear/Activable" index="1"]
 initial_state = NodePath("Deactivated")
@@ -227,7 +240,11 @@ activable_alternative_text = "Echar una cabezadita"
 forbidden = true
 
 [node name="ActionLabel" parent="Activables/SofaActivableLayUpWall" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.98324, 2.5, -2.37931)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5.6204, 2.5, -2.37931)
+modulate = Color(1, 1, 0.741176, 1)
+font = ExtResource("5_8ovyx")
+font_size = 50
+outline_size = 0
 
 [node name="FiniteStateMachine" parent="Activables/SofaActivableLayUpWall" index="1"]
 initial_state = NodePath("Deactivated")
@@ -247,7 +264,11 @@ activable_text = "Levantarse"
 activable_alternative_text = "Echar una cabezadita"
 
 [node name="ActionLabel" parent="Activables/SofaActivableLayUp" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.72417, 2.5, -1.78269)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37115e-08, -2.72417, 2.47351, -1.42744)
+modulate = Color(1, 1, 0.741176, 1)
+font = ExtResource("5_8ovyx")
+font_size = 50
+outline_size = 0
 
 [node name="FiniteStateMachine" parent="Activables/SofaActivableLayUp" index="1"]
 initial_state = NodePath("Deactivated")
@@ -270,7 +291,12 @@ activable_text = "Acostarse"
 activable_alternative_text = "Girar el sofá con la mente"
 
 [node name="ActionLabel" parent="Activables/SofaActivableLayDown" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.72417, 2.5, -1.78269)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.30363, 2.47351, -1.43649)
+modulate = Color(1, 1, 0.741176, 1)
+text = "Mover el sofa con la mente"
+font = ExtResource("5_8ovyx")
+font_size = 50
+outline_size = 0
 
 [node name="CollisionShape3D" parent="Activables/SofaActivableLayDown" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74956, 1.14601, -1.8666)
@@ -291,7 +317,11 @@ activable_text = "Acostarse"
 activable_alternative_text = "Girar el sofá con la mente"
 
 [node name="ActionLabel" parent="Activables/SofaActivableLayDownWall" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.94152, 2.5, -1.78269)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5.38723, 2.5, -1.78269)
+modulate = Color(1, 1, 0.741176, 1)
+font = ExtResource("5_8ovyx")
+font_size = 50
+outline_size = 0
 
 [node name="CollisionShape3D" parent="Activables/SofaActivableLayDownWall" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48076, 1.14601, -1.9654)
@@ -313,6 +343,10 @@ activable_alternative_text = "Salir de casa por el armario"
 
 [node name="ActionLabel" parent="Activables/ClosetActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.83691, 2.5, -4.30386)
+modulate = Color(1, 1, 0.741176, 1)
+font = ExtResource("5_8ovyx")
+font_size = 50
+outline_size = 0
 
 [node name="FiniteStateMachine" parent="Activables/ClosetActivable" index="1"]
 initial_state = NodePath("Deactivated")
@@ -332,7 +366,11 @@ activable_text = "Leer"
 activable_alternative_text = "Contemplar"
 
 [node name="ActionLabel" parent="Activables/PosterActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.388096, 2.5, -1.36066)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.175266, 2.5, -1.0596)
+modulate = Color(1, 1, 0.741176, 1)
+font = ExtResource("5_8ovyx")
+font_size = 50
+outline_size = 0
 
 [node name="CollisionShape3D" parent="Activables/PosterActivable" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19867, 0.981626, -1.40064)
@@ -349,7 +387,11 @@ activable_text = "Sentarse en taburete"
 activable_alternative_text = "Hablar con taburete"
 
 [node name="ActionLabel" parent="Activables/ChairActivableSit" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.85341, 2.5, -2.48264)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.85341, 2.5, -1.92374)
+modulate = Color(1, 1, 0.741176, 1)
+font = ExtResource("5_8ovyx")
+font_size = 50
+outline_size = 0
 
 [node name="CollisionShape3D" parent="Activables/ChairActivableSit" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78697, 0.981626, -2.77209)
@@ -366,7 +408,11 @@ activable_text = "Levantarse del taburete"
 activable_alternative_text = "Echar una cabezadita"
 
 [node name="ActionLabel" parent="Activables/ChairActivableGetUp" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.87483, 2.5, -2.49678)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.87483, 2.5, -1.93788)
+modulate = Color(1, 1, 0.741176, 1)
+font = ExtResource("5_8ovyx")
+font_size = 50
+outline_size = 0
 
 [node name="FiniteStateMachine" parent="Activables/ChairActivableGetUp" index="1"]
 initial_state = NodePath("Deactivated")
@@ -522,6 +568,12 @@ light_cull_mask = 4294967289
 shadow_enabled = true
 shadow_blur = 10.0
 spot_angle = 75.4328
+
+[node name="Botella_3" parent="." index="68"]
+transform = Transform3D(0.0648253, 0, 0, 0, 0.0993959, 0, 0, 0, 0.0648253, -2.04448, 1.20053, 1.17226)
+
+[node name="Cube_008" parent="." index="69"]
+transform = Transform3D(0.584893, 0, 1.0967, 0, 1.24292, 0, -1.0967, 0, 0.584893, -2.05136, 1.20053, 1.57361)
 
 [node name="Pennywise" type="MeshInstance3D" parent="." index="71"]
 transform = Transform3D(0.00200873, -0.999998, -4.74728e-10, -0.0100427, -1.52312e-05, -0.622244, 1.15077, 0.00174541, -0.00543026, 3.50785, 1.69184, -1.74533)
