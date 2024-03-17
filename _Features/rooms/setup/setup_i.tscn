@@ -152,11 +152,8 @@ transform = Transform3D(0.00270529, 0, -0.999996, 0, 1, 0, 0.999996, 0, 0.002705
 light_color = Color(1, 1, 0.960784, 1)
 light_energy = 3.0
 light_size = 0.26
-<<<<<<< Updated upstream
 light_cull_mask = 4294967289
-=======
 shadow_enabled = true
->>>>>>> Stashed changes
 spot_angle = 78.75
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lights" index="1"]
@@ -164,11 +161,8 @@ transform = Transform3D(0.00270529, 0, -0.999996, 0, 1, 0, 0.999996, 0, 0.002705
 light_color = Color(1, 1, 0.905882, 1)
 light_energy = 3.0
 light_size = 0.26
-<<<<<<< Updated upstream
 light_cull_mask = 4294967289
-=======
 shadow_enabled = true
->>>>>>> Stashed changes
 spot_angle = 79.69
 
 [node name="StreamMarker" type="Marker3D" parent="." index="1"]
