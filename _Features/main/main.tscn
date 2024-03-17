@@ -94,9 +94,11 @@ fog_enabled = true
 fog_light_color = Color(0.356863, 0.356863, 0.356863, 1)
 fog_light_energy = 0.32
 fog_density = 0.0125
-volumetric_fog_density = 0.01
 volumetric_fog_albedo = Color(0.2, 0.2, 0.2, 1)
 volumetric_fog_emission = Color(0.2, 0.2, 0.2, 1)
+volumetric_fog_emission_energy = 0.6
+volumetric_fog_detail_spread = 0.757858
+volumetric_fog_ambient_inject = 6.47
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jau8k"]
 size = Vector3(17.4316, 2, 0.224121)
@@ -168,7 +170,7 @@ bus = &"DESPIERTA"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.0627, 9.65312, -2.59619)
 current = true
-fov = 74.9843
+fov = 73.8951
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
