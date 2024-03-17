@@ -6,6 +6,8 @@ extends Node
 @export var ventana_abierta: AudioStream
 @export var discord_call: AudioStream
 @export var alternativa: AudioStream
+@export var quitarse_ropa: AudioStream
+@export var contemplar: AudioStream
 
 var current_activable: Activable = null
 var awakes = {
@@ -77,24 +79,29 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_get_player_naked()
 		"Put on T-Shirt":
 			if alternative:
-				pass
+				player.say("No me puedo quitar lo que ya me he quitado... espabila.", quitarse_ropa)
+				living_room.activate_clothe("tshirt", 2.0)
 			else:
 				_put_on_clothes("tshirt")
 		"Put on Pants":
 			if alternative:
-				pass
+				player.say("No me puedo quitar lo que ya me he quitado... espabila.", quitarse_ropa)
+				living_room.activate_clothe("pants", 2.0)
 			else:
 				_put_on_clothes("pants")
 		"Put on Underwear":
 			if alternative:
-				pass
+				player.say("No me puedo quitar lo que ya me he quitado... espabila.", quitarse_ropa)
+				living_room.activate_clothe("underwear", 2.0)
 			else:
 				_put_on_clothes("underwear")
 		"ReadPoster":
 			if alternative:
-				pass
+				player.say("Ese soy yo?", contemplar)
+				living_room.activate_activable("PosterActivable", 2.0)
 			else:
 				_read_poster()
+				living_room.activate_activable("PosterActivable", 2.0)
 		"Sit":
 			if alternative:
 				pass

@@ -184,6 +184,14 @@ func activate_activable(activable_name: String, delay := 0.0) -> void:
 	)
 
 
+func activate_clothe(clothe_name: String, delay := 0.0) -> void:
+	(
+		create_tween()
+		. tween_callback(func(): get_node("Clothes/" + clothe_name + "/Activable").reactivate())
+		. set_delay(delay)
+	)
+
+
 func awake_poster() -> void:
 	pennywise.visible = true
 	picture.global_rotation.z += PI / 2.4

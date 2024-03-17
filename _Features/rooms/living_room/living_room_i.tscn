@@ -173,6 +173,7 @@ transform = Transform3D(1.42, 0, 0, 0, 1.42, 0, 0, 0, 1.42, -0.756403, 0, 3.2226
 [node name="Activable" parent="Clothes/tshirt" index="1" instance=ExtResource("3_t3t5u")]
 activable_name = "Put on T-Shirt"
 activable_text = "Ponerse camiseta"
+activable_alternative_text = "Quitarse camiseta"
 
 [node name="ActionLabel" parent="Clothes/tshirt/Activable" index="0"]
 transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, 0.6, 0, -0.6, -2.62268e-08, -0.225697, 1.48059, -0.339623)
@@ -193,6 +194,7 @@ transform = Transform3D(1.69, 0, 0, 0, 1.69, 0, 0, 0, 1.69, -4.21612, 0, 2.34929
 [node name="Activable" parent="Clothes/pants" index="1" instance=ExtResource("3_t3t5u")]
 activable_name = "Put on Pants"
 activable_text = "Ponerse pantalones"
+activable_alternative_text = "Quitarse pantalones"
 
 [node name="ActionLabel" parent="Clothes/pants/Activable" index="0"]
 transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, 0.6, 0, -0.6, -2.62268e-08, 0.0692136, 1.09644, 0.0885167)
@@ -214,6 +216,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61629, 0, 2.17255)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.226808, -0.425579, 0.434522)
 activable_name = "Put on Underwear"
 activable_text = "Ponerse calzoncillos"
+activable_alternative_text = "Quitarse calzoncillos"
 
 [node name="ActionLabel" parent="Clothes/underwear/Activable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.344035, 2.5, -0.485579)
@@ -344,7 +347,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00148, 1.43051e-06, 3.39715)
 activable_name = "ReadPoster"
 activable_text = "Leer"
-activable_alternative_text = "Mirar"
+activable_alternative_text = "Contemplar"
 
 [node name="ActionLabel" parent="Activables/PosterActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.388096, 2.5, -1.36066)
