@@ -1,9 +1,9 @@
 extends Control
 
+var is_paused = false
+
 @onready var music_slider := %Music as HSlider
 @onready var dialog_slider := %Dialogs as HSlider
-
-var is_paused = false
 
 
 func _ready():
