@@ -145,15 +145,9 @@ bus = &"DESPIERTA"
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-<<<<<<< Updated upstream
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -3.21053, 9.65312, -2.40769)
 current = true
-fov = 74.5936
-=======
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 2.69028, 9.65312, 0.89187)
-current = true
-fov = 69.2089
->>>>>>> Stashed changes
+fov = 74.4432
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -207,11 +201,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.7371)
 script = ExtResource("8_ku7b2")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Stage/MoorGnivil"]
-<<<<<<< Updated upstream
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00467682, 3.05618, 1.36269)
-=======
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00467682, 3.05618, 1.46719)
->>>>>>> Stashed changes
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_a8ryy")
 skeleton = NodePath("")
@@ -219,38 +209,6 @@ skeleton = NodePath("")
 [node name="Nolas" parent="Stage/MoorGnivil" instance=ExtResource("9_iwvg8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.48041)
 script = ExtResource("9_l32nb")
-
-<<<<<<< Updated upstream
-[node name="CeilingLight4" type="SpotLight3D" parent="Stage/MoorGnivil"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.182893, 3.12979, 5.03192)
-light_energy = 2.0
-light_cull_mask = 4294966273
-shadow_enabled = true
-shadow_bias = 0.07
-shadow_normal_bias = 3.604
-shadow_reverse_cull_face = true
-shadow_opacity = 0.75
-shadow_blur = 5.218
-distance_fade_length = 0.0
-spot_range = 30.0
-spot_attenuation = 0.812252
-spot_angle = 77.8
-
-[node name="CeilingLight2" type="SpotLight3D" parent="Stage/MoorGnivil"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.21567, 2.93938, -0.952699)
-light_energy = 2.0
-light_cull_mask = 4294966273
-shadow_enabled = true
-shadow_bias = 0.07
-shadow_normal_bias = 3.604
-shadow_reverse_cull_face = true
-shadow_transmittance_bias = -2.875
-shadow_opacity = 0.75
-shadow_blur = 5.218
-distance_fade_length = 0.0
-spot_range = 30.0
-spot_attenuation = 0.812252
-spot_angle = 77.8
 
 [node name="TabletNolas" parent="Stage/MoorGnivil" instance=ExtResource("4_nyxmf")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.01423, 0.621368, 5.74418)
@@ -275,41 +233,6 @@ transform = Transform3D(0.866025, 0, -0.5, -0.5, -4.37114e-08, -0.866025, -2.185
 
 [node name="LivingRoom" type="Node3D" parent="Stage"]
 
-[node name="CeilingLight3" type="SpotLight3D" parent="Stage/LivingRoom"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.406277, 3.02204, 2.89688)
-light_energy = 2.0
-light_cull_mask = 4294966273
-shadow_enabled = true
-shadow_bias = 0.07
-shadow_normal_bias = 3.604
-shadow_reverse_cull_face = true
-shadow_transmittance_bias = -6.832
-shadow_opacity = 0.75
-shadow_blur = 5.218
-distance_fade_length = 0.0
-spot_range = 30.0
-spot_attenuation = 0.812252
-spot_angle = 77.8
-
-[node name="CeilingLight1" type="SpotLight3D" parent="Stage/LivingRoom"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.61381, -2.60078)
-light_energy = 2.0
-light_cull_mask = 4294966273
-shadow_enabled = true
-shadow_bias = 0.07
-shadow_normal_bias = 3.604
-shadow_reverse_cull_face = true
-shadow_opacity = 0.75
-shadow_blur = 5.218
-distance_fade_length = 0.0
-spot_range = 30.0
-spot_attenuation = 0.812252
-spot_angle = 77.8
-
-=======
-[node name="LivingRoom" type="Node3D" parent="Stage"]
-
->>>>>>> Stashed changes
 [node name="LivingRoom" parent="Stage/LivingRoom" instance=ExtResource("4_og77x")]
 
 [node name="TabletLivingRoom" parent="Stage/LivingRoom" instance=ExtResource("4_nyxmf")]
@@ -319,9 +242,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.980
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.53245, 3.10003, -4.75718)
 visible = false
 text = "a"
-
-[node name="SpeechBubbleBubble" parent="Stage/LivingRoom/TabletLivingRoom/SpeechBubble/SpeechBubbleLabel" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0300701, -0.21186, 0)
 
 [node name="Tablet" parent="Stage/LivingRoom/TabletLivingRoom" index="1"]
 activable_name = "TabletLivingRoom"
@@ -336,7 +256,6 @@ transform = Transform3D(0.866025, 0, -0.5, -0.5, -4.37114e-08, -0.866025, -2.185
 [node name="Setup" type="Node3D" parent="Stage"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.0907, 0, 1.58796)
 
-<<<<<<< Updated upstream
 [node name="CeilingLight5" type="SpotLight3D" parent="Stage/Setup"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.16548, 2.53399, 2.21761)
 light_color = Color(0.419608, 0.419608, 0.419608, 1)
@@ -368,8 +287,6 @@ spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 77.8
 
-=======
->>>>>>> Stashed changes
 [node name="setup" parent="Stage/Setup" instance=ExtResource("11_qjeg8")]
 
 [node name="TabletSecret" parent="Stage/Setup" instance=ExtResource("4_nyxmf")]
