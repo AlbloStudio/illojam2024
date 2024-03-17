@@ -64,6 +64,13 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 activable_name = "Tablet"
 activable_text = "Leer chat"
 
+[node name="ActionLabel" parent="Tablet" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.201257, 2.5, 0.376964)
+modulate = Color(1, 1, 0.494118, 1)
+font = ExtResource("2_7iick")
+font_size = 50
+outline_size = 0
+
 [node name="CollisionShape3D" parent="Tablet" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179605, 0)
 shape = SubResource("CylinderShape3D_t6nb5")

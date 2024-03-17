@@ -14,7 +14,7 @@ func make_visible(
 func get_color(is_visible: bool, is_alternative: bool, is_forbidden: bool) -> Color:
 	var a := 1 if is_visible else 0
 
-	var color := Color(1.0, 1.0, 1.0, a)
+	var color := Color(1.0, 1.0, 0.741176, a)
 	if is_alternative:
 		color = Color(Color.LIGHT_SALMON.r, Color.LIGHT_SALMON.g, Color.LIGHT_SALMON.b, a)
 	elif is_forbidden:

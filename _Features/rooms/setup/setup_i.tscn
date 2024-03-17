@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://c0bdwlue70wgp"]
+[gd_scene load_steps=39 format=3 uid="uid://c0bdwlue70wgp"]
 
 [ext_resource type="PackedScene" uid="uid://eey6l7a03sjc" path="res://_Features/rooms/setup/setup.blend" id="1_8c4o6"]
 [ext_resource type="Script" path="res://_Features/rooms/setup/setup.gd" id="2_42fvx"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_n3fv0"]
+[ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="4_bnti0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ljiy"]
 size = Vector3(5.14087, 3.50208, 0.224121)
@@ -175,6 +176,13 @@ light_cull_mask = 4294967289
 shadow_enabled = true
 spot_angle = 79.69
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85044, 1.38071, 0.0259241)
+light_color = Color(0.705882, 0.8, 0.760784, 1)
+light_energy = 0.279
+shadow_enabled = true
+omni_range = 2.44895
+
 [node name="StreamMarker" type="Marker3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0, -0.03)
 
@@ -283,6 +291,10 @@ activable_alternative_text = "Subir la pared"
 
 [node name="ActionLabel" parent="WallsUpActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.1639, 2.5, 0.819902)
+modulate = Color(1, 1, 0.698039, 1)
+font = ExtResource("4_bnti0")
+font_size = 50
+outline_size = 0
 
 [node name="CollisionShape3D" parent="WallsUpActivable" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545135, 0.133652, 1.06228)
@@ -303,6 +315,10 @@ activable_text = "Mover la silla"
 
 [node name="ActionLabel" parent="ActivablesPenetrated/MoveChairActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
+modulate = Color(1, 1, 0.698039, 1)
+font = ExtResource("4_bnti0")
+font_size = 50
+outline_size = 0
 
 [node name="CollisionShape3D" parent="ActivablesPenetrated/MoveChairActivable" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.404452, -2.11637, 0.555268)
@@ -322,6 +338,10 @@ activable_alternative_text = "Mover la silla"
 
 [node name="ActionLabel" parent="Activables/StreamInActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
+modulate = Color(1, 1, 0.698039, 1)
+font = ExtResource("4_bnti0")
+font_size = 50
+outline_size = 0
 
 [node name="CollisionShape3D" parent="Activables/StreamInActivable" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.637519, 0.615662, 0.555268)
@@ -344,6 +364,10 @@ activable_alternative_text = "Echar una cabezadita"
 
 [node name="ActionLabel" parent="Activables/StreamOutActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
+modulate = Color(1, 1, 0.698039, 1)
+font = ExtResource("4_bnti0")
+font_size = 50
+outline_size = 0
 
 [node name="FiniteStateMachine" parent="Activables/StreamOutActivable" index="1"]
 initial_state = NodePath("Deactivated")
@@ -364,6 +388,10 @@ activable_alternative_text = "ffFMooffverfff ffLa Sffifflfllaa"
 
 [node name="ActionLabel" parent="Activables/StreamInIncorrectActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
+modulate = Color(1, 1, 0.698039, 1)
+font = ExtResource("4_bnti0")
+font_size = 50
+outline_size = 0
 
 [node name="FiniteStateMachine" parent="Activables/StreamInIncorrectActivable" index="1"]
 initial_state = NodePath("Deactivated")
@@ -384,6 +412,10 @@ activable_alternative_text = "Ecffhffar funfa cffabezffffaditaffff"
 
 [node name="ActionLabel" parent="Activables/StreamOutInCorrectActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
+modulate = Color(1, 1, 0.698039, 1)
+font = ExtResource("4_bnti0")
+font_size = 50
+outline_size = 0
 
 [node name="FiniteStateMachine" parent="Activables/StreamOutInCorrectActivable" index="1"]
 initial_state = NodePath("Deactivated")
@@ -404,6 +436,10 @@ activable_alternative_text = "Saltar"
 
 [node name="ActionLabel" parent="Activables/JumpDownActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.795094, 2.5, -0.154641)
+modulate = Color(1, 1, 0.698039, 1)
+font = ExtResource("4_bnti0")
+font_size = 50
+outline_size = 0
 
 [node name="FiniteStateMachine" parent="Activables/JumpDownActivable" index="1"]
 initial_state = NodePath("Deactivated")
@@ -423,7 +459,11 @@ activable_text = "Salir por la ventana"
 activable_alternative_text = "Asomarse"
 
 [node name="ActionLabel" parent="Activables/ExitWindowActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.3, 1.35687, 1.41756)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.89211, 1.35687, 2.24353)
+modulate = Color(1, 1, 0.698039, 1)
+font = ExtResource("4_bnti0")
+font_size = 50
+outline_size = 0
 
 [node name="CollisionShape3D" parent="Activables/ExitWindowActivable" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074995, 0.0784359, 1.62159)
@@ -440,7 +480,11 @@ activable_text = "Volver"
 activable_alternative_text = "Asomarse"
 
 [node name="ActionLabel" parent="Activables/EnterWindowActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.1947, 1.35687, 1.6294)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.85487, 1.35687, 2.34536)
+modulate = Color(1, 1, 0.698039, 1)
+font = ExtResource("4_bnti0")
+font_size = 50
+outline_size = 0
 
 [node name="FiniteStateMachine" parent="Activables/EnterWindowActivable" index="1"]
 initial_state = NodePath("Deactivated")
@@ -462,7 +506,11 @@ activable_text = "Levantar la persiana"
 activable_alternative_text = "Cuestionarse el cordelito"
 
 [node name="ActionLabel" parent="Activables/BlindersUpActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.16504, 2.5, 3.18097)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.965003, 2.5, 3.95198)
+modulate = Color(1, 1, 0.698039, 1)
+font = ExtResource("4_bnti0")
+font_size = 50
+outline_size = 0
 
 [node name="FiniteStateMachine" parent="Activables/BlindersUpActivable" index="1"]
 initial_state = NodePath("Deactivated")
@@ -482,7 +530,11 @@ activable_text = "Bajar la persiana"
 activable_alternative_text = "Cuestionarse el cordelito"
 
 [node name="ActionLabel" parent="Activables/BlindersDownActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.1, 2.5, 3.2)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.899963, 2.5, 3.97101)
+modulate = Color(1, 1, 0.698039, 1)
+font = ExtResource("4_bnti0")
+font_size = 50
+outline_size = 0
 
 [node name="CollisionShape3D" parent="Activables/BlindersDownActivable" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0214708, 0.800177, 3.0972)
@@ -566,6 +618,7 @@ bones/1/rotation = Quaternion(-0.0554458, -1.49241e-08, 1.00074e-15, 0.998462)
 bones/4/rotation = Quaternion(0.0554457, 1.49241e-08, -1.46134e-09, 0.998462)
 bones/6/rotation = Quaternion(-2.66454e-15, 1.49012e-08, -1.61028e-15, 1)
 bones/7/rotation = Quaternion(0.596845, 0.390293, -0.57363, 0.402984)
+bones/7/scale = Vector3(1, 1, 1)
 bones/8/rotation = Quaternion(0.505595, 0.184679, -0.11178, 0.835328)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(-0.103138, -0.255668, 0.359614, 0.891445)
@@ -610,6 +663,7 @@ bones/40/scale = Vector3(1, 1, 1)
 bones/41/rotation = Quaternion(0.521914, 0.0656701, -0.0403461, 0.849509)
 bones/41/scale = Vector3(1, 1, 1)
 bones/42/rotation = Quaternion(0.235259, -0.0415326, 0.0100627, 0.970993)
+bones/42/scale = Vector3(1, 1, 1)
 bones/43/rotation = Quaternion(3.91155e-08, -1.86264e-09, -9.31322e-10, 1)
 bones/44/rotation = Quaternion(-0.00227671, 0.0197217, 0.993207, 0.114656)
 bones/44/scale = Vector3(1, 1, 1)
