@@ -25,6 +25,7 @@ var player: Player
 @onready var collision_shape_3d := $CollisionShape3D as CollisionShape3D
 @onready var label := $ActionLabel as ActivableLabel
 @onready var indicator := $Indicator as Node3D
+@onready var indicator_trigger := $Indicator/IndicatorTrigger as Area3D
 
 
 func _ready() -> void:

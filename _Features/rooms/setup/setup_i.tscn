@@ -459,7 +459,7 @@ activable_text = "Salir por la ventana"
 activable_alternative_text = "Asomarse"
 
 [node name="ActionLabel" parent="Activables/ExitWindowActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.3, 1.35687, 1.41756)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.6895, 1.35687, 1.43773)
 modulate = Color(1, 1, 0.698039, 1)
 font = ExtResource("4_bnti0")
 font_size = 50

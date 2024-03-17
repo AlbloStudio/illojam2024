@@ -212,3 +212,7 @@ func awake_sofa() -> void:
 
 func awake_clothes() -> void:
 	pass
+
+
+func rotate_sofa() -> void:
+	pass

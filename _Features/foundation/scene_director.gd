@@ -23,13 +23,13 @@ var awakes = {
 @onready var tablet_nolas := $Stage/MoorGnivil/TabletNolas as Tablet
 @onready var tablet_secret := $Stage/Setup/TabletSecret as Tablet
 @onready var ui := $UI as GameUI
-@onready var audio := $Audio as Audio
+@onready var audio := $Audio as Audios
 @onready var scan := $Scan as ColorRect
 
 
 func _ready():
-	# player.global_position = living_room.get_start_position()
-	# player.lay_up_from_sofa_init(living_room.get_up_init_position())
+	player.global_position = living_room.get_start_position()
+	player.lay_up_from_sofa_init(living_room.get_up_init_position())
 
 	SignalBus.activable_activated.connect(_activable_activated)
 	SignalBus.current_activable_changed.connect(_set_current_activable)
@@ -53,6 +53,7 @@ func _ready():
 
 func _started() -> void:
 	player.collision_layer = 1
+	_tablet_living_room_opened()
 
 
 func _activable_activated(activable_name: String, alternative: bool) -> void:
@@ -113,7 +114,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				living_room.activate_activable("PosterActivable", 6.0)
 		"Sit":
 			if alternative:
-				player.say("Qué pasa, taburte? TABURRES?", "TabureteAlternativo")
+				player.say("Qué pasa, taburete? TABURRES?", "TabureteAlternativo")
 				create_tween().tween_callback(func(): _awaked("talk")).set_delay(3.0)
 			else:
 				_sit_on_chair()
@@ -143,11 +144,13 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_read_mirror_poster()
 		"Lay down":
 			if alternative:
+				living_room.rotate_sofa()
 				living_room.activate_activable("SofaActivableLayDown", 2.0)
 			else:
 				_sofa_lay_down()
 		"Lay down wall":
 			if alternative:
+				living_room.rotate_sofa()
 				living_room.activate_activable("SofaActivableLayDownWall", 2.0)
 			else:
 				_sofa_lay_down_wall()
@@ -166,7 +169,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 		"StreamIn":
 			if alternative:
 				player.say(
-					"No puedo desede aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
+					"No puedo desde aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
 				)
 				setup.activate_activable("StreamInActivable", 5.0)
 			else:
@@ -180,7 +183,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 		"StreamWrong":
 			if alternative:
 				player.say(
-					"No puedo desede aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
+					"No puedo desde aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
 				)
 				setup.activate_activable("StreamInIncorrectActivable", 5.0)
 			else:
@@ -253,6 +256,8 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 
 
 func _tablet_living_room_opened() -> void:
+	player.go_puppet()
+
 	(
 		tablet_living_room
 		. say(
@@ -275,9 +280,11 @@ func _tablet_living_room_opened() -> void:
 			]
 		)
 	)
+
 	create_tween().tween_callback(living_room.make_closet_appear).set_delay(26.0)
 	create_tween().tween_callback(nolas.make_closet_appear).set_delay(26.0)
-	create_tween().tween_callback(tablet_living_room.activate).set_delay(38.0)
+	create_tween().tween_callback(tablet_living_room.activate).set_delay(208.0)
+	create_tween().tween_callback(player.go_controlled).set_delay(28.0)
 
 
 func _tablet_nolas_opened() -> void:
@@ -311,7 +318,6 @@ func _tablet_secret_opened() -> void:
 
 
 func _set_current_activable(new_activable: Activable) -> void:
-	print("setting as current " + new_activable.name)
 	if current_activable == new_activable:
 		return
 
