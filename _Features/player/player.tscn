@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_bky17"]
 [ext_resource type="Texture2D" uid="uid://bcqu5yfbo7isa" path="res://_Features/player/textures/nakedbody.png" id="2_n00nq"]
 [ext_resource type="Script" path="res://_Features/player/states/player_state_controlled.gd" id="3_1flnn"]
-[ext_resource type="AudioStream" uid="uid://buqtws3fnss88" path="res://_Features/audio/pantaloneslargos.mp3" id="3_pvfp2"]
+[ext_resource type="AudioStream" path="res://_Features/audio/pantaloneslargos.mp3" id="3_pvfp2"]
 [ext_resource type="Script" path="res://_Features/player/states/player_state_puppet.gd" id="4_iboom"]
 [ext_resource type="PackedScene" uid="uid://bwc8d10l0135e" path="res://_Features/player/player_i.tscn" id="5_e0hf5"]
 [ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="7_2b0gq"]
 [ext_resource type="Shader" path="res://_Features/player/pixelation.gdshader" id="7_ic2mv"]
-[ext_resource type="Texture2D" uid="uid://co218anhqm0i2" path="res://_Features/UI/Text Box Right.svg" id="8_h5crk"]
+[ext_resource type="Texture2D" uid="uid://dx0jbe57rxkh2" path="res://_Features/UI/PlayerTextBox.svg" id="9_ywfra"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_8bekt"]
 radius = 0.63
@@ -28,7 +28,8 @@ height = 1.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnaw3"]
 transparency = 1
-albedo_texture = ExtResource("8_h5crk")
+albedo_color = Color(1, 1, 1, 0.956863)
+albedo_texture = ExtResource("9_ywfra")
 emission = Color(1, 1, 1, 1)
 emission_operator = 1
 clearcoat_roughness = 0.0
@@ -83,7 +84,7 @@ autowrap_mode = 2
 width = 454.82
 
 [node name="SpeechBubbleBubble" type="MeshInstance3D" parent="SpeechBubble/SpeechBubbleLabel"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.139708, -0.201596, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.139708, -0.201596, -0.038825)
 layers = 2
 mesh = SubResource("PlaneMesh_wvj6b")
 
