@@ -38,9 +38,6 @@ func _on_activable_body_exited(_body: Node3D) -> void:
 
 
 func handle_input(event: InputEvent) -> void:
-	if state_owner.player != null && state_owner.player.is_puppet():
-		return
-
 	if event.is_action_pressed("player_action"):
 		is_pressing = true
 	elif event.is_action_released("player_action"):

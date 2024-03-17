@@ -176,6 +176,22 @@ func get_marker_position(marker_name: String) -> Vector3:
 	return get_node("Markers/" + marker_name).global_position
 
 
+func activate_activable(activable_name: String, delay := 0.0) -> void:
+	(
+		create_tween()
+		. tween_callback(func(): get_node("Activables/" + activable_name).reactivate())
+		. set_delay(delay)
+	)
+
+
+func activate_clothe(clothe_name: String, delay := 0.0) -> void:
+	(
+		create_tween()
+		. tween_callback(func(): get_node("Clothes/" + clothe_name + "/Activable").reactivate())
+		. set_delay(delay)
+	)
+
+
 func awake_poster() -> void:
 	pennywise.visible = true
 	picture.global_rotation.z += PI / 2.4
