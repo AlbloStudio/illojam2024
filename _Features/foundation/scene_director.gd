@@ -51,6 +51,8 @@ func _ready():
 	SignalBus.started.connect(_started)
 	SignalBus.should_activate.connect(_should_activate)
 
+	ui.set_total_progress(awakes.size())
+
 
 func _started() -> void:
 	player.collision_layer = 1

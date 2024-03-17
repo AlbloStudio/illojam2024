@@ -71,6 +71,7 @@ func on_closet_disappeared() -> void:
 	closet_handles.queue_free()
 	closet_activable.queue_free()
 
+
 func reset_closet() -> void:
 	for cloth_name in cloth_names:
 		var cloth_activable = get_node(_clothes_path(cloth_name, false)) as Node3D

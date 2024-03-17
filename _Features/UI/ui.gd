@@ -17,6 +17,10 @@ func _process(_delta: float) -> void:
 	despierta_label.global_position = Vector2(randx, randy)
 
 
+func set_total_progress(amount: float) -> void:
+	progress_bar.max_value(amount)
+
+
 func add_progress(amount: float) -> void:
 	progress_bar.value += amount
 
