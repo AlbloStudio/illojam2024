@@ -62,7 +62,6 @@ func make_closet_disappear() -> void:
 	tww.finished.connect(on_closet_disappeared, CONNECT_ONE_SHOT)
 	tww.tween_property(closet, "transparency", 1, 0.3)
 	tww.tween_property(closet_handles, "transparency", 1, 0.3)
-	
 
 
 func on_closet_disappeared() -> void:
@@ -70,7 +69,6 @@ func on_closet_disappeared() -> void:
 	closet_handles.queue_free()
 	closet_activable.queue_free()
 	mirror_collider.get_node("CollisionMirrorShape").disabled = true
-	
 
 
 func reset_closet() -> void:
