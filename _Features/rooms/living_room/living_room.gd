@@ -3,7 +3,10 @@ class_name LivingRoom extends Node3D
 var cloth_names := ["underwear", "pants", "tshirt"]
 var poster_awaken := false
 
+@onready var mirror_collider = $MirrorSalonMesh/MirrorCollider as StaticBody3D
+
 @onready var closet := $Closet_001 as MeshInstance3D
+
 @onready var closet_handles := $Cube_005 as MeshInstance3D
 @onready var closet_collider := $Closet_001/StaticBody3D as StaticBody3D
 @onready var closet_activable := $Activables/ClosetActivable as Activable
@@ -35,6 +38,7 @@ func _ready() -> void:
 	closet.visible = false
 	closet_handles.visible = false
 	clothes.visible = false
+	mirror_collider.get_node("CollisionMirrorShape").disabled = false
 
 	closet_collider.process_mode = Node.PROCESS_MODE_DISABLED
 
@@ -58,12 +62,15 @@ func make_closet_disappear() -> void:
 	tww.finished.connect(on_closet_disappeared, CONNECT_ONE_SHOT)
 	tww.tween_property(closet, "transparency", 1, 0.3)
 	tww.tween_property(closet_handles, "transparency", 1, 0.3)
+	
 
 
 func on_closet_disappeared() -> void:
 	closet.queue_free()
 	closet_handles.queue_free()
 	closet_activable.queue_free()
+	mirror_collider.get_node("CollisionMirrorShape").disabled = true
+	
 
 
 func reset_closet() -> void:

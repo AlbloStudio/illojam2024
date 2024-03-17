@@ -33,6 +33,7 @@ var original_pants_texture: Texture
 func _ready():
 	desired_velocity = Vector2.LEFT
 	original_speech_bubble_position = speech_bubble_label.global_position
+	
 
 
 func _process(_delta: float) -> void:
@@ -66,6 +67,10 @@ func get_naked() -> void:
 	original_pants_texture = pants_material.albedo_texture
 	pants_material.albedo_texture = naked_texture
 	pixelation.visible = true
+	pixelation.rotation_degrees = Vector3(0,0,0)
+	
+	
+	
 
 
 func put_some_clothes(cloth_name: String) -> void:
@@ -121,12 +126,12 @@ func sit_on_mirror_chair(sit_position: Vector3) -> void:
 func after_mirror_chair() -> void:
 	SignalBus.awaked.emit("sit")
 	animate("SitOnChair", previous_position, Vector3(0, PI, 0), state_controlled.name, true)
-
-
+	
 func lay_down_on_sofa(new_position: Vector3, is_wall := false) -> void:
 	print(global_position)
-
+	pixelation.rotation_degrees = Vector3(90,90,0)
 	if !is_wall:
+		
 		global_position.x -= 0.9
 		global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
 		animate(
@@ -138,6 +143,7 @@ func lay_down_on_sofa(new_position: Vector3, is_wall := false) -> void:
 			_layed_down,
 		)
 	else:
+		
 		global_position.x += 0.9
 		global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
 		animate(
@@ -151,6 +157,7 @@ func lay_down_on_sofa(new_position: Vector3, is_wall := false) -> void:
 
 
 func lay_up_from_sofa_init(new_position: Vector3) -> void:
+	pixelation.rotation_degrees = Vector3(90,90,0)
 	go_puppet()
 	global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
 	animate(
@@ -166,6 +173,7 @@ func lay_up_from_sofa_init(new_position: Vector3) -> void:
 
 
 func lay_up_from_sofa(new_position: Vector3, is_wall := false) -> void:
+	pixelation.rotation_degrees = Vector3(90,90,0)
 	global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
 	animate(
 		"LayingSofa" if !is_wall else "LayingSofaWall",
@@ -186,6 +194,7 @@ func _change_player_speed(new_speed: float) -> void:
 
 
 func _layed_down() -> void:
+	pixelation.rotation_degrees = Vector3(90,0,0)
 	_change_player_speed(speed_slow)
 	SignalBus.layed_down.emit()
 	global_rotation = Vector3(0, get_target_ang(0), 0)
@@ -194,12 +203,14 @@ func _layed_down() -> void:
 
 
 func _layed_up() -> void:
+	pixelation.rotation_degrees = Vector3(0,0,0)
 	_change_player_speed(speed_fast)
 	SignalBus.layed_up.emit()
 	dont_animate_movement = false
 
 
 func _layed_up_init() -> void:
+	pixelation.rotation_degrees = Vector3(0,0,0)
 	SignalBus.started.emit()
 	SignalBus.layed_up.emit()
 
@@ -216,6 +227,7 @@ func sit_to_stream(new_position: Vector3) -> void:
 
 
 func get_up_from_streaming() -> void:
+	pixelation.rotation_degrees = Vector3(0,0,0)
 	animate(
 		"SitOnChair",
 		previous_position,
