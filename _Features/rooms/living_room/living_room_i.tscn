@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=48 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
@@ -114,6 +114,9 @@ heightmap_scale = -16.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k7482"]
 size = Vector3(2.22375, 2.26465, 0.78894)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kjyiw"]
+size = Vector3(0.412109, 1, 0.67688)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bqp4g"]
 
@@ -562,6 +565,14 @@ collision_layer = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Closet_001/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027061, 0.161621, -0.0920839)
 shape = SubResource("BoxShape3D_k7482")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_007" index="0"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_007/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00683594, 0, -0.16156)
+shape = SubResource("BoxShape3D_kjyiw")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Sphere_006" index="0"]
 transform = Transform3D(19.8211, 0, 0, 0, 0.0339052, -19.821, 0, 19.821, 0.0339052, -0.0487671, -5.35033, -0.0447617)
