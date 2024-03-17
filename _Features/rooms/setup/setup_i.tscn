@@ -629,6 +629,7 @@ skeleton = NodePath("")
 
 [node name="CeilingLight5" type="SpotLight3D" parent="." index="176"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.619664, 2.53399, 1.96487)
+layers = 7
 light_color = Color(0.419608, 0.419608, 0.419608, 1)
 light_energy = 0.3
 shadow_enabled = true
@@ -645,6 +646,7 @@ spot_angle = 77.8
 
 [node name="CeilingLight6" type="SpotLight3D" parent="." index="177"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.739505, 2.27513, -1.91125)
+layers = 7
 light_color = Color(0.419608, 0.419608, 0.419608, 1)
 light_energy = 0.2
 shadow_enabled = true
