@@ -70,6 +70,7 @@ shader_parameter/pallete = SubResource("GradientTexture2D_gteco")
 background_mode = 1
 background_color = Color(0.2, 0.2, 0.2, 1)
 tonemap_mode = 2
+tonemap_white = 16.0
 ssr_fade_in = 6.11788
 ssr_fade_out = 3.73213
 ssr_depth_tolerance = 24.11
@@ -81,8 +82,6 @@ ssil_enabled = true
 ssil_radius = 0.81
 ssil_intensity = 1.45
 sdfgi_enabled = true
-sdfgi_use_occlusion = true
-sdfgi_bounce_feedback = 0.2
 sdfgi_min_cell_size = 0.798145
 sdfgi_energy = 0.17
 sdfgi_normal_bias = 0.06
@@ -273,37 +272,6 @@ transform = Transform3D(0.907037, 0, 0.421052, 0.421052, -4.37114e-08, -0.907037
 
 [node name="Setup" type="Node3D" parent="Stage"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.0907, 0, 1.58796)
-
-[node name="CeilingLight5" type="SpotLight3D" parent="Stage/Setup"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.16548, 2.53399, 2.21761)
-light_color = Color(0.419608, 0.419608, 0.419608, 1)
-light_cull_mask = 4294966273
-shadow_enabled = true
-shadow_bias = 0.07
-shadow_normal_bias = 3.604
-shadow_reverse_cull_face = true
-shadow_transmittance_bias = -2.875
-shadow_opacity = 0.75
-shadow_blur = 5.218
-distance_fade_length = 0.0
-spot_range = 30.0
-spot_attenuation = 0.812252
-spot_angle = 77.8
-
-[node name="CeilingLight6" type="SpotLight3D" parent="Stage/Setup"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28532, 2.27513, -1.91125)
-light_color = Color(0.419608, 0.419608, 0.419608, 1)
-light_cull_mask = 4294966273
-shadow_enabled = true
-shadow_bias = 0.07
-shadow_normal_bias = 3.604
-shadow_reverse_cull_face = true
-shadow_opacity = 0.75
-shadow_blur = 5.218
-distance_fade_length = 0.0
-spot_range = 30.0
-spot_attenuation = 0.812252
-spot_angle = 77.8
 
 [node name="setup" parent="Stage/Setup" instance=ExtResource("11_qjeg8")]
 
