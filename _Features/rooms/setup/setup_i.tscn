@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c0bdwlue70wgp"]
+[gd_scene load_steps=38 format=3 uid="uid://c0bdwlue70wgp"]
 
 [ext_resource type="PackedScene" uid="uid://eey6l7a03sjc" path="res://_Features/rooms/setup/setup.blend" id="1_8c4o6"]
 [ext_resource type="Script" path="res://_Features/rooms/setup/setup.gd" id="2_42fvx"]
@@ -132,6 +132,16 @@ _data = {
 "move_chair": SubResource("Animation_7seyn")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mlw4k"]
+emission_enabled = true
+emission = Color(0.847059, 0.811765, 0.94902, 1)
+emission_energy_multiplier = 2.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kdxx3"]
+emission_enabled = true
+emission = Color(0.796078, 0.658824, 0.909804, 1)
+emission_energy_multiplier = 1.32
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pld4w"]
 albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
@@ -148,18 +158,18 @@ script = ExtResource("2_42fvx")
 [node name="Lights" type="Node3D" parent="." index="0"]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights" index="0"]
-transform = Transform3D(0.00270529, 0, -0.999996, 0, 1, 0, 0.999996, 0, 0.00270529, -2.28096, 2.26489, -1.10753)
+transform = Transform3D(0.00264843, 0.203949, -0.978978, -0.000551742, 0.978981, 0.203949, 0.999996, 0, 0.00270529, -2.31332, 2.26489, -1.10753)
 light_color = Color(1, 1, 0.960784, 1)
-light_energy = 3.0
+light_energy = 2.0
 light_size = 0.26
 light_cull_mask = 4294967289
 shadow_enabled = true
 spot_angle = 78.75
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lights" index="1"]
-transform = Transform3D(0.00270529, 0, -0.999996, 0, 1, 0, 0.999996, 0, 0.00270529, -2.20252, 2.24679, 1.10295)
+transform = Transform3D(0.00270529, 0, -0.999996, 0, 1, 0, 0.999996, 0, 0.00270529, -2.30937, 2.25525, 1.10295)
 light_color = Color(1, 1, 0.905882, 1)
-light_energy = 3.0
+light_energy = 2.0
 light_size = 0.26
 light_cull_mask = 4294967289
 shadow_enabled = true
@@ -520,6 +530,15 @@ visible = false
 [node name="VideogameBox_5_001" parent="." index="118"]
 transform = Transform3D(0.314475, 0, 0, 0, 0.830166, 0, 0, 0, 0.426444, 1.70578, 0.626472, 1.61724)
 
+[node name="neon twitch normal_004" parent="." index="136"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mlw4k")
+
+[node name="neon twitch normal_003" parent="." index="139"]
+surface_material_override/0 = SubResource("StandardMaterial3D_kdxx3")
+
+[node name="CuadroILLOGTAMAIN_005" parent="." index="140"]
+transform = Transform3D(0.0706133, -0.131961, -0.524678, 0.30889, -0.0309977, 0.133153, -0.0344091, -0.549073, 0.118581, -1.99908, 0.444083, 6.82799)
+
 [node name="Cube_004" parent="." index="148"]
 visible = false
 
@@ -609,7 +628,7 @@ mesh = SubResource("PlaneMesh_kvtyt")
 skeleton = NodePath("")
 
 [node name="CeilingLight5" type="SpotLight3D" parent="." index="176"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.683881, 2.53399, 1.96487)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.619664, 2.53399, 1.96487)
 light_color = Color(0.419608, 0.419608, 0.419608, 1)
 light_energy = 0.3
 shadow_enabled = true
@@ -625,9 +644,9 @@ spot_attenuation = 0.812252
 spot_angle = 77.8
 
 [node name="CeilingLight6" type="SpotLight3D" parent="." index="177"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.803721, 2.27513, -1.91125)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.739505, 2.27513, -1.91125)
 light_color = Color(0.419608, 0.419608, 0.419608, 1)
-light_energy = 0.3
+light_energy = 0.2
 shadow_enabled = true
 shadow_bias = 0.07
 shadow_normal_bias = 3.604

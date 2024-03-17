@@ -20,6 +20,7 @@ roughness = 0.28
 emission_enabled = true
 emission = Color(0.909804, 1, 1, 1)
 emission_energy_multiplier = 0.11
+refraction_scale = 0.21
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vq6wj"]
 size = Vector3(0.794922, 0.761719, 0.711792)
@@ -514,6 +515,7 @@ light_energy = 3.739
 light_cull_mask = 4294967289
 shadow_enabled = true
 shadow_blur = 10.0
+spot_angle = 75.4328
 
 [node name="Pennywise" type="MeshInstance3D" parent="." index="72"]
 transform = Transform3D(0.00200873, -0.999998, -4.74728e-10, -0.0100427, -1.52312e-05, -0.622244, 1.15077, 0.00174541, -0.00543026, 3.50785, 1.69184, -1.74533)
@@ -524,7 +526,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4gha0")
 [node name="CeilingLight1" type="SpotLight3D" parent="." index="73"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.68929, -2.12626)
 light_color = Color(1, 1, 0.956863, 1)
-light_energy = 1.2
+light_energy = 1.4
 light_cull_mask = 4294967289
 shadow_enabled = true
 shadow_bias = 0.07
@@ -568,6 +570,9 @@ distance_fade_length = 0.0
 spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 77.8
+
+[node name="LightmapProbe" type="LightmapProbe" parent="." index="75"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39202, 1, -4.38798)
 
 [editable path="Clothes/tshirt/Activable"]
 [editable path="Clothes/pants/Activable"]
