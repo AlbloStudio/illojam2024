@@ -1,5 +1,12 @@
 extends Node
 
+@export var ogac_em: AudioStream
+@export var me_cago: AudioStream
+@export var una_pared: AudioStream
+@export var ventana_abierta: AudioStream
+@export var discord_call: AudioStream
+@export var alternativa: AudioStream
+
 var current_activable: Activable = null
 var awakes = {
 	"wall": false,
@@ -25,8 +32,8 @@ var awakes = {
 
 
 func _ready():
-	player.global_position = living_room.get_start_position()
-	player.lay_up_from_sofa_init(living_room.get_up_init_position())
+	# player.global_position = living_room.get_start_position()
+	# player.lay_up_from_sofa_init(living_room.get_up_init_position())
 
 	SignalBus.activable_activated.connect(_activable_activated)
 	SignalBus.current_activable_changed.connect(_set_current_activable)
@@ -323,7 +330,7 @@ func _awaked(awake_name: String) -> void:
 
 
 func _read_poster() -> void:
-	player.say('"¿OGAC EM?" ¿Qué significa eso?')
+	player.say('"¿OGAC EM?" ¿Qué significa eso?', ogac_em)
 
 
 func _sit_on_chair() -> void:
@@ -341,7 +348,7 @@ func _sit_on_mirror_chair() -> void:
 
 
 func _read_mirror_poster() -> void:
-	player.say("ME CAGO", 2)
+	player.say("ME CAGO", me_cago, 2)
 	create_tween().tween_callback(func(): _awaked("poster")).set_delay(2)
 	tablet_nolas.visible = true
 
@@ -404,7 +411,7 @@ func _stopped_streaming_wrong() -> void:
 
 
 func _touch_wall() -> void:
-	player.say("Otia, una pared")
+	player.say("Otia, una pared", una_pared)
 	create_tween().tween_callback(func(): setup.activate_touch_wall_activable()).set_delay(2)
 
 
@@ -428,6 +435,7 @@ func _exit_window() -> void:
 					player
 					. say(
 						"Puedo hacer acción alternativa dejando pulsado el boton 3 segundos sobre una acción",
+						alternativa,
 						4
 					)
 				)
@@ -436,7 +444,7 @@ func _exit_window() -> void:
 		)
 
 	else:
-		player.say("Ni de coña salgo por una ventana abierta")
+		player.say("Ni de coña salgo por una ventana abierta", me_cago)
 		create_tween().tween_callback(func(): setup.activate_exit_window_activable()).set_delay(1)
 
 

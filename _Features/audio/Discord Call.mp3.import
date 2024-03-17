@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Discord Call.mp3-8c8a923a5daeb4674a7e9d4b2cb5
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

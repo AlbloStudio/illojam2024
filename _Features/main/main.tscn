@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=42 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="Script" path="res://_Features/audio/audio.gd" id="2_3jmlc"]
@@ -6,11 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://dpkgwkvewfmuh" path="res://_Features/player/player.tscn" id="2_bfl1y"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_hsqid"]
 [ext_resource type="Shader" path="res://_Features/shaders/main.gdshader" id="2_o8u0n"]
+[ext_resource type="AudioStream" uid="uid://cwloxdykrvunw" path="res://_Features/audio/OGACEM.wav" id="2_tlgac"]
+[ext_resource type="AudioStream" uid="uid://cqi44v53b24lr" path="res://_Features/audio/MeCago2.mp3" id="3_2fru8"]
 [ext_resource type="AudioStream" uid="uid://cit1i7ncdx4f" path="res://_Features/audio/dream1.mp3" id="3_prhnp"]
+[ext_resource type="AudioStream" uid="uid://41r8bbvbjcge" path="res://_Features/audio/HostiaUnaPared.mp3" id="4_3chw6"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="4_nyxmf"]
 [ext_resource type="PackedScene" uid="uid://daj1yi4q8q4f" path="res://_Features/rooms/living_room/living_room_i.tscn" id="4_og77x"]
+[ext_resource type="AudioStream" uid="uid://cuk1tniwd3pdb" path="res://_Features/audio/Discord Call.mp3" id="5_22t2j"]
 [ext_resource type="AudioStream" uid="uid://c2gih22b1rxfb" path="res://_Features/audio/dream2.mp3" id="5_eo21i"]
 [ext_resource type="AudioStream" uid="uid://jval2fa4776l" path="res://_Features/audio/dream3.mp3" id="6_3nhco"]
+[ext_resource type="AudioStream" uid="uid://cdspgvdd7bk8k" path="res://_Features/audio/AcciónAlternativa.mp3" id="6_l1crs"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_v8ayd"]
 [ext_resource type="AudioStream" uid="uid://bn2dwbajil1as" path="res://_Features/audio/dream5.mp3" id="7_3aj0d"]
 [ext_resource type="AudioStream" uid="uid://n5q1vmi85jkl" path="res://_Features/audio/dream7.mp3" id="8_g4ua3"]
@@ -120,6 +125,11 @@ size = Vector2(2.875, 1.535)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_6gnox")
+ogac_em = ExtResource("2_tlgac")
+me_cago = ExtResource("3_2fru8")
+una_pared = ExtResource("4_3chw6")
+discord_call = ExtResource("5_22t2j")
+alternativa = ExtResource("6_l1crs")
 
 [node name="Scan" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_yhrax")
@@ -147,7 +157,7 @@ bus = &"DESPIERTA"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.906355, 9.65312, -1.55198)
 current = true
-fov = 74.6695
+fov = 74.6161
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")

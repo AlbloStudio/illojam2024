@@ -43,6 +43,8 @@ naked_texture = ExtResource("2_n00nq")
 acceleration = 8.0
 intertia = 10.0
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
 [node name="Pixelation" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.994522, 0, -0.104528, 0, 1, 0, 0.104528, 0, 0.994522, 0, 2.28867, 0)
 visible = false

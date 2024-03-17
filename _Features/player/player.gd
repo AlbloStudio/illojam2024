@@ -25,6 +25,7 @@ var original_pants_texture: Texture
 @onready var hair := $player/arms_skeleton/Skeleton3D/hair_005 as MeshInstance3D
 @onready var head := $player/arms_skeleton/Skeleton3D/head_001 as MeshInstance3D
 @onready var pixelation := $Pixelation as MeshInstance3D
+@onready var audiostream_player := $AudioStreamPlayer3D as AudioStreamPlayer3D
 
 
 func _ready():
@@ -74,11 +75,12 @@ func put_some_clothes(cloth_name: String) -> void:
 			SignalBus.clothes_right.emit()
 
 
-func say(text: String, delay := 3.0) -> void:
+func say(text: String, audio: AudioStream, delay := 3.0) -> void:
 	speech_bubble_label.visible = true
 	speech_bubble_label.text = text
 	create_tween().tween_callback(func(): speech_bubble_label.visible = false).set_delay(delay)
-
+	audiostream_player.stream = audio
+	audiostream_player.play()
 
 func sit_on_chair(sit_position: Vector3) -> void:
 	if state_machine.is_in_state([state_controlled.name]):
