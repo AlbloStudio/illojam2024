@@ -131,13 +131,13 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_sit_on_chair()
 		"GetUp":
 			if alternative:
-				player.say("ZZzzzZzZZzZ", "")
+				player.say("ZZzzzZzZZzZ", "ZZZSfx")
 				living_room.activate_activable("ChairActivableGetUp", 2.0)
 			else:
 				_get_up_from_chair()
 		"Tis":
 			if alternative:
-				player.say("?SERRUBAT ?etrubat ,asap euQ", "TabureteAlternativo")
+				player.say("?SERRUBAT ?etrubat ,asap euQ", "TabureteAlternativoInverso")
 				nolas.activate_activable("ChairActivableSit", 5.0)
 			else:
 				_sit_on_mirror_chair()
@@ -147,7 +147,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 					player
 					. say(
 						"oticuluc ayav ...on is ,oluc le ev em es on euqrop Y .retsoP le ne ev em es apuog euq ,onamreh ,soiD",
-						"ContemplarPoster"
+						"ContemplarPosterInvertido"
 					)
 				)
 				nolas.activate_activable("PosterActivable", 5.0)
@@ -167,13 +167,13 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_sofa_lay_down_wall()
 		"Lay up":
 			if alternative:
-				player.say("ZZzzzZzZZzZ", "")
+				player.say("ZZzzzZzZZzZ", "ZZZSfx")
 				living_room.activate_activable("SofaActivableLayUp", 5.0)
 			else:
 				_sofa_lay_up()
 		"Lay up wall":
 			if alternative:
-				player.say("ZZzzzZzZZzZ", "")
+				player.say("ZZzzzZzZZzZ", "ZZZSfx")
 				living_room.activate_activable("SofaActivableLayUpWall", 5.0)
 			else:
 				_sofa_lay_up_wall()
@@ -187,7 +187,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_stream_in()
 		"StreamOut":
 			if alternative:
-				player.say("ZZzzzZzZZzZ", "")
+				player.say("ZZzzzZzZZzZ", "ZZZSfx")
 				setup.activate_activable("StreamOutActivable", 5.0)
 			else:
 				_stream_out()
@@ -201,7 +201,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_stream_in_wrong()
 		"StreamOutWrong":
 			if alternative:
-				player.say("ZZzzzZzZZzZ", "")
+				player.say("ZZzzzZzZZzZ", "ZZZSfx")
 				setup.activate_activable("StreamOutInCorrectActivable", 5.0)
 			else:
 				_stream_out_wrong()
@@ -268,34 +268,33 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 
 func _tablet_living_room_opened() -> void:
 	player.go_puppet()
-
 	(
 		tablet_living_room
 		. say(
 			[
-				"Hola, soy LMDSHOW... Estás atrapado en un sueño. Lo sé, rarete. Pero quiero ayudarte.",
-				"En la vida real hay normas, leyes, principios que nos gobiernan. En los sueños, todo eso se desmorona. Sigo?",
+				"Hola, soy LMDSHOW... Estás atrapado en un sueño. Lo sé, rarete, no? Pero quiero ayudarte.",
 				"La clave para despertar es hacer cosas inusuales e ilógicas, cosas que no harías en la vida real.",
-				"Y... por dónde empezar? Tal vez, ese.... ese armario. Sí, el armario.",
-				"En los sueños, lo ordinario puede convertirse en extraordinario.",
-				"Adelante, es solo un paso. Espero que esto te guíe hacia la luz de la realidad. AIIIPS"
+				"Y... por dónde empezar? Tal vez, ese.... ese armario.",
+				"Y... en qué orden te vistes todos los días?",
+				"Espero que esto te guíe hacia la luz de la realidad. AIIIPS",
+				"(Pulsa E o Espacio para ejecutar una acción, y ESC o Enter para el menú de volumen)"
 			],
 			"IlloIntroCompleta",
 			[
-				8.0,
-				9.0,
-				6.5,
-				5.0,
-				4.0,
+				7.0,
 				6.0,
+				4.5,
+				3.0,
+				4.0,
+				5.0,
 			]
 		)
 	)
 
-	create_tween().tween_callback(living_room.make_closet_appear).set_delay(26.0)
-	create_tween().tween_callback(nolas.make_closet_appear).set_delay(26.0)
+	create_tween().tween_callback(living_room.make_closet_appear).set_delay(16.0)
+	create_tween().tween_callback(nolas.make_closet_appear).set_delay(16.0)
 	create_tween().tween_callback(tablet_living_room.activate).set_delay(108.0)
-	create_tween().tween_callback(player.go_controlled).set_delay(28.0)
+	create_tween().tween_callback(player.go_controlled).set_delay(26.0)
 
 
 func _tablet_nolas_opened() -> void:
@@ -320,10 +319,11 @@ func _tablet_secret_opened() -> void:
 	tablet_secret.say(
 		[
 			"Deja pulsado durante 3 segundos sobre una acción y...",
-			"Podrás hacer una acción alternativa."
+			"Cambiarás a una acción alternativa.",
+			"Deja pulsado durante 3 segundos otra vez y volverás a la acción original."
 		],
 		"AcciónAlternativa",
-		[5.0, 4.0]
+		[5.0, 4.0, 5.0]
 	)
 	create_tween().tween_callback(tablet_living_room.activate).set_delay(11.0)
 
@@ -359,10 +359,18 @@ func _clothes_wronged() -> void:
 	living_room.make_closet_disappear()
 	living_room.destroy_clothes()
 	SignalBus.awaked.emit("clothes")
+	(
+		create_tween()
+		. tween_callback(
+			func(): player.say("Y ese espejo? no me veo reflejado, por la cara...", "")
+		)
+		. set_delay(3)
+	)
 
 
 func _clothes_righted() -> void:
 	living_room.reset_closet()
+	player.say("Ese es el orden en el que me visto todos los días...", "")
 
 
 func _awaked(awake_name: String) -> void:
@@ -403,7 +411,14 @@ func _awaked(awake_name: String) -> void:
 
 
 func _read_poster() -> void:
-	player.say('"¿OGAC EM?" ¿Qué significa eso?', "OGACEM")
+	(
+		player
+		. say(
+			'"OGAC EM?" Qué cojones es eso? desde cuándo tengo yo este poster aquí? parece escrito como si estuviera mirando un espejo.',
+			"OGACEM",
+			9
+		)
+	)
 
 
 func _sit_on_chair() -> void:
@@ -497,9 +512,8 @@ func _exit_window() -> void:
 		player.exit_window()
 		setup.show_secret_room()
 	else:
-		player.exit_window()
-		player.global_position = living_room.get_start_position()
-		create_tween().tween_callback(func(): setup.activate_exit_window_activable()).set_delay(1)
+		player.say("Ni de coña salgo por una ventana abierta.", "")
+		create_tween().tween_callback(func(): setup.activate_exit_window_activable()).set_delay(3)
 
 
 func _enter_window() -> void:

@@ -24,10 +24,8 @@ func _on_Pause_pressed():
 
 
 func _on_dialogs_value_changed(value: float) -> void:
-	print(-80 + value * 0.8)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Dialogs"), -80 + value * 0.8)
 
 
 func _on_music_value_changed(value: float) -> void:
-	print(-80 + value * 0.8)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -80 + value * 0.8)

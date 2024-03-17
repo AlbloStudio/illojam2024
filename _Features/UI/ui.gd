@@ -56,4 +56,5 @@ func hide_ui() -> void:
 
 
 func start_video() -> void:
+	video.finished.connect(func(): get_tree().quit())
 	video.play()

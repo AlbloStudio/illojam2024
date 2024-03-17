@@ -141,7 +141,6 @@ func after_mirror_chair() -> void:
 
 
 func lay_down_on_sofa(new_position: Vector3, is_wall := false) -> void:
-	print(global_position)
 	pixelation.rotation_degrees = Vector3(90, 90, 0)
 	if !is_wall:
 		global_position.x -= 0.9

@@ -200,7 +200,6 @@ func activate_clothe(clothe_name: String, delay := 0.0) -> void:
 
 func awake_poster() -> void:
 	pennywise.visible = true
-	picture.global_rotation.z += PI / 2.4
 
 
 func awake_sit() -> void:
