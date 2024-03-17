@@ -7,9 +7,9 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_hsqid"]
 [ext_resource type="Shader" path="res://_Features/shaders/main.gdshader" id="2_o8u0n"]
 [ext_resource type="AudioStream" uid="uid://cwloxdykrvunw" path="res://_Features/audio/OGACEM.wav" id="2_tlgac"]
-[ext_resource type="AudioStream" uid="uid://cqi44v53b24lr" path="res://_Features/audio/MeCago2.mp3" id="3_2fru8"]
+[ext_resource type="AudioStream" uid="uid://d2mefj35uib15" path="res://_Features/audio/MeCago2.mp3" id="3_2fru8"]
 [ext_resource type="AudioStream" uid="uid://cit1i7ncdx4f" path="res://_Features/audio/dream1.mp3" id="3_prhnp"]
-[ext_resource type="AudioStream" uid="uid://41r8bbvbjcge" path="res://_Features/audio/HostiaUnaPared.mp3" id="4_3chw6"]
+[ext_resource type="AudioStream" uid="uid://dosoyg0iolyr7" path="res://_Features/audio/HostiaUnaPared.mp3" id="4_3chw6"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="4_nyxmf"]
 [ext_resource type="PackedScene" uid="uid://daj1yi4q8q4f" path="res://_Features/rooms/living_room/living_room_i.tscn" id="4_og77x"]
 [ext_resource type="AudioStream" uid="uid://cuk1tniwd3pdb" path="res://_Features/audio/Discord Call.mp3" id="5_22t2j"]
@@ -82,6 +82,7 @@ ssil_enabled = true
 ssil_radius = 0.81
 ssil_intensity = 1.45
 sdfgi_enabled = true
+sdfgi_use_occlusion = true
 sdfgi_min_cell_size = 0.798145
 sdfgi_energy = 0.17
 sdfgi_normal_bias = 0.06

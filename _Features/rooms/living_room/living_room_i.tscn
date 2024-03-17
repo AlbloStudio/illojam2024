@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=47 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
@@ -114,6 +114,9 @@ size = Vector3(0.678173, 1.47945, 3.95889)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0vkcb"]
 size = Vector3(0.678173, 1.73277, 0.483619)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vl4mw"]
+roughness = 0.94
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oumwo"]
 heightmap_scale = -16.0
@@ -492,6 +495,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.877515, 0, -0.516973)
 
 [node name="Plane_001" parent="." index="7"]
 layers = 4
+surface_material_override/0 = SubResource("StandardMaterial3D_vl4mw")
 
 [node name="Plane_009" parent="." index="15"]
 surface_material_override/0 = SubResource("StandardMaterial3D_oumwo")
@@ -537,15 +541,16 @@ mesh = SubResource("PlaneMesh_bqp4g")
 surface_material_override/0 = SubResource("StandardMaterial3D_4gha0")
 
 [node name="CeilingLight1" type="SpotLight3D" parent="." index="73"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.68929, -2.12626)
-light_color = Color(1, 1, 0.956863, 1)
-light_energy = 1.4
-light_cull_mask = 4294967289
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.54388, -2.12626)
+light_color = Color(1, 1, 0.952941, 1)
+light_energy = 2.2
+light_cull_mask = 4294967293
 shadow_enabled = true
-shadow_bias = 0.07
+shadow_bias = 0.05
 shadow_normal_bias = 3.604
 shadow_reverse_cull_face = true
 shadow_opacity = 0.75
+shadow_blur = 0.099
 distance_fade_length = 0.0
 spot_range = 30.0
 spot_attenuation = 0.812252
@@ -556,7 +561,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.410153, -6.36028, -1.66665
 light_color = Color(0.768627, 0.87451, 0.905882, 1)
 light_energy = 0.5
 light_specular = 0.0
-light_cull_mask = 4294967289
+light_cull_mask = 4294967293
 shadow_enabled = true
 spot_angle = 79.902
 
@@ -570,10 +575,10 @@ shadow_enabled = true
 spot_angle = 79.902
 
 [node name="CeilingLight2" type="SpotLight3D" parent="." index="74"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.67709, 3.68929, 2.49656)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.88694, 3.68929, 2.59712)
 light_color = Color(1, 1, 0.956863, 1)
 light_energy = 0.7
-light_cull_mask = 4294967289
+light_cull_mask = 4294967293
 shadow_enabled = true
 shadow_bias = 0.07
 shadow_normal_bias = 3.604
