@@ -13,6 +13,7 @@ var awakes = {
 	"sit": false,
 	"talk": false,
 	"sofa": false,
+	"rotation": false,
 }
 
 @onready var player := $Player as Player
@@ -28,8 +29,8 @@ var awakes = {
 
 
 func _ready():
-	player.global_position = living_room.get_start_position()
-	player.lay_up_from_sofa_init(living_room.get_up_init_position())
+	# player.global_position = living_room.get_start_position()
+	# player.lay_up_from_sofa_init(living_room.get_up_init_position())
 
 	SignalBus.activable_activated.connect(_activable_activated)
 	SignalBus.current_activable_changed.connect(_set_current_activable)
@@ -283,7 +284,7 @@ func _tablet_living_room_opened() -> void:
 
 	create_tween().tween_callback(living_room.make_closet_appear).set_delay(26.0)
 	create_tween().tween_callback(nolas.make_closet_appear).set_delay(26.0)
-	create_tween().tween_callback(tablet_living_room.activate).set_delay(208.0)
+	create_tween().tween_callback(tablet_living_room.activate).set_delay(108.0)
 	create_tween().tween_callback(player.go_controlled).set_delay(28.0)
 
 
@@ -355,11 +356,13 @@ func _clothes_righted() -> void:
 
 
 func _awaked(awake_name: String) -> void:
-	if !awakes[awake_name]:
-		ui.add_progress(1)
-		ui.awake()
-		awakes[awake_name] = true
-		audio.advance_level(awake_name)
+	if awakes[awake_name]:
+		return
+
+	ui.add_progress(1)
+	ui.awake()
+	awakes[awake_name] = true
+	audio.advance_level(awake_name)
 
 	var scan_material := scan.material as ShaderMaterial
 	var overall_effect = scan_material.get_shader_parameter("overall_effect")

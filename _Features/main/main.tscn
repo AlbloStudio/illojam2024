@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://dx7cph4eee7ok" path="res://_Features/audio/dream9.mp3" id="9_8pkpd"]
 [ext_resource type="PackedScene" uid="uid://cb0311e3f7has" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil_i.tscn" id="9_iwvg8"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/nolas.gd" id="9_l32nb"]
+[ext_resource type="AudioStream" uid="uid://cwe5fggyyhwa7" path="res://_Features/audio/dream6.mp3" id="10_gllsq"]
 [ext_resource type="AudioStream" uid="uid://byd5j83axjxbg" path="res://_Features/audio/dream11.mp3" id="10_pl0ge"]
 [ext_resource type="PackedScene" uid="uid://c0bdwlue70wgp" path="res://_Features/rooms/setup/setup_i.tscn" id="11_qjeg8"]
 [ext_resource type="AudioStream" uid="uid://m7oax2by6piw" path="res://_Features/audio/dream12.mp3" id="11_r4hg3"]
@@ -145,9 +146,6 @@ emission = Color(0.909804, 1, 1, 1)
 emission_energy_multiplier = 0.11
 refraction_scale = 0.21
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_a85as"]
-size = Vector3(2.17917, 0.948517, 1)
-
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0482, 0, 3.00682)
 script = ExtResource("1_6gnox")
@@ -164,7 +162,7 @@ color = Color(1, 1, 1, 0)
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("2_3jmlc")
-song_layers = Array[AudioStream]([ExtResource("3_prhnp"), ExtResource("5_eo21i"), ExtResource("6_3nhco"), ExtResource("8_fiqc0"), ExtResource("7_3aj0d"), ExtResource("8_g4ua3"), ExtResource("9_8pkpd"), ExtResource("10_pl0ge"), ExtResource("11_r4hg3"), ExtResource("12_nchqr")])
+song_layers = Array[AudioStream]([ExtResource("3_prhnp"), ExtResource("5_eo21i"), ExtResource("6_3nhco"), ExtResource("8_fiqc0"), ExtResource("7_3aj0d"), ExtResource("10_gllsq"), ExtResource("8_g4ua3"), ExtResource("9_8pkpd"), ExtResource("10_pl0ge"), ExtResource("11_r4hg3"), ExtResource("12_nchqr")])
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="Audio"]
 volume_db = -13.131
@@ -180,7 +178,7 @@ bus = &"DESPIERTA"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, 2.10338, 8.99813, -3.68777)
 current = true
-fov = 74.8235
+fov = 74.4124
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -279,14 +277,6 @@ skeleton = NodePath("")
 transform = Transform3D(1.23121, 0, 0, 0, -4.37114e-08, -1.37692, 0, 1, -6.01869e-08, 2.3917, 1.381, -5.09583)
 mesh = SubResource("PlaneMesh_u5dyn")
 surface_material_override/0 = SubResource("StandardMaterial3D_s78er")
-
-[node name="MirrorCollider" type="StaticBody3D" parent="Stage/LivingRoom/LivingRoom/MirrorSalonMesh"]
-collision_layer = 7
-collision_mask = 0
-
-[node name="CollisionMirrorShape" type="CollisionShape3D" parent="Stage/LivingRoom/LivingRoom/MirrorSalonMesh/MirrorCollider"]
-transform = Transform3D(0.999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.0187531, 0.0371633, 0)
-shape = SubResource("BoxShape3D_a85as")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Stage/LivingRoom/LivingRoom"]
 transform = Transform3D(1.23121, 0, 0, 0, -4.37114e-08, -1.37692, 0, 1, -6.01869e-08, 2.3917, 1.381, -5.09583)
