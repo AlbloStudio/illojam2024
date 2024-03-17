@@ -164,3 +164,19 @@ func awake_stream() -> void:
 
 func awake_window() -> void:
 	pass
+
+
+func activate_activable(activable_name: String, delay := 0.0) -> void:
+	(
+		create_tween()
+		. tween_callback(func(): get_node("Activables/" + activable_name).reactivate())
+		. set_delay(delay)
+	)
+
+
+func activate_penetrated_activable(activable_name: String, delay := 0.0) -> void:
+	(
+		create_tween()
+		. tween_callback(func(): get_node("ActivablesPenetrated/" + activable_name).reactivate())
+		. set_delay(delay)
+	)

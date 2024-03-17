@@ -115,52 +115,53 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_get_up_from_chair()
 		"Tis":
 			if alternative:
-				pass
+				nolas.activate_activable("ChairActivableSit", 2.0)
 			else:
 				_sit_on_mirror_chair()
 		"RetsopDear":
 			if alternative:
-				pass
+				player.say("oy yos ese?Ese soy yo?", contemplar)
+				nolas.activate_activable("PosterActivable", 2.0)
 			else:
 				_read_mirror_poster()
 		"Lay down":
 			if alternative:
-				pass
+				living_room.activate_activable("SofaActivableLayDown", 2.0)
 			else:
 				_sofa_lay_down()
 		"Lay down wall":
 			if alternative:
-				pass
+				living_room.activate_activable("SofaActivableLayDownWall", 2.0)
 			else:
 				_sofa_lay_down_wall()
 		"Lay up":
 			if alternative:
-				pass
+				living_room.activate_activable("SofaActivableLayUp", 2.0)
 			else:
 				_sofa_lay_up()
 		"Lay up wall":
 			if alternative:
-				pass
+				living_room.activate_activable("SofaActivableLayUpWall", 2.0)
 			else:
 				_sofa_lay_up_wall()
 		"StreamIn":
 			if alternative:
-				pass
+				setup.activate_activable("StreamInActivable", 2.0)
 			else:
 				_stream_in()
 		"StreamOut":
 			if alternative:
-				pass
+				setup.activate_activable("StreamOutActivable", 2.0)
 			else:
 				_stream_out()
 		"StreamWrong":
 			if alternative:
-				pass
+				setup.activate_activable("StreamInIncorrectActivable", 2.0)
 			else:
 				_stream_in_wrong()
 		"StreamOutWrong":
 			if alternative:
-				pass
+				setup.activate_activable("StreamOutInCorrectActivable", 2.0)
 			else:
 				_stream_out_wrong()
 		"TouchWall":
@@ -170,22 +171,22 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_touch_wall()
 		"Exit Window":
 			if alternative:
-				pass
+				setup.activate_activable("ExitWindowActivable", 2.0)
 			else:
 				_exit_window()
 		"Enter Window":
 			if alternative:
-				pass
+				setup.activate_activable("EnterWindowActivable", 2.0)
 			else:
 				_enter_window()
 		"Blinders Up":
 			if alternative:
-				pass
+				setup.activate_activable("BlindersUpActivable", 2.0)
 			else:
 				_bilders_up()
 		"Blinders Down":
 			if alternative:
-				pass
+				setup.activate_activable("BlindersDownActivable", 2.0)
 			else:
 				_blinders_down()
 		"Jump Down":
@@ -195,7 +196,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				_down_wall()
 		"Move Chair":
 			if alternative:
-				pass
+				setup.activate_penetrated_activable("MoveChairActivable", 2.0)
 			else:
 				_move_chair()
 

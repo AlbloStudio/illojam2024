@@ -21,3 +21,11 @@ func make_closet_appear() -> void:
 func make_closet_disappear() -> void:
 	closet.queue_free()
 	closet_handles.queue_free()
+
+
+func activate_activable(activable_name: String, delay := 0.0) -> void:
+	(
+		create_tween()
+		. tween_callback(func(): get_node("Activables/" + activable_name).reactivate())
+		. set_delay(delay)
+	)
