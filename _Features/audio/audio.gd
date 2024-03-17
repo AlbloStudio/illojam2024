@@ -14,6 +14,11 @@ func _ready():
 	_play_level_music()
 
 
+func restart():
+	level = 0
+	_play_level_music()
+
+
 func advance_level(_name):
 	plas.play()
 	level += 1
@@ -31,3 +36,7 @@ func _play_level_music():
 
 func _song_finished():
 	current_song.play(0)
+
+
+func stop() -> void:
+	current_song.stop()

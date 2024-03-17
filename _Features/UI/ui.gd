@@ -8,6 +8,8 @@ var initial_despierta_label_position: Vector2
 @onready var despierta := $Despierta as PanelContainer
 @onready var despierta_label := $Despierta/CenterContainer as CenterContainer
 @onready var progress_bar := $Progress as TextureProgressBar
+@onready var video := $Video as VideoStreamPlayer
+@onready var mierda := $Mierda as Panel
 
 
 func _process(_delta: float) -> void:
@@ -18,11 +20,18 @@ func _process(_delta: float) -> void:
 
 
 func set_total_progress(amount: float) -> void:
-	progress_bar.max_value(amount)
+	progress_bar.max_value = amount
 
 
 func add_progress(amount: float) -> void:
 	progress_bar.value += amount
+
+	if progress_bar.value >= progress_bar.max_value:
+		SignalBus.despierta.emit()
+
+
+func set_progress(amount: float) -> void:
+	progress_bar.value = amount
 
 
 func awake() -> void:
@@ -32,3 +41,19 @@ func awake() -> void:
 
 func _hide_awake() -> void:
 	despierta.visible = false
+
+
+func show_mierda() -> void:
+	mierda.visible = true
+
+
+func hide_mierda() -> void:
+	mierda.visible = false
+
+
+func hide_ui() -> void:
+	progress_bar.visible = false
+
+
+func start_video() -> void:
+	video.play()

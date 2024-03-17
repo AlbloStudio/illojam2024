@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=43 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="Script" path="res://_Features/audio/audio.gd" id="2_3jmlc"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://daj1yi4q8q4f" path="res://_Features/rooms/living_room/living_room_i.tscn" id="4_og77x"]
 [ext_resource type="AudioStream" uid="uid://cuk1tniwd3pdb" path="res://_Features/audio/Discord Call.mp3" id="5_22t2j"]
 [ext_resource type="AudioStream" uid="uid://c2gih22b1rxfb" path="res://_Features/audio/dream2.mp3" id="5_eo21i"]
+[ext_resource type="Script" path="res://_Features/UI/pause.gd" id="5_xm3o3"]
 [ext_resource type="AudioStream" uid="uid://jval2fa4776l" path="res://_Features/audio/dream3.mp3" id="6_3nhco"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_v8ayd"]
 [ext_resource type="AudioStream" uid="uid://bn2dwbajil1as" path="res://_Features/audio/dream5.mp3" id="7_3aj0d"]
@@ -160,31 +161,98 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
+[node name="UI" parent="." instance=ExtResource("2_7rttm")]
+
+[node name="Pause" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("5_xm3o3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="Panel" type="Panel" parent="Pause/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Pause/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Musicbel" type="Label" parent="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Música"
+
+[node name="Music" type="HSlider" parent="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+
+[node name="DialogLabel" type="Label" parent="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Diálogos
+"
+
+[node name="Dialogs" type="HSlider" parent="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+
+[node name="Button" type="Button" parent="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "SALISTE DEL VIDEOJUEGO"
+
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("2_3jmlc")
 song_layers = Array[AudioStream]([ExtResource("3_prhnp"), ExtResource("5_eo21i"), ExtResource("6_3nhco"), ExtResource("8_fiqc0"), ExtResource("7_3aj0d"), ExtResource("10_gllsq"), ExtResource("8_g4ua3"), ExtResource("9_8pkpd"), ExtResource("10_pl0ge"), ExtResource("11_r4hg3"), ExtResource("12_nchqr")])
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="Audio"]
-volume_db = -13.131
+bus = &"Music"
 
 [node name="Plas" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("12_bx7a7")
-bus = &"DESPIERTA"
-
-[node name="UI" parent="." instance=ExtResource("2_7rttm")]
+bus = &"Dialogs"
 
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, 2.10338, 8.99813, -3.68777)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, 2.1034, 8.99813, -3.68777)
 current = true
-fov = 74.4124
+fov = 74.7082
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, 2.10338, 8.99813, -3.68777)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, 2.1034, 8.99813, -3.68777)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0
@@ -333,6 +401,10 @@ visible = false
 
 [node name="MeshInstance3D" parent="Stage/Setup/TabletSecret" index="3"]
 transform = Transform3D(0.951509, -2.83107e-15, 0.307622, 0.307622, -4.37114e-08, -0.951509, 1.34466e-08, 1, -4.15918e-08, 0, 0, 0)
+
+[connection signal="value_changed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Music" to="Pause" method="_on_music_value_changed"]
+[connection signal="value_changed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Dialogs" to="Pause" method="_on_dialogs_value_changed"]
+[connection signal="pressed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 
 [editable path="Stage/MoorGnivil/TabletNolas"]
 [editable path="Stage/MoorGnivil/TabletNolas/Tablet"]
