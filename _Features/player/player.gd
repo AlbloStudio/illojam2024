@@ -233,12 +233,12 @@ func get_up_from_streaming_wrong() -> void:
 	)
 
 
-func set_up_walls(new_position: Vector3) -> void:
-	vanish(new_position, func(): SignalBus.upped_wall.emit())
+func set_up_walls(new_position: Vector3, on_middle: Callable) -> void:
+	vanish(new_position, on_middle, func(): SignalBus.upped_wall.emit())
 
 
-func set_down_wall(new_position: Vector3) -> void:
-	vanish(new_position, func(): SignalBus.downed_wall.emit())
+func set_down_wall(new_position: Vector3, on_middle: Callable) -> void:
+	vanish(new_position, on_middle, func(): SignalBus.downed_wall.emit())
 
 
 func penetrate(new_position: Vector3) -> void:
@@ -330,9 +330,9 @@ func get_target_ang(rotation_target: float) -> float:
 	return global_rotation.y + wrapf(rotation_target - global_rotation.y, -PI, PI)
 
 
-func vanish(new_position: Vector3, on_end: Callable) -> void:
+func vanish(new_position: Vector3, on_middle: Callable, on_end: Callable) -> void:
 	var disappear_tween := create_tween()
-	disappear_tween.finished.connect(_on_disappear.bind(new_position, on_end))
+	disappear_tween.finished.connect(_on_disappear.bind(new_position, on_middle, on_end))
 
 	disappear_tween.set_parallel(true)
 	disappear_tween.tween_property(arms, "transparency", 1.0, 1.0)
@@ -341,7 +341,8 @@ func vanish(new_position: Vector3, on_end: Callable) -> void:
 	disappear_tween.tween_property(head, "transparency", 1.0, 1.0)
 
 
-func _on_disappear(new_position: Vector3, on_end: Callable) -> void:
+func _on_disappear(new_position: Vector3, on_middle: Callable, on_end: Callable) -> void:
+	on_middle.call()
 	global_position = new_position
 
 	var appear_tween := create_tween()

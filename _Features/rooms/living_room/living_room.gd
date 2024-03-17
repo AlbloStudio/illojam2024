@@ -39,8 +39,12 @@ func _ready() -> void:
 
 
 func make_closet_appear() -> void:
+	closet.transparency = 1
+	closet_handles.transparency = 1
 	closet.visible = true
 	closet_handles.visible = true
+	create_tween().tween_property(closet, "transparency", 0, 0.3)
+	create_tween().tween_property(closet_handles, "transparency", 0, 0.3)
 
 	closet_collider.process_mode = Node.PROCESS_MODE_INHERIT
 
@@ -48,6 +52,14 @@ func make_closet_appear() -> void:
 
 
 func make_closet_disappear() -> void:
+	var tww = create_tween()
+	tww.set_parallel(true)
+	tww.finished.connect(on_closet_disappeared, CONNECT_ONE_SHOT)
+	tww.tween_property(closet, "transparency", 1, 0.3)
+	tww.tween_property(closet_handles, "transparency", 1, 0.3)
+
+
+func on_closet_disappeared() -> void:
 	closet.queue_free()
 	closet_handles.queue_free()
 	closet_activable.queue_free()
@@ -96,7 +108,7 @@ func sit_in_chair() -> void:
 				char_activable_getup.state_idle.name
 			)
 		)
-		. set_delay(1)
+		. set_delay(2)
 	)
 
 
@@ -108,7 +120,7 @@ func get_up_from_chair() -> void:
 				char_activable_sit.state_idle.name
 			)
 		)
-		. set_delay(1)
+		. set_delay(2)
 	)
 
 

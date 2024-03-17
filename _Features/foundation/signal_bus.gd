@@ -29,3 +29,5 @@ signal upped_wall
 signal downed_wall
 
 signal started
+
+signal should_activate(new_activable: Activable)

@@ -45,6 +45,7 @@ func _ready():
 	SignalBus.upped_wall.connect(_upped_wall)
 	SignalBus.downed_wall.connect(_downed_wall)
 	SignalBus.started.connect(_started)
+	SignalBus.should_activate.connect(_should_activate)
 
 
 func _started() -> void:
@@ -202,7 +203,7 @@ func _tablet_living_room_opened() -> void:
 				"En la vida real hay normas, leyes, principios que nos gobiernan. En los sueños, todo eso se desmorona. Sigo?",
 				"La clave para despertar es hacer cosas inusuales e ilógicas, cosas que no harías en la vida real.",
 				"Y... por dónde empezar? Tal vez, ese.... ese armario. Sí, el armario.",
-				"En los useñós, lo ordinario puede convertirse en extraordinario.",
+				"En los sueños, lo ordinario puede convertirse en extraordinario.",
 				"Adelante, es solo un paso. Espero que esto te guíe hacia la luz de la realidad. AIIIPS"
 			],
 			[
@@ -215,8 +216,8 @@ func _tablet_living_room_opened() -> void:
 			]
 		)
 	)
-	create_tween().tween_callback(living_room.make_closet_appear).set_delay(24.0)
-	create_tween().tween_callback(nolas.make_closet_appear).set_delay(24.0)
+	create_tween().tween_callback(living_room.make_closet_appear).set_delay(12.0)
+	create_tween().tween_callback(nolas.make_closet_appear).set_delay(12.0)
 	create_tween().tween_callback(tablet_living_room.activate).set_delay(26.0)
 
 
@@ -234,6 +235,7 @@ func _tablet_nolas_opened() -> void:
 			]
 		)
 	)
+	create_tween().tween_callback(tablet_living_room.activate).set_delay(12.0)
 
 
 func _tablet_secret_opened() -> void:
@@ -244,9 +246,11 @@ func _tablet_secret_opened() -> void:
 		],
 		[5.0, 4.0]
 	)
+	create_tween().tween_callback(tablet_living_room.activate).set_delay(11.0)
 
 
 func _set_current_activable(new_activable: Activable) -> void:
+	print("setting as current " + new_activable.name)
 	if current_activable == new_activable:
 		return
 
@@ -254,6 +258,11 @@ func _set_current_activable(new_activable: Activable) -> void:
 		current_activable.stop_being_current()
 
 	current_activable = new_activable
+
+
+func _should_activate(activable: Activable) -> void:
+	if activable.name == current_activable.name:
+		activable.state_machine.transition_to(activable.state_activated.name)
 
 
 func _get_player_naked() -> void:
@@ -400,13 +409,11 @@ func _touch_wall() -> void:
 
 
 func _up_wall() -> void:
-	player.set_up_walls(setup.get_walls_up_position())
+	player.set_up_walls(setup.get_walls_up_position(), func(): setup.switch_to_up_mode())
 
 
 func _upped_wall() -> void:
 	SignalBus.awaked.emit("wall")
-	setup.switch_to_normal()
-	setup.switch_to_up_mode()
 
 
 func _exit_window() -> void:
@@ -450,13 +457,13 @@ func _exited_window() -> void:
 func _bilders_up() -> void:
 	setup.blinders_up()
 	setup.allow_exit_window()
-	setup.activate_blinders_down_activable()
+	create_tween().tween_callback(func(): setup.activate_blinders_down_activable()).set_delay(2.0)
 
 
 func _blinders_down() -> void:
 	setup.blinders_down()
 	setup.forbid_exit_window()
-	setup.activate_blinders_up_activable()
+	create_tween().tween_callback(func(): setup.activate_blinders_up_activable()).set_delay(2.0)
 
 
 func _jump_down() -> void:
@@ -469,9 +476,7 @@ func _jumped_down() -> void:
 
 
 func _down_wall() -> void:
-	setup.switch_to_normal_mode()
-
-	player.set_down_wall(setup.get_walls_down_position())
+	player.set_down_wall(setup.get_walls_down_position(), func(): setup.switch_to_normal_mode())
 
 
 func _downed_wall() -> void:
