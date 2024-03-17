@@ -24,6 +24,13 @@ func set_total_progress(amount: float) -> void:
 func add_progress(amount: float) -> void:
 	progress_bar.value += amount
 
+	if progress_bar.value >= progress_bar.max_value:
+		SignalBus.despierta.emit()
+
+
+func set_progress(amount: float) -> void:
+	progress_bar.value = amount
+
 
 func awake() -> void:
 	despierta.visible = true

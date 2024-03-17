@@ -109,6 +109,11 @@ func say(text: String, audio: String, delay := 6) -> void:
 		audiostream_player.play()
 
 
+func stop_talking() -> void:
+	speech_bubble_label.visible = false
+	audiostream_player.stop()
+
+
 func sit_on_chair(sit_position: Vector3) -> void:
 	if state_machine.is_in_state([state_controlled.name]):
 		animate("SitOnChair", sit_position, Vector3.ZERO, state_puppet.name)
@@ -176,6 +181,23 @@ func lay_up_from_sofa_init(new_position: Vector3) -> void:
 		null,
 		0.3
 	)
+
+
+func lay_up_from_sofa_end(_new_position: Vector3) -> void:
+	pixelation.rotation_degrees = Vector3(90, 90, 0)
+	go_puppet()
+	global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
+	animate(
+		"LayingSofa",
+		global_position,
+		global_rotation,
+		state_puppet.name,
+		true,
+		func(): SignalBus.started_end.emit(),
+		null,
+		0.3
+	)
+	dont_animate_movement = true
 
 
 func lay_up_from_sofa(new_position: Vector3, is_wall := false) -> void:

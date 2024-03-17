@@ -33,3 +33,6 @@ signal started
 signal should_activate(new_activable: Activable)
 
 signal paused
+
+signal despierta
+signal started_end

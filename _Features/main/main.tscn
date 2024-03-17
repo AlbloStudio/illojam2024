@@ -163,6 +163,9 @@ color = Color(1, 1, 1, 0)
 
 [node name="UI" parent="." instance=ExtResource("2_7rttm")]
 
+[node name="Progress" parent="UI" index="0"]
+value = 9.0
+
 [node name="Pause" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -246,7 +249,7 @@ bus = &"Dialogs"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, 2.10338, 8.99813, -3.68777)
 current = true
-fov = 74.5145
+fov = 74.7338
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -406,6 +409,7 @@ transform = Transform3D(0.951509, -2.83107e-15, 0.307622, 0.307622, -4.37114e-08
 [connection signal="value_changed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Dialogs" to="Pause" method="_on_dialogs_value_changed"]
 [connection signal="pressed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 
+[editable path="UI"]
 [editable path="Stage/MoorGnivil/TabletNolas"]
 [editable path="Stage/MoorGnivil/TabletNolas/Tablet"]
 [editable path="Stage/LivingRoom/TabletLivingRoom"]

@@ -50,6 +50,8 @@ func _ready():
 	SignalBus.downed_wall.connect(_downed_wall)
 	SignalBus.started.connect(_started)
 	SignalBus.should_activate.connect(_should_activate)
+	SignalBus.despierta.connect(_despierta)
+	SignalBus.started_end.connect(_started_end)
 
 	ui.set_total_progress(awakes.size())
 
@@ -558,3 +560,20 @@ func _move_chair() -> void:
 
 func _on_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _despierta() -> void:
+	player.stop_talking()
+	player.global_position = living_room.get_start_position()
+	player.lay_up_from_sofa_end(living_room.get_up_init_position())
+
+	audio.restart()
+
+	var scan_material := scan.material as ShaderMaterial
+	scan_material.set_shader_parameter("overall_effect", 0.0)
+	scan_material.set_shader_parameter("pallete_effect", 0.0)
+	scan_material.set_shader_parameter("scan_brightness", 1.0)
+
+
+func _started_end() -> void:
+	player.say("Uf, por fin. Me desperté. Me desperté? %*%*(@#", "porfinmedesperte")
