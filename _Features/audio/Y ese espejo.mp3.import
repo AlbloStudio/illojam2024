@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ojg64v2w2d7s"
+path="res://.godot/imported/Y ese espejo.mp3-5341c2f1d608de25de2ad20569aaa5c7.mp3str"
+
+[deps]
+
+source_file="res://_Features/audio/Y ese espejo.mp3"
+dest_files=["res://.godot/imported/Y ese espejo.mp3-5341c2f1d608de25de2ad20569aaa5c7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
