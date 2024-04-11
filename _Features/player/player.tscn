@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dpkgwkvewfmuh"]
+[gd_scene load_steps=13 format=3 uid="uid://dpkgwkvewfmuh"]
 
 [ext_resource type="Script" path="res://_Features/player/player.gd" id="1_nic3o"]
 [ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_bky17"]
@@ -7,9 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://yiwv5rxinwuw" path="res://_Features/audio/LoHombreLlevanPantalone.mp3" id="3_ryi5q"]
 [ext_resource type="Script" path="res://_Features/player/states/player_state_puppet.gd" id="4_iboom"]
 [ext_resource type="PackedScene" uid="uid://bwc8d10l0135e" path="res://_Features/player/player_i.tscn" id="5_e0hf5"]
-[ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="7_2b0gq"]
 [ext_resource type="Shader" path="res://_Features/player/pixelation.gdshader" id="7_ic2mv"]
-[ext_resource type="Texture2D" uid="uid://dx0jbe57rxkh2" path="res://_Features/UI/PlayerTextBox.svg" id="9_ywfra"]
+[ext_resource type="PackedScene" uid="uid://dy0oie8ekrhav" path="res://_Features/common/speech_bubble/speech_bubble.tscn" id="8_77co4"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_8bekt"]
 radius = 0.63
@@ -26,21 +25,7 @@ shader_parameter/pixel_size = 8
 radius = 0.4
 height = 1.75
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnaw3"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.956863)
-albedo_texture = ExtResource("9_ywfra")
-emission = Color(1, 1, 1, 1)
-emission_operator = 1
-clearcoat_roughness = 0.0
-texture_repeat = false
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_wvj6b"]
-material = SubResource("StandardMaterial3D_hnaw3")
-size = Vector2(2.875, 1.535)
-
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(-0.994522, 0, -0.104528, 0, 1, 0, 0.104528, 0, -0.994522, -0.0198236, -0.00924486, -0.0272166)
 collision_mask = 6
 script = ExtResource("1_nic3o")
 naked_texture = ExtResource("2_n00nq")
@@ -48,16 +33,13 @@ acceleration = 8.0
 intertia = 10.0
 zarzillos = ExtResource("3_ryi5q")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
 [node name="Pixelation" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.000772856, 1.15027, 0.00735266)
 visible = false
 mesh = SubResource("SphereMesh_8bekt")
 surface_material_override/0 = SubResource("ShaderMaterial_e3smv")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-volume_db = 5.0
-max_db = 6.0
-bus = &"Dialogs"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.685339, 0)
@@ -73,30 +55,8 @@ script = ExtResource("3_1flnn")
 [node name="Puppet" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("4_iboom")
 
-[node name="SpeechBubble" type="Node" parent="."]
-
-[node name="SpeechBubbleLabel" type="Label3D" parent="SpeechBubble"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.68767, 3.99076, -1.1012)
-visible = false
-double_sided = false
-render_priority = 2
-outline_modulate = Color(0, 0, 0, 0)
-text = "Holi, esto es un bocadillo de texto muy largo y queremos probar el tema del word wrap a ver qué tal"
-font = ExtResource("7_2b0gq")
-outline_size = 0
-autowrap_mode = 2
-width = 454.82
-
-[node name="SpeechBubbleBubble" type="MeshInstance3D" parent="SpeechBubble/SpeechBubbleLabel"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.139708, -0.201596, -0.0563345)
-layers = 2
-mesh = SubResource("PlaneMesh_wvj6b")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SpeechBubble/SpeechBubbleLabel"]
-transform = Transform3D(-0.994522, 0, -0.104528, -0.104528, -4.37114e-08, 0.994522, -4.56907e-09, 1, 4.34719e-08, 0.197354, -0.367381, 0.934128)
-light_cull_mask = 4293918722
-omni_range = 4096.0
-omni_attenuation = 0.148651
+[node name="SpeechBubble" parent="." instance=ExtResource("8_77co4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.365, 0)
 
 [node name="player" parent="." instance=ExtResource("5_e0hf5")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)

@@ -16,33 +16,23 @@ var dont_animate_movement := false
 var original_hoodie_texture: Texture
 var original_pants_texture: Texture
 
+@onready var pixelation := $Pixelation as MeshInstance3D
+@onready var audiostream_player := $AudioStreamPlayer3D as AudioStreamPlayer3D
+@onready var speech_bubble := $SpeechBubble as SpeechBubble
+
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_controlled := $FiniteStateMachine/Controlled as PlayerState
 @onready var state_puppet := $FiniteStateMachine/Puppet as PlayerState
-@onready var speech_bubble_label := $SpeechBubble/SpeechBubbleLabel as Label3D
-@onready var player_animation := $player/AnimationPlayer as AnimationPlayer
 
+@onready var player_animation := $player/AnimationPlayer as AnimationPlayer
 @onready var arms := $player/arms_skeleton/Skeleton3D/arms as MeshInstance3D
 @onready var body := $player/arms_skeleton/Skeleton3D/body2 as MeshInstance3D
 @onready var hair := $player/arms_skeleton/Skeleton3D/hair_005 as MeshInstance3D
 @onready var head := $player/arms_skeleton/Skeleton3D/head_001 as MeshInstance3D
-@onready var pixelation := $Pixelation as MeshInstance3D
-@onready var audiostream_player := $AudioStreamPlayer3D as AudioStreamPlayer3D
 
 
 func _ready():
 	desired_velocity = Vector2.LEFT
-	original_speech_bubble_position = speech_bubble_label.global_position
-
-
-func _process(_delta: float) -> void:
-	if speech_bubble_label.visible:
-		speech_bubble_label.global_position.x = (
-			original_speech_bubble_position.x + global_position.x
-		)
-		speech_bubble_label.global_position.z = (
-			original_speech_bubble_position.z + global_position.z
-		)
 
 
 func go_controlled() -> void:
@@ -88,30 +78,12 @@ func put_some_clothes(cloth_name: String) -> void:
 			SignalBus.clothes_right.emit()
 
 
-func load_mp3(path):
-	var file = FileAccess.open(path, FileAccess.READ)
-	if file == null:
-		return null
-
-	var sound = AudioStreamMP3.new()
-	sound.data = file.get_buffer(file.get_length())
-	return sound
-
-
 func say(text: String, audio: String, delay := 6) -> void:
-	speech_bubble_label.visible = true
-	speech_bubble_label.text = text
-	create_tween().tween_callback(func(): speech_bubble_label.visible = false).set_delay(delay)
-
-	var sound = load_mp3("res://_Features/audio/" + audio + ".mp3")
-	if sound != null:
-		audiostream_player.stream = sound
-		audiostream_player.play()
+	speech_bubble.say([text], audio, [delay])
 
 
 func stop_talking() -> void:
-	speech_bubble_label.visible = false
-	audiostream_player.stop()
+	speech_bubble.stop_saying()
 
 
 func sit_on_chair(sit_position: Vector3) -> void:

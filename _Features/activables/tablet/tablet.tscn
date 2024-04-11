@@ -1,23 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bb43tlfgdsw7r"]
+[gd_scene load_steps=9 format=3 uid="uid://bb43tlfgdsw7r"]
 
 [ext_resource type="Script" path="res://_Features/activables/tablet/tablet.gd" id="1_qxtak"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_04h7g"]
 [ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="2_7iick"]
-[ext_resource type="Texture2D" uid="uid://y7eip61yk0cu" path="res://_Features/UI/Text BoxRed.svg" id="3_qsr3f"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihbs6"]
-render_priority = 2
-transparency = 1
-albedo_texture = ExtResource("3_qsr3f")
-emission_enabled = true
-emission = Color(0.815686, 0.964706, 0.952941, 1)
-emission_operator = 1
-clearcoat_roughness = 0.0
-texture_repeat = false
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_yp37t"]
-material = SubResource("StandardMaterial3D_ihbs6")
-size = Vector2(2.875, 1.535)
+[ext_resource type="PackedScene" uid="uid://dy0oie8ekrhav" path="res://_Features/common/speech_bubble/speech_bubble.tscn" id="2_o2xbf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t6nb5"]
 height = 0.61301
@@ -34,37 +20,12 @@ material = SubResource("StandardMaterial3D_n1rs8")
 size = Vector3(0.3, 0.02, 0.26)
 
 [node name="Tablet" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_qxtak")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-bus = &"Dialogs"
-
-[node name="SpeechBubble" type="Node" parent="."]
-
-[node name="SpeechBubbleLabel" type="Label3D" parent="SpeechBubble"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.790019, 2.51155, -0.588013)
-visible = false
-render_priority = 4
-outline_modulate = Color(0.0383972, 0.0383972, 0.0383972, 0)
-text = "Holi, esto es un bocadillo de texto muy largo y queremos probar el tema del word wrap a ver qué tal"
-font = ExtResource("2_7iick")
-autowrap_mode = 2
-width = 454.82
-
-[node name="SpeechBubbleBubble" type="MeshInstance3D" parent="SpeechBubble/SpeechBubbleLabel"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0300701, -0.21186, -0.0534995)
-layers = 2
-mesh = SubResource("PlaneMesh_yp37t")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SpeechBubble/SpeechBubbleLabel"]
-transform = Transform3D(-0.994522, -4.85822e-15, -0.104528, -0.104528, -4.37114e-08, 0.994522, -4.56907e-09, 1, 4.34719e-08, 0.197354, -0.367381, 0.934128)
-light_cull_mask = 4293918722
-omni_range = 4096.0
-omni_attenuation = 0.148651
+[node name="SpeechBubble" parent="." instance=ExtResource("2_o2xbf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Tablet" parent="." instance=ExtResource("2_04h7g")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 activable_name = "Tablet"
 activable_text = "Leer chat"
 
@@ -86,7 +47,6 @@ transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0.35, 1, 0)
 shape = SubResource("CylinderShape3D_g51m3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("BoxMesh_n1a68")
 
 [editable path="Tablet"]
