@@ -229,15 +229,15 @@ bus = &"Dialogs"
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, 0, 9, 0)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.9755, 9, 1.37202)
 current = true
-fov = 74.9328
+fov = 74.8904
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, 0, 9, 0)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.9755, 9, 1.37202)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0
@@ -253,6 +253,7 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9755, 0, 1.37202)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")
@@ -362,9 +363,6 @@ activable_text = "Activar"
 [node name="Indicator" parent="Stage/Setup/TabletSecret/Tablet" index="3"]
 transform = Transform3D(1, -6.38378e-15, 0, 6.66134e-16, 1, 0, 0, 0, 1, -0.717073, -4.47035e-08, -0.353103)
 visible = false
-
-[node name="MeshInstance3D" parent="Stage/Setup/TabletSecret" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [connection signal="value_changed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Music" to="Pause" method="_on_music_value_changed"]
 [connection signal="value_changed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Dialogs" to="Pause" method="_on_dialogs_value_changed"]

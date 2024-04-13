@@ -30,8 +30,8 @@ var awakes = {
 
 func _ready():
 	player.collision_layer = 0
-	player.global_position = living_room.get_start_position()
-	player.lay_up_from_sofa_init(living_room.get_up_init_position())
+	player.global_position = living_room.get_marker_position("startMarker")
+	player.lay_up_from_sofa_init(living_room.get_marker_position("upMarker"))
 
 	SignalBus.activable_activated.connect(_activable_activated)
 	SignalBus.current_activable_changed.connect(_set_current_activable)
@@ -261,7 +261,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 		"Move Chair":
 			if alternative:
 				player.say("...", " ")
-				setup.activate_penetrated_activable("MoveChairActivable", 2.0)
+				setup.activate_activable("MoveChairActivable", 2.0)
 			else:
 				_move_chair()
 
@@ -344,7 +344,6 @@ func _should_activate(activable: Activable) -> void:
 
 
 func _get_player_naked() -> void:
-	#TODO: get player naked
 	living_room.make_clothes_appear()
 	player.get_naked()
 
@@ -442,22 +441,22 @@ func _read_mirror_poster() -> void:
 
 
 func _sofa_lay_down() -> void:
-	player.lay_down_on_sofa(living_room.get_layed_position())
+	player.lay_down_on_sofa(living_room.get_marker_position("layMarker"))
 	living_room.switch_to_none_mode()
 
 
 func _sofa_lay_down_wall() -> void:
-	player.lay_down_on_sofa(living_room.get_layed_position(), true)
+	player.lay_down_on_sofa(living_room.get_marker_position("layMarker"), true)
 	living_room.switch_to_none_mode()
 
 
 func _sofa_lay_up() -> void:
-	player.lay_up_from_sofa(living_room.get_up_position())
+	player.lay_up_from_sofa(living_room.get_marker_position("upMarker"))
 	living_room.switch_to_none_mode()
 
 
 func _sofa_lay_up_wall() -> void:
-	player.lay_up_from_sofa(living_room.get_wall_position(), true)
+	player.lay_up_from_sofa(living_room.get_marker_position("wallMarker"), true)
 	living_room.switch_to_none_mode()
 
 
@@ -470,7 +469,7 @@ func _layed_up() -> void:
 
 
 func _stream_in() -> void:
-	player.sit_to_stream(setup.get_stream_position())
+	player.sit_to_stream(setup.get_marker_position("StreamMarker"))
 
 
 func _stream_out() -> void:
@@ -478,7 +477,7 @@ func _stream_out() -> void:
 
 
 func _stream_in_wrong() -> void:
-	player.sit_to_stream_wrong(setup.get_stream_position_wrong())
+	player.sit_to_stream_wrong(setup.get_marker_position("StreamWrongMarker"))
 
 
 func _stream_out_wrong() -> void:
@@ -486,25 +485,25 @@ func _stream_out_wrong() -> void:
 
 
 func _streaming() -> void:
-	setup.activate_stream_out_activable()
+	setup.activate_activable("StreamOutActivable")
 
 
 func _stopped_streaming() -> void:
-	setup.activate_stream_in_activable()
+	setup.activate_activable("StreamInActivable")
 
 
 func _streaming_wrong() -> void:
-	setup.activate_stream_out_wrong_activable()
+	setup.activate_activable("StreamOutInCorrectActivable")
 	SignalBus.awaked.emit("stream")
 
 
 func _stopped_streaming_wrong() -> void:
-	setup.activate_stream_in_wrong_activable()
+	setup.activate_activable("StreamInIncorrectActivable")
 
 
 func _touch_wall() -> void:
 	player.say("Otia, una pared", "HostiaUnaPared")
-	create_tween().tween_callback(func(): setup.activate_touch_wall_activable()).set_delay(2)
+	setup.activate_activable("WallsUpActivable", 2.0)
 
 
 func _exit_window() -> void:
@@ -513,7 +512,7 @@ func _exit_window() -> void:
 		setup.show_secret_room()
 	else:
 		player.say("Ni de coña salgo por una ventana abierta.", "NiDeCoñaSalgo")
-		create_tween().tween_callback(func(): setup.activate_exit_window_activable()).set_delay(3)
+		setup.activate_activable("ExitWindowActivable", 3.0)
 
 
 func _enter_window() -> void:
@@ -521,30 +520,28 @@ func _enter_window() -> void:
 
 
 func _entered_window() -> void:
-	setup.activate_exit_window_activable()
+	setup.activate_activable("ExitWindowActivable")
 	setup.hide_secret_room()
 
 
 func _exited_window() -> void:
-	setup.activate_enter_window_activable()
+	setup.activate_activable("EnterWindowActivable")
 	SignalBus.awaked.emit("window")
 
 
 func _bilders_up() -> void:
 	setup.blinders_up()
-	setup.allow_exit_window()
-	create_tween().tween_callback(func(): setup.activate_blinders_down_activable()).set_delay(2.0)
 
 
 func _blinders_down() -> void:
 	setup.blinders_down()
-	setup.forbid_exit_window()
-	create_tween().tween_callback(func(): setup.activate_blinders_up_activable()).set_delay(2.0)
 
 
 func _up_wall() -> void:
-	player.set_up_walls(setup.get_walls_up_position(), func(): setup.switch_to_up_mode())
-	setup.switch_to_normal()
+	player.set_up_walls(
+		setup.get_marker_position("WallsUpMarker"), func(): setup.switch_to_upwall_context()
+	)
+	setup.switch_to_normal_context()
 
 
 func _upped_wall() -> void:
@@ -552,16 +549,18 @@ func _upped_wall() -> void:
 
 
 func _jump_down() -> void:
-	player.penetrate(setup.get_penetration_position())
-	setup.switch_to_normal_mode()
+	player.penetrate(setup.get_marker_position("PenetrationMarker"))
+	setup.switch_to_normal_context()
 
 
 func _jumped_down() -> void:
-	setup.switch_to_penetration()
+	setup.switch_to_penerated_context()
 
 
 func _down_wall() -> void:
-	player.set_down_wall(setup.get_walls_down_position(), func(): setup.switch_to_normal_mode())
+	player.set_down_wall(
+		setup.get_marker_position("WallsDownMarker"), func(): setup.switch_to_normal_context()
+	)
 
 
 func _downed_wall() -> void:
@@ -570,7 +569,6 @@ func _downed_wall() -> void:
 
 func _move_chair() -> void:
 	setup.move_chair()
-	setup.activate_wrong_streams()
 
 
 func _on_button_pressed() -> void:
@@ -580,9 +578,8 @@ func _on_button_pressed() -> void:
 func _despierta() -> void:
 	player.collision_layer = 0
 	player.stop_talking()
-	player.global_position = living_room.get_start_position()
-	player.lay_up_from_sofa_end(living_room.get_up_init_position())
-
+	player.global_position = living_room.get_marker_position("startMarker")
+	player.lay_up_from_sofa_end(living_room.get_marker_position("layInitMarker"))
 	audio.restart()
 
 	var scan_material := scan.material as ShaderMaterial

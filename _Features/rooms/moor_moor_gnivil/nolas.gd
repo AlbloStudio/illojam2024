@@ -1,4 +1,4 @@
-class_name Nolas extends Node
+class_name Nolas extends Room
 
 @onready var closet := $Closet_001 as MeshInstance3D
 @onready var closet_handles := $Cube_005 as MeshInstance3D

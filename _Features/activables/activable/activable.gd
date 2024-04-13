@@ -16,6 +16,14 @@ class_name Activable extends Area3D
 		reset_label()
 
 var player: Player
+var is_in_context := true:
+	set(value):
+		is_in_context = value
+		if !is_in_context:
+			stop_being_current()
+			visible = false
+		else:
+			visible = true
 
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_deactivated := $FiniteStateMachine/Deactivated as ActivableState
@@ -49,6 +57,10 @@ func deactivate() -> void:
 
 func reactivate() -> void:
 	state_machine.transition_to(state_idle.name)
+
+
+func is_activated() -> bool:
+	return !state_machine.is_in_state([state_deactivated.name])
 
 
 func switch_alternative() -> void:

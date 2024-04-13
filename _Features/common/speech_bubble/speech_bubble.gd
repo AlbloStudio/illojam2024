@@ -26,7 +26,7 @@ func say(text: Array[String], audio: String, delay: Array[float] = [3.0]) -> voi
 		speech_bubble_label.text = text[i]
 		await get_tree().create_timer(delay[i]).timeout
 
-	stop_saying()
+	speech_bubble_label.visible = false
 
 
 func stop_saying() -> void:

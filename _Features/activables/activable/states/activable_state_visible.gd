@@ -20,6 +20,9 @@ func enter(_msg := {}) -> void:
 
 
 func update(delta: float) -> void:
+	if !state_owner.is_in_context:
+		return
+
 	if is_pressing:
 		time_pressing += delta
 		if time_pressing >= state_owner.time_to_alternate:
@@ -33,11 +36,17 @@ func exit(_msg := {}) -> void:
 
 
 func _on_activable_body_exited(_body: Node3D) -> void:
+	if !state_owner.is_in_context:
+		return
+
 	if state_machine.is_in_state([name]):
 		state_machine.transition_to(state_owner.state_idle.name)
 
 
 func handle_input(event: InputEvent) -> void:
+	if !state_owner.is_in_context:
+		return
+
 	if event.is_action_pressed("player_action"):
 		is_pressing = true
 	elif event.is_action_released("player_action"):

@@ -1,4 +1,4 @@
-class_name LivingRoom extends Node3D
+class_name LivingRoom extends Room
 
 var cloth_names := ["underwear", "pants", "tshirt"]
 var poster_awaken := false
@@ -29,12 +29,6 @@ var poster_awaken := false
 @onready var sofa03 := $Plane_023 as MeshInstance3D
 @onready var sofa04 := $Plane_022 as MeshInstance3D
 @onready var sofa05 := $Plane_017 as MeshInstance3D
-
-@onready var sofa_marker := $Markers/layMarker as Marker3D
-@onready var wall_marker := $Markers/wallMarker as Marker3D
-@onready var up_marker := $Markers/upMarker as Marker3D
-@onready var up_init_marker := $Markers/layInitMarker as Marker3D
-@onready var start_marker := $Markers/startMarker as Marker3D
 
 
 func _ready() -> void:
@@ -156,38 +150,6 @@ func switch_to_none_mode() -> void:
 	sofa_activable_lay_up_wall.deactivate()
 	sofa_activable_lay_down.deactivate()
 	sofa_activable_lay_down_wall.deactivate()
-
-
-func get_layed_position() -> Vector3:
-	return sofa_marker.global_position
-
-
-func get_up_position() -> Vector3:
-	return up_marker.global_position
-
-
-func get_up_init_position() -> Vector3:
-	return up_init_marker.global_position
-
-
-func get_start_position() -> Vector3:
-	return start_marker.global_position
-
-
-func get_wall_position() -> Vector3:
-	return wall_marker.global_position
-
-
-func get_marker_position(marker_name: String) -> Vector3:
-	return get_node("Markers/" + marker_name).global_position
-
-
-func activate_activable(activable_name: String, delay := 0.0) -> void:
-	(
-		create_tween()
-		. tween_callback(func(): get_node("Activables/" + activable_name).reactivate())
-		. set_delay(delay)
-	)
 
 
 func activate_clothe(clothe_name: String, delay := 0.0) -> void:

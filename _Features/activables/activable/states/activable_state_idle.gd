@@ -11,6 +11,9 @@ func exit(_msg := {}) -> void:
 
 
 func _on_activable_body_entered(body: Node3D) -> void:
+	if !state_owner.is_in_context:
+		return
+
 	if body is Player:
 		state_owner.player = body as Player
 		state_machine.transition_to(state_owner.state_visible.name)
