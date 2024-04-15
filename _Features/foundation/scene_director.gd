@@ -29,9 +29,9 @@ var awakes = {
 
 
 func _ready():
-	player.collision_layer = 0
-	player.global_position = living_room.get_marker_position("startMarker")
-	player.lay_up_from_sofa_init(living_room.get_marker_position("upMarker"))
+	# player.collision_layer = 0
+	# player.global_position = living_room.get_marker_position("startMarker")
+	# player.lay_up_from_sofa_init(living_room.get_marker_position("upMarker"))
 
 	SignalBus.activable_activated.connect(_activable_activated)
 	SignalBus.current_activable_changed.connect(_set_current_activable)
@@ -89,7 +89,6 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 					"No me puedo quitar lo que ya me he quitado... espabila.",
 					"QuitarseRopcaSinRopa"
 				)
-				living_room.activate_clothe("tshirt", 6.0)
 			else:
 				_put_on_clothes("tshirt")
 		"Put on Pants":
@@ -98,7 +97,6 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 					"No me puedo quitar lo que ya me he quitado... espabila.",
 					"QuitarseRopcaSinRopa"
 				)
-				living_room.activate_clothe("pants", 6.0)
 			else:
 				_put_on_clothes("pants")
 		"Put on Underwear":
@@ -107,7 +105,6 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 					"No me puedo quitar lo que ya me he quitado... espabila.",
 					"QuitarseRopcaSinRopa"
 				)
-				living_room.activate_clothe("underwear", 6.0)
 			else:
 				_put_on_clothes("underwear")
 		"ReadPoster":
@@ -156,25 +153,21 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 		"Lay down":
 			if alternative:
 				living_room.rotate_sofa()
-				living_room.enable_activable("SofaActivableLayDown", 2.0)
 			else:
 				_sofa_lay_down()
 		"Lay down wall":
 			if alternative:
 				living_room.rotate_sofa()
-				living_room.enable_activable("SofaActivableLayDownWall", 2.0)
 			else:
 				_sofa_lay_down_wall()
 		"Lay up":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
-				living_room.enable_activable("SofaActivableLayUp", 5.0)
 			else:
 				_sofa_lay_up()
 		"Lay up wall":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
-				living_room.enable_activable("SofaActivableLayUpWall", 5.0)
 			else:
 				_sofa_lay_up_wall()
 		"StreamIn":
@@ -422,12 +415,10 @@ func _read_poster() -> void:
 
 func _sit_on_chair() -> void:
 	player.sit_on_chair(living_room.get_marker_position("chairMarker"))
-	living_room.sit_in_chair()
 
 
 func _get_up_from_chair() -> void:
 	player.get_up_from_chair()
-	living_room.get_up_from_chair()
 
 
 func _sit_on_mirror_chair() -> void:

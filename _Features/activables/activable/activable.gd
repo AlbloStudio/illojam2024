@@ -1,10 +1,23 @@
 class_name Activable extends Area3D
 
 @export var activable_name: String
-@export var activable_text := "..."
-@export var activable_alternative_text := "..."
+
 @export var times_to_unforbid := 5
 @export var time_to_alternate := 3.0
+
+@export_category("Normal")
+@export var activable_text := "..."
+@export var enable_after := [] as Array[Activable]
+@export var deactivate_after := [] as Array[Activable]
+@export var enable_after_seconds := 2.0
+@export var deactivate_after_seconds := 0.0
+
+@export_category("Alternative")
+@export var activable_alternative_text := "..."
+@export var alternative_enable_after := [] as Array[Activable]
+@export var alternative_deactivate_after := [] as Array[Activable]
+@export var alternative_enable_after_seconds := 2.0
+@export var alternative_deactivate_after_seconds := 0.0
 
 @export var alternative := false:
 	set(value):
@@ -54,8 +67,8 @@ func stop_being_current() -> void:
 		state_machine.transition_to(state_idle.name)
 
 
-func deactivate() -> void:
-	state_machine.transition_to(state_deactivated.name)
+func deactivate(msg := {"init": false}) -> void:
+	state_machine.transition_to(state_deactivated.name, msg)
 
 
 func deactivate_forever() -> void:
@@ -109,8 +122,3 @@ func _on_indicator_trigger_area_entered(body) -> void:
 func _on_indicator_trigger_area_exited(body) -> void:
 	if body is Player:
 		indicator.visible = false
-
-	# create_tween().tween_method(change_indicator_transparency, 1, 0, 0.4)
-
-# func change_indicator_transparency(value: float) -> void:
-# 	indicator.get_surface_override_material(0).albedo_color.a = value

@@ -17,10 +17,6 @@ var poster_awaken := false
 @onready var colliders := $Colliders as Node3D
 @onready var colliders_body := $Colliders/StaticBody3D as StaticBody3D
 @onready var colliders_layed := $CollidersLayed/StaticBody3D as StaticBody3D
-@onready var sofa_activable_lay_down := $Activables/SofaActivableLayDown as Activable
-@onready var sofa_activable_lay_down_wall := $Activables/SofaActivableLayDownWall as Activable
-@onready var sofa_activable_lay_up := $Activables/SofaActivableLayUp as Activable
-@onready var sofa_activable_lay_up_wall := $Activables/SofaActivableLayUpWall as Activable
 
 @onready var pennywise := $Pennywise as MeshInstance3D
 @onready var picture := $Plane_030 as MeshInstance3D
@@ -77,16 +73,9 @@ func reset_closet() -> void:
 func make_clothes_appear() -> void:
 	clothes.visible = true
 
-	for cloth_name in cloth_names:
-		var cloth_activable = get_node(_clothes_path(cloth_name)) as Activable
-		cloth_activable.state_machine.transition_to(cloth_activable.state_idle.name)
-
 
 func make_cloth_disappear(cloth_name: String) -> void:
 	get_node(_clothes_path(cloth_name, false)).visible = false
-
-	var clothe_activable = get_node(_clothes_path(cloth_name)) as Activable
-	clothe_activable.deactivate()
 
 
 func destroy_clothes() -> void:
@@ -101,55 +90,19 @@ func _clothes_path(cloth: String, with_activable := true) -> String:
 	return "Clothes/" + cloth + ("/Activable" if with_activable else "")
 
 
-func sit_in_chair() -> void:
-	(
-		create_tween()
-		. tween_callback(
-			func(): char_activable_getup.state_machine.transition_to(
-				char_activable_getup.state_idle.name
-			)
-		)
-		. set_delay(2)
-	)
-
-
-func get_up_from_chair() -> void:
-	(
-		create_tween()
-		. tween_callback(
-			func(): char_activable_sit.state_machine.transition_to(
-				char_activable_sit.state_idle.name
-			)
-		)
-		. set_delay(2)
-	)
-
-
 func switch_to_layed_mode() -> void:
 	colliders_body.collision_layer = 0
 	colliders_layed.collision_layer = 4
-	sofa_activable_lay_up.reactivate()
-	sofa_activable_lay_up_wall.reactivate()
-	sofa_activable_lay_down.deactivate()
-	sofa_activable_lay_down_wall.deactivate()
 
 
 func switch_to_up_mode() -> void:
 	colliders_body.collision_layer = 4
 	colliders_layed.collision_layer = 0
-	sofa_activable_lay_up.deactivate()
-	sofa_activable_lay_up_wall.deactivate()
-	sofa_activable_lay_down.reactivate()
-	sofa_activable_lay_down_wall.reactivate()
 
 
 func switch_to_none_mode() -> void:
 	colliders_body.collision_layer = 0
 	colliders_layed.collision_layer = 0
-	sofa_activable_lay_up.deactivate()
-	sofa_activable_lay_up_wall.deactivate()
-	sofa_activable_lay_down.deactivate()
-	sofa_activable_lay_down_wall.deactivate()
 
 
 func activate_clothe(clothe_name: String, delay := 0.0) -> void:

@@ -229,15 +229,15 @@ bus = &"Dialogs"
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.9755, 9, 1.37202)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.473602, 9, -0.980341)
 current = true
-fov = 74.8904
+fov = 74.5701
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -21.9755, 9, 1.37202)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.473602, 9, -0.980341)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0
@@ -253,7 +253,7 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9755, 0, 1.37202)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.473602, 0, -0.980341)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")
@@ -290,9 +290,13 @@ script = ExtResource("9_l32nb")
 [node name="TabletNolas" parent="Stage/MoorGnivil" instance=ExtResource("4_nyxmf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01423, 0.621368, 5.74418)
 
-[node name="Tablet" parent="Stage/MoorGnivil/TabletNolas" index="1"]
+[node name="Tablet" parent="Stage/MoorGnivil/TabletNolas" index="1" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after")]
 activable_name = "TabletNolas"
 activable_text = "Activar"
+enable_after = []
+deactivate_after = []
+alternative_enable_after = []
+alternative_deactivate_after = []
 
 [node name="Indicator" parent="Stage/MoorGnivil/TabletNolas/Tablet" index="3"]
 visible = false
@@ -333,9 +337,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87807, 0.621, -4.17241)
 [node name="SpeechBubble" parent="Stage/LivingRoom/TabletLivingRoom" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Tablet" parent="Stage/LivingRoom/TabletLivingRoom" index="1"]
+[node name="Tablet" parent="Stage/LivingRoom/TabletLivingRoom" index="1" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after")]
 activable_name = "TabletLivingRoom"
 activable_text = "Activar"
+enable_after = []
+deactivate_after = []
+alternative_enable_after = []
+alternative_deactivate_after = []
 
 [node name="ActionLabel" parent="Stage/LivingRoom/TabletLivingRoom/Tablet" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.201257, 2.5, 0.513412)
@@ -356,9 +364,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.60012e-05, 0, -0.013937)
 [node name="TabletSecret" parent="Stage/Setup" instance=ExtResource("4_nyxmf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.425479, 0.0301816, 5.79743)
 
-[node name="Tablet" parent="Stage/Setup/TabletSecret" index="1"]
+[node name="Tablet" parent="Stage/Setup/TabletSecret" index="1" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after")]
 activable_name = "TabletSecret"
 activable_text = "Activar"
+enable_after = []
+deactivate_after = []
+alternative_enable_after = []
+alternative_deactivate_after = []
 
 [node name="Indicator" parent="Stage/Setup/TabletSecret/Tablet" index="3"]
 transform = Transform3D(1, -6.38378e-15, 0, 6.66134e-16, 1, 0, 0, 0, 1, -0.717073, -4.47035e-08, -0.353103)

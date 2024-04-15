@@ -7,10 +7,8 @@ func switch_context(context_array_to_use: Array[String]) -> void:
 	for activable in activables.get_children():
 		if context_array_to_use.has(activable.name):
 			activable.is_in_context = true
-			print("Activating", activable.name)
 		else:
 			activable.is_in_context = false
-			print("Deactivating", activable.name)
 
 
 func enable_activable(activable_name: String, delay := 0.0) -> void:
