@@ -8,3 +8,5 @@ func enter(_msg := {}) -> void:
 
 func deactivate() -> void:
 	state_machine.transition_to(state_owner.state_deactivated.name)
+	if state_owner.destroy_after_activation:
+		state_owner.queue_free()

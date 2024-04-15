@@ -75,13 +75,8 @@ func blinders_down() -> void:
 
 func move_chair() -> void:
 	move_chair_animation.play("move_chair")
-	deenable_activable("MoveChairActivable", 0.0, true)
-	activate_wrong_streams()
-
-
-func activate_wrong_streams() -> void:
-	deenable_activable("StreamInActivable", 0.0, true)
-	deenable_activable("StreamOutActivable", 0.0, true)
+	deactivate_activable("StreamInActivable", 0.0, true)
+	deactivate_activable("StreamOutActivable", 0.0, true)
 	enable_activable("StreamInIncorrectActivable")
 
 

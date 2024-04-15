@@ -16,6 +16,8 @@ class_name Activable extends Area3D
 		forbidden = value
 		reset_label()
 
+@export var destroy_after_activation := false
+
 var player: Player
 var is_in_context := true:
 	set(value):

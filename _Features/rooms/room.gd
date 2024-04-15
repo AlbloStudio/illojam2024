@@ -21,7 +21,7 @@ func enable_activable(activable_name: String, delay := 0.0) -> void:
 	create_tween().tween_callback(func(): activable_node.reactivate()).set_delay(delay)
 
 
-func deenable_activable(activable_name: String, delay := 0.0, forever := false) -> void:
+func deactivate_activable(activable_name: String, delay := 0.0, forever := false) -> void:
 	var activable_node = get_node_or_null("Activables/" + activable_name)
 	if activable_node == null:
 		return
