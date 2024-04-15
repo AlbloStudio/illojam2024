@@ -86,7 +86,7 @@ func make_cloth_disappear(cloth_name: String) -> void:
 	get_node(_clothes_path(cloth_name, false)).visible = false
 
 	var clothe_activable = get_node(_clothes_path(cloth_name)) as Activable
-	clothe_activable.state_machine.transition_to(clothe_activable.state_deactivated.name)
+	clothe_activable.deactivate()
 
 
 func destroy_clothes() -> void:

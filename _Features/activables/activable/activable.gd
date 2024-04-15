@@ -5,6 +5,7 @@ class_name Activable extends Area3D
 @export var activable_alternative_text := "..."
 @export var times_to_unforbid := 5
 @export var time_to_alternate := 3.0
+
 @export var alternative := false:
 	set(value):
 		alternative = value
@@ -53,6 +54,10 @@ func stop_being_current() -> void:
 
 func deactivate() -> void:
 	state_machine.transition_to(state_deactivated.name)
+
+
+func deactivate_forever() -> void:
+	queue_free()
 
 
 func reactivate() -> void:

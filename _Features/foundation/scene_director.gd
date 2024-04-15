@@ -119,10 +119,10 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						"ContemplarPoster"
 					)
 				)
-				living_room.activate_activable("PosterActivable", 6.0)
+				living_room.enable_activable("PosterActivable", 6.0)
 			else:
 				_read_poster()
-				living_room.activate_activable("PosterActivable", 6.0)
+				living_room.enable_activable("PosterActivable", 6.0)
 		"Sit":
 			if alternative:
 				player.say("Qué pasa, taburete? TABURRES?", "TabureteAlternativo")
@@ -132,13 +132,13 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 		"GetUp":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
-				living_room.activate_activable("ChairActivableGetUp", 2.0)
+				living_room.enable_activable("ChairActivableGetUp", 2.0)
 			else:
 				_get_up_from_chair()
 		"Tis":
 			if alternative:
 				player.say("?SERRUBAT ?etrubat ,asap euQ", "TabureteAlternativoInverso")
-				nolas.activate_activable("ChairActivableSit", 5.0)
+				nolas.enable_activable("ChairActivableSit", 5.0)
 			else:
 				_sit_on_mirror_chair()
 		"RetsopDear":
@@ -150,31 +150,31 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						"ContemplarPosterInvertido"
 					)
 				)
-				nolas.activate_activable("PosterActivable", 5.0)
+				nolas.enable_activable("PosterActivable", 5.0)
 			else:
 				_read_mirror_poster()
 		"Lay down":
 			if alternative:
 				living_room.rotate_sofa()
-				living_room.activate_activable("SofaActivableLayDown", 2.0)
+				living_room.enable_activable("SofaActivableLayDown", 2.0)
 			else:
 				_sofa_lay_down()
 		"Lay down wall":
 			if alternative:
 				living_room.rotate_sofa()
-				living_room.activate_activable("SofaActivableLayDownWall", 2.0)
+				living_room.enable_activable("SofaActivableLayDownWall", 2.0)
 			else:
 				_sofa_lay_down_wall()
 		"Lay up":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
-				living_room.activate_activable("SofaActivableLayUp", 5.0)
+				living_room.enable_activable("SofaActivableLayUp", 5.0)
 			else:
 				_sofa_lay_up()
 		"Lay up wall":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
-				living_room.activate_activable("SofaActivableLayUpWall", 5.0)
+				living_room.enable_activable("SofaActivableLayUpWall", 5.0)
 			else:
 				_sofa_lay_up_wall()
 		"StreamIn":
@@ -182,13 +182,13 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				player.say(
 					"No puedo desde aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
 				)
-				setup.activate_activable("StreamInActivable", 5.0)
+				setup.enable_activable("StreamInActivable", 5.0)
 			else:
 				_stream_in()
 		"StreamOut":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
-				setup.activate_activable("StreamOutActivable", 5.0)
+				setup.enable_activable("StreamOutActivable", 5.0)
 			else:
 				_stream_out()
 		"StreamWrong":
@@ -196,13 +196,13 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				player.say(
 					"No puedo desde aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
 				)
-				setup.activate_activable("StreamInIncorrectActivable", 5.0)
+				setup.enable_activable("StreamInIncorrectActivable", 5.0)
 			else:
 				_stream_in_wrong()
 		"StreamOutWrong":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
-				setup.activate_activable("StreamOutInCorrectActivable", 5.0)
+				setup.enable_activable("StreamOutInCorrectActivable", 5.0)
 			else:
 				_stream_out_wrong()
 		"TouchWall":
@@ -219,13 +219,13 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						"AsomarsePorLaVentana"
 					)
 				)
-				setup.activate_activable("ExitWindowActivable", 5.0)
+				setup.enable_activable("ExitWindowActivable", 5.0)
 			else:
 				_exit_window()
 		"Enter Window":
 			if alternative:
 				player.say("MI CASA ILLO", "AsomarseDesdeFuera")
-				setup.activate_activable("EnterWindowActivable", 5.0)
+				setup.enable_activable("EnterWindowActivable", 5.0)
 			else:
 				_enter_window()
 		"Blinders Up":
@@ -238,7 +238,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						7
 					)
 				)
-				setup.activate_activable("BlindersUpActivable", 7.0)
+				setup.enable_activable("BlindersUpActivable", 7.0)
 			else:
 				_bilders_up()
 		"Blinders Down":
@@ -250,7 +250,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						"cordelillopersianaDialogo"
 					)
 				)
-				setup.activate_activable("BlindersDownActivable", 5.0)
+				setup.enable_activable("BlindersDownActivable", 5.0)
 			else:
 				_blinders_down()
 		"Jump Down":
@@ -261,7 +261,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 		"Move Chair":
 			if alternative:
 				player.say("...", " ")
-				setup.activate_activable("MoveChairActivable", 2.0)
+				setup.enable_activable("MoveChairActivable", 2.0)
 			else:
 				_move_chair()
 
@@ -485,25 +485,25 @@ func _stream_out_wrong() -> void:
 
 
 func _streaming() -> void:
-	setup.activate_activable("StreamOutActivable")
+	setup.enable_activable("StreamOutActivable")
 
 
 func _stopped_streaming() -> void:
-	setup.activate_activable("StreamInActivable")
+	setup.enable_activable("StreamInActivable")
 
 
 func _streaming_wrong() -> void:
-	setup.activate_activable("StreamOutInCorrectActivable")
+	setup.enable_activable("StreamOutInCorrectActivable")
 	SignalBus.awaked.emit("stream")
 
 
 func _stopped_streaming_wrong() -> void:
-	setup.activate_activable("StreamInIncorrectActivable")
+	setup.enable_activable("StreamInIncorrectActivable")
 
 
 func _touch_wall() -> void:
 	player.say("Otia, una pared", "HostiaUnaPared")
-	setup.activate_activable("WallsUpActivable", 2.0)
+	setup.enable_activable("WallsUpActivable", 2.0)
 
 
 func _exit_window() -> void:
@@ -512,7 +512,7 @@ func _exit_window() -> void:
 		setup.show_secret_room()
 	else:
 		player.say("Ni de coña salgo por una ventana abierta.", "NiDeCoñaSalgo")
-		setup.activate_activable("ExitWindowActivable", 3.0)
+		setup.enable_activable("ExitWindowActivable", 3.0)
 
 
 func _enter_window() -> void:
@@ -520,12 +520,12 @@ func _enter_window() -> void:
 
 
 func _entered_window() -> void:
-	setup.activate_activable("ExitWindowActivable")
+	setup.enable_activable("ExitWindowActivable")
 	setup.hide_secret_room()
 
 
 func _exited_window() -> void:
-	setup.activate_activable("EnterWindowActivable")
+	setup.enable_activable("EnterWindowActivable")
 	SignalBus.awaked.emit("window")
 
 

@@ -36,21 +36,21 @@ func _ready() -> void:
 
 func switch_to_penerated_context() -> void:
 	switch_context(activables_while_penetrated)
-	activate_activable("WallsUpActivable")
+	enable_activable("WallsUpActivable")
 
 
 func switch_to_normal_context() -> void:
 	switch_context(activables_while_normal)
 	colliders.collision_layer = 4
 	colliders_up.collision_layer = 0
-	activate_activable("WallsUpActivable")
+	enable_activable("WallsUpActivable")
 
 
 func switch_to_upwall_context() -> void:
 	switch_context(activables_while_up)
 	colliders.collision_layer = 0
 	colliders_up.collision_layer = 4
-	activate_activable("JumpDownActivable")
+	enable_activable("JumpDownActivable")
 
 
 func show_secret_room() -> void:
@@ -64,25 +64,25 @@ func hide_secret_room() -> void:
 func blinders_up() -> void:
 	blinders.scale.y = 0.1
 	exit_window_activable.forbidden = false
-	activate_activable("BlindersDownActivable", 2.0)
+	enable_activable("BlindersDownActivable", 2.0)
 
 
 func blinders_down() -> void:
 	blinders.scale.y = 1
 	exit_window_activable.forbidden = true
-	activate_activable("BlindersUpActivable", 2.0)
+	enable_activable("BlindersUpActivable", 2.0)
 
 
 func move_chair() -> void:
 	move_chair_animation.play("move_chair")
-	deactivate_activable("MoveChairActivable", 0.0, true)
+	deenable_activable("MoveChairActivable", 0.0, true)
 	activate_wrong_streams()
 
 
 func activate_wrong_streams() -> void:
-	deactivate_activable("StreamInActivable", 0.0, true)
-	deactivate_activable("StreamOutActivable", 0.0, true)
-	activate_activable("StreamInIncorrectActivable")
+	deenable_activable("StreamInActivable", 0.0, true)
+	deenable_activable("StreamOutActivable", 0.0, true)
+	enable_activable("StreamInIncorrectActivable")
 
 
 func awake_wall() -> void:
