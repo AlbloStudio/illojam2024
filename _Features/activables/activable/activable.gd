@@ -11,6 +11,7 @@ class_name Activable extends Area3D
 @export var deactivate_after := [] as Array[Activable]
 @export var enable_after_seconds := 2.0
 @export var deactivate_after_seconds := 0.0
+@export var destroy_after_activation := false
 
 @export_category("Alternative")
 @export var activable_alternative_text := "..."
@@ -18,6 +19,7 @@ class_name Activable extends Area3D
 @export var alternative_deactivate_after := [] as Array[Activable]
 @export var alternative_enable_after_seconds := 2.0
 @export var alternative_deactivate_after_seconds := 0.0
+@export var alternative_destroy_after_activation := false
 
 @export var alternative := false:
 	set(value):
@@ -28,8 +30,6 @@ class_name Activable extends Area3D
 	set(value):
 		forbidden = value
 		reset_label()
-
-@export var destroy_after_activation := false
 
 var player: Player
 var is_in_context := true:

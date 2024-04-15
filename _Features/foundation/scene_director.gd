@@ -135,7 +135,6 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 		"Tis":
 			if alternative:
 				player.say("?SERRUBAT ?etrubat ,asap euQ", "TabureteAlternativoInverso")
-				nolas.enable_activable("ChairActivableSit", 5.0)
 			else:
 				_sit_on_mirror_chair()
 		"RetsopDear":
@@ -147,7 +146,6 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						"ContemplarPosterInvertido"
 					)
 				)
-				nolas.enable_activable("PosterActivable", 5.0)
 			else:
 				_read_mirror_poster()
 		"Lay down":

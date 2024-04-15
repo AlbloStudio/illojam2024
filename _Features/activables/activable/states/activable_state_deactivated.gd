@@ -6,16 +6,8 @@ func enter(msg := {}) -> void:
 	_set_collision_shape_activation.call_deferred(true)
 	state_owner.indicator.visible = false
 
-	if msg == {"init": false}:
-		if !state_owner.alternative:
-			_enable_after()
-			_deactivate_after()
-		else:
-			_alternative_enable_after()
-			_alternative_deactivate_after()
-
-	if state_owner.destroy_after_activation:
-		state_owner.queue_free()
+	_after(msg)
+	after_destroy()
 
 
 func exit(_msg := {}) -> void:
@@ -24,6 +16,27 @@ func exit(_msg := {}) -> void:
 	var overlapping_bodies = state_owner.indicator_trigger.get_overlapping_bodies()
 	if overlapping_bodies.size() > 0:
 		state_owner.indicator.visible = true
+
+
+func _after(msg:= {}) -> void:
+	if msg != {"init": false}:
+		return
+
+	if !state_owner.alternative:
+		_enable_after()
+		_deactivate_after()
+	else:
+		_alternative_enable_after()
+		_alternative_deactivate_after()
+
+
+func after_destroy() -> void:
+	if !state_owner.alternative:
+		if state_owner.destroy_after_activation:
+			state_owner.queue_free()
+	else:
+		if state_owner.alternative_destroy_after_activation:
+			state_owner.queue_free()
 
 
 func _set_collision_shape_activation(activate: bool) -> void:
