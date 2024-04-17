@@ -40,15 +40,10 @@ func _ready():
 	SignalBus.awaked.connect(_awaked)
 	SignalBus.layed_down.connect(_layed_down)
 	SignalBus.layed_up.connect(_layed_up)
-	SignalBus.streaming.connect(_streaming)
-	SignalBus.stopped_streaming.connect(_stopped_streaming)
-	SignalBus.streaming_wrong.connect(_streaming_wrong)
-	SignalBus.stopped_streaming_wrong.connect(_stopped_streaming_wrong)
 	SignalBus.exited_window.connect(_exited_window)
 	SignalBus.entered_window.connect(_entered_window)
 	SignalBus.jumped_down.connect(_jumped_down)
 	SignalBus.upped_wall.connect(_upped_wall)
-	SignalBus.downed_wall.connect(_downed_wall)
 	SignalBus.started.connect(_started)
 	SignalBus.should_activate.connect(_should_activate)
 	SignalBus.despierta.connect(_despierta)
@@ -116,10 +111,8 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						"ContemplarPoster"
 					)
 				)
-				living_room.enable_activable("PosterActivable", 6.0)
 			else:
 				_read_poster()
-				living_room.enable_activable("PosterActivable", 6.0)
 		"Sit":
 			if alternative:
 				player.say("Qué pasa, taburete? TABURRES?", "TabureteAlternativo")
@@ -129,7 +122,6 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 		"GetUp":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
-				living_room.enable_activable("ChairActivableGetUp", 2.0)
 			else:
 				_get_up_from_chair()
 		"Tis":
@@ -173,13 +165,11 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				player.say(
 					"No puedo desde aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
 				)
-				setup.enable_activable("StreamInActivable", 5.0)
 			else:
 				_stream_in()
 		"StreamOut":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
-				setup.enable_activable("StreamOutActivable", 5.0)
 			else:
 				_stream_out()
 		"StreamWrong":
@@ -187,13 +177,11 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 				player.say(
 					"No puedo desde aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
 				)
-				setup.enable_activable("StreamInIncorrectActivable", 5.0)
 			else:
 				_stream_in_wrong()
 		"StreamOutWrong":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
-				setup.enable_activable("StreamOutInCorrectActivable", 5.0)
 			else:
 				_stream_out_wrong()
 		"TouchWall":
@@ -210,13 +198,11 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						"AsomarsePorLaVentana"
 					)
 				)
-				setup.enable_activable("ExitWindowActivable", 5.0)
 			else:
 				_exit_window()
 		"Enter Window":
 			if alternative:
 				player.say("MI CASA ILLO", "AsomarseDesdeFuera")
-				setup.enable_activable("EnterWindowActivable", 5.0)
 			else:
 				_enter_window()
 		"Blinders Up":
@@ -229,7 +215,6 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						7
 					)
 				)
-				setup.enable_activable("BlindersUpActivable", 7.0)
 			else:
 				_bilders_up()
 		"Blinders Down":
@@ -241,7 +226,6 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 						"cordelillopersianaDialogo"
 					)
 				)
-				setup.enable_activable("BlindersDownActivable", 5.0)
 			else:
 				_blinders_down()
 		"Jump Down":
@@ -252,7 +236,6 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 		"Move Chair":
 			if alternative:
 				player.say("...", " ")
-				setup.enable_activable("MoveChairActivable", 2.0)
 			else:
 				_move_chair()
 
@@ -473,26 +456,8 @@ func _stream_out_wrong() -> void:
 	player.get_up_from_streaming_wrong()
 
 
-func _streaming() -> void:
-	setup.enable_activable("StreamOutActivable")
-
-
-func _stopped_streaming() -> void:
-	setup.enable_activable("StreamInActivable")
-
-
-func _streaming_wrong() -> void:
-	setup.enable_activable("StreamOutInCorrectActivable")
-	SignalBus.awaked.emit("stream")
-
-
-func _stopped_streaming_wrong() -> void:
-	setup.enable_activable("StreamInIncorrectActivable")
-
-
 func _touch_wall() -> void:
 	player.say("Otia, una pared", "HostiaUnaPared")
-	setup.enable_activable("WallsUpActivable", 2.0)
 
 
 func _exit_window() -> void:
@@ -501,7 +466,6 @@ func _exit_window() -> void:
 		setup.show_secret_room()
 	else:
 		player.say("Ni de coña salgo por una ventana abierta.", "NiDeCoñaSalgo")
-		setup.enable_activable("ExitWindowActivable", 3.0)
 
 
 func _enter_window() -> void:
@@ -509,7 +473,6 @@ func _enter_window() -> void:
 
 
 func _entered_window() -> void:
-	setup.enable_activable("ExitWindowActivable")
 	setup.hide_secret_room()
 
 
@@ -550,10 +513,6 @@ func _down_wall() -> void:
 	player.set_down_wall(
 		setup.get_marker_position("WallsDownMarker"), func(): setup.switch_to_normal_context()
 	)
-
-
-func _downed_wall() -> void:
-	pass
 
 
 func _move_chair() -> void:

@@ -215,26 +215,12 @@ func _layed_up_init() -> void:
 
 
 func sit_to_stream(new_position: Vector3) -> void:
-	animate(
-		"SitOnChair",
-		new_position,
-		Vector3(0, PI, 0),
-		state_puppet.name,
-		false,
-		func(): SignalBus.streaming.emit()
-	)
+	animate("SitOnChair", new_position, Vector3(0, PI, 0), state_puppet.name, false)
 
 
 func get_up_from_streaming() -> void:
 	pixelation.rotation_degrees = Vector3(0, 0, 0)
-	animate(
-		"SitOnChair",
-		previous_position,
-		Vector3(0, PI, 0),
-		state_controlled.name,
-		true,
-		func(): SignalBus.stopped_streaming.emit()
-	)
+	animate("SitOnChair", previous_position, Vector3(0, PI, 0), state_controlled.name, true)
 
 
 func sit_to_stream_wrong(new_position: Vector3) -> void:
@@ -244,19 +230,12 @@ func sit_to_stream_wrong(new_position: Vector3) -> void:
 		Vector3.ZERO,
 		state_puppet.name,
 		false,
-		func(): SignalBus.streaming_wrong.emit()
+		func(): SignalBus.awaked.emit("stream")
 	)
 
 
 func get_up_from_streaming_wrong() -> void:
-	animate(
-		"SitOnChair",
-		previous_position,
-		Vector3.ZERO,
-		state_controlled.name,
-		true,
-		func(): SignalBus.stopped_streaming_wrong.emit()
-	)
+	animate("SitOnChair", previous_position, Vector3.ZERO, state_controlled.name, true)
 
 
 func set_up_walls(new_position: Vector3, on_middle: Callable) -> void:

@@ -116,7 +116,6 @@ func set_label_text() -> void:
 func _on_indicator_trigger_area_entered(body) -> void:
 	if body is Player && !state_machine.is_in_state([state_deactivated.name]):
 		indicator.visible = true
-	# create_tween().tween_method(change_indicator_transparency, 0, 1, 0.4)
 
 
 func _on_indicator_trigger_area_exited(body) -> void:

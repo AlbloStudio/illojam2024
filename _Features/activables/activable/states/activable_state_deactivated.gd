@@ -6,7 +6,7 @@ func enter(msg := {}) -> void:
 	_set_collision_shape_activation.call_deferred(true)
 	state_owner.indicator.visible = false
 
-	_after(msg)
+	await _after(msg)
 	after_destroy()
 
 
@@ -18,16 +18,16 @@ func exit(_msg := {}) -> void:
 		state_owner.indicator.visible = true
 
 
-func _after(msg:= {}) -> void:
+func _after(msg := {}) -> void:
 	if msg != {"init": false}:
 		return
 
 	if !state_owner.alternative:
-		_enable_after()
-		_deactivate_after()
+		await _enable_after()
+		await _deactivate_after()
 	else:
-		_alternative_enable_after()
-		_alternative_deactivate_after()
+		await _alternative_enable_after()
+		await _alternative_deactivate_after()
 
 
 func after_destroy() -> void:
@@ -44,15 +44,15 @@ func _set_collision_shape_activation(activate: bool) -> void:
 
 
 func _enable_after() -> void:
-	_switch_after("reactivate", state_owner.enable_after, state_owner.enable_after_seconds)
+	await _switch_after("reactivate", state_owner.enable_after, state_owner.enable_after_seconds)
 
 
 func _deactivate_after() -> void:
-	_switch_after("deactivate", state_owner.deactivate_after, state_owner.deactivate_after_seconds)
+	await _switch_after("deactivate", state_owner.deactivate_after, state_owner.deactivate_after_seconds)
 
 
 func _alternative_enable_after() -> void:
-	_switch_after(
+	await _switch_after(
 		"reactivate",
 		state_owner.alternative_enable_after,
 		state_owner.alternative_enable_after_seconds
@@ -60,7 +60,7 @@ func _alternative_enable_after() -> void:
 
 
 func _alternative_deactivate_after() -> void:
-	_switch_after(
+	await _switch_after(
 		"deactivate",
 		state_owner.alternative_deactivate_after,
 		state_owner.alternative_deactivate_after_seconds
@@ -75,4 +75,5 @@ func _switch_after(
 		if function_name == "reactivate":
 			function = func(): activable.reactivate()
 
-		create_tween().tween_callback(function).set_delay(after_seconds)
+		await get_tree().create_timer(after_seconds).timeout
+		function.call()
