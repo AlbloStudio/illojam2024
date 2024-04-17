@@ -48,7 +48,9 @@ func _enable_after() -> void:
 
 
 func _deactivate_after() -> void:
-	await _switch_after("deactivate", state_owner.deactivate_after, state_owner.deactivate_after_seconds)
+	await _switch_after(
+		"deactivate", state_owner.deactivate_after, state_owner.deactivate_after_seconds
+	)
 
 
 func _alternative_enable_after() -> void:
