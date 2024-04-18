@@ -314,9 +314,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.643317, 1.01746, 0.902702)
 [node name="IndicatorMesh" parent="Activables/StreamInActivable/Indicator" index="0"]
 transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, -0.380361, -1, -1.67638e-08)
 
-[node name="CollisionShape3D" parent="Activables/StreamInActivable/Indicator/IndicatorTrigger" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.67981, 0)
-
 [node name="StreamOutActivable" parent="Activables" index="1" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.871468, 0.690414, -0.560438)
 activable_name = "StreamOut"
@@ -480,9 +477,6 @@ shape = SubResource("BoxShape3D_lm23x")
 
 [node name="Indicator" parent="Activables/EnterWindowActivable" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35538, -0.283886, 2.04046)
-
-[node name="CollisionShape3D" parent="Activables/EnterWindowActivable/Indicator/IndicatorTrigger" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.45138, 0)
 
 [node name="BlindersUpActivable" parent="Activables" index="7" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.27228, 0.686402, -3.53155)

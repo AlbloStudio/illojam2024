@@ -10,24 +10,30 @@
 [ext_resource type="Script" path="res://_Features/activables/activable/indicator.gd" id="8_ss0ve"]
 [ext_resource type="Texture2D" uid="uid://ctelq83bfqylp" path="res://_Features/UI/Interaction Circle.svg" id="9_drbhc"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rkc3m"]
+height = 0.1
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_rv4fl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8w3c1"]
 transparency = 1
+no_depth_test = true
 albedo_texture = ExtResource("9_drbhc")
 emission_enabled = true
 emission = Color(0.956863, 0.956863, 0, 1)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_aa503"]
-radius = 2.02685
-
-[node name="Activable" type="Area3D"]
+[node name="Activable" type="Area3D" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after")]
 collision_layer = 2
 script = ExtResource("1_s7sqx")
 time_to_alternate = 2.0
+enable_after = []
+deactivate_after = []
+alternative_enable_after = []
+alternative_deactivate_after = []
 
 [node name="ActionLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.680606, 0.5, -0.607638)
+no_depth_test = true
 text = "Probando cosa"
 script = ExtResource("7_48efp")
 
@@ -48,23 +54,20 @@ script = ExtResource("5_ybc1y")
 script = ExtResource("6_p1ox2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.521778, 0)
+shape = SubResource("CylinderShape3D_rkc3m")
 
 [node name="Indicator" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("8_ss0ve")
 
 [node name="IndicatorMesh" type="MeshInstance3D" parent="Indicator"]
-transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, 1, 0)
+transform = Transform3D(0.145, 0, 0, 0, 0.145, 0, 0, 0, 0.145, 0, 0, 0)
 layers = 4
 mesh = SubResource("PlaneMesh_rv4fl")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8w3c1")
 
-[node name="IndicatorTrigger" type="Area3D" parent="Indicator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Indicator/IndicatorTrigger"]
-shape = SubResource("CylinderShape3D_aa503")
-
-[connection signal="body_entered" from="Indicator/IndicatorTrigger" to="." method="_on_indicator_trigger_area_entered"]
-[connection signal="body_exited" from="Indicator/IndicatorTrigger" to="." method="_on_indicator_trigger_area_exited"]
+[connection signal="input_event" from="." to="." method="_on_activable_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

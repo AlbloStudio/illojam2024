@@ -13,10 +13,6 @@ func enter(msg := {}) -> void:
 func exit(_msg := {}) -> void:
 	_set_collision_shape_activation.call_deferred(false)
 
-	var overlapping_bodies = state_owner.indicator_trigger.get_overlapping_bodies()
-	if overlapping_bodies.size() > 0:
-		state_owner.indicator.visible = true
-
 
 func _after(msg := {}) -> void:
 	if msg != {"init": false}:

@@ -1,5 +1,6 @@
 class_name PlayerStateControlled extends PlayerState
 
+
 func physics_update(delta: float) -> void:
 	_calculate_velocity(delta)
 	if !state_owner.dont_animate_movement:
@@ -9,7 +10,7 @@ func physics_update(delta: float) -> void:
 	state_owner.move_and_slide()
 
 
-func _input(event):
+func _input(event: InputEvent):
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && !event.pressed:
 		var project_ray_origin = state_owner.camera.project_position(
 			event.position, state_owner.camera.global_position.y

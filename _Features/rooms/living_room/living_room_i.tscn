@@ -1,56 +1,13 @@
-[gd_scene load_steps=48 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=33 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
 [ext_resource type="PackedScene" uid="uid://b2uyt4m0rq2fi" path="res://_Features/common/barrier/barrier_system.tscn" id="3_6s4fw"]
 [ext_resource type="PackedScene" uid="uid://d3rkq03p0oela" path="res://_Features/rooms/living_room/clothes/t-shirt.blend" id="3_ldumg"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="3_t3t5u"]
-[ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="5_8ovyx"]
 [ext_resource type="PackedScene" uid="uid://krfftilrej8q" path="res://_Features/rooms/living_room/clothes/trousers.blend" id="5_v7b18"]
 [ext_resource type="PackedScene" uid="uid://bn3rgui88uyr0" path="res://_Features/rooms/living_room/clothes/underpants.blend" id="6_lembl"]
 [ext_resource type="Texture2D" uid="uid://bnhb1b0b3nb4p" path="res://_Features/rooms/living_room/pennywise.png" id="8_0j6pt"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vq6wj"]
-size = Vector3(0.794922, 0.761719, 0.711792)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_i2fld"]
-size = Vector3(0.94397, 1, 0.857849)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d51n7"]
-size = Vector3(0.531616, 1, 0.511726)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_73kjy"]
-radius = 1.84987
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_67vup"]
-size = Vector3(0.768755, 1.95654, 0.337746)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6orec"]
-size = Vector3(0.603716, 1, 0.357193)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_sf51u"]
-size = Vector3(2.27856, 2.31848, 1.6001)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_icqsy"]
-size = Vector3(0.537598, 1.95654, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_td5vw"]
-size = Vector3(0.730224, 2.31848, 2.91956)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_e66va"]
-size = Vector3(0.552978, 2.31848, 2.91956)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5777h"]
-size = Vector3(0.773407, 2.31848, 2.91956)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1q5re"]
-radius = 1.77683
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3bcoa"]
-size = Vector3(0.668205, 2.31848, 2.91956)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_uwu8x"]
-radius = 2.02685
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iji4e"]
 size = Vector3(1.52648, 2.47904, 0.102234)
@@ -159,277 +116,101 @@ transform = Transform3D(0.990566, 0, 0, 0, 1.02941, 0, 0, 0, 1, 3.153, 0.0435573
 [node name="tshirt" parent="Clothes" index="0" instance=ExtResource("3_ldumg")]
 transform = Transform3D(1.42, 0, 0, 0, 1.42, 0, 0, 0, 1.42, -0.756403, 0, 3.22266)
 
-[node name="Activable" parent="Clothes/tshirt" index="1" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("3_t3t5u")]
+[node name="Activable" parent="Clothes/tshirt" index="1" node_paths=PackedStringArray("alternative_enable_after") instance=ExtResource("3_t3t5u")]
+transform = Transform3D(0.704, 0, 0, 0, 0.704, 0, 0, 0, 0.704, -0.0496322, 0, -0.052741)
 activable_name = "Put on T-Shirt"
 activable_text = "Ponerse camiseta"
-enable_after = []
-deactivate_after = []
 activable_alternative_text = "Quitarse camiseta"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 alternative_enable_after_seconds = 4.0
-
-[node name="ActionLabel" parent="Clothes/tshirt/Activable" index="0"]
-transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, 0.6, 0, -0.6, -2.62268e-08, -0.693586, 1.59972, 0.158729)
-modulate = Color(1, 1, 0.741176, 1)
-font = ExtResource("5_8ovyx")
-font_size = 50
-outline_size = 0
-
-[node name="FiniteStateMachine" parent="Clothes/tshirt/Activable" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Clothes/tshirt/Activable" index="2"]
-transform = Transform3D(0.999992, 0, 3.78009e-12, 0, 0.999992, 0, 0, 0, 1, -0.0797973, 0.119141, 0.0755832)
-shape = SubResource("BoxShape3D_vq6wj")
-
-[node name="Indicator" parent="Clothes/tshirt/Activable" index="3"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.02228, -0.104523, 0.0680965)
 
 [node name="pants" parent="Clothes" index="1" instance=ExtResource("5_v7b18")]
 transform = Transform3D(1.69, 0, 0, 0, 1.69, 0, 0, 0, 1.69, -4.21612, 0, 2.34929)
 
-[node name="Activable" parent="Clothes/pants" index="1" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("3_t3t5u")]
+[node name="Activable" parent="Clothes/pants" index="1" node_paths=PackedStringArray("alternative_enable_after") instance=ExtResource("3_t3t5u")]
+transform = Transform3D(0.592, 0, 0, 0, 0.592, 0, 0, 0, 0.592, -0.00299996, 0, -0.072)
 activable_name = "Put on Pants"
 activable_text = "Ponerse pantalones"
-enable_after = []
-deactivate_after = []
 activable_alternative_text = "Quitarse pantalones"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 alternative_enable_after_seconds = 4.0
-
-[node name="ActionLabel" parent="Clothes/pants/Activable" index="0"]
-transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, 0.6, 0, -0.6, -2.62268e-08, 0.0656605, 1.33558, 0.228191)
-modulate = Color(1, 1, 0.741176, 1)
-font = ExtResource("5_8ovyx")
-font_size = 50
-outline_size = 0
-
-[node name="FiniteStateMachine" parent="Clothes/pants/Activable" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Clothes/pants/Activable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 2.58638e-12, 0, 1, -0.0319722, 1.19209e-07, 0.0540612)
-shape = SubResource("BoxShape3D_i2fld")
-
-[node name="Indicator" parent="Clothes/pants/Activable" index="3"]
-transform = Transform3D(0.6, 0, -6.82122e-14, 0, 0.6, 0, 6.82122e-14, 0, 0.6, 0.0463492, -0.0381039, -0.0609682)
 
 [node name="underwear" parent="Clothes" index="2" instance=ExtResource("6_lembl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61629, 0, 2.17255)
 
-[node name="Activable" parent="Clothes/underwear" index="1" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.226807, -0.425579, 0.434522)
+[node name="Activable" parent="Clothes/underwear" index="1" node_paths=PackedStringArray("alternative_enable_after") instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.003, 0, -0.072)
 activable_name = "Put on Underwear"
 activable_text = "Ponerse calzoncillos"
-enable_after = []
-deactivate_after = []
 activable_alternative_text = "Quitarse calzoncillos"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 alternative_enable_after_seconds = 4.0
-
-[node name="ActionLabel" parent="Clothes/underwear/Activable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.00706, 2.66916, -0.485579)
-modulate = Color(1, 1, 0.741176, 1)
-font = ExtResource("5_8ovyx")
-font_size = 50
-outline_size = 0
-
-[node name="FiniteStateMachine" parent="Clothes/underwear/Activable" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Clothes/underwear/Activable" index="2"]
-transform = Transform3D(0.999994, 0, 0, 0, 1, 0, 0, 0, 1, 0.250986, 0.0118475, -0.449016)
-shape = SubResource("BoxShape3D_d51n7")
-
-[node name="Indicator" parent="Clothes/underwear/Activable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.260035, 0.295817, -0.396384)
-
-[node name="CollisionShape3D" parent="Clothes/underwear/Activable/Indicator/IndicatorTrigger" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.996547)
-shape = SubResource("CylinderShape3D_73kjy")
 
 [node name="Activables" type="Node3D" parent="." index="2"]
 
-[node name="ChairActivableSit" parent="Activables" index="0" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00148, 1.43051e-06, 2.91172)
+[node name="ChairActivableSit" parent="Activables" index="0" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50494, 1.43051e-06, 0.0262728)
 activable_name = "Sit"
 activable_text = "Sentarse en taburete"
 enable_after = [NodePath("../ChairActivableGetUp")]
-deactivate_after = []
 enable_after_seconds = 2.5
 activable_alternative_text = "Hablar con taburete"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/ChairActivableSit" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.85341, 2.5, -1.92374)
-modulate = Color(1, 1, 0.741176, 1)
-font = ExtResource("5_8ovyx")
-font_size = 50
-outline_size = 0
-
-[node name="CollisionShape3D" parent="Activables/ChairActivableSit" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78697, 0.981626, -2.77209)
-shape = SubResource("BoxShape3D_67vup")
-
-[node name="Indicator" parent="Activables/ChairActivableSit" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.42832, 0.100973, -2.64243)
-visible = false
-
-[node name="ChairActivableGetUp" parent="Activables" index="1" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00148, 1.43051e-06, 2.91172)
+[node name="ChairActivableGetUp" parent="Activables" index="1" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.905207, 1.43051e-06, 0.0891244)
 activable_name = "GetUp"
+initial_state = "Deactivated"
 activable_text = "Levantarse del taburete"
 enable_after = [NodePath("../ChairActivableSit")]
-deactivate_after = []
 enable_after_seconds = 2.5
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/ChairActivableGetUp" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.87483, 2.5, -1.93788)
-modulate = Color(1, 1, 0.741176, 1)
-font = ExtResource("5_8ovyx")
-font_size = 50
-outline_size = 0
-
-[node name="FiniteStateMachine" parent="Activables/ChairActivableGetUp" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Activables/ChairActivableGetUp" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73061, 1.31561, -2.73639)
-shape = SubResource("BoxShape3D_6orec")
-
-[node name="Indicator" parent="Activables/ChairActivableGetUp" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.42088, 0.0954875, -2.64189)
-visible = false
-
-[node name="ClosetActivable" parent="Activables" index="2" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.0254842, 0.000723839, -0.0101681)
+[node name="ClosetActivable" parent="Activables" index="2" node_paths=PackedStringArray("enable_after") instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 2.02548, 0.000723839, -4.01017)
 activable_name = "Get Naked"
+initial_state = "Deactivated"
 activable_text = "Desnudarse"
 enable_after = [NodePath("../../Clothes/tshirt/Activable"), NodePath("../../Clothes/pants/Activable"), NodePath("../../Clothes/underwear/Activable")]
-deactivate_after = []
 enable_after_seconds = 0.0
 activable_alternative_text = "Salir de casa por el armario"
-alternative_enable_after = []
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/ClosetActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.83691, 2.5, -4.30386)
-modulate = Color(1, 1, 0.741176, 1)
-font = ExtResource("5_8ovyx")
-font_size = 50
-outline_size = 0
-
-[node name="FiniteStateMachine" parent="Activables/ClosetActivable" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Activables/ClosetActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87983, 1.14601, -4.1498)
-shape = SubResource("BoxShape3D_sf51u")
-
-[node name="Indicator" parent="Activables/ClosetActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87286, -0.0492076, -3.77141)
-visible = false
-
-[node name="PosterActivable" parent="Activables" index="3" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00148, 1.43051e-06, 3.39715)
+[node name="PosterActivable" parent="Activables" index="3" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55001, 1.43051e-06, 1.7982)
 activable_name = "ReadPoster"
 activable_text = "Leer"
 enable_after = [NodePath(".")]
-deactivate_after = []
 activable_alternative_text = "Contemplar"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/PosterActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.175266, 2.5, -1.0596)
-modulate = Color(1, 1, 0.741176, 1)
-font = ExtResource("5_8ovyx")
-font_size = 50
-outline_size = 0
-
-[node name="CollisionShape3D" parent="Activables/PosterActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19867, 0.981626, -1.40064)
-shape = SubResource("BoxShape3D_icqsy")
-
-[node name="Indicator" parent="Activables/PosterActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627997, 0.479772, -1.39833)
-visible = false
-
-[node name="SofaActivableLayUpWall" parent="Activables" index="4" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999992, 0.010477, 0.0057869, -0.0567091)
+[node name="SofaActivableLayUpWall" parent="Activables" index="4" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999992, -5.08523, 0.0057869, -1.92532)
 activable_name = "Lay up wall"
+initial_state = "Deactivated"
 activable_text = "Levantarse"
 enable_after = [NodePath("../SofaActivableLayDown"), NodePath("../SofaActivableLayDownWall")]
 deactivate_after = [NodePath("../SofaActivableLayUp"), NodePath(".")]
 enable_after_seconds = 4.0
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 alternative_enable_after_seconds = 4.0
 forbidden = true
 
-[node name="ActionLabel" parent="Activables/SofaActivableLayUpWall" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5.6204, 2.5, -2.37931)
-modulate = Color(1, 1, 0.741176, 1)
-font = ExtResource("5_8ovyx")
-font_size = 50
-outline_size = 0
-
-[node name="FiniteStateMachine" parent="Activables/SofaActivableLayUpWall" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Activables/SofaActivableLayUpWall" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.79889, 1.14601, -1.85885)
-shape = SubResource("BoxShape3D_td5vw")
-
-[node name="Indicator" parent="Activables/SofaActivableLayUpWall" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76117, 0.61632, -1.84676)
-
-[node name="IndicatorMesh" parent="Activables/SofaActivableLayUpWall/Indicator" index="0"]
-transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, -0.6336, 1, 0.0244949)
-
-[node name="SofaActivableLayUp" parent="Activables" index="5" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999996, 0.00523852, 0.00289345, -0.0283546)
+[node name="SofaActivableLayUp" parent="Activables" index="5" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999996, -2.85919, 0.00289345, -1.8818)
 activable_name = "Lay up"
+initial_state = "Deactivated"
 activable_text = "Levantarse"
 enable_after = [NodePath("../SofaActivableLayDown"), NodePath("../SofaActivableLayDownWall")]
 deactivate_after = [NodePath("../SofaActivableLayUpWall"), NodePath(".")]
 enable_after_seconds = 4.0
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 alternative_enable_after_seconds = 4.0
 
-[node name="ActionLabel" parent="Activables/SofaActivableLayUp" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37115e-08, -2.72417, 2.47351, -1.42744)
-modulate = Color(1, 1, 0.741176, 1)
-font = ExtResource("5_8ovyx")
-font_size = 50
-outline_size = 0
-
-[node name="FiniteStateMachine" parent="Activables/SofaActivableLayUp" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Activables/SofaActivableLayUp" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44122, 1.14601, -1.8666)
-shape = SubResource("BoxShape3D_e66va")
-
-[node name="Indicator" parent="Activables/SofaActivableLayUp" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48957, -0.323967, -2.15023)
-visible = false
-
-[node name="CollisionShape3D" parent="Activables/SofaActivableLayUp/Indicator/IndicatorTrigger" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433941, 0, 0)
-
-[node name="SofaActivableLayDown" parent="Activables" index="6" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, 0.00261926, 0.00144672, -0.0141773)
+[node name="SofaActivableLayDown" parent="Activables" index="6" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, -2.44318, 0.00144672, -1.5288)
 activable_name = "Lay down"
 activable_text = "Acostarse"
 enable_after = [NodePath("../SofaActivableLayUpWall"), NodePath("../SofaActivableLayUp")]
@@ -437,31 +218,10 @@ deactivate_after = [NodePath("../SofaActivableLayDownWall"), NodePath(".")]
 enable_after_seconds = 4.0
 activable_alternative_text = "Girar el sofá con la mente"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 alternative_enable_after_seconds = 4.0
 
-[node name="ActionLabel" parent="Activables/SofaActivableLayDown" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.30363, 2.47351, -1.43649)
-modulate = Color(1, 1, 0.741176, 1)
-text = "Mover el sofa con la mente"
-font = ExtResource("5_8ovyx")
-font_size = 50
-outline_size = 0
-
-[node name="CollisionShape3D" parent="Activables/SofaActivableLayDown" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62651, 1.14601, -1.87764)
-shape = SubResource("BoxShape3D_5777h")
-
-[node name="Indicator" parent="Activables/SofaActivableLayDown" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31712, -0.188388, -1.69766)
-visible = false
-
-[node name="CollisionShape3D" parent="Activables/SofaActivableLayDown/Indicator/IndicatorTrigger" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241712, 0, 0)
-shape = SubResource("CylinderShape3D_1q5re")
-
-[node name="SofaActivableLayDownWall" parent="Activables" index="7" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, 0.00261926, 0.00144672, -0.0141773)
+[node name="SofaActivableLayDownWall" parent="Activables" index="7" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, -4.998, 0.00144672, -1.85692)
 activable_name = "Lay down wall"
 activable_text = "Acostarse"
 enable_after = [NodePath("../SofaActivableLayUpWall"), NodePath("../SofaActivableLayUp")]
@@ -469,31 +229,13 @@ deactivate_after = [NodePath("../SofaActivableLayDown"), NodePath(".")]
 enable_after_seconds = 4.0
 activable_alternative_text = "Girar el sofá con la mente"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 alternative_enable_after_seconds = 4.0
-
-[node name="ActionLabel" parent="Activables/SofaActivableLayDownWall" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5.38723, 2.5, -1.78269)
-modulate = Color(1, 1, 0.741176, 1)
-font = ExtResource("5_8ovyx")
-font_size = 50
-outline_size = 0
-
-[node name="CollisionShape3D" parent="Activables/SofaActivableLayDownWall" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48076, 1.14601, -1.9654)
-shape = SubResource("BoxShape3D_3bcoa")
-
-[node name="Indicator" parent="Activables/SofaActivableLayDownWall" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67534, -0.188388, -1.83375)
-
-[node name="CollisionShape3D" parent="Activables/SofaActivableLayDownWall/Indicator/IndicatorTrigger" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5412, -2.38419e-07, -0.298642)
-shape = SubResource("CylinderShape3D_uwu8x")
 
 [node name="CollidersLayed" type="Node3D" parent="." index="3"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CollidersLayed" index="0"]
 collision_layer = 4
+input_ray_pickable = false
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="CollidersLayed/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2051, 1.65081, -0.514824)
@@ -515,6 +257,7 @@ shape = SubResource("BoxShape3D_pfyse")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Colliders" index="0"]
 collision_layer = 4
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47602, 1.25104, -5.07222)
@@ -620,6 +363,7 @@ visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Closet_001" index="0"]
 collision_layer = 4
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Closet_001/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027061, 0.161621, -0.0920839)
@@ -628,6 +372,7 @@ shape = SubResource("BoxShape3D_k7482")
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_007" index="0"]
 collision_layer = 3
 collision_mask = 0
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_007/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00683594, 0, -0.16156)
@@ -710,15 +455,4 @@ interior = true
 [node name="LightmapProbe" type="LightmapProbe" parent="LightmapGI" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.605948, 0, -0.398031)
 
-[editable path="Clothes/tshirt/Activable"]
-[editable path="Clothes/pants/Activable"]
-[editable path="Clothes/underwear/Activable"]
-[editable path="Activables/ChairActivableSit"]
-[editable path="Activables/ChairActivableGetUp"]
-[editable path="Activables/ClosetActivable"]
-[editable path="Activables/PosterActivable"]
-[editable path="Activables/SofaActivableLayUpWall"]
-[editable path="Activables/SofaActivableLayUp"]
-[editable path="Activables/SofaActivableLayDown"]
-[editable path="Activables/SofaActivableLayDownWall"]
 [editable path="MirrorBarrier"]

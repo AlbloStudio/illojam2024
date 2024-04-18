@@ -14,8 +14,8 @@ var is_pressing: bool:
 
 func enter(_msg := {}) -> void:
 	state_owner.change_current_activable()
+	state_owner.indicator.visible = true
 	state_owner.label.make_visible(true, state_owner.alternative, state_owner.forbidden)
-	state_owner.body_exited.connect(_on_activable_body_exited)
 	times_pressed = 0
 
 
@@ -29,18 +29,6 @@ func update(delta: float) -> void:
 			state_owner.alternative = !state_owner.alternative
 			is_alternative_set = true
 			time_pressing = 0.0
-
-
-func exit(_msg := {}) -> void:
-	state_owner.body_exited.disconnect(_on_activable_body_exited)
-
-
-func _on_activable_body_exited(_body: Node3D) -> void:
-	if !state_owner.is_in_context:
-		return
-
-	if state_machine.is_in_state([name]):
-		state_machine.transition_to(state_owner.state_idle.name)
 
 
 func handle_input(event: InputEvent) -> void:

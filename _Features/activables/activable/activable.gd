@@ -4,6 +4,7 @@ class_name Activable extends Area3D
 
 @export var times_to_unforbid := 5
 @export var time_to_alternate := 3.0
+@export var initial_state := "Idle"
 
 @export_category("Normal")
 @export var activable_text := "..."
@@ -49,12 +50,11 @@ var is_in_context := true:
 @onready var collision_shape_3d := $CollisionShape3D as CollisionShape3D
 @onready var label := $ActionLabel as ActivableLabel
 @onready var indicator := $Indicator as Node3D
-@onready var indicator_trigger := $Indicator/IndicatorTrigger as Area3D
 
 
 func _ready() -> void:
+	state_machine.initial_state = initial_state
 	label.outline_modulate = label.get_color(false, alternative, forbidden)
-
 	reset_label()
 
 
@@ -112,12 +112,18 @@ func set_label_text() -> void:
 	var label_text = activable_alternative_text if alternative else activable_text
 	label.text = label_prefix + label_text
 
+func _on_activable_input_event(
+	_camera: Node, _event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int
+) -> void:
+	pass
 
-func _on_indicator_trigger_area_entered(body) -> void:
-	if body is Player && !state_machine.is_in_state([state_deactivated.name]):
-		indicator.visible = true
+func _on_mouse_exited() -> void:
+	if !state_machine.is_in_state([state_deactivated.name]):
+		if(state_machine.is_in_state([state_visible.name])):
+			state_machine.transition_to(state_idle.name)
 
 
-func _on_indicator_trigger_area_exited(body) -> void:
-	if body is Player:
-		indicator.visible = false
+func _on_mouse_entered() -> void:
+	if !state_machine.is_in_state([state_deactivated.name]):
+		if(state_machine.is_in_state([state_idle.name])):
+			state_machine.transition_to(state_visible.name)
