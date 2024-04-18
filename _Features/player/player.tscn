@@ -33,6 +33,12 @@ acceleration = 8.0
 intertia = 10.0
 zarzillos = ExtResource("3_ryi5q")
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.5
+target_desired_distance = 0.2
+debug_path_custom_color = Color(0, 0.560784, 0.564706, 1)
+debug_path_custom_point_size = 31.69
+
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
 [node name="Pixelation" type="MeshInstance3D" parent="."]

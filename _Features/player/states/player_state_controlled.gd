@@ -1,6 +1,5 @@
 class_name PlayerStateControlled extends PlayerState
 
-
 func physics_update(delta: float) -> void:
 	_calculate_velocity(delta)
 	if !state_owner.dont_animate_movement:
@@ -8,6 +7,14 @@ func physics_update(delta: float) -> void:
 		_calculate_animations()
 
 	state_owner.move_and_slide()
+
+
+func _input(event):
+	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && !event.pressed:
+		var project_ray_origin = state_owner.camera.project_position(
+			event.position, state_owner.camera.global_position.y
+		)
+		state_owner.nav_agent.target_position = project_ray_origin
 
 
 func _calculate_animations() -> void:
@@ -18,18 +25,15 @@ func _calculate_animations() -> void:
 
 
 func _calculate_velocity(delta: float) -> void:
-	var input_direction: Vector2 = Input.get_vector(
-		"player_left", "player_right", "player_up", "player_down"
+	var input_direction_3d = (
+		(state_owner.nav_agent.get_next_path_position() - state_owner.global_position).normalized()
+		if !state_owner.nav_agent.is_navigation_finished()
+		else Vector3.ZERO
 	)
-
-	var input_direction_3d = Vector3(input_direction.x, 0.0, input_direction.y)
+	input_direction_3d.y = 0.0
 
 	if input_direction_3d != Vector3.ZERO:
-		state_owner.velocity = lerp(
-			state_owner.velocity,
-			input_direction_3d * state_owner.speed,
-			state_owner.acceleration * delta
-		)
+		state_owner.velocity = input_direction_3d * state_owner.speed
 	else:
 		state_owner.velocity = lerp(
 			state_owner.velocity, Vector3.ZERO, state_owner.intertia * delta

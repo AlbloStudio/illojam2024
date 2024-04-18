@@ -68,34 +68,34 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 
 	match activable_name:
 		"TabletLivingRoom":
-				player.go_puppet()
-				(
-					tablet_living_room
-					. say(
-						[
-							"Hola, soy LMDSHOW... Estás atrapado en un sueño. Lo sé, rarete, no? Pero quiero ayudarte.",
-							"La clave para despertar es hacer cosas inusuales e ilógicas, cosas que no harías en la vida real.",
-							"Y... por dónde empezar? Tal vez, ese.... ese armario.",
-							"Y... en qué orden te vistes todos los días?",
-							"Espero que esto te guíe hacia la luz de la realidad. AIIIPS",
-							"(Pulsa E o Espacio para ejecutar una acción, y ESC o Enter para el menú de volumen)"
-						],
-						"IlloIntroCompleta",
-						[
-							7.0,
-							6.0,
-							4.5,
-							3.0,
-							4.0,
-							5.0,
-						]
-					)
+			player.go_puppet()
+			(
+				tablet_living_room
+				. say(
+					[
+						"Hola, soy LMDSHOW... Estás atrapado en un sueño. Lo sé, rarete, no? Pero quiero ayudarte.",
+						"La clave para despertar es hacer cosas inusuales e ilógicas, cosas que no harías en la vida real.",
+						"Y... por dónde empezar? Tal vez, ese.... ese armario.",
+						"Y... en qué orden te vistes todos los días?",
+						"Espero que esto te guíe hacia la luz de la realidad. AIIIPS",
+						"(Pulsa E o Espacio para ejecutar una acción, y ESC o Enter para el menú de volumen)"
+					],
+					"IlloIntroCompleta",
+					[
+						7.0,
+						6.0,
+						4.5,
+						3.0,
+						4.0,
+						5.0,
+					]
 				)
+			)
 
-				create_tween().tween_callback(living_room.make_closet_appear).set_delay(16.0)
-				create_tween().tween_callback(nolas.make_closet_appear).set_delay(16.0)
-				create_tween().tween_callback(tablet_living_room.activate).set_delay(108.0)
-				create_tween().tween_callback(player.go_controlled).set_delay(26.0)
+			create_tween().tween_callback(living_room.make_closet_appear).set_delay(16.0)
+			create_tween().tween_callback(nolas.make_closet_appear).set_delay(16.0)
+			create_tween().tween_callback(tablet_living_room.activate).set_delay(108.0)
+			create_tween().tween_callback(player.go_controlled).set_delay(26.0)
 
 		"TabletNolas":
 			(
