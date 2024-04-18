@@ -32,9 +32,13 @@ alternative_enable_after = []
 alternative_deactivate_after = []
 
 [node name="ActionLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.680606, 0.5, -0.607638)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.207198, 0, -0.626201)
 no_depth_test = true
 text = "Probando cosa"
+font_size = 42
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
 script = ExtResource("7_48efp")
 
 [node name="FiniteStateMachine" type="Node" parent="."]
@@ -54,11 +58,9 @@ script = ExtResource("5_ybc1y")
 script = ExtResource("6_p1ox2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.521778, 0)
 shape = SubResource("CylinderShape3D_rkc3m")
 
 [node name="Indicator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("8_ss0ve")
 
 [node name="IndicatorMesh" type="MeshInstance3D" parent="Indicator"]

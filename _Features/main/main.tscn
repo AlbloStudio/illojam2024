@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=40 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="Script" path="res://_Features/audio/audio.gd" id="2_3jmlc"]
@@ -97,11 +97,6 @@ volumetric_fog_emission = Color(0.2, 0.2, 0.2, 1)
 volumetric_fog_emission_energy = 0.6
 volumetric_fog_detail_spread = 0.757858
 volumetric_fog_ambient_inject = 6.47
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_xnb5n"]
-vertices = PackedVector3Array(14.1874, 0.6, 0.672362, 14.1874, 0.6, 0.922362, 14.4374, 0.6, 0.922362, 14.6874, 0.6, 0.422362, 14.4374, 0.6, 0.422362, 14.4374, 0.6, 2.42236, 14.1874, 0.6, 2.42236, 14.1874, 0.6, 2.67236, 10.4374, 0.6, 2.92236, 10.1874, 0.6, 2.92236, 10.1874, 0.6, 3.17236, 10.6874, 0.6, 3.17236, 14.1874, 0.6, -4.32764, 10.9374, 0.6, -4.07764, 10.6874, 0.6, -3.07764, 14.1874, 0.6, 3.42236, 14.1874, 0.6, 3.67236, 14.4374, 0.6, 3.67236, 10.6874, 0.6, -3.07764, 10.4374, 0.6, -3.07764, 10.4374, 0.6, -2.82764, 9.68737, 0.6, 0.172362, 9.43737, 0.6, 0.172362, 9.43737, 0.6, 0.422362, 12.4374, 0.6, 0.422362, 10.4374, 0.6, 2.67236, 10.4374, 0.6, 2.92236, 10.6874, 0.6, 3.17236, 14.1874, 0.6, 3.42236, 14.1874, 0.6, 2.67236, 14.4374, 0.6, 3.67236, 14.4374, 0.6, 4.17236, 14.6874, 0.6, 4.17236, 14.4374, 0.6, 0.422362, 14.4374, 0.6, -0.577638, 14.1874, 0.6, -0.577638, 12.4374, 0.6, 0.422362, 12.4374, 0.6, 0.672362, 14.1874, 0.6, 0.672362, 10.9374, 0.6, -4.07764, 10.6874, 0.6, -4.07764, 10.6874, 0.6, -3.07764, 14.4374, 0.6, 2.42236, 14.1874, 0.6, 2.67236, 14.1874, 0.6, 3.42236, 14.4374, 0.6, 3.67236, 14.4374, 0.6, 0.922362, 14.4374, 0.6, 2.42236, 14.6874, 0.6, 0.422362, 10.4374, 0.6, -2.82764, 9.68737, 0.6, -2.82764, 9.68737, 0.6, 0.172362, 14.4374, 0.6, 3.67236, 14.6874, 0.6, 4.17236, 14.6874, 0.6, 0.422362, 14.4374, 0.6, 2.42236, 14.1874, 0.6, -4.32764, 10.9374, 0.6, -4.32764, 10.9374, 0.6, -4.07764, 10.6874, 0.6, -3.07764, 10.4374, 0.6, -2.82764, 9.68737, 0.6, 0.172362, 12.4374, 0.6, 0.422362, 14.1874, 0.6, -0.577638, 14.1874, 0.6, -4.32764, 10.6874, 0.6, 3.17236, 10.6874, 0.6, 3.42236, 14.1874, 0.6, 3.42236)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(7, 6, 5), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(12, 14, 13), PackedInt32Array(17, 16, 15), PackedInt32Array(20, 19, 18), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(26, 25, 27), PackedInt32Array(27, 25, 29), PackedInt32Array(27, 29, 28), PackedInt32Array(32, 31, 30), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 38), PackedInt32Array(35, 38, 36), PackedInt32Array(36, 38, 37), PackedInt32Array(41, 40, 39), PackedInt32Array(43, 42, 44), PackedInt32Array(44, 42, 45), PackedInt32Array(48, 47, 46), PackedInt32Array(51, 50, 49), PackedInt32Array(52, 55, 53), PackedInt32Array(53, 55, 54), PackedInt32Array(58, 57, 56), PackedInt32Array(60, 59, 61), PackedInt32Array(61, 59, 62), PackedInt32Array(62, 59, 63), PackedInt32Array(63, 59, 64), PackedInt32Array(67, 66, 65)]
-edge_max_error = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jau8k"]
 size = Vector3(17.4316, 2, 0.224121)
@@ -239,7 +234,6 @@ bus = &"Dialogs"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.763206, 9, -1.66503)
 current = true
-fov = 74.5115
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -265,16 +259,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.763206, 0, -1.66503)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6796, -0.198826, -0.140018)
-navigation_mesh = SubResource("NavigationMesh_xnb5n")
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0190001, 0.1, 0.001)
-visible = false
-polygon = PackedVector2Array(10.4357, -4.82864, 10.3975, -3.20411, 9.3517, -3.25287, 9.35983, -0.00330426, 8.16837, 0.0166936, 8.26954, 0.83712, 14.1369, 0.963599, 14.03, 2.41639, 10.1464, 2.36079, 10.2067, 2.86727, 8.85785, 2.94365, 8.77, 3.61489, 13.9375, 3.77294, 14.06, 4.68948, 15.2741, 4.70612, 15.2809, 0.413176, 14.692, 0.387245, 14.6, -4.32092, 15.0932, -4.30928, 15.0566, -4.79181)
-depth = 0.01
 
 [node name="Stage" type="Node" parent="."]
 
