@@ -16,7 +16,7 @@ height = 0.1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_rv4fl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8w3c1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ydsu"]
 transparency = 1
 no_depth_test = true
 albedo_texture = ExtResource("9_drbhc")
@@ -71,7 +71,7 @@ transform = Transform3D(0.145, 0, 0, 0, 0.145, 0, 0, 0, 0.145, 0, 0, 0)
 layers = 4
 mesh = SubResource("PlaneMesh_rv4fl")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_8w3c1")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ydsu")
 
 [connection signal="input_event" from="." to="." method="_on_activable_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

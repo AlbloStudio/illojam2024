@@ -5,6 +5,7 @@ class_name Activable extends Area3D
 @export var times_to_unforbid := 5
 @export var time_to_alternate := 3.0
 @export var initial_state := "Idle"
+@export var transparency_distance := 4.0
 
 @export_category("Normal")
 @export var activable_text := "..."
@@ -50,6 +51,7 @@ var is_in_context := true:
 @onready var collision_shape_3d := $CollisionShape3D as CollisionShape3D
 @onready var label := $ActionLabel as ActivableLabel
 @onready var indicator := $Indicator as Node3D
+@onready var indicator_mesh := $Indicator/IndicatorMesh as MeshInstance3D
 
 
 func _ready() -> void:

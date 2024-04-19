@@ -188,7 +188,7 @@ enable_after_seconds = 0.0
 activable_alternative_text = "Salir de casa por el armario"
 
 [node name="PosterActivable" parent="Activables" index="3" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51017, 1.43051e-06, 2.56769)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00211, 1.72936, 2.14785)
 activable_name = "ReadPoster"
 activable_text = "Leer"
 enable_after = [NodePath(".")]
@@ -196,12 +196,12 @@ activable_alternative_text = "Contemplar"
 alternative_enable_after = [NodePath(".")]
 
 [node name="SofaActivableLayUpWall" parent="Activables" index="4" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999992, -4.73837, 0.0057869, -2.0843)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999992, -5.1414, 0.0057869, -2.06969)
 activable_name = "Lay up wall"
 initial_state = "Deactivated"
 activable_text = "Levantarse"
-enable_after = [NodePath("../SofaActivableLayDown"), NodePath("../SofaActivableLayDownWall")]
-deactivate_after = [NodePath("../SofaActivableLayUp"), NodePath(".")]
+enable_after = [NodePath("../SofaActivableLayDownWall")]
+deactivate_after = [NodePath("../SofaActivableLayUp"), NodePath("."), NodePath("../SofaActivableLayDown")]
 enable_after_seconds = 4.0
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
@@ -209,12 +209,12 @@ alternative_enable_after_seconds = 4.0
 forbidden = true
 
 [node name="SofaActivableLayUp" parent="Activables" index="5" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999996, -2.18962, 0.00289345, -2.15886)
+transform = Transform3D(0.999929, 0.00822848, -0.00857609, -0.00821887, 0.999966, 0.00115449, 0.00858533, -0.00108389, 0.999959, -2.18962, 0.00289345, -2.15886)
 activable_name = "Lay up"
 initial_state = "Deactivated"
 activable_text = "Levantarse"
-enable_after = [NodePath("../SofaActivableLayDown"), NodePath("../SofaActivableLayDownWall")]
-deactivate_after = [NodePath("../SofaActivableLayUpWall"), NodePath(".")]
+enable_after = [NodePath("../SofaActivableLayDown")]
+deactivate_after = [NodePath("../SofaActivableLayUpWall"), NodePath("."), NodePath("../SofaActivableLayDownWall")]
 enable_after_seconds = 4.0
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
@@ -226,7 +226,6 @@ activable_name = "Lay down"
 activable_text = "Acostarse"
 enable_after = [NodePath("../SofaActivableLayUpWall"), NodePath("../SofaActivableLayUp")]
 deactivate_after = [NodePath("../SofaActivableLayDownWall"), NodePath(".")]
-enable_after_seconds = 4.0
 activable_alternative_text = "Girar el sofá con la mente"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0

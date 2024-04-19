@@ -30,7 +30,6 @@ var original_pants_texture: Texture
 @onready var hair := $player/arms_skeleton/Skeleton3D/hair_005 as MeshInstance3D
 @onready var head := $player/arms_skeleton/Skeleton3D/head_001 as MeshInstance3D
 
-@onready var camera := $"../CameraGroup/Camera3D" as Camera3D
 @onready var nav_agent := $NavigationAgent3D as NavigationAgent3D
 
 
