@@ -53,7 +53,9 @@ var is_in_context := true:
 
 
 func _ready() -> void:
-	state_machine.initial_state = initial_state
+	if initial_state != "":
+		state_machine.forced_initial_state = initial_state
+
 	label.outline_modulate = label.get_color(false, alternative, forbidden)
 	reset_label()
 
@@ -112,18 +114,18 @@ func set_label_text() -> void:
 	var label_text = activable_alternative_text if alternative else activable_text
 	label.text = label_prefix + label_text
 
+
 func _on_activable_input_event(
 	_camera: Node, _event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int
 ) -> void:
 	pass
 
+
 func _on_mouse_exited() -> void:
-	if !state_machine.is_in_state([state_deactivated.name]):
-		if(state_machine.is_in_state([state_visible.name])):
-			state_machine.transition_to(state_idle.name)
+	if state_machine.is_in_state([state_visible.name]):
+		state_machine.transition_to(state_idle.name)
 
 
 func _on_mouse_entered() -> void:
-	if !state_machine.is_in_state([state_deactivated.name]):
-		if(state_machine.is_in_state([state_idle.name])):
-			state_machine.transition_to(state_visible.name)
+	if state_machine.is_in_state([state_idle.name]):
+		state_machine.transition_to(state_visible.name)

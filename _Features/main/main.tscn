@@ -234,6 +234,7 @@ bus = &"Dialogs"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.763206, 9, -1.66503)
 current = true
+fov = 74.9614
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -308,6 +309,20 @@ cast_shadow = 0
 mesh = SubResource("PlaneMesh_a8ryy")
 skeleton = NodePath("")
 
+[node name="Setup" type="Node3D" parent="Stage"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.0907, 0, 1.58796)
+
+[node name="setup" parent="Stage/Setup" instance=ExtResource("11_qjeg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.60012e-05, 0, -0.013937)
+
+[node name="TabletSecret" parent="Stage/Setup" instance=ExtResource("4_nyxmf")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.425479, 0.0301816, 5.79743)
+
+[node name="Tablet" parent="Stage/Setup/TabletSecret" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108389, 0, 0.137398)
+activable_name = "TabletSecret"
+activable_text = "Activar"
+
 [node name="LivingRoom" type="Node3D" parent="Stage"]
 
 [node name="LivingRoom" parent="Stage/LivingRoom" instance=ExtResource("4_og77x")]
@@ -333,39 +348,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 activable_name = "TabletLivingRoom"
 activable_text = "Activar"
 
-[node name="ActionLabel" parent="Stage/LivingRoom/TabletLivingRoom/Tablet" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.201257, 2.5, 0.513412)
-modulate = Color(1, 1, 0.698039, 1)
-
-[node name="FiniteStateMachine" parent="Stage/LivingRoom/TabletLivingRoom/Tablet" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="Setup" type="Node3D" parent="Stage"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.0907, 0, 1.58796)
-
-[node name="setup" parent="Stage/Setup" instance=ExtResource("11_qjeg8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.60012e-05, 0, -0.013937)
-
-[node name="TabletSecret" parent="Stage/Setup" instance=ExtResource("4_nyxmf")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.425479, 0.0301816, 5.79743)
-
-[node name="Tablet" parent="Stage/Setup/TabletSecret" index="1"]
-activable_name = "TabletSecret"
-activable_text = "Activar"
-
-[node name="Indicator" parent="Stage/Setup/TabletSecret/Tablet" index="3"]
-transform = Transform3D(1, -6.38378e-15, 0, 6.66134e-16, 1, 0, 0, 0, 1, -0.717073, -4.47035e-08, -0.353103)
-
 [connection signal="value_changed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Music" to="Pause" method="_on_music_value_changed"]
 [connection signal="value_changed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Dialogs" to="Pause" method="_on_dialogs_value_changed"]
 [connection signal="pressed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 
 [editable path="Stage/MoorGnivil/TabletNolas"]
 [editable path="Stage/MoorGnivil/TabletNolas/SpeechBubble"]
-[editable path="Stage/MoorGnivil/TabletNolas/Tablet"]
-[editable path="Stage/LivingRoom/TabletLivingRoom"]
-[editable path="Stage/LivingRoom/TabletLivingRoom/SpeechBubble"]
-[editable path="Stage/LivingRoom/TabletLivingRoom/Tablet"]
 [editable path="Stage/Setup/TabletSecret"]
 [editable path="Stage/Setup/TabletSecret/SpeechBubble"]
-[editable path="Stage/Setup/TabletSecret/Tablet"]
+[editable path="Stage/LivingRoom/TabletLivingRoom"]
+[editable path="Stage/LivingRoom/TabletLivingRoom/SpeechBubble"]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=39 format=3 uid="uid://c0bdwlue70wgp"]
+[gd_scene load_steps=27 format=3 uid="uid://c0bdwlue70wgp"]
 
 [ext_resource type="PackedScene" uid="uid://eey6l7a03sjc" path="res://_Features/rooms/setup/setup.blend" id="1_8c4o6"]
 [ext_resource type="Script" path="res://_Features/rooms/setup/setup.gd" id="2_42fvx"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_n3fv0"]
-[ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="4_bnti0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ljiy"]
 size = Vector3(5.14087, 3.50208, 0.224121)
@@ -55,39 +54,6 @@ size = Vector3(0.467178, 4.86713, 10.6099)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3mis7"]
 size = Vector3(5.73682, 4.86713, 0.224121)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8yxuw"]
-size = Vector3(1.44977, 2.23132, 1.65662)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tc74h"]
-size = Vector3(1, 2.23132, 1.10474)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_maox8"]
-size = Vector3(1.27881, 2.23132, 1.10474)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mt51r"]
-size = Vector3(1, 2.23132, 1.10474)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dpuim"]
-size = Vector3(0.958557, 2.23132, 1.92639)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_kgij0"]
-size = Vector3(0.829712, 3.39719, 1.09401)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lm23x"]
-size = Vector3(0.587525, 3.39719, 1.5553)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qjbfh"]
-size = Vector3(1.00049, 2.23132, 0.665104)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_s1fqm"]
-size = Vector3(1.00049, 2.23132, 0.632515)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_k13vm"]
-size = Vector3(1.14063, 1.8309, 0.55194)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_k3t1c"]
-size = Vector3(1.44977, 2.23132, 1.65662)
 
 [sub_resource type="Animation" id="Animation_7seyn"]
 resource_name = "move_chair"
@@ -287,276 +253,93 @@ shape = SubResource("BoxShape3D_3mis7")
 
 [node name="Activables" type="Node3D" parent="." index="4"]
 
-[node name="StreamInActivable" parent="Activables" index="0" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_n3fv0")]
+[node name="StreamInActivable" parent="Activables" index="0" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.871468, 0.690414, -0.560438)
 activable_name = "StreamIn"
 activable_text = "Hacer Stream"
 enable_after = [NodePath("../StreamOutActivable")]
-deactivate_after = []
 activable_alternative_text = "Mover la silla"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/StreamInActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
-modulate = Color(1, 1, 0.698039, 1)
-font = ExtResource("4_bnti0")
-font_size = 50
-outline_size = 0
-
-[node name="CollisionShape3D" parent="Activables/StreamInActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.637519, 0.615662, 0.555268)
-shape = SubResource("BoxShape3D_8yxuw")
-
-[node name="Indicator" parent="Activables/StreamInActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.643317, 1.01746, 0.902702)
-
-[node name="IndicatorMesh" parent="Activables/StreamInActivable/Indicator" index="0"]
-transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, -0.380361, -1, -1.67638e-08)
-
-[node name="StreamOutActivable" parent="Activables" index="1" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_n3fv0")]
+[node name="StreamOutActivable" parent="Activables" index="1" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.871468, 0.690414, -0.560438)
 activable_name = "StreamOut"
+initial_state = "Deactivated"
 activable_text = "Dejar de hacer stream"
 enable_after = [NodePath("../StreamInActivable")]
-deactivate_after = []
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/StreamOutActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
-modulate = Color(1, 1, 0.698039, 1)
-font = ExtResource("4_bnti0")
-font_size = 50
-outline_size = 0
-
-[node name="FiniteStateMachine" parent="Activables/StreamOutActivable" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Activables/StreamOutActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.587561, 0.615662, 0.564118)
-shape = SubResource("BoxShape3D_tc74h")
-
-[node name="Indicator" parent="Activables/StreamOutActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.261502, -0.332203, 1)
-visible = false
-
-[node name="StreamInIncorrectActivable" parent="Activables" index="2" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_n3fv0")]
+[node name="StreamInIncorrectActivable" parent="Activables" index="2" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.636316, 0.690414, -0.661427)
 activable_name = "StreamWrong"
+initial_state = "Deactivated"
 activable_text = "ssHssascssser ssStressams"
 enable_after = [NodePath("../StreamOutInCorrectActivable")]
-deactivate_after = []
 activable_alternative_text = "ffFMooffverfff ffLa Sffifflfllaa"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/StreamInIncorrectActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
-modulate = Color(1, 1, 0.698039, 1)
-font = ExtResource("4_bnti0")
-font_size = 50
-outline_size = 0
-
-[node name="FiniteStateMachine" parent="Activables/StreamInIncorrectActivable" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Activables/StreamInIncorrectActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.614661, 0.615662, 0.564118)
-shape = SubResource("BoxShape3D_maox8")
-
-[node name="Indicator" parent="Activables/StreamInIncorrectActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514856, -0.682797, 0.477434)
-visible = false
-
-[node name="StreamOutInCorrectActivable" parent="Activables" index="3" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_n3fv0")]
+[node name="StreamOutInCorrectActivable" parent="Activables" index="3" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.636316, 0.690414, -0.661427)
 activable_name = "StreamOutWrong"
+initial_state = "Deactivated"
 activable_text = "Dssesjssasr sdses shssascser streamsss"
 enable_after = [NodePath("../StreamInIncorrectActivable")]
-deactivate_after = []
 activable_alternative_text = "Ecffhffar funfa cffabezffffaditaffff"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/StreamOutInCorrectActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
-modulate = Color(1, 1, 0.698039, 1)
-font = ExtResource("4_bnti0")
-font_size = 50
-outline_size = 0
-
-[node name="FiniteStateMachine" parent="Activables/StreamOutInCorrectActivable" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Activables/StreamOutInCorrectActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.587561, 0.400477, 0.564118)
-shape = SubResource("BoxShape3D_mt51r")
-
-[node name="Indicator" parent="Activables/StreamOutInCorrectActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514856, -0.680032, 0.477434)
-visible = false
-
-[node name="JumpDownActivable" parent="Activables" index="4" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_n3fv0")]
+[node name="JumpDownActivable" parent="Activables" index="4" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.86413, 0.690414, -2.6524)
 activable_name = "Jump Down"
+initial_state = "Deactivated"
 activable_text = "Bajar pared"
 enable_after = [NodePath("../WallsUpActivable")]
-deactivate_after = []
 activable_alternative_text = "Saltar"
 alternative_enable_after = [NodePath("../WallsUpActivable")]
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/JumpDownActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.795094, 2.5, -0.154641)
-modulate = Color(1, 1, 0.698039, 1)
-font = ExtResource("4_bnti0")
-font_size = 50
-outline_size = 0
-
-[node name="FiniteStateMachine" parent="Activables/JumpDownActivable" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Activables/JumpDownActivable" index="2"]
-transform = Transform3D(0.00963406, 0, -0.999954, 0, 1, 0, 0.999954, 0, 0.00963406, 0.0746465, 3.39957, 0.875053)
-shape = SubResource("BoxShape3D_dpuim")
-
-[node name="Indicator" parent="Activables/JumpDownActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0417688, 1.59521, 0.400519)
-visible = false
-
-[node name="ExitWindowActivable" parent="Activables" index="5" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_n3fv0")]
+[node name="ExitWindowActivable" parent="Activables" index="5" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.982227, 1.69041, 3.56018)
 activable_name = "Exit Window"
 activable_text = "Salir por la ventana"
 enable_after = [NodePath(".")]
-deactivate_after = []
 activable_alternative_text = "Asomarse"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/ExitWindowActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.6895, 1.35687, 1.43773)
-modulate = Color(1, 1, 0.698039, 1)
-font = ExtResource("4_bnti0")
-font_size = 50
-outline_size = 0
-
-[node name="CollisionShape3D" parent="Activables/ExitWindowActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074995, 0.0784359, 1.62159)
-shape = SubResource("BoxShape3D_kgij0")
-
-[node name="Indicator" parent="Activables/ExitWindowActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.644618, -1.65716, 2.04046)
-visible = false
-
-[node name="EnterWindowActivable" parent="Activables" index="6" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_n3fv0")]
+[node name="EnterWindowActivable" parent="Activables" index="6" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.982227, 1.69041, 3.56018)
 activable_name = "Enter Window"
+initial_state = "Deactivated"
 activable_text = "Volver"
 enable_after = [NodePath("../ExitWindowActivable")]
-deactivate_after = []
 activable_alternative_text = "Asomarse"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/EnterWindowActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.1947, 1.35687, 1.6294)
-modulate = Color(1, 1, 0.698039, 1)
-font = ExtResource("4_bnti0")
-font_size = 50
-outline_size = 0
-
-[node name="FiniteStateMachine" parent="Activables/EnterWindowActivable" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Activables/EnterWindowActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0635, 0.0784359, 1.85224)
-shape = SubResource("BoxShape3D_lm23x")
-
-[node name="Indicator" parent="Activables/EnterWindowActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35538, -0.283886, 2.04046)
-
-[node name="BlindersUpActivable" parent="Activables" index="7" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_n3fv0")]
+[node name="BlindersUpActivable" parent="Activables" index="7" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.27228, 0.686402, -3.53155)
 activable_name = "Blinders Up"
+initial_state = "Deactivated"
 activable_text = "Levantar la persiana"
 enable_after = [NodePath("../BlindersDownActivable")]
-deactivate_after = []
 activable_alternative_text = "Cuestionarse el cordelito"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/BlindersUpActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.16504, 2.5, 3.18097)
-modulate = Color(1, 1, 0.698039, 1)
-font = ExtResource("4_bnti0")
-font_size = 50
-outline_size = 0
-
-[node name="FiniteStateMachine" parent="Activables/BlindersUpActivable" index="1"]
-initial_state = NodePath("Deactivated")
-
-[node name="CollisionShape3D" parent="Activables/BlindersUpActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0214708, 0.800177, 3.10001)
-shape = SubResource("BoxShape3D_qjbfh")
-
-[node name="Indicator" parent="Activables/BlindersUpActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300907, -0.673056, 3.19868)
-visible = false
-
-[node name="BlindersDownActivable" parent="Activables" index="8" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_n3fv0")]
+[node name="BlindersDownActivable" parent="Activables" index="8" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.27228, 0.686402, -3.53155)
 activable_name = "Blinders Down"
 activable_text = "Bajar la persiana"
 enable_after = [NodePath("../BlindersUpActivable")]
-deactivate_after = []
 activable_alternative_text = "Cuestionarse el cordelito"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/BlindersDownActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.1, 2.5, 3.2)
-modulate = Color(1, 1, 0.698039, 1)
-font = ExtResource("4_bnti0")
-font_size = 50
-outline_size = 0
-
-[node name="CollisionShape3D" parent="Activables/BlindersDownActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0214708, 0.800177, 3.0972)
-shape = SubResource("BoxShape3D_s1fqm")
-
-[node name="Indicator" parent="Activables/BlindersDownActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300907, -0.634854, 3.19868)
-visible = false
-
-[node name="WallsUpActivable" parent="Activables" index="9" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_n3fv0")]
+[node name="WallsUpActivable" parent="Activables" index="9" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.48246, 0.690414, -4.20817)
 activable_name = "TouchWall"
 activable_text = "Tocar la pared"
 enable_after = [NodePath(".")]
-deactivate_after = []
 activable_alternative_text = "Subir la pared"
 alternative_enable_after = [NodePath("../JumpDownActivable")]
-alternative_deactivate_after = []
 
-[node name="ActionLabel" parent="Activables/WallsUpActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.1639, 2.5, 0.819902)
-modulate = Color(1, 1, 0.698039, 1)
-font = ExtResource("4_bnti0")
-font_size = 50
-outline_size = 0
-
-[node name="CollisionShape3D" parent="Activables/WallsUpActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545135, 0.133652, 1.06228)
-shape = SubResource("BoxShape3D_k13vm")
-
-[node name="Indicator" parent="Activables/WallsUpActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.816459, -0.648323, 0.908755)
-visible = false
-
-[node name="MoveChairActivable" parent="Activables" index="10" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_n3fv0")]
+[node name="MoveChairActivable" parent="Activables" index="10" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 3.59989e-21, -4.37114e-08, -0.871468, 1.19041, -0.56044)
 activable_name = "Move Chair"
 activable_text = "Mover la silla"
@@ -565,22 +348,6 @@ deactivate_after = [NodePath("../StreamInActivable"), NodePath("../StreamOutActi
 enable_after_seconds = 0.1
 destroy_after_activation = true
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
-
-[node name="ActionLabel" parent="Activables/MoveChairActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.11481, 2.5, 0.491371)
-modulate = Color(1, 1, 0.698039, 1)
-font = ExtResource("4_bnti0")
-font_size = 50
-outline_size = 0
-
-[node name="CollisionShape3D" parent="Activables/MoveChairActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.404452, -2.11637, 0.555268)
-shape = SubResource("BoxShape3D_k3t1c")
-
-[node name="Indicator" parent="Activables/MoveChairActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170369, -1.65448, 0.75149)
-visible = false
 
 [node name="Cajonera Ventan" parent="." index="17"]
 transform = Transform3D(-4.37114e-08, 0, 1.39383, 0, 1, 0, -1, 0, -6.09262e-08, 2.02009, 0.398512, 1.763)
@@ -749,15 +516,3 @@ distance_fade_length = 0.0
 spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 77.8
-
-[editable path="Activables/StreamInActivable"]
-[editable path="Activables/StreamOutActivable"]
-[editable path="Activables/StreamInIncorrectActivable"]
-[editable path="Activables/StreamOutInCorrectActivable"]
-[editable path="Activables/JumpDownActivable"]
-[editable path="Activables/ExitWindowActivable"]
-[editable path="Activables/EnterWindowActivable"]
-[editable path="Activables/BlindersUpActivable"]
-[editable path="Activables/BlindersDownActivable"]
-[editable path="Activables/WallsUpActivable"]
-[editable path="Activables/MoveChairActivable"]

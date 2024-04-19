@@ -63,12 +63,6 @@ size = Vector3(0.678173, 1.47945, 3.95889)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0vkcb"]
 size = Vector3(0.678173, 1.73277, 0.483619)
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_2ndop"]
-vertices = PackedVector3Array(3.15682, 0.5, -4.18784, 3.55682, 0.5, -4.18784, 3.55682, 0.5, -4.58784, -1.04318, 0.5, -3.38784, -0.343178, 0.5, -2.88784, -0.0431778, 0.5, -3.28784, -0.843178, 0.5, -4.58784, -1.04318, 0.5, -3.38784, -0.0431778, 0.5, -3.28784, 1.15682, 0.5, -3.18784, 3.15682, 0.5, -4.18784, 3.55682, 0.5, -4.58784, 1.15682, 0.5, -3.18784, 2.85682, 0.5, -3.18784, 2.85682, 0.5, -3.88784, 1.15682, 0.5, -3.18784, 2.85682, 0.5, -3.88784, 3.15682, 0.5, -4.18784, 0.0568221, 0.5, 0.0121617, 0.256822, 0.5, 0.212162, 0.256822, 0.5, -0.0878382, 0.556822, 0.5, -0.387838, 0.856822, 0.5, -0.387838, 0.756822, 0.5, -0.587838, -0.0431778, 0.5, -0.587838, -1.34318, 0.5, 0.0121617, -1.14318, 0.5, 0.312162, -0.743178, 0.5, 0.0121617, -0.343178, 0.5, -2.88784, -1.04318, 0.5, -3.38784, -1.24318, 0.5, -3.18784, 0.256822, 0.5, -0.0878382, 0.556822, 0.5, -0.387838, -0.0431778, 0.5, -0.587838, 0.0568221, 0.5, 0.0121617, 0.256822, 0.5, -0.0878382, -0.0431778, 0.5, -0.587838, -0.343178, 0.5, -0.887838, -0.743178, 0.5, 0.0121617, -3.04318, 0.5, 0.0121617, -3.04318, 0.5, 0.512162, -2.44318, 0.5, 0.512162, -2.34318, 0.5, 0.0121617, -2.04318, 0.5, -0.287838, -1.34318, 0.5, 0.0121617, -0.743178, 0.5, 0.0121617, -2.34318, 0.5, 0.0121617, -2.44318, 0.5, 0.512162, -2.14318, 0.5, 0.0121617, -2.04318, 0.5, -0.287838, -2.04318, 0.5, -0.287838, -0.743178, 0.5, 0.0121617, -0.343178, 0.5, -0.887838, -0.343178, 0.5, -2.88784, -1.24318, 0.5, -3.18784, -2.14318, 0.5, -3.18784, -2.04318, 0.5, -0.287838, -2.14318, 0.5, 0.0121617, -1.34318, 0.5, 0.0121617, 1.05682, 0.5, -0.587838, 0.756822, 0.5, -0.587838, 0.856822, 0.5, -0.387838, 1.35682, 0.5, -0.387838, 2.85682, 0.5, -3.18784, 1.15682, 0.5, -3.18784, 1.35682, 0.5, -2.98784, 1.35682, 0.5, -0.887838, 1.05682, 0.5, -0.587838, 1.35682, 0.5, -0.387838, 1.35682, 0.5, -0.887838, 1.35682, 0.5, -0.387838, 1.65682, 0.5, -0.0878382, 1.65682, 0.5, -0.0878382, 1.65682, 0.5, 0.512162, 2.25682, 0.5, 0.712162, 1.65682, 0.5, -0.0878382, 2.25682, 0.5, 0.712162, 2.95682, 0.5, 0.112162, 2.85682, 0.5, -3.18784, 1.35682, 0.5, -2.98784, 1.35682, 0.5, -0.887838, -2.14318, 0.5, 3.01216, -2.44318, 0.5, 2.71216, -2.44318, 0.5, 3.61216, 2.95682, 0.5, 0.112162, 2.25682, 0.5, 0.712162, 2.45682, 0.5, 0.912162, 3.25682, 0.5, 0.512162, 2.15682, 0.5, 2.41216, -1.04318, 0.5, 2.41216, -1.04318, 0.5, 2.71216, 3.55682, 0.5, 0.512162, 3.25682, 0.5, 0.512162, 2.45682, 0.5, 0.912162, 2.45682, 0.5, 2.11216, 2.45682, 0.5, 3.81216, 2.45682, 0.5, 4.51216, 3.45682, 0.5, 4.51216, -1.34318, 0.5, 3.01216, -2.14318, 0.5, 3.01216, -2.44318, 0.5, 3.61216, 2.15682, 0.5, 3.51216, 2.15682, 0.5, 3.51216, 2.45682, 0.5, 3.81216, 3.45682, 0.5, 4.51216, 3.55682, 0.5, 0.512162, 2.45682, 0.5, 2.11216, 2.15682, 0.5, 3.51216, 2.45682, 0.5, 2.11216, 2.15682, 0.5, 2.41216, 2.15682, 0.5, 3.51216, 2.15682, 0.5, 2.41216, -1.04318, 0.5, 2.71216, -1.34318, 0.5, 3.01216)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 10), PackedInt32Array(10, 6, 11), PackedInt32Array(14, 13, 12), PackedInt32Array(17, 16, 15), PackedInt32Array(18, 20, 19), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(27, 26, 25), PackedInt32Array(30, 29, 28), PackedInt32Array(32, 31, 33), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 37), PackedInt32Array(37, 34, 38), PackedInt32Array(40, 39, 41), PackedInt32Array(41, 39, 42), PackedInt32Array(45, 44, 43), PackedInt32Array(49, 48, 46), PackedInt32Array(46, 48, 47), PackedInt32Array(54, 53, 55), PackedInt32Array(55, 53, 52), PackedInt32Array(55, 52, 51), PackedInt32Array(55, 51, 50), PackedInt32Array(58, 57, 56), PackedInt32Array(60, 59, 61), PackedInt32Array(61, 59, 62), PackedInt32Array(65, 64, 63), PackedInt32Array(68, 67, 66), PackedInt32Array(69, 71, 70), PackedInt32Array(74, 73, 72), PackedInt32Array(76, 75, 77), PackedInt32Array(77, 75, 80), PackedInt32Array(77, 80, 79), PackedInt32Array(77, 79, 78), PackedInt32Array(83, 82, 81), PackedInt32Array(85, 84, 86), PackedInt32Array(86, 84, 87), PackedInt32Array(90, 89, 88), PackedInt32Array(92, 91, 93), PackedInt32Array(93, 91, 94), PackedInt32Array(97, 96, 95), PackedInt32Array(99, 98, 100), PackedInt32Array(100, 98, 101), PackedInt32Array(103, 102, 104), PackedInt32Array(104, 102, 106), PackedInt32Array(104, 106, 105), PackedInt32Array(109, 108, 107), PackedInt32Array(112, 111, 113), PackedInt32Array(113, 111, 110)]
-cell_size = 0.1
-agent_radius = 0.4
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vl4mw"]
 roughness = 0.94
 
@@ -89,6 +83,14 @@ emission_enabled = true
 emission = Color(0.211765, 0.211765, 0.211765, 1)
 emission_energy_multiplier = 0.1
 emission_operator = 1
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_b6bc1"]
+vertices = PackedVector3Array(-1.9959, 0.12, -0.355107, -2.2459, 0.12, -0.355107, -2.2459, 0.12, -0.105107, -0.745898, 0.12, -3.35511, -0.495898, 0.12, -2.85511, 0.00410223, 0.12, -3.35511, -0.745898, 0.12, -4.35511, -0.495898, 0.12, -2.85511, -0.745898, 0.12, -3.35511, -1.2459, 0.12, -2.85511, -0.495898, 0.12, -1.10511, 1.7541, 0.12, 0.144893, 1.7541, 0.12, 0.644893, 2.5041, 0.12, 1.14489, 1.5041, 0.12, -1.10511, 1.0041, 0.12, -0.605107, 1.2541, 0.12, -0.355107, 2.0041, 0.12, 3.39489, 2.5041, 0.12, 4.14489, 3.2541, 0.12, 4.14489, 2.5041, 0.12, 2.39489, 2.0041, 0.12, 2.89489, 0.504102, 0.12, -0.355107, 1.2541, 0.12, -0.355107, 1.0041, 0.12, -0.605107, 0.00410223, 0.12, -0.605107, -0.745898, 0.12, -4.35511, 0.00410223, 0.12, -3.35511, 1.0041, 0.12, -3.35511, 2.2541, 0.12, -4.35511, 2.5041, 0.12, 1.14489, 2.5041, 0.12, 2.39489, 3.2541, 0.12, 4.14489, 3.2541, 0.12, 0.644893, 2.7541, 0.12, 0.394893, 2.2541, 0.12, -4.35511, 1.0041, 0.12, -3.35511, 1.5041, 0.12, -2.85511, 2.7541, 0.12, -3.85511, -1.4959, 0.12, 2.89489, -1.7459, 0.12, 3.39489, 2.0041, 0.12, 3.39489, 2.0041, 0.12, 2.89489, -0.495898, 0.12, -1.10511, -1.2459, 0.12, -2.85511, -1.9959, 0.12, -2.85511, -1.9959, 0.12, -0.355107, 1.5041, 0.12, -1.10511, 1.2541, 0.12, -0.355107, 1.7541, 0.12, 0.144893, 0.00410223, 0.12, -0.605107, -0.495898, 0.12, -1.10511, -1.9959, 0.12, -0.355107, 0.00410223, 0.12, -0.605107, -1.9959, 0.12, -0.355107, -2.2459, 0.12, -0.105107, 0.504102, 0.12, -0.105107, 0.504102, 0.12, -0.355107, 1.5041, 0.12, -1.10511, 1.7541, 0.12, 0.144893, 2.5041, 0.12, 1.14489, 2.7541, 0.12, 0.394893, 2.7541, 0.12, -3.85511, 1.5041, 0.12, -2.85511)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(13, 12, 11), PackedInt32Array(14, 16, 15), PackedInt32Array(21, 20, 17), PackedInt32Array(17, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(34, 33, 30), PackedInt32Array(30, 33, 31), PackedInt32Array(31, 33, 32), PackedInt32Array(38, 37, 35), PackedInt32Array(35, 37, 36), PackedInt32Array(42, 41, 39), PackedInt32Array(39, 41, 40), PackedInt32Array(44, 43, 45), PackedInt32Array(45, 43, 46), PackedInt32Array(49, 48, 47), PackedInt32Array(52, 51, 50), PackedInt32Array(57, 56, 53), PackedInt32Array(53, 56, 54), PackedInt32Array(54, 56, 55), PackedInt32Array(60, 59, 61), PackedInt32Array(61, 59, 58), PackedInt32Array(61, 58, 63), PackedInt32Array(61, 63, 62)]
+cell_height = 0.01
+agent_radius = 0.25
+edge_max_error = 0.77
+filter_ledge_spans = true
 
 [node name="Salon" instance=ExtResource("1_00744")]
 script = ExtResource("2_2xult")
@@ -125,6 +127,7 @@ transform = Transform3D(1.42, 0, 0, 0, 1.42, 0, 0, 0, 1.42, -0.756403, 0, 3.2226
 [node name="Activable" parent="Clothes/tshirt" index="1" node_paths=PackedStringArray("alternative_enable_after") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(0.704, 0, 0, 0, 0.704, 0, 0, 0, 0.704, -0.0496322, 0, -0.052741)
 activable_name = "Put on T-Shirt"
+initial_state = "Deactivated"
 activable_text = "Ponerse camiseta"
 activable_alternative_text = "Quitarse camiseta"
 alternative_enable_after = [NodePath(".")]
@@ -136,6 +139,7 @@ transform = Transform3D(1.69, 0, 0, 0, 1.69, 0, 0, 0, 1.69, -4.21612, 0, 2.34929
 [node name="Activable" parent="Clothes/pants" index="1" node_paths=PackedStringArray("alternative_enable_after") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(0.592, 0, 0, 0, 0.592, 0, 0, 0, 0.592, -0.00299996, 0, -0.072)
 activable_name = "Put on Pants"
+initial_state = "Deactivated"
 activable_text = "Ponerse pantalones"
 activable_alternative_text = "Quitarse pantalones"
 alternative_enable_after = [NodePath(".")]
@@ -147,6 +151,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61629, 0, 2.17255)
 [node name="Activable" parent="Clothes/underwear" index="1" node_paths=PackedStringArray("alternative_enable_after") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.003, 0, -0.072)
 activable_name = "Put on Underwear"
+initial_state = "Deactivated"
 activable_text = "Ponerse calzoncillos"
 activable_alternative_text = "Quitarse calzoncillos"
 alternative_enable_after = [NodePath(".")]
@@ -229,6 +234,7 @@ alternative_enable_after_seconds = 4.0
 [node name="SofaActivableLayDownWall" parent="Activables" index="7" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, -3.31861, 0.00144672, -2.18118)
 activable_name = "Lay down wall"
+initial_state = "Deactivated"
 activable_text = "Acostarse"
 enable_after = [NodePath("../SofaActivableLayUpWall"), NodePath("../SofaActivableLayUp")]
 deactivate_after = [NodePath("../SofaActivableLayDown"), NodePath(".")]
@@ -342,52 +348,31 @@ shape = SubResource("BoxShape3D_0vkcb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71868, 0.366382, 0.738777)
 shape = SubResource("BoxShape3D_0vkcb")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.292496, 0.0103953)
-navigation_mesh = SubResource("NavigationMesh_2ndop")
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-polygon = PackedVector2Array(-1.23326, -4.93553, -1.27249, -3.52328, -2.46245, -3.48405, -2.42322, -0.37186, -3.36472, -0.293401, -3.44318, 0.883477, -2.12246, 0.883477, -2.13554, 0.386573, -1.33787, 0.412726, -1.31172, 0.883477, -0.670976, 0.857324, -0.697129, 0.412726, 0.0351513, 0.347343, 0.0874574, 0.870401, 2.14046, 0.922706, 2.08815, 2.02113, -1.45556, 2.11266, -1.41633, 2.66187, -2.05708, 2.67495, -2.08323, 2.0342, -2.81551, 2.06036, -2.84166, 3.91721, 2.062, 3.89105, 2.062, 4.95025, 3.85347, 4.89794, 3.87962, 0.190426, 3.27811, 0.17735, 3.2258, -3.86327, 3.945, -3.87634, 3.95808, -4.98784)
-depth = 0.1
-
-[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="NavigationRegion3D/CSGPolygon3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0877397, -0.437441, 0.0937855)
-operation = 2
-polygon = PackedVector2Array(0.72081, 0.360232, 1.4082, 0.381939, 1.39735, 0.863115, 0.738899, 0.85588)
-depth = 0.22
-
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="NavigationRegion3D/CSGPolygon3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0438699, -0.21872, 0.0468928)
-operation = 2
-polygon = PackedVector2Array(0.0382744, -2.72623, 1.04943, -2.72623, 1.04274, -0.737393, 0.0248817, -0.724)
-depth = 0.22
-
-[node name="Plane_001" parent="." index="7"]
+[node name="Plane_001" parent="." index="6"]
 layers = 4
 surface_material_override/0 = SubResource("StandardMaterial3D_vl4mw")
 
-[node name="Plane_003" parent="." index="8" groups=["floor"]]
+[node name="Plane_003" parent="." index="7" groups=["floor"]]
 
-[node name="Plane_009" parent="." index="15"]
+[node name="Plane_009" parent="." index="14"]
 surface_material_override/0 = SubResource("StandardMaterial3D_oumwo")
 
-[node name="Plane_010" parent="." index="16"]
+[node name="Plane_010" parent="." index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.495647, 0.3, -1.94848)
 
-[node name="Cylinder_001" parent="." index="24"]
+[node name="Cylinder_001" parent="." index="23"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0529, 0.774923, 0.23389)
 
-[node name="Cylinder_002" parent="." index="25"]
+[node name="Cylinder_002" parent="." index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.588453, 0, -0.250247)
 
-[node name="Plane_018" parent="." index="26"]
+[node name="Plane_018" parent="." index="25"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0529, 0.842855, 0.23389)
 
-[node name="tablet" parent="." index="40"]
+[node name="tablet" parent="." index="39"]
 visible = false
 
-[node name="Closet_001" parent="." index="41"]
+[node name="Closet_001" parent="." index="40"]
 visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Closet_001" index="0"]
@@ -416,19 +401,19 @@ shadow_enabled = true
 shadow_blur = 10.0
 spot_angle = 75.4328
 
-[node name="Botella_3" parent="." index="69"]
+[node name="Botella_3" parent="." index="68"]
 transform = Transform3D(0.0648253, 0, 0, 0, 0.0993959, 0, 0, 0, 0.0648253, -2.04448, 1.20053, 1.17226)
 
-[node name="Cube_008" parent="." index="70"]
+[node name="Cube_008" parent="." index="69"]
 transform = Transform3D(0.584893, 0, 1.0967, 0, 1.24292, 0, -1.0967, 0, 0.584893, -2.05136, 1.20053, 1.57361)
 
-[node name="Pennywise" type="MeshInstance3D" parent="." index="72"]
+[node name="Pennywise" type="MeshInstance3D" parent="." index="71"]
 transform = Transform3D(0.00200873, -0.999998, -4.74728e-10, -0.0100427, -1.52312e-05, -0.622244, 1.15077, 0.00174541, -0.00543026, 3.50785, 1.69184, -1.74533)
 visible = false
 mesh = SubResource("PlaneMesh_bqp4g")
 surface_material_override/0 = SubResource("StandardMaterial3D_4gha0")
 
-[node name="CeilingLight1" type="SpotLight3D" parent="." index="73"]
+[node name="CeilingLight1" type="SpotLight3D" parent="." index="72"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.54388, -2.12626)
 light_color = Color(1, 1, 0.952941, 1)
 light_energy = 2.2
@@ -461,7 +446,7 @@ light_cull_mask = 4294967289
 shadow_enabled = true
 spot_angle = 79.902
 
-[node name="CeilingLight2" type="SpotLight3D" parent="." index="74"]
+[node name="CeilingLight2" type="SpotLight3D" parent="." index="73"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.88694, 3.68929, 2.59712)
 light_color = Color(1, 1, 0.956863, 1)
 light_energy = 0.7
@@ -476,12 +461,27 @@ spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 77.8
 
-[node name="LightmapGI" type="LightmapGI" parent="." index="75"]
+[node name="LightmapGI" type="LightmapGI" parent="." index="74"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92232, 1.78531, -4.02161)
 directional = true
 interior = true
 
 [node name="LightmapProbe" type="LightmapProbe" parent="LightmapGI" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.605948, 0, -0.398031)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="75"]
+navigation_mesh = SubResource("NavigationMesh_b6bc1")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+polygon = PackedVector2Array(-1.13076, -4.788, 2.69202, -4.85511, 2.5929, -4.03224, 3.03163, -3.89659, 3.09003, 0.471899, 3.76117, 0.501036, 3.74486, 4.45903, 2.30881, 4.56492, 2.10728, 3.6533, -2.64499, 3.66206, -2.74036, 2.58574, -2.38081, 2.57475, -2.32713, 3.10655, -1.63477, 3.02337, -1.58693, 2.5629, 2.148, 2.54804, 2.186, 0.946282, 1.52501, 0.84238, 1.41818, -0.0852706, 0.580346, -0.0378309, 0.170185, 0.374947, -2.58816, 0.285465, -2.84716, 0.74017, -3.2459, 0.6903, -3.23253, -0.0796151, -2.29041, -0.120812, -2.32656, -3.29818, -1.04922, -3.34963)
+depth = 0.1
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D/CSGPolygon3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.253633, -3.28106, 0.173281)
+operation = 2
+polygon = PackedVector2Array(1.26494, 0.32438, 1.25889, 2.32664, 0.230536, 2.33269, 0.230536, 0.342527)
+depth = 0.5
 
 [editable path="MirrorBarrier"]

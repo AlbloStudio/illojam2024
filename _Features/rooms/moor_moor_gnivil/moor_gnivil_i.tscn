@@ -1,14 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://cb0311e3f7has"]
+[gd_scene load_steps=19 format=3 uid="uid://cb0311e3f7has"]
 
 [ext_resource type="PackedScene" uid="uid://22b2y7e1gs5j" path="res://_Features/rooms/moor_moor_gnivil/Nolas.blend" id="1_anjvf"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_lb8q8"]
-[ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="3_3y7fu"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_s1add"]
-size = Vector3(0.537598, 1.95654, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4uo8q"]
-size = Vector3(1.16251, 1.95654, 0.529785)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kc5t6"]
 size = Vector3(5.38177, 3.50208, 0.224121)
@@ -74,58 +67,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054, 0.283, -0.898277)
 
 [node name="Activables" type="Node3D" parent="." index="1"]
 
-[node name="PosterActivable" parent="Activables" index="0" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_lb8q8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7091, 9.53673e-07, -0.731702)
+[node name="PosterActivable" parent="Activables" index="0" node_paths=PackedStringArray("alternative_enable_after") instance=ExtResource("2_lb8q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94661, 9.53673e-07, -0.774348)
 activable_name = "RetsopDear"
 activable_text = "reeL"
-enable_after = []
-deactivate_after = []
 destroy_after_activation = true
 activable_alternative_text = "rariM"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 alternative_enable_after_seconds = 5.0
 
-[node name="ActionLabel" parent="Activables/PosterActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.598208, 2.5, -0.468922)
-modulate = Color(1, 1, 0.654902, 1)
-font = ExtResource("3_3y7fu")
-font_size = 50
-outline_size = 0
-
-[node name="CollisionShape3D" parent="Activables/PosterActivable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19867, 0.981626, -1.40064)
-shape = SubResource("BoxShape3D_s1add")
-
-[node name="Indicator" parent="Activables/PosterActivable" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.795422, 1.21022, -1.2)
-
-[node name="ChairActivableSit" parent="Activables" index="1" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after") instance=ExtResource("2_lb8q8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11605, 1.90735e-06, 2.16466)
+[node name="ChairActivableSit" parent="Activables" index="1" node_paths=PackedStringArray("alternative_enable_after") instance=ExtResource("2_lb8q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11605, 1.90735e-06, 2.22189)
 activable_name = "Tis"
 activable_text = "eterubat ne esratneS"
-enable_after = []
-deactivate_after = []
 destroy_after_activation = true
 activable_alternative_text = "eterubat noc rablaH"
 alternative_enable_after = [NodePath(".")]
-alternative_deactivate_after = []
 alternative_enable_after_seconds = 5.0
 forbidden = true
-
-[node name="ActionLabel" parent="Activables/ChairActivableSit" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.98669, 2.5, -3.21188)
-modulate = Color(1, 1, 0.654902, 1)
-font = ExtResource("3_3y7fu")
-font_size = 50
-outline_size = 0
-
-[node name="CollisionShape3D" parent="Activables/ChairActivableSit" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10052, 0.973446, -2.95353)
-shape = SubResource("BoxShape3D_4uo8q")
-
-[node name="Indicator" parent="Activables/ChairActivableSit" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -2.71059)
 
 [node name="Colliders" type="Node3D" parent="." index="2"]
 
@@ -268,6 +227,3 @@ distance_fade_length = 0.0
 spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 77.8
-
-[editable path="Activables/PosterActivable"]
-[editable path="Activables/ChairActivableSit"]

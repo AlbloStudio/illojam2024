@@ -4,11 +4,16 @@ signal transitioned(state_name)
 
 @export var initial_state := NodePath()
 
+var forced_initial_state := ""
+
 @onready var current_state: FiniteState = get_node(initial_state)
 
 
 func _ready() -> void:
 	await owner.ready
+
+	if forced_initial_state != "":
+		current_state = get_node(forced_initial_state)
 
 	for child: FiniteState in get_children():
 		child.state_machine = self

@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctv4r5oi50oy1"]
+[gd_scene load_steps=14 format=3 uid="uid://ctv4r5oi50oy1"]
 
 [ext_resource type="Script" path="res://_Features/activables/activable/activable.gd" id="1_s7sqx"]
+[ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="2_8t60e"]
 [ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_oju4k"]
 [ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_idle.gd" id="3_eg2dy"]
 [ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_visible.gd" id="4_jqj2w"]
@@ -34,8 +35,10 @@ alternative_deactivate_after = []
 [node name="ActionLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.207198, 0, -0.626201)
 no_depth_test = true
+modulate = Color(1, 1, 0.698039, 1)
 text = "Probando cosa"
-font_size = 42
+font = ExtResource("2_8t60e")
+font_size = 50
 outline_size = 0
 horizontal_alignment = 0
 vertical_alignment = 0

@@ -1,16 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bb43tlfgdsw7r"]
+[gd_scene load_steps=6 format=3 uid="uid://bb43tlfgdsw7r"]
 
 [ext_resource type="Script" path="res://_Features/activables/tablet/tablet.gd" id="1_qxtak"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_04h7g"]
-[ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="2_7iick"]
 [ext_resource type="PackedScene" uid="uid://dy0oie8ekrhav" path="res://_Features/common/speech_bubble/speech_bubble.tscn" id="2_o2xbf"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_t6nb5"]
-height = 0.61301
-radius = 0.930026
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_g51m3"]
-radius = 3.4979
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1rs8"]
 albedo_color = Color(0.270588, 0.270588, 0.270588, 1)
@@ -26,24 +18,9 @@ script = ExtResource("1_qxtak")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Tablet" parent="." instance=ExtResource("2_04h7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10839, 0, 0.137398)
 activable_name = "Tablet"
 activable_text = "Leer chat"
 
-[node name="ActionLabel" parent="Tablet" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.201257, 2.5, 0.376964)
-modulate = Color(1, 1, 0.494118, 1)
-font = ExtResource("2_7iick")
-font_size = 50
-outline_size = 0
-
-[node name="CollisionShape3D" parent="Tablet" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179605, 0)
-shape = SubResource("CylinderShape3D_t6nb5")
-
-[node name="IndicatorMesh" parent="Tablet/Indicator" index="0"]
-transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0.35, 1, 0)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_n1a68")
-
-[editable path="Tablet"]
