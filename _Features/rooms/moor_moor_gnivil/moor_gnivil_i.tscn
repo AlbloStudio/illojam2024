@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://cb0311e3f7has"]
+[gd_scene load_steps=21 format=3 uid="uid://cb0311e3f7has"]
 
 [ext_resource type="PackedScene" uid="uid://22b2y7e1gs5j" path="res://_Features/rooms/moor_moor_gnivil/Nolas.blend" id="1_anjvf"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_lb8q8"]
+[ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="3_k6s5t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kc5t6"]
 size = Vector3(5.38177, 3.50208, 0.224121)
@@ -58,6 +59,14 @@ emission_enabled = true
 emission = Color(0.909804, 1, 1, 1)
 emission_energy_multiplier = 0.11
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_y15t7"]
+vertices = PackedVector3Array(0.221457, 0.0810449, -0.0719323, 0.221457, 0.0810449, 0.428068, 0.721457, 0.0810449, 0.428068, 0.471457, 0.0810449, -0.571932, -1.27854, 0.0810449, -2.57193, -0.528543, 0.0810449, -2.57193, -0.528543, 0.0810449, -2.82193, -1.52854, 0.0810449, -3.07193, -2.52854, 0.0810449, -3.32193, -2.52854, 0.0810449, -2.82193, -1.52854, 0.0810449, -3.07193, 2.72146, 0.0810449, -1.07193, 2.22146, 0.0810449, -0.571932, 2.72146, 0.0810449, -0.321932, 3.22146, 0.0810449, -0.571932, 1.97146, 0.0810449, -3.32193, -2.52854, 0.0810449, -3.32193, -1.52854, 0.0810449, -3.07193, 2.72146, 0.0810449, -2.32193, 3.22146, 0.0810449, -4.07193, 2.47146, 0.0810449, -4.07193, 1.97146, 0.0810449, -3.32193, 2.22146, 0.0810449, -2.82193, 1.22146, 0.0810449, 2.42807, 1.47146, 0.0810449, 2.67807, 2.72146, 0.0810449, 2.92807, 2.72146, 0.0810449, -0.321932, 2.22146, 0.0810449, -0.571932, 1.22146, 0.0810449, 0.928068, 0.471457, 0.0810449, -0.571932, 0.721457, 0.0810449, 0.428068, 1.22146, 0.0810449, 0.928068, 2.22146, 0.0810449, -0.571932, 2.72146, 0.0810449, -2.32193, 2.72146, 0.0810449, -1.07193, 3.22146, 0.0810449, -0.571932, 3.22146, 0.0810449, -4.07193, -0.528543, 0.0810449, -2.82193, 2.22146, 0.0810449, -2.82193, 1.97146, 0.0810449, -3.32193, -1.52854, 0.0810449, -3.07193, -1.27854, 0.0810449, -0.0719323, -2.02854, 0.0810449, -0.0719323, -1.77854, 0.0810449, 0.178068, -0.528543, 0.0810449, 0.928068, 0.221457, 0.0810449, 0.428068, 0.221457, 0.0810449, -0.0719323, -1.27854, 0.0810449, -0.321932, -1.27854, 0.0810449, -0.0719323, 1.47146, 0.0810449, 4.92807, 1.47146, 0.0810449, 5.42807, 2.72146, 0.0810449, 5.42807, -0.778543, 0.0810449, 3.42807, -0.0285435, 0.0810449, 3.17807, -0.528543, 0.0810449, 2.67807, -1.27854, 0.0810449, 2.92807, -1.77854, 0.0810449, 0.178068, -2.02854, 0.0810449, 2.92807, -1.27854, 0.0810449, 2.92807, -0.528543, 0.0810449, 2.67807, -0.528543, 0.0810449, 0.928068, -1.27854, 0.0810449, -0.0719323, -0.0285435, 0.0810449, 3.17807, -0.778543, 0.0810449, 3.42807, -0.778543, 0.0810449, 4.17807, 0.971457, 0.0810449, 4.42807, 0.971457, 0.0810449, 3.17807, 2.72146, 0.0810449, 2.92807, 1.47146, 0.0810449, 2.67807, 0.971457, 0.0810449, 3.17807, 0.971457, 0.0810449, 4.42807, 1.47146, 0.0810449, 4.92807, 2.72146, 0.0810449, 5.42807)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(10, 9, 8), PackedInt32Array(14, 13, 11), PackedInt32Array(11, 13, 12), PackedInt32Array(15, 17, 16), PackedInt32Array(22, 21, 18), PackedInt32Array(18, 21, 20), PackedInt32Array(18, 20, 19), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 28), PackedInt32Array(25, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 32), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(38, 37, 39), PackedInt32Array(39, 37, 40), PackedInt32Array(43, 42, 41), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 48), PackedInt32Array(46, 48, 47), PackedInt32Array(51, 50, 49), PackedInt32Array(55, 54, 52), PackedInt32Array(52, 54, 53), PackedInt32Array(58, 57, 59), PackedInt32Array(59, 57, 60), PackedInt32Array(60, 57, 56), PackedInt32Array(60, 56, 61), PackedInt32Array(63, 62, 64), PackedInt32Array(64, 62, 66), PackedInt32Array(64, 66, 65), PackedInt32Array(68, 67, 69), PackedInt32Array(69, 67, 70), PackedInt32Array(70, 67, 71), PackedInt32Array(71, 67, 72)]
+cell_height = 0.01
+agent_radius = 0.25
+edge_max_error = 0.77
+filter_ledge_spans = true
+
 [node name="Nolas" instance=ExtResource("1_anjvf")]
 
 [node name="Markers" type="Node3D" parent="." index="0"]
@@ -67,17 +76,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.054, 0.283, -0.898277)
 
 [node name="Activables" type="Node3D" parent="." index="1"]
 
-[node name="PosterActivable" parent="Activables" index="0" node_paths=PackedStringArray("alternative_enable_after") instance=ExtResource("2_lb8q8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94661, 9.53673e-07, -0.774348)
+[node name="PosterActivable" parent="Activables" index="0" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_lb8q8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.78159, 1.06463, -2.045)
 activable_name = "RetsopDear"
 activable_text = "reeL"
+enable_after = [NodePath("../../TabletNolas/Tablet")]
 destroy_after_activation = true
 activable_alternative_text = "rariM"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 5.0
 
 [node name="ChairActivableSit" parent="Activables" index="1" node_paths=PackedStringArray("alternative_enable_after") instance=ExtResource("2_lb8q8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11605, 1.90735e-06, 2.22189)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02411, 0.82879, -0.727794)
 activable_name = "Tis"
 activable_text = "eterubat ne esratneS"
 destroy_after_activation = true
@@ -91,6 +101,7 @@ forbidden = true
 [node name="StaticBody3D" type="StaticBody3D" parent="Colliders" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 collision_layer = 4
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50031, 1.25104, -5.07222)
@@ -227,3 +238,28 @@ distance_fade_length = 0.0
 spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 77.8
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="74"]
+navigation_mesh = SubResource("NavigationMesh_y15t7")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D" index="0"]
+transform = Transform3D(-0.999778, 0.0210819, 9.21521e-10, 0, -4.37114e-08, 1, 0.0210819, 0.999778, 4.37017e-08, 0.142272, 0.0610452, 0.068089)
+visible = false
+polygon = PackedVector2Array(1.39197, 4.56096, 1.36298, 3.18604, 2.56344, 3.18574, 2.35873, 0.00132392, 3.15895, -0.00304525, 3.15037, -1.00325, 2.26292, -0.984537, 2.24741, -0.534036, 1.28444, -0.53874, 1.27653, -0.913718, 0.950493, -0.956863, 0.924065, -0.431103, -0.0899577, -0.484749, -0.169773, -1.10782, -2.12401, -1.02048, -2.15147, -2.49524, 1.43354, -2.38567, 1.41014, -2.87979, 2.16062, -2.87061, 2.24429, -2.37581, 2.84686, -2.42337, 2.86344, -3.93584, -2.14824, -3.80515, -2.24465, -4.54647, -3.54851, -4.56623, -3.5037, -0.366507, -3.00709, -0.333222, -2.93436, 3.80757, -2.74865, 4.31415, -3, 6, -1, 6, -0.947423, 4.65539)
+depth = 0.1
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D/CSGPolygon3D" index="0"]
+transform = Transform3D(1, 0, -5.55112e-16, 0, 1, -3.55271e-14, 2.22045e-16, 1.42109e-14, 1, -1.01212, 0.488911, 0.307856)
+operation = 2
+polygon = PackedVector2Array(1.26494, 0.32438, 1.25889, 2.32664, 0.230536, 2.33269, 0.230536, 0.342527)
+depth = 0.5
+
+[node name="TabletNolas" parent="." index="75" instance=ExtResource("3_k6s5t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04001, 0.621368, 4.2036)
+
+[node name="Tablet" parent="TabletNolas" index="1"]
+activable_name = "TabletNolas"
+initial_state = "Deactivated"
+activable_text = "Activar"
+
+[editable path="TabletNolas"]

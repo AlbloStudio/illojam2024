@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=41 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="Script" path="res://_Features/audio/audio.gd" id="2_3jmlc"]
@@ -97,6 +97,14 @@ volumetric_fog_emission = Color(0.2, 0.2, 0.2, 1)
 volumetric_fog_emission_energy = 0.6
 volumetric_fog_detail_spread = 0.757858
 volumetric_fog_ambient_inject = 6.47
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ncr5a"]
+vertices = PackedVector3Array(-20.4253, 0.12, -4.16918, -20.4253, 0.12, -1.66918, -18.6753, 0.12, -1.66918, -20.4253, 0.12, -4.16918, -18.6753, 0.12, -1.66918, -18.1753, 0.12, -1.16918, -6.92535, 0.12, 3.33082, -4.92535, 0.12, 3.33082, -4.92535, 0.12, -4.16918, -18.1753, 0.12, 3.58082, -6.92535, 0.12, 3.58082, -6.92535, 0.12, 3.33082, -18.1753, 0.12, -1.16918)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(6, 3, 7), PackedInt32Array(7, 3, 8), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12)]
+cell_height = 0.01
+agent_radius = 0.25
+edge_max_error = 0.77
+filter_ledge_spans = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jau8k"]
 size = Vector3(17.4316, 2, 0.224121)
@@ -232,15 +240,15 @@ bus = &"Dialogs"
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.763206, 9, -1.66503)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.922647, 9, -2.97937)
 current = true
-fov = 74.7254
+fov = 74.8387
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.763206, 9, -1.66503)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.922647, 9, -2.97937)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0
@@ -256,10 +264,19 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.763206, 0, -1.66503)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922647, 0, -2.97937)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_ncr5a")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+polygon = PackedVector2Array(-20.9253, -4.66918, -4.56809, -4.66918, -4.54451, 3.79228, -18.6627, 4.00441, -18.6627, -1.41658, -20.9253, -1.36945)
+depth = 0.1
 
 [node name="Stage" type="Node" parent="."]
 
@@ -289,13 +306,6 @@ script = ExtResource("8_ku7b2")
 [node name="Nolas" parent="Stage/MoorGnivil" instance=ExtResource("9_iwvg8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.48041)
 script = ExtResource("9_l32nb")
-
-[node name="TabletNolas" parent="Stage/MoorGnivil" instance=ExtResource("4_nyxmf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01423, 0.621368, 5.74418)
-
-[node name="Tablet" parent="Stage/MoorGnivil/TabletNolas" index="1"]
-activable_name = "TabletNolas"
-activable_text = "Activar"
 
 [node name="Ceiling" type="MeshInstance3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1.0305, -4.19549, 3.02274, 1.21847)
@@ -345,6 +355,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87807, 0.621, -4.17241)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Tablet" parent="Stage/LivingRoom/TabletLivingRoom" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108389, 0, 0.137398)
 activable_name = "TabletLivingRoom"
 activable_text = "Activar"
 
@@ -352,8 +363,6 @@ activable_text = "Activar"
 [connection signal="value_changed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Dialogs" to="Pause" method="_on_dialogs_value_changed"]
 [connection signal="pressed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 
-[editable path="Stage/MoorGnivil/TabletNolas"]
-[editable path="Stage/MoorGnivil/TabletNolas/SpeechBubble"]
 [editable path="Stage/Setup/TabletSecret"]
 [editable path="Stage/Setup/TabletSecret/SpeechBubble"]
 [editable path="Stage/LivingRoom/TabletLivingRoom"]

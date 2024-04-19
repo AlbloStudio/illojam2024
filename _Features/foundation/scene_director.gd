@@ -21,7 +21,6 @@ var awakes = {
 @onready var nolas := $Stage/MoorGnivil/Nolas as Nolas
 @onready var setup := $Stage/Setup/setup as Setup
 @onready var tablet_living_room := $Stage/LivingRoom/TabletLivingRoom as Tablet
-@onready var tablet_nolas := $Stage/MoorGnivil/TabletNolas as Tablet
 @onready var tablet_secret := $Stage/Setup/TabletSecret as Tablet
 @onready var ui := $UI as GameUI
 @onready var audio := $Audio as Audios
@@ -98,21 +97,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 			create_tween().tween_callback(player.go_controlled).set_delay(26.0)
 
 		"TabletNolas":
-			(
-				tablet_nolas
-				. say(
-					[
-						"Has visto que hay acciones deshabilitadas, o prohibidas?",
-						"Dale 5 veces... y las forzarás."
-					],
-					"DaleCincoVeces",
-					[
-						4.0,
-						6.0,
-					]
-				)
-			)
-			create_tween().tween_callback(tablet_living_room.activate).set_delay(12.0)
+			nolas.activate_tablet()
 
 		"TabletSecret":
 			tablet_secret.say(
@@ -210,8 +195,7 @@ func _activable_activated(activable_name: String, alternative: bool) -> void:
 			else:
 				player.say("ME CAGO", "MeCago2", 2)
 				create_tween().tween_callback(func(): _awaked("poster")).set_delay(2)
-				tablet_nolas.visible = true
-
+				nolas.make_tablet_visible()
 		"Lay down":
 			if alternative:
 				living_room.rotate_sofa()

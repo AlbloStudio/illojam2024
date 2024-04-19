@@ -12,7 +12,9 @@ func physics_update(delta: float) -> void:
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && !event.pressed:
-		state_owner.nav_agent.target_position = MouseExtends.get_mouse_pos_in_floor(event, get_viewport())
+		state_owner.nav_agent.target_position = MouseExtends.get_mouse_pos_in_floor(
+			event, get_viewport()
+		)
 
 
 func _calculate_animations() -> void:

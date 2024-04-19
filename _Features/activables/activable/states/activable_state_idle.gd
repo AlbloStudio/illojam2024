@@ -13,5 +13,11 @@ func _input(event: InputEvent):
 			state_owner.indicator.global_position
 		)
 
-		var transparency = 1 - (maxf(0.0, state_owner.transparency_distance - distance_from_indicator) / state_owner.transparency_distance)
+		var transparency = (
+			1
+			- (
+				maxf(0.0, state_owner.transparency_distance - distance_from_indicator)
+				/ state_owner.transparency_distance
+			)
+		)
 		state_owner.indicator_mesh.transparency = transparency
