@@ -1,6 +1,7 @@
 class_name Audios extends Node
 
 @export var song_layers: Array[AudioStream]
+@export var play_it := true
 
 var bpm = 130.0
 var level = 0
@@ -26,6 +27,9 @@ func advance_level(_name):
 
 
 func _play_level_music():
+	if !play_it:
+		return
+
 	var time = 0.0
 	if current_song:
 		time = current_song.get_playback_position()
@@ -35,6 +39,9 @@ func _play_level_music():
 
 
 func _song_finished():
+	if !play_it:
+		return
+
 	current_song.play(0)
 
 
