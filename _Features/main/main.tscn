@@ -229,6 +229,7 @@ text = "SALISTE DEL VIDEOJUEGO"
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("2_3jmlc")
 song_layers = Array[AudioStream]([ExtResource("3_prhnp"), ExtResource("5_eo21i"), ExtResource("6_3nhco"), ExtResource("8_fiqc0"), ExtResource("7_3aj0d"), ExtResource("10_gllsq"), ExtResource("8_g4ua3"), ExtResource("9_8pkpd"), ExtResource("10_pl0ge"), ExtResource("11_r4hg3"), ExtResource("12_nchqr")])
+play_it = false
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="Audio"]
 bus = &"Music"
@@ -242,7 +243,7 @@ bus = &"Dialogs"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.922647, 9, -2.97937)
 current = true
-fov = 74.8387
+fov = 74.5387
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
@@ -282,6 +283,7 @@ depth = 0.1
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Stage"]
 collision_layer = 4
+input_ray_pickable = false
 
 [node name="externalWall" type="CollisionShape3D" parent="Stage/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7349, 0.5, -5.08222)

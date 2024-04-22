@@ -14,6 +14,7 @@ class_name Activable extends Area3D
 @export var enable_after_seconds := 2.0
 @export var deactivate_after_seconds := 0.0
 @export var destroy_after_activation := false
+@export var initial_point: Node3D
 
 @export_category("Alternative")
 @export var activable_alternative_text := "..."
@@ -22,6 +23,7 @@ class_name Activable extends Area3D
 @export var alternative_enable_after_seconds := 2.0
 @export var alternative_deactivate_after_seconds := 0.0
 @export var alternative_destroy_after_activation := false
+@export var alternative_initial_point: Node3D
 
 @export var alternative := false:
 	set(value):

@@ -58,12 +58,15 @@ func _unhandled_input(event):
 
 func _started() -> void:
 	player.collision_layer = 1
-	_activable_activated("TabletLivingRoom", false)
+	_activable_activated("TabletLivingRoom", false, player)
 
 
-func _activable_activated(activable_name: String, alternative: bool) -> void:
+func _activable_activated(activable_name: String, alternative: bool, initial_point: Node3D) -> void:
 	if current_activable == null || current_activable.activable_name != activable_name:
 		return
+
+	if initial_point != null:
+		player.global_position = initial_point.global_position
 
 	match activable_name:
 		"TabletLivingRoom":

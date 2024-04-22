@@ -1,6 +1,6 @@
 extends Node
 
-signal activable_activated(name: String, alternative: bool)
+signal activable_activated(name: String, alternative: bool, initial_point: Node3D)
 signal current_activable_changed(new_activable: Activable)
 
 signal clothes_wrong
