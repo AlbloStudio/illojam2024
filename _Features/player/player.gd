@@ -12,7 +12,6 @@ var desired_velocity := Vector2.ZERO
 var clothes = ["underwear", "pants", "tshirt"]
 var original_speech_bubble_position := Vector3.ZERO
 var previous_position := Vector3.ZERO
-var dont_animate_movement := false
 var original_hoodie_texture: Texture
 var original_pants_texture: Texture
 
@@ -23,6 +22,7 @@ var original_pants_texture: Texture
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_controlled := $FiniteStateMachine/Controlled as PlayerState
 @onready var state_puppet := $FiniteStateMachine/Puppet as PlayerState
+@onready var state_animating := $FiniteStateMachine/Animating as PlayerState
 
 @onready var player_animation := $player/AnimationPlayer as AnimationPlayer
 @onready var arms := $player/arms_skeleton/Skeleton3D/arms as MeshInstance3D
@@ -37,6 +37,27 @@ func _ready():
 	desired_velocity = Vector2.LEFT
 
 
+func _input(event: InputEvent):
+	if (
+		state_machine.is_in_state([state_controlled.name])
+		&& event is InputEventMouseButton
+		&& event.button_index == MOUSE_BUTTON_LEFT
+		&& !event.pressed
+	):
+		nav_agent.target_position = MouseExtends.get_mouse_pos_in_floor(event, get_viewport())
+
+
+func _physics_process(delta: float) -> void:
+	if state_machine.is_in_state([state_animating.name]):
+		return
+
+	_calculate_velocity(delta)
+	_calculate_look_at()
+	_calculate_animations()
+
+	move_and_slide()
+
+
 func go_controlled() -> void:
 	state_machine.transition_to(state_controlled.name)
 
@@ -45,8 +66,45 @@ func go_puppet() -> void:
 	state_machine.transition_to(state_puppet.name)
 
 
-func is_puppet() -> bool:
-	return state_machine.is_in_state([state_puppet.name])
+func set_target(target: Vector3) -> void:
+	nav_agent.target_position = target
+	await nav_agent.navigation_finished
+
+
+func _calculate_animations() -> void:
+	if state_machine.is_in_state([state_animating.name]):
+		return
+
+	if velocity.length() > 0.1:
+		player_animation.play("Walk")
+	else:
+		player_animation.play("Idle")
+
+
+func _calculate_velocity(delta: float) -> void:
+	var input_direction_3d = (
+		(nav_agent.get_next_path_position() - global_position).normalized()
+		if !nav_agent.is_navigation_finished()
+		else Vector3.ZERO
+	)
+	input_direction_3d.y = 0.0
+
+	if input_direction_3d != Vector3.ZERO:
+		velocity = input_direction_3d * speed
+	else:
+		velocity = lerp(velocity, Vector3.ZERO, intertia * delta)
+
+
+func _calculate_look_at() -> void:
+	if velocity.normalized() == Vector3.ZERO:
+		return
+
+	var vector_to_look_to := (
+		global_position
+		+ Vector3(-velocity.normalized().x, velocity.normalized().y, -velocity.normalized().z)
+	)
+
+	look_at(vector_to_look_to)
 
 
 func get_naked() -> void:
@@ -89,8 +147,7 @@ func stop_talking() -> void:
 
 
 func sit_on_chair(sit_position: Vector3) -> void:
-	if state_machine.is_in_state([state_controlled.name]):
-		animate("SitOnChair", sit_position, Vector3.ZERO, state_puppet.name)
+	animate("SitOnChair", sit_position, Vector3.ZERO, state_animating.name)
 
 
 func get_up_from_chair() -> void:
@@ -98,15 +155,9 @@ func get_up_from_chair() -> void:
 
 
 func sit_on_mirror_chair(sit_position: Vector3) -> void:
-	if state_machine.is_in_state([state_controlled.name]):
-		animate(
-			"SitOnChair",
-			sit_position,
-			Vector3(0, PI, 0),
-			state_puppet.name,
-			false,
-			after_mirror_chair
-		)
+	animate(
+		"SitOnChair", sit_position, Vector3(0, PI, 0), state_animating.name, false, after_mirror_chair
+	)
 
 
 func after_mirror_chair() -> void:
@@ -123,7 +174,7 @@ func lay_down_on_sofa(new_position: Vector3, is_wall := false) -> void:
 			"LayingSofa",
 			new_position,
 			global_rotation,
-			state_controlled.name,
+			state_animating.name,
 			false,
 			_layed_down,
 		)
@@ -134,7 +185,7 @@ func lay_down_on_sofa(new_position: Vector3, is_wall := false) -> void:
 			"LayingSofaWall",
 			new_position,
 			global_rotation,
-			state_controlled.name,
+			state_animating.name,
 			false,
 			_layed_down,
 		)
@@ -142,7 +193,6 @@ func lay_down_on_sofa(new_position: Vector3, is_wall := false) -> void:
 
 func lay_up_from_sofa_init(new_position: Vector3) -> void:
 	pixelation.rotation_degrees = Vector3(90, 90, 0)
-	go_puppet()
 	global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
 	animate(
 		"LayingSofa",
@@ -158,19 +208,17 @@ func lay_up_from_sofa_init(new_position: Vector3) -> void:
 
 func lay_up_from_sofa_end(_new_position: Vector3) -> void:
 	pixelation.rotation_degrees = Vector3(90, 90, 0)
-	go_puppet()
 	global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
 	animate(
 		"LayingSofa",
 		global_position,
 		global_rotation,
-		state_puppet.name,
+		state_animating.name,
 		true,
 		func(): SignalBus.started_end.emit(),
 		null,
 		0.3
 	)
-	dont_animate_movement = true
 
 
 func lay_up_from_sofa(new_position: Vector3, is_wall := false) -> void:
@@ -199,7 +247,6 @@ func _layed_down() -> void:
 	_change_player_speed(speed_slow)
 	SignalBus.layed_down.emit()
 	global_rotation = Vector3(0, get_target_ang(0), 0)
-	dont_animate_movement = true
 	player_animation.play("LayingDownIddle", 0)
 
 
@@ -207,7 +254,6 @@ func _layed_up() -> void:
 	pixelation.rotation_degrees = Vector3(0, 0, 0)
 	_change_player_speed(speed_fast)
 	SignalBus.layed_up.emit()
-	dont_animate_movement = false
 
 
 func _layed_up_init() -> void:
@@ -217,7 +263,7 @@ func _layed_up_init() -> void:
 
 
 func sit_to_stream(new_position: Vector3) -> void:
-	animate("SitOnChair", new_position, Vector3(0, PI, 0), state_puppet.name, false)
+	animate("SitOnChair", new_position, Vector3(0, PI, 0), state_animating.name, false)
 
 
 func get_up_from_streaming() -> void:
@@ -230,7 +276,7 @@ func sit_to_stream_wrong(new_position: Vector3) -> void:
 		"SitOnChair",
 		new_position,
 		Vector3.ZERO,
-		state_puppet.name,
+		state_animating.name,
 		false,
 		func(): SignalBus.awaked.emit("stream")
 	)
@@ -299,7 +345,7 @@ func animate(
 ) -> void:
 	previous_position = global_position
 
-	go_puppet()
+	state_machine.transition_to(state_animating.name)
 
 	if walking_target != null:
 		create_tween().tween_property(self, "global_position", walking_target, 1.2)
@@ -363,4 +409,4 @@ func _on_disappear(new_position: Vector3, on_middle: Callable, on_end: Callable)
 
 
 func exit_dream(new_position: Vector3) -> void:
-	animate("Walk", new_position, Vector3(0.0, PI, 0.0), state_puppet.name, false)
+	animate("Walk", new_position, Vector3(0.0, PI, 0.0), state_animating.name, false)

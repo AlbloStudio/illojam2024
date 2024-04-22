@@ -66,7 +66,8 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 		return
 
 	if initial_point != null:
-		player.global_position = initial_point.global_position
+		player.go_puppet()
+		await player.set_target(initial_point.global_position)
 
 	match activable_name:
 		"TabletLivingRoom":
@@ -327,6 +328,8 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				player.say("...", " ")
 			else:
 				setup.move_chair()
+
+	SignalBus.activable_activated_done.emit(activable_name)
 
 
 func _set_current_activable(new_activable: Activable) -> void:

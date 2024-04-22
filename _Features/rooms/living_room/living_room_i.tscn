@@ -182,7 +182,7 @@ alternative_enable_after = [NodePath(".")]
 [node name="Normal" type="Marker3D" parent="Activables/ChairActivableSit" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190939, 0, -0.0727046)
 
-[node name="ChairActivableGetUp" parent="Activables" index="1" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
+[node name="ChairActivableGetUp" parent="Activables" index="1" node_paths=PackedStringArray("enable_after") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7562, 2.38418e-06, 0.458178)
 activable_name = "GetUp"
 initial_state = "Deactivated"
@@ -190,7 +190,6 @@ activable_text = "Levantarse del taburete"
 enable_after = [NodePath("../ChairActivableSit")]
 enable_after_seconds = 2.5
 activable_alternative_text = "Echar una cabezadita"
-alternative_enable_after = [NodePath(".")]
 
 [node name="ClosetActivable" parent="Activables" index="2" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_initial_point") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 2.02548, 0.000723839, -4.01017)
