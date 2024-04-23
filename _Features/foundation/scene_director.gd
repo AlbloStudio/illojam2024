@@ -173,12 +173,14 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				create_tween().tween_callback(func(): _awaked("talk")).set_delay(3.0)
 			else:
 				player.sit_on_chair(living_room.get_marker_position("chairMarker"))
+				living_room.sit_on_chair()
 
 		"GetUp":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
 			else:
 				player.get_up_from_chair()
+				living_room.get_up_from_chair()
 
 		"Tis":
 			if alternative:
@@ -204,28 +206,28 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				living_room.rotate_sofa()
 			else:
 				player.lay_down_on_sofa(living_room.get_marker_position("layMarker"))
-				living_room.switch_to_none_mode()
+				living_room.lay_down()
 
 		"Lay down wall":
 			if alternative:
 				living_room.rotate_sofa()
 			else:
 				player.lay_down_on_sofa(living_room.get_marker_position("layMarker"), true)
-				living_room.switch_to_none_mode()
+				living_room.lay_down()
 
 		"Lay up":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
 			else:
 				player.lay_up_from_sofa(living_room.get_marker_position("upMarker"))
-				living_room.switch_to_none_mode()
+				living_room.lay_up()
 
 		"Lay up wall":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
 			else:
 				player.lay_up_from_sofa(living_room.get_marker_position("wallMarker"), true)
-				living_room.switch_to_none_mode()
+				living_room.lay_up()
 
 		"StreamIn":
 			if alternative:

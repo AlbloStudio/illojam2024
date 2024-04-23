@@ -11,6 +11,11 @@ func switch_context(context_array_to_use: Array[String]) -> void:
 			activable.is_in_context = false
 
 
+func reset_context() -> void:
+	for activable in activables.get_children():
+		activable.is_in_context = true
+
+
 func enable_activable(activable_name: String, delay := 0.0) -> void:
 	var activable_node = get_node_or_null("Activables/" + activable_name)
 	if activable_node == null:

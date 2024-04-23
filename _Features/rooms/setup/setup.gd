@@ -1,7 +1,5 @@
 class_name Setup extends Room
 
-var recently_deactivated_activables := [] as Array[Activable]
-
 var activables_while_penetrated := ["WallsUpActivable", "MoveChairActivable"] as Array[String]
 var activables_while_normal := (
 	[

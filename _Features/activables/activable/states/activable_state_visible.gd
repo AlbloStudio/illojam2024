@@ -35,6 +35,7 @@ func handle_input(event: InputEvent) -> void:
 	if !state_owner.is_in_context:
 		return
 
+	# This will be moved to player and checked if the player is controlled
 	if event.is_action_pressed("player_action"):
 		is_pressing = true
 	elif event.is_action_released("player_action"):

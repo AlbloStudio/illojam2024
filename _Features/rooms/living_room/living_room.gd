@@ -1,5 +1,8 @@
 class_name LivingRoom extends Room
 
+var activables_while_sitting := ["ChairActivableGetUp"] as Array[String]
+var activables_while_laying := ["SofaActivableLayUpWall", "SofaActivableLayUp"] as Array[String]
+
 var cloth_names := ["underwear", "pants", "tshirt"]
 var poster_awaken := false
 
@@ -89,6 +92,23 @@ func destroy_clothes() -> void:
 func _clothes_path(cloth: String, with_activable := true) -> String:
 	return "Clothes/" + cloth + ("/Activable" if with_activable else "")
 
+
+func sit_on_chair() -> void:
+	switch_context(activables_while_sitting)
+
+
+func get_up_from_chair() -> void:
+	await get_tree().create_timer(2).timeout
+	reset_context()
+
+func lay_down() -> void:
+	switch_to_none_mode()
+	switch_context(activables_while_laying)
+
+func lay_up() -> void:
+	switch_to_none_mode()
+	await get_tree().create_timer(2).timeout
+	reset_context()
 
 func switch_to_layed_mode() -> void:
 	colliders_body.collision_layer = 0
