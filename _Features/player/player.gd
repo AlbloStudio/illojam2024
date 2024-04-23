@@ -66,9 +66,11 @@ func go_puppet() -> void:
 	state_machine.transition_to(state_puppet.name)
 
 
-func set_target(target: Vector3) -> void:
+func move_as_puppet(target: Vector3) -> void:
+	go_puppet()
 	nav_agent.target_position = target
 	await nav_agent.navigation_finished
+	go_controlled()
 
 
 func _calculate_animations() -> void:
@@ -156,7 +158,12 @@ func get_up_from_chair() -> void:
 
 func sit_on_mirror_chair(sit_position: Vector3) -> void:
 	animate(
-		"SitOnChair", sit_position, Vector3(0, PI, 0), state_animating.name, false, after_mirror_chair
+		"SitOnChair",
+		sit_position,
+		Vector3(0, PI, 0),
+		state_animating.name,
+		false,
+		after_mirror_chair
 	)
 
 

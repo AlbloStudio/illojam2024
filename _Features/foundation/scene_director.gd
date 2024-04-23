@@ -66,8 +66,7 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 		return
 
 	if initial_point != null:
-		player.go_puppet()
-		await player.set_target(initial_point.global_position)
+		await player.move_as_puppet(initial_point.global_position)
 
 	match activable_name:
 		"TabletLivingRoom":
@@ -95,10 +94,10 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				)
 			)
 
-			create_tween().tween_callback(living_room.make_closet_appear).set_delay(16.0)
-			create_tween().tween_callback(nolas.make_closet_appear).set_delay(16.0)
+			create_tween().tween_callback(living_room.make_closet_appear).set_delay(2.0)
+			create_tween().tween_callback(nolas.make_closet_appear).set_delay(2.0)
 			create_tween().tween_callback(tablet_living_room.activate).set_delay(108.0)
-			create_tween().tween_callback(player.go_controlled).set_delay(26.0)
+			create_tween().tween_callback(player.go_controlled).set_delay(2.0)
 
 		"TabletNolas":
 			nolas.activate_tablet()
