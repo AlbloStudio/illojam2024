@@ -9,11 +9,6 @@ func _process(_delta) -> void:
 		global_rotation = Vector3(0, 0, 0)
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("player_action"):
-		stop_saying()
-
-
 func say(text: Array[String], audio: String, delay: Array[float] = [3.0]) -> void:
 	var sound = _load_mp3("res://_Features/audio/" + audio + ".mp3")
 	if sound != null:

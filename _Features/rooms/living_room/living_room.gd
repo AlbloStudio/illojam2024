@@ -107,12 +107,11 @@ func get_up_from_chair() -> void:
 
 func lay_down(wall := false) -> void:
 	switch_to_none_mode()
+	deactivate_tablet()
 	if wall:
-		reset_closet()
-		reactivate_tablet()
+		reset_context()
 	else:
 		switch_context(activables_while_laying)
-		deactivate_tablet()
 
 
 func lay_up(wall := false) -> void:

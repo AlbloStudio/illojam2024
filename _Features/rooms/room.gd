@@ -48,3 +48,7 @@ func reactivate_tablet() -> void:
 
 func deactivate_tablet() -> void:
 	$Tablet.deactivate()
+
+
+func get_tablet_activable() -> Activable:
+	return ($Tablet as Tablet).activable
