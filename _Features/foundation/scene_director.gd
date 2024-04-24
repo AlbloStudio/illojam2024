@@ -227,7 +227,7 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
 			else:
 				player.lay_up_from_sofa(living_room.get_marker_position("wallMarker"), true)
-				living_room.lay_up()
+				living_room.lay_up(true)
 
 		"StreamIn":
 			if alternative:

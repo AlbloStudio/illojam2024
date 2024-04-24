@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://cb0311e3f7has"]
+[gd_scene load_steps=22 format=3 uid="uid://cb0311e3f7has"]
 
 [ext_resource type="PackedScene" uid="uid://22b2y7e1gs5j" path="res://_Features/rooms/moor_moor_gnivil/Nolas.blend" id="1_anjvf"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_lb8q8"]
+[ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/nolas.gd" id="2_x8dvp"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="3_k6s5t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kc5t6"]
@@ -68,6 +69,7 @@ edge_max_error = 0.77
 filter_ledge_spans = true
 
 [node name="Nolas" instance=ExtResource("1_anjvf")]
+script = ExtResource("2_x8dvp")
 
 [node name="Markers" type="Node3D" parent="." index="0"]
 

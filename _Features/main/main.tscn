@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=40 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="Script" path="res://_Features/audio/audio.gd" id="2_3jmlc"]
@@ -20,7 +20,6 @@
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil.gd" id="8_ku7b2"]
 [ext_resource type="AudioStream" uid="uid://dx7cph4eee7ok" path="res://_Features/audio/dream9.mp3" id="9_8pkpd"]
 [ext_resource type="PackedScene" uid="uid://cb0311e3f7has" path="res://_Features/rooms/moor_moor_gnivil/moor_gnivil_i.tscn" id="9_iwvg8"]
-[ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/nolas.gd" id="9_l32nb"]
 [ext_resource type="AudioStream" uid="uid://cwe5fggyyhwa7" path="res://_Features/audio/dream6.mp3" id="10_gllsq"]
 [ext_resource type="AudioStream" uid="uid://byd5j83axjxbg" path="res://_Features/audio/dream11.mp3" id="10_pl0ge"]
 [ext_resource type="PackedScene" uid="uid://c0bdwlue70wgp" path="res://_Features/rooms/setup/setup_i.tscn" id="11_qjeg8"]
@@ -241,15 +240,15 @@ bus = &"Dialogs"
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.922647, 9, -2.97937)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -20.9226, 9, 1.02063)
 current = true
-fov = 74.7571
+fov = 74.5545
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.922647, 9, -2.97937)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -20.9226, 9, 1.02063)
 script = ExtResource("6_v8ayd")
 priority_override = false
 priority = 0
@@ -265,7 +264,7 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922647, 0, -2.97937)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9226, 0, 1.02063)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")
@@ -307,7 +306,6 @@ script = ExtResource("8_ku7b2")
 
 [node name="Nolas" parent="Stage/MoorGnivil" instance=ExtResource("9_iwvg8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.48041)
-script = ExtResource("9_l32nb")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Stage/MoorGnivil"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1.0305, -4.19549, 3.02274, 1.21847)

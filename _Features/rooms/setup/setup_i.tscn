@@ -497,7 +497,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.1222
 
 [node name="SetupCeiling" type="MeshInstance3D" parent="." index="167"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.123302, 3.05618, 9.51134)
-visible = false
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_kvtyt")
 skeleton = NodePath("")

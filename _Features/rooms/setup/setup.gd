@@ -8,7 +8,6 @@ var activables_while_normal := (
 		"StreamInIncorrectActivable",
 		"StreamOutInCorrectActivable",
 		"ExitWindowActivable",
-		"EnterWindowActivable",
 		"BlindersUpActivable",
 		"BlindersDownActivable",
 		"WallsUpActivable",
@@ -16,6 +15,12 @@ var activables_while_normal := (
 	as Array[String]
 )
 var activables_while_up := ["JumpDownActivable"] as Array[String]
+var activables_while_out := (
+	[
+		"EnterWindowActivable",
+	]
+	as Array[String]
+)
 
 @onready var exit_window_activable := $Activables/ExitWindowActivable as Activable
 @onready var enter_window_activable := $Activables/EnterWindowActivable as Activable
@@ -51,10 +56,12 @@ func switch_to_upwall_context() -> void:
 
 func show_secret_room() -> void:
 	setup_ceiling.visible = false
+	switch_context(activables_while_out)
 
 
 func hide_secret_room() -> void:
 	setup_ceiling.visible = true
+	switch_context(activables_while_normal)
 
 
 func blinders_up() -> void:
