@@ -15,12 +15,9 @@ var activables_while_normal := (
 	as Array[String]
 )
 var activables_while_up := ["JumpDownActivable"] as Array[String]
-var activables_while_out := (
-	[
-		"EnterWindowActivable",
-	]
-	as Array[String]
-)
+var activables_while_out := ["EnterWindowActivable"] as Array[String]
+var activables_while_streaming_right := ["StreamOutActivable"] as Array[String]
+var activables_while_streaming_wrong := ["StreamOutInCorrectActivable"] as Array[String]
 
 @onready var exit_window_activable := $Activables/ExitWindowActivable as Activable
 @onready var enter_window_activable := $Activables/EnterWindowActivable as Activable
@@ -32,6 +29,8 @@ var activables_while_out := (
 
 @onready var blinders := $"Ventana 1" as MeshInstance3D
 @onready var setup_ceiling := $SetupCeiling as MeshInstance3D
+
+@onready var tablet := $Tablet as Tablet
 
 
 func _ready() -> void:
@@ -57,11 +56,13 @@ func switch_to_upwall_context() -> void:
 func show_secret_room() -> void:
 	setup_ceiling.visible = false
 	switch_context(activables_while_out)
+	tablet.activate()
 
 
 func hide_secret_room() -> void:
 	setup_ceiling.visible = true
 	switch_context(activables_while_normal)
+	tablet.deactivate()
 
 
 func blinders_up() -> void:
@@ -78,6 +79,26 @@ func blinders_down() -> void:
 
 func move_chair() -> void:
 	move_chair_animation.play("move_chair")
+
+
+func say_tablet(to_say: Array[String], audio: String, delay: Array[float] = [3.0]) -> void:
+	tablet.say(to_say, audio, delay)
+
+
+func stream_in() -> void:
+	switch_context(activables_while_streaming_right)
+
+
+func stream_out() -> void:
+	switch_context(activables_while_normal)
+
+
+func stream_wrong() -> void:
+	switch_context(activables_while_streaming_wrong)
+
+
+func stream_out_wrong() -> void:
+	switch_context(activables_while_normal)
 
 
 func awake_wall() -> void:

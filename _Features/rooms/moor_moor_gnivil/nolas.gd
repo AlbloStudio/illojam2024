@@ -2,7 +2,7 @@ class_name Nolas extends Room
 
 @onready var closet := $Closet_001 as MeshInstance3D
 @onready var closet_handles := $Cube_005 as MeshInstance3D
-@onready var tablet_nolas := $TabletNolas as Tablet
+@onready var tablet_nolas := $Tablet as Tablet
 
 
 func _ready() -> void:

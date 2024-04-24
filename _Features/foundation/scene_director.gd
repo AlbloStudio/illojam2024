@@ -20,8 +20,6 @@ var awakes = {
 @onready var living_room := $Stage/LivingRoom/LivingRoom as LivingRoom
 @onready var nolas := $Stage/MoorGnivil/Nolas as Nolas
 @onready var setup := $Stage/Setup/setup as Setup
-@onready var tablet_living_room := $Stage/LivingRoom/TabletLivingRoom as Tablet
-@onready var tablet_secret := $Stage/Setup/TabletSecret as Tablet
 @onready var ui := $UI as GameUI
 @onready var audio := $Audio as Audios
 @onready var scan := $Scan as ColorRect
@@ -72,8 +70,8 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 		"TabletLivingRoom":
 			player.go_puppet()
 			(
-				tablet_living_room
-				. say(
+				living_room
+				. say_tablet(
 					[
 						"Hola, soy LMDSHOW... Estás atrapado en un sueño. Lo sé, rarete, no? Pero quiero ayudarte.",
 						"La clave para despertar es hacer cosas inusuales e ilógicas, cosas que no harías en la vida real.",
@@ -96,14 +94,14 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 
 			create_tween().tween_callback(living_room.make_closet_appear).set_delay(2.0)
 			create_tween().tween_callback(nolas.make_closet_appear).set_delay(2.0)
-			create_tween().tween_callback(tablet_living_room.activate).set_delay(108.0)
+			create_tween().tween_callback(living_room.reactivate_tablet).set_delay(108.0)
 			create_tween().tween_callback(player.go_controlled).set_delay(2.0)
 
 		"TabletNolas":
 			nolas.activate_tablet()
 
 		"TabletSecret":
-			tablet_secret.say(
+			setup.say_tablet(
 				[
 					"Deja pulsado durante 3 segundos sobre una acción y...",
 					"Cambiarás a una acción alternativa.",
@@ -112,7 +110,7 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				"AcciónAlternativa",
 				[5.0, 4.0, 5.0]
 			)
-			create_tween().tween_callback(tablet_living_room.activate).set_delay(11.0)
+			create_tween().tween_callback(setup.reactivate_tablet).set_delay(11.0)
 
 		"Get Naked":
 			if alternative:
@@ -213,7 +211,7 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				living_room.rotate_sofa()
 			else:
 				player.lay_down_on_sofa(living_room.get_marker_position("layMarker"), true)
-				living_room.lay_down()
+				living_room.lay_down(true)
 
 		"Lay up":
 			if alternative:
@@ -236,12 +234,14 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				)
 			else:
 				player.sit_to_stream(setup.get_marker_position("StreamMarker"))
+				setup.stream_in()
 
 		"StreamOut":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
 			else:
 				player.get_up_from_streaming()
+				setup.stream_out()
 
 		"StreamWrong":
 			if alternative:
@@ -250,12 +250,14 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				)
 			else:
 				player.sit_to_stream_wrong(setup.get_marker_position("StreamWrongMarker"))
+				setup.stream_wrong()
 
 		"StreamOutWrong":
 			if alternative:
 				player.say("ZZzzzZzZZzZ", "ZZZSfx")
 			else:
 				player.get_up_from_streaming_wrong()
+				setup.stream_out_wrong()
 
 		"TouchWall":
 			if alternative:
@@ -288,6 +290,7 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				player.say("MI CASA ILLO", "AsomarseDesdeFuera")
 			else:
 				player.enter_window()
+				setup.hide_secret_room()
 
 		"Blinders Up":
 			if alternative:

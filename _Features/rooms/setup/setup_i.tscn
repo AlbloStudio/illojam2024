@@ -1,8 +1,19 @@
-[gd_scene load_steps=29 format=3 uid="uid://c0bdwlue70wgp"]
+[gd_scene load_steps=32 format=3 uid="uid://c0bdwlue70wgp"]
 
 [ext_resource type="PackedScene" uid="uid://eey6l7a03sjc" path="res://_Features/rooms/setup/setup.blend" id="1_8c4o6"]
 [ext_resource type="Script" path="res://_Features/rooms/setup/setup.gd" id="2_42fvx"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_n3fv0"]
+[ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="4_j3up1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pld4w"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.2, 0.2, 0.2, 1)
+disable_receive_shadows = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kvtyt"]
+material = SubResource("StandardMaterial3D_pld4w")
+size = Vector2(10.605, 10.59)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ljiy"]
 size = Vector3(5.14087, 3.50208, 0.224121)
@@ -109,15 +120,12 @@ emission_enabled = true
 emission = Color(0.796078, 0.658824, 0.909804, 1)
 emission_energy_multiplier = 1.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pld4w"]
-albedo_color = Color(0, 0, 0, 1)
-emission_enabled = true
-emission = Color(0.2, 0.2, 0.2, 1)
-disable_receive_shadows = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_kvtyt"]
-material = SubResource("StandardMaterial3D_pld4w")
-size = Vector2(10.605, 10.59)
+[sub_resource type="NavigationMesh" id="NavigationMesh_jdjau"]
+vertices = PackedVector3Array(-3.02297, 2.93348, 3.88107, -2.77297, 2.93348, 3.88107, -2.77297, 2.93348, -4.11893, -3.02297, 2.93348, -4.86893, 2.97703, 2.93348, -4.11893, 2.97703, 2.93348, 3.88107, 3.47703, 2.93348, 3.88107, 3.47703, 2.93348, -4.86893, -3.02297, 2.93348, -4.86893, -2.77297, 2.93348, -4.11893, -2.52297, 2.93348, -4.36893, -3.02297, 2.93348, -4.86893, -2.52297, 2.93348, -4.36893, 2.72703, 2.93348, -4.36893, 3.47703, 2.93348, -4.86893, 3.47703, 2.93348, -4.86893, 2.72703, 2.93348, -4.36893, 2.97703, 2.93348, -4.11893)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(10, 9, 8), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(15, 17, 16)]
+cell_height = 0.01
+agent_radius = 0.25
+edge_max_error = 0.77
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_r78dj"]
 vertices = PackedVector3Array(-2.04186, 0.12, -0.599121, -2.04186, 0.12, 0.650879, 2.20814, 0.12, 0.650879, 2.20814, 0.12, -0.599121)
@@ -126,8 +134,15 @@ cell_height = 0.01
 agent_radius = 0.25
 edge_max_error = 0.77
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_vgfhy"]
-vertices = PackedVector3Array(1.40665, 0.12, -3.08619, 1.90665, 0.12, -3.33619, 1.40665, 0.12, -3.83619, 0.656649, 0.12, -3.83619, 0.406649, 0.12, -3.58619, 1.15665, 0.12, -2.33619, 1.40665, 0.12, -2.33619, 1.40665, 0.12, -3.08619, -0.843351, 0.12, -0.836195, -0.593351, 0.12, -0.586195, 0.156649, 0.12, -0.836195, 0.406649, 0.12, -0.586195, 0.406649, 0.12, 0.413805, 1.15665, 0.12, 0.413805, 1.15665, 0.12, -2.33619, 1.40665, 0.12, -3.83619, 1.40665, 0.12, -4.83619, 0.656649, 0.12, -4.83619, 0.656649, 0.12, -3.83619, 0.156649, 0.12, -0.836195, 0.406649, 0.12, -0.586195, 1.15665, 0.12, -2.33619, 1.15665, 0.12, -2.33619, 1.40665, 0.12, -3.08619, 0.406649, 0.12, -3.58619, -0.843351, 0.12, -2.58619, -0.843351, 0.12, -0.836195, 0.156649, 0.12, -0.836195, -2.09335, 0.12, -3.58619, -1.84335, 0.12, -2.83619, -0.843351, 0.12, -2.58619, 0.406649, 0.12, -3.58619, -0.593351, 0.12, 0.413805, -0.593351, 0.12, -0.586195, -0.843351, 0.12, -0.836195, -0.843351, 0.12, 0.913805, 0.156649, 0.12, 3.66381, 1.90665, 0.12, 3.66381, 1.15665, 0.12, 2.16381, 0.406649, 0.12, 1.16381, -0.343351, 0.12, 0.663805, -0.593351, 0.12, 0.413805, -0.843351, 0.12, 0.913805, -0.343351, 0.12, 0.663805, -0.843351, 0.12, 0.913805, 0.156649, 0.12, 0.913805, 0.406649, 0.12, 0.413805, 1.90665, 0.12, 3.66381, 1.65665, 0.12, 2.41381, 1.15665, 0.12, 2.16381, 0.406649, 0.12, 0.413805, 0.156649, 0.12, 0.913805, 0.406649, 0.12, 1.16381, 1.15665, 0.12, 0.413805, 0.406649, 0.12, 0.413805, 0.406649, 0.12, 1.16381, 1.15665, 0.12, 2.16381)
+[sub_resource type="NavigationMesh" id="NavigationMesh_uedii"]
+vertices = PackedVector3Array(-0.84335, 0.12, -0.76524, -0.59335, 0.12, -0.51524, 0.15665, 0.12, -0.76524, 1.15665, 0.12, -2.26524, -0.84335, 0.12, -2.76524, 1.15665, 0.12, -2.26524, 1.40665, 0.12, -2.26524, 1.40665, 0.12, -3.26524, -1.09335, 0.12, -3.01524, -0.84335, 0.12, -2.76524, -2.09335, 0.12, -3.51524, -2.09335, 0.12, -3.01524, -1.09335, 0.12, -3.01524, 1.40665, 0.12, -3.26524, 1.65665, 0.12, -3.51524, 0.40665, 0.12, -0.51524, 0.40665, 0.12, 0.48476, 1.15665, 0.12, 0.48476, 1.15665, 0.12, -2.26524, 0.15665, 0.12, -0.76524, 0.40665, 0.12, -0.51524, 1.15665, 0.12, -2.26524, -0.59335, 0.12, 0.48476, -0.59335, 0.12, -0.51524, -0.84335, 0.12, -0.76524, -0.84335, 0.12, 0.98476, 0.15665, 0.12, 3.73476, 1.90665, 0.12, 3.73476, 1.15665, 0.12, 2.23476, 0.40665, 0.12, 1.23476, -0.34335, 0.12, 0.73476, -0.59335, 0.12, 0.48476, -0.84335, 0.12, 0.98476, -0.34335, 0.12, 0.73476, -0.84335, 0.12, 0.98476, 0.15665, 0.12, 0.98476, 0.40665, 0.12, 0.48476, 1.90665, 0.12, 3.73476, 1.65665, 0.12, 2.48476, 1.15665, 0.12, 2.23476, 0.40665, 0.12, 0.48476, 0.15665, 0.12, 0.98476, 0.40665, 0.12, 1.23476, 1.15665, 0.12, 0.48476, 0.40665, 0.12, 0.48476, 0.40665, 0.12, 1.23476, 1.15665, 0.12, 2.23476)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 5, 9), PackedInt32Array(7, 9, 8), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(13, 10, 14), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(21, 20, 19), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(32, 31, 30), PackedInt32Array(36, 35, 33), PackedInt32Array(33, 35, 34), PackedInt32Array(39, 38, 37), PackedInt32Array(40, 42, 41), PackedInt32Array(44, 43, 45), PackedInt32Array(45, 43, 46)]
+cell_height = 0.01
+agent_radius = 0.25
+edge_max_error = 0.77
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_hhlcf"]
+vertices = PackedVector3Array(1.40665, 0.12, -3.0862, 1.90665, 0.12, -3.3362, 1.40665, 0.12, -3.8362, 0.65665, 0.12, -3.8362, 0.40665, 0.12, -3.5862, 1.15665, 0.12, -2.3362, 1.40665, 0.12, -2.3362, 1.40665, 0.12, -3.0862, -0.84335, 0.12, -0.8362, -0.59335, 0.12, -0.5862, 0.15665, 0.12, -0.8362, 0.40665, 0.12, -0.5862, 0.40665, 0.12, 0.4138, 1.15665, 0.12, 0.4138, 1.15665, 0.12, -2.3362, 1.40665, 0.12, -3.8362, 1.40665, 0.12, -4.8362, 0.65665, 0.12, -4.8362, 0.65665, 0.12, -3.8362, 0.15665, 0.12, -0.8362, 0.40665, 0.12, -0.5862, 1.15665, 0.12, -2.3362, 1.15665, 0.12, -2.3362, 1.40665, 0.12, -3.0862, 0.40665, 0.12, -3.5862, -0.84335, 0.12, -2.5862, -0.84335, 0.12, -0.8362, 0.15665, 0.12, -0.8362, -2.09335, 0.12, -3.5862, -1.84335, 0.12, -2.8362, -0.84335, 0.12, -2.5862, 0.40665, 0.12, -3.5862, -0.59335, 0.12, 0.4138, -0.59335, 0.12, -0.5862, -0.84335, 0.12, -0.8362, -0.84335, 0.12, 0.9138, 0.15665, 0.12, 3.6638, 1.90665, 0.12, 3.6638, 1.15665, 0.12, 2.1638, 0.40665, 0.12, 1.1638, -0.34335, 0.12, 0.6638, -0.59335, 0.12, 0.4138, -0.84335, 0.12, 0.9138, -0.34335, 0.12, 0.6638, -0.84335, 0.12, 0.9138, 0.15665, 0.12, 0.9138, 0.40665, 0.12, 0.4138, 1.90665, 0.12, 3.6638, 1.65665, 0.12, 2.4138, 1.15665, 0.12, 2.1638, 0.40665, 0.12, 0.4138, 0.15665, 0.12, 0.9138, 0.40665, 0.12, 1.1638, 1.15665, 0.12, 0.4138, 0.40665, 0.12, 0.4138, 0.40665, 0.12, 1.1638, 1.15665, 0.12, 2.1638)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(7, 6, 5), PackedInt32Array(10, 9, 8), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(18, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(21, 20, 19), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(25, 22, 27), PackedInt32Array(25, 27, 26), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 35), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 39), PackedInt32Array(42, 41, 40), PackedInt32Array(46, 45, 43), PackedInt32Array(43, 45, 44), PackedInt32Array(49, 48, 47), PackedInt32Array(50, 52, 51), PackedInt32Array(54, 53, 55), PackedInt32Array(55, 53, 56)]
 cell_height = 0.01
 agent_radius = 0.25
@@ -136,7 +151,22 @@ edge_max_error = 0.77
 [node name="setup" instance=ExtResource("1_8c4o6")]
 script = ExtResource("2_42fvx")
 
-[node name="Markers" type="Node3D" parent="." index="0"]
+[node name="SetupCeiling" type="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.123302, 3.05618, 9.51134)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_kvtyt")
+skeleton = NodePath("")
+
+[node name="Tablet" parent="." index="1" instance=ExtResource("4_j3up1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.425479, 0.0301816, 5.79743)
+
+[node name="Tablet" parent="Tablet" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108389, 0, 0.137398)
+activable_name = "TabletSecret"
+initial_state = "Deactivated"
+activable_text = "Activar"
+
+[node name="Markers" type="Node3D" parent="." index="2"]
 
 [node name="StreamMarker" type="Marker3D" parent="Markers" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0, -0.03)
@@ -156,7 +186,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21572, 0, -2.5634)
 [node name="PenetrationMarker" type="Marker3D" parent="Markers" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.675586, -1.39287, -2.13373)
 
-[node name="Lights" type="Node3D" parent="." index="1"]
+[node name="Lights" type="Node3D" parent="." index="3"]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights" index="0"]
 transform = Transform3D(0.00264843, 0.203949, -0.978978, -0.000551742, 0.978981, 0.203949, 0.999996, 0, 0.00270529, -2.31332, 2.26489, -1.10753)
@@ -183,7 +213,7 @@ light_energy = 0.279
 shadow_enabled = true
 omni_range = 2.44895
 
-[node name="Colliders" type="Node3D" parent="." index="2"]
+[node name="Colliders" type="Node3D" parent="." index="4"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Colliders" index="0"]
 collision_layer = 4
@@ -241,7 +271,7 @@ shape = SubResource("BoxShape3D_7po3e")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.422687, 1.25104, 1.75213)
 shape = SubResource("BoxShape3D_bct7i")
 
-[node name="CollidersUp" type="Node3D" parent="." index="3"]
+[node name="CollidersUp" type="Node3D" parent="." index="5"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CollidersUp" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00228143, 0, -0.0248268)
@@ -268,15 +298,19 @@ shape = SubResource("BoxShape3D_p35k4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038064, 1.93356, 5.05628)
 shape = SubResource("BoxShape3D_3mis7")
 
-[node name="Activables" type="Node3D" parent="." index="4"]
+[node name="Activables" type="Node3D" parent="." index="6"]
 
-[node name="StreamInActivable" parent="Activables" index="0" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
+[node name="StreamInActivable" parent="Activables" index="0" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0499906, 0.628741, -0.111192)
 activable_name = "StreamIn"
 activable_text = "Hacer Stream"
 enable_after = [NodePath("../StreamOutActivable")]
+initial_point = NodePath("Normal")
 activable_alternative_text = "Mover la silla"
 alternative_enable_after = [NodePath(".")]
+
+[node name="Normal" type="Marker3D" parent="Activables/StreamInActivable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832461, 0, 0.00553752)
 
 [node name="StreamOutActivable" parent="Activables" index="1" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0756606, 0, -0.996847)
@@ -287,14 +321,18 @@ enable_after = [NodePath("../StreamInActivable")]
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
 
-[node name="StreamInIncorrectActivable" parent="Activables" index="2" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
+[node name="StreamInIncorrectActivable" parent="Activables" index="2" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.1369, 0.674121, -0.0324823)
 activable_name = "StreamWrong"
 initial_state = "Deactivated"
 activable_text = "ssHssascssser ssStressams"
 enable_after = [NodePath("../StreamOutInCorrectActivable")]
+initial_point = NodePath("Normal")
 activable_alternative_text = "ffFMooffverfff ffLa Sffifflfllaa"
 alternative_enable_after = [NodePath(".")]
+
+[node name="Normal" type="Marker3D" parent="Activables/StreamInIncorrectActivable" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832461, 0, 0.00553752)
 
 [node name="StreamOutInCorrectActivable" parent="Activables" index="3" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.1369, 0, -0.956646)
@@ -305,58 +343,98 @@ enable_after = [NodePath("../StreamInIncorrectActivable")]
 activable_alternative_text = "Ecffhffar funfa cffabezffffaditaffff"
 alternative_enable_after = [NodePath(".")]
 
-[node name="JumpDownActivable" parent="Activables" index="4" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
+[node name="JumpDownActivable" parent="Activables" index="4" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_enable_after", "alternative_initial_point") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.41488, 0, -2.66524)
 activable_name = "Jump Down"
 initial_state = "Deactivated"
 activable_text = "Bajar pared"
 enable_after = [NodePath("../WallsUpActivable")]
+initial_point = NodePath("Normal")
 activable_alternative_text = "Saltar"
 alternative_enable_after = [NodePath("../WallsUpActivable")]
+alternative_initial_point = NodePath("Alternative")
 
-[node name="ExitWindowActivable" parent="Activables" index="5" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
+[node name="Normal" type="Marker3D" parent="Activables/JumpDownActivable" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.367, 3.013, 1.191)
+
+[node name="Alternative" type="Marker3D" parent="Activables/JumpDownActivable" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.367, 3.013, 1.191)
+
+[node name="ExitWindowActivable" parent="Activables" index="5" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_enable_after", "alternative_initial_point") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.981618, 1.06194, 3.52167)
 activable_name = "Exit Window"
 activable_text = "Salir por la ventana"
 enable_after = [NodePath(".")]
+initial_point = NodePath("Normal")
 activable_alternative_text = "Asomarse"
 alternative_enable_after = [NodePath(".")]
+alternative_initial_point = NodePath("Alternative")
 
-[node name="EnterWindowActivable" parent="Activables" index="6" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
+[node name="Normal" type="Marker3D" parent="Activables/ExitWindowActivable" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.932464, 0, 0.386207)
+
+[node name="Alternative" type="Marker3D" parent="Activables/ExitWindowActivable" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.922837, 0, -0.184567)
+
+[node name="EnterWindowActivable" parent="Activables" index="6" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_enable_after", "alternative_initial_point") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.994453, 1.08913, 4.8512)
 activable_name = "Enter Window"
 initial_state = "Deactivated"
 activable_text = "Volver"
 enable_after = [NodePath("../ExitWindowActivable")]
+initial_point = NodePath("Normal")
 activable_alternative_text = "Asomarse"
 alternative_enable_after = [NodePath(".")]
+alternative_initial_point = NodePath("Alternative")
 
-[node name="BlindersUpActivable" parent="Activables" index="7" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
+[node name="Normal" type="Marker3D" parent="Activables/EnterWindowActivable" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30541, 0, 0.293924)
+
+[node name="Alternative" type="Marker3D" parent="Activables/EnterWindowActivable" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17662, 0, 0.230709)
+
+[node name="BlindersUpActivable" parent="Activables" index="7" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.34577, 1.03998, -3.49304)
 activable_name = "Blinders Up"
 initial_state = "Deactivated"
 activable_text = "Levantar la persiana"
 enable_after = [NodePath("../BlindersDownActivable")]
+initial_point = NodePath("Normal")
 activable_alternative_text = "Cuestionarse el cordelito"
 alternative_enable_after = [NodePath(".")]
 
-[node name="BlindersDownActivable" parent="Activables" index="8" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
+[node name="Normal" type="Marker3D" parent="Activables/BlindersUpActivable" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0467539, 0, 0.436979)
+
+[node name="BlindersDownActivable" parent="Activables" index="8" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.33293, 0.988357, -3.46737)
 activable_name = "Blinders Down"
 activable_text = "Bajar la persiana"
 enable_after = [NodePath("../BlindersUpActivable")]
+initial_point = NodePath("Normal")
 activable_alternative_text = "Cuestionarse el cordelito"
 alternative_enable_after = [NodePath(".")]
 
-[node name="WallsUpActivable" parent="Activables" index="9" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
+[node name="Normal" type="Marker3D" parent="Activables/BlindersDownActivable" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0134435, 0, 0.390104)
+
+[node name="WallsUpActivable" parent="Activables" index="9" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_enable_after", "alternative_initial_point") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.72516, 0.883721, -4.05414)
 activable_name = "TouchWall"
 activable_text = "Tocar la pared"
 enable_after = [NodePath(".")]
+initial_point = NodePath("Normal")
 activable_alternative_text = "Subir la pared"
 alternative_enable_after = [NodePath("../JumpDownActivable")]
+alternative_initial_point = NodePath("Alternative")
 
-[node name="MoveChairActivable" parent="Activables" index="10" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
+[node name="Normal" type="Marker3D" parent="Activables/WallsUpActivable" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.701996, 0, -0.018102)
+
+[node name="Alternative" type="Marker3D" parent="Activables/WallsUpActivable" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.688811, 0, -0.0294501)
+
+[node name="MoveChairActivable" parent="Activables" index="10" node_paths=PackedStringArray("enable_after", "deactivate_after", "initial_point", "alternative_enable_after") instance=ExtResource("2_n3fv0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 3.59989e-21, -4.37114e-08, -0.550579, 0.33832, -0.56044)
 activable_name = "Move Chair"
 activable_text = "Mover la silla"
@@ -364,27 +442,31 @@ enable_after = [NodePath("../StreamInIncorrectActivable")]
 deactivate_after = [NodePath("../StreamInActivable"), NodePath("../StreamOutActivable")]
 enable_after_seconds = 0.1
 destroy_after_activation = true
+initial_point = NodePath("Normal")
 alternative_enable_after = [NodePath(".")]
 
-[node name="Cajonera Ventan" parent="." index="17"]
+[node name="Normal" type="Marker3D" parent="Activables/MoveChairActivable" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278759, 0, 0.109357)
+
+[node name="Cajonera Ventan" parent="." index="19"]
 transform = Transform3D(-4.37114e-08, 0, 1.39383, 0, 1, 0, -1, 0, -6.09262e-08, 2.02009, 0.398512, 1.763)
 
-[node name="MoveChairAnimation" type="AnimationPlayer" parent="." index="22"]
+[node name="MoveChairAnimation" type="AnimationPlayer" parent="." index="24"]
 root_node = NodePath("../Silla Principal")
 libraries = {
 "": SubResource("AnimationLibrary_oxbg3")
 }
 
-[node name="Silla Principal" parent="." index="23"]
+[node name="Silla Principal" parent="." index="25"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.326925, 0)
 
-[node name="Silla Secundaria" parent="." index="24"]
+[node name="Silla Secundaria" parent="." index="26"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.607101, 0.239884, 1.758)
 
-[node name="Ventana 1" parent="." index="34"]
+[node name="Ventana 1" parent="." index="36"]
 transform = Transform3D(1.223, 0, 0, 0, 0.2, 0, 0, 0, 1, -0.280445, 2.48639, 4.02552)
 
-[node name="NeveraMahou" parent="." index="35"]
+[node name="NeveraMahou" parent="." index="37"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.10048, 1.14958, 1.84731)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="neon navidad" index="0"]
@@ -395,40 +477,40 @@ shadow_enabled = true
 shadow_blur = 2.441
 omni_range = 1.52096
 
-[node name="cable raton" parent="." index="53"]
+[node name="cable raton" parent="." index="55"]
 visible = false
 
-[node name="neon twitch normal" parent="." index="55"]
+[node name="neon twitch normal" parent="." index="57"]
 visible = false
 
-[node name="VideogameBox_5_001" parent="." index="111"]
+[node name="VideogameBox_5_001" parent="." index="113"]
 transform = Transform3D(0.314475, 0, 0, 0, 0.830166, 0, 0, 0, 0.426444, 1.70578, 0.626472, 1.61724)
 
-[node name="neon twitch normal_004" parent="." index="129"]
+[node name="neon twitch normal_004" parent="." index="131"]
 surface_material_override/0 = SubResource("StandardMaterial3D_mlw4k")
 
-[node name="neon twitch normal_003" parent="." index="132"]
+[node name="neon twitch normal_003" parent="." index="134"]
 surface_material_override/0 = SubResource("StandardMaterial3D_kdxx3")
 
-[node name="CuadroILLOGTAMAIN_005" parent="." index="133"]
+[node name="CuadroILLOGTAMAIN_005" parent="." index="135"]
 transform = Transform3D(0.0706133, -0.131961, -0.524678, 0.30889, -0.0309977, 0.133153, -0.0344091, -0.549073, 0.118581, -1.99908, 0.444083, 6.82799)
 
-[node name="Cube_004" parent="." index="141"]
+[node name="Cube_004" parent="." index="143"]
 visible = false
 
-[node name="Cube_008" parent="." index="142"]
+[node name="Cube_008" parent="." index="144"]
 visible = false
 
-[node name="Cube_011" parent="." index="143"]
+[node name="Cube_011" parent="." index="145"]
 visible = false
 
-[node name="Puerta_002" parent="." index="144"]
+[node name="Puerta_002" parent="." index="146"]
 visible = false
 
-[node name="Puerta_003" parent="." index="145"]
+[node name="Puerta_003" parent="." index="147"]
 visible = false
 
-[node name="Armature" parent="." index="147"]
+[node name="Armature" parent="." index="149"]
 transform = Transform3D(0, -1.12986, -6.73446e-08, 6.73446e-08, 0, -1.12986, 1.12986, 6.73446e-08, 0, -0.57901, 0.14708, 1.75362)
 
 [node name="Luisillo_002" parent="Armature" index="1"]
@@ -492,16 +574,10 @@ bones/46/rotation = Quaternion(0.626209, -0.0735206, 0.0594906, 0.773898)
 bones/46/scale = Vector3(1, 1, 1)
 bones/47/rotation = Quaternion(0.241564, 0.0547086, -0.0136417, 0.968745)
 
-[node name="Sphere" parent="." index="154"]
+[node name="Sphere" parent="." index="156"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.12226, 1.49904, 1.84575)
 
-[node name="SetupCeiling" type="MeshInstance3D" parent="." index="167"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.123302, 3.05618, 9.51134)
-cast_shadow = 0
-mesh = SubResource("PlaneMesh_kvtyt")
-skeleton = NodePath("")
-
-[node name="CeilingLight5" type="SpotLight3D" parent="." index="169"]
+[node name="CeilingLight5" type="SpotLight3D" parent="." index="170"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.619664, 2.53399, 1.96487)
 layers = 7
 light_color = Color(0.419608, 0.419608, 0.419608, 1)
@@ -518,7 +594,7 @@ spot_range = 7.21817
 spot_attenuation = 0.812252
 spot_angle = 77.8
 
-[node name="CeilingLight6" type="SpotLight3D" parent="." index="170"]
+[node name="CeilingLight6" type="SpotLight3D" parent="." index="171"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.739505, 2.27513, -1.91125)
 layers = 7
 light_color = Color(0.419608, 0.419608, 0.419608, 1)
@@ -534,31 +610,53 @@ spot_range = 30.0
 spot_attenuation = 0.812252
 spot_angle = 77.8
 
-[node name="NavigationRegion3D2" type="NavigationRegion3D" parent="." index="171"]
+[node name="Up" type="NavigationRegion3D" parent="." index="172"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0950694, 0)
+navigation_mesh = SubResource("NavigationMesh_jdjau")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Up" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.667882, 2.81348, -5.06057)
+visible = false
+polygon = PackedVector2Array(1.99678, -0.0583553, 4.30419, -0.0194664, 4.29123, 9.24907, 3.42271, 9.21019, 3.39678, 0.797203, -2.06064, 0.849054, -2.03471, 9.1713, -2.60508, 9.23611, -2.55323, 0.019423)
+depth = 0.1
+
+[node name="Secret" type="NavigationRegion3D" parent="." index="173"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113838, 0, 5.1971)
 navigation_mesh = SubResource("NavigationMesh_r78dj")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D2" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-polygon = PackedVector2Array(2.53467, -0.849121, -2.18784, -0.842185, -2.29186, 0.953892, 2.27115, 0.974696)
-depth = 0.1
+[node name="Underfloor" type="NavigationRegion3D" parent="." index="174"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.393, 0)
+navigation_mesh = SubResource("NavigationMesh_uedii")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="172"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0475347, 0)
-navigation_mesh = SubResource("NavigationMesh_vgfhy")
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D" index="0"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Underfloor" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 visible = false
 polygon = PackedVector2Array(-2.34335, -3.76524, 2.22349, -3.74323, 2.22349, -3.29205, 1.56322, -3.27004, 1.31012, -1.79545, 1.2661, 2.32021, 1.72829, 2.34222, 1.67326, 3.14554, 2.09143, 3.49768, 2.11344, 3.88284, 0.0996323, 3.80581, 0.264699, 1.09872, -0.890767, 1.14274, -0.879762, -2.81886, -2.34335, -2.85187)
 depth = 0.1
 
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="NavigationRegion3D/CSGPolygon3D" index="0"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Underfloor/CSGPolygon3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00594544, -0.00594512, 0.546477)
+operation = 2
+polygon = PackedVector2Array(-0.421763, -0.607736, 0.388689, -0.592444, 0.378494, 0.595198, -0.416666, 0.605393)
+
+[node name="Floor" type="NavigationRegion3D" parent="." index="175"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0475347, 0)
+navigation_mesh = SubResource("NavigationMesh_hhlcf")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Floor" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+polygon = PackedVector2Array(-2.34335, -3.76524, 2.22349, -3.74323, 2.22349, -3.29205, 1.56322, -3.27004, 1.31012, -1.79545, 1.2661, 2.32021, 1.72829, 2.34222, 1.67326, 3.14554, 2.09143, 3.49768, 2.11344, 3.88284, 0.0996323, 3.80581, 0.264699, 1.09872, -0.890767, 1.14274, -0.879762, -2.81886, -2.34335, -2.85187)
+depth = 0.1
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Floor/CSGPolygon3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.274, 0.017, 0)
 polygon = PackedVector2Array(0.148501, -3.69316, 0.148982, -5.1032, 1.26546, -5.09945, 1.10062, -3.75817)
 depth = 0.1
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D/CSGPolygon3D" index="1"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Floor/CSGPolygon3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00594544, -0.00594512, 0.546477)
 operation = 2
 polygon = PackedVector2Array(-0.421763, -0.607736, 0.388689, -0.592444, 0.378494, 0.595198, -0.416666, 0.605393)
+
+[editable path="Tablet"]

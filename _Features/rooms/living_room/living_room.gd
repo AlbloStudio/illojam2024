@@ -96,24 +96,34 @@ func _clothes_path(cloth: String, with_activable := true) -> String:
 
 func sit_on_chair() -> void:
 	switch_context(activables_while_sitting)
+	deactivate_tablet()
 
 
 func get_up_from_chair() -> void:
 	await get_tree().create_timer(2).timeout
 	reset_context()
+	reactivate_tablet()
 
 
-func lay_down() -> void:
+func lay_down(wall := false) -> void:
 	switch_to_none_mode()
-	switch_context(activables_while_laying)
+	if wall:
+		reset_closet()
+		reactivate_tablet()
+	else:
+		switch_context(activables_while_laying)
+		deactivate_tablet()
 
 
 func lay_up(wall := false) -> void:
 	switch_to_none_mode()
 	await get_tree().create_timer(2).timeout
-	reset_context()
 	if wall:
 		switch_context(activables_while_outside)
+		deactivate_tablet()
+	else:
+		reset_context()
+		reactivate_tablet()
 
 
 func switch_to_layed_mode() -> void:

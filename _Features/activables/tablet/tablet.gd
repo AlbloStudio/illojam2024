@@ -10,3 +10,7 @@ func say(to_say: Array[String], audio: String, delay: Array[float] = [3.0]) -> v
 
 func activate() -> void:
 	activable.reactivate()
+
+
+func deactivate() -> void:
+	activable.deactivate()

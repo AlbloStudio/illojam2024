@@ -36,3 +36,15 @@ func deactivate_activable(activable_name: String, delay := 0.0, forever := false
 
 func get_marker_position(marker_name: String) -> Vector3:
 	return get_node("Markers/" + marker_name).global_position
+
+
+func say_tablet(to_say: Array[String], audio: String, delay: Array[float] = [3.0]) -> void:
+	$Tablet.say(to_say, audio, delay)
+
+
+func reactivate_tablet() -> void:
+	$Tablet.activate()
+
+
+func deactivate_tablet() -> void:
+	$Tablet.deactivate()
