@@ -106,7 +106,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04906, 4.76837e-07, -7.2390
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.57292, 0, -2.0164)
 
 [node name="startMarker" type="Marker3D" parent="Markers" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91945, 0, -3.09237)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71217, 0, -2.40912)
 
 [node name="layInitMarker" type="Marker3D" parent="Markers" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85732, 0, -2.89713)
@@ -244,7 +244,7 @@ alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
 
 [node name="SofaActivableLayDown" parent="Activables" index="6" node_paths=PackedStringArray("enable_after", "deactivate_after", "initial_point", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, -3.34564, 0.00144672, -1.70709)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, -3.2486, 0.00144672, -1.71707)
 activable_name = "Lay down"
 activable_text = "Acostarse"
 enable_after = [NodePath("../SofaActivableLayUpWall"), NodePath("../SofaActivableLayUp")]
@@ -255,7 +255,7 @@ alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
 
 [node name="Normal" type="Marker3D" parent="Activables/SofaActivableLayDown" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.975605, 0, -0.0122255)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23915, 0, 0.0126084)
 
 [node name="SofaActivableLayDownWall" parent="Activables" index="7" node_paths=PackedStringArray("enable_after", "deactivate_after", "initial_point", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, -3.31861, 0.00144672, -2.18118)

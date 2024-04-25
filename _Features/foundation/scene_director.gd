@@ -57,7 +57,7 @@ func _unhandled_input(event):
 func _started() -> void:
 	player.collision_layer = 1
 	current_activable = living_room.get_tablet_activable()
-	_activable_activated("TabletLivingRoom", false, player)
+	# _activable_activated("TabletLivingRoom", false, player)
 
 
 func _activable_activated(activable_name: String, alternative: bool, initial_point: Node3D) -> void:

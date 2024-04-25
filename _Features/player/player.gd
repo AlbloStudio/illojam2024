@@ -84,6 +84,9 @@ func _calculate_animations() -> void:
 
 
 func _calculate_velocity(delta: float) -> void:
+	if state_machine.is_in_state([state_animating.name]):
+		return
+
 	var input_direction_3d = (
 		(nav_agent.get_next_path_position() - global_position).normalized()
 		if !nav_agent.is_navigation_finished()
@@ -98,6 +101,9 @@ func _calculate_velocity(delta: float) -> void:
 
 
 func _calculate_look_at() -> void:
+	if state_machine.is_in_state([state_animating.name]):
+		return
+
 	if velocity.normalized() == Vector3.ZERO:
 		return
 
@@ -174,9 +180,10 @@ func after_mirror_chair() -> void:
 
 func lay_down_on_sofa(new_position: Vector3, is_wall := false) -> void:
 	pixelation.rotation_degrees = Vector3(90, 90, 0)
+	global_rotation.y = get_target_ang(PI / 2)
+
 	if !is_wall:
 		global_position.x -= 0.9
-		global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
 		animate(
 			"LayingSofa",
 			new_position,
@@ -187,7 +194,6 @@ func lay_down_on_sofa(new_position: Vector3, is_wall := false) -> void:
 		)
 	else:
 		global_position.x += 0.9
-		global_rotation = Vector3(0, get_target_ang(PI / 2), 0)
 		animate(
 			"LayingSofaWall",
 			new_position,
@@ -350,9 +356,9 @@ func animate(
 	walking_target = null,
 	blend := -1.0
 ) -> void:
-	previous_position = global_position
-
 	state_machine.transition_to(state_animating.name)
+
+	previous_position = global_position
 
 	if walking_target != null:
 		create_tween().tween_property(self, "global_position", walking_target, 1.2)
