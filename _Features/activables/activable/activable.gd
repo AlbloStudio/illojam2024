@@ -15,6 +15,9 @@ class_name Activable extends Area3D
 @export var deactivate_after_seconds := 0.0
 @export var destroy_after_activation := false
 @export var initial_point: Node3D
+@export var sound: AudioStream
+@export var sound_delay := 0.0
+@export_range(-24, 6) var sound_volume := 0.0
 
 @export_category("Alternative")
 @export var activable_alternative_text := "..."
@@ -24,6 +27,9 @@ class_name Activable extends Area3D
 @export var alternative_deactivate_after_seconds := 0.0
 @export var alternative_destroy_after_activation := false
 @export var alternative_initial_point: Node3D
+@export var alternative_sound: AudioStream
+@export var alternative_sound_delay := 0.0
+@export_range(-24, 6) var alternative_sound_volume := 0.0
 
 @export var alternative := false:
 	set(value):
@@ -54,6 +60,7 @@ var is_in_context := true:
 @onready var label := $ActionLabel as ActivableLabel
 @onready var indicator := $Indicator as Node3D
 @onready var indicator_mesh := $Indicator/IndicatorMesh as MeshInstance3D
+@onready var audio_stream := $AudioStreamPlayer3D as AudioStreamPlayer3D
 
 
 func _ready() -> void:

@@ -26,11 +26,29 @@ emission = Color(0.956863, 0.956863, 0, 1)
 [node name="Activable" type="Area3D" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after")]
 collision_layer = 2
 script = ExtResource("1_s7sqx")
+activable_name = null
+times_to_unforbid = null
 time_to_alternate = 2.0
+initial_state = null
+transparency_distance = null
+activable_text = null
 enable_after = []
 deactivate_after = []
+enable_after_seconds = null
+deactivate_after_seconds = null
+destroy_after_activation = null
+sound_delay = null
+sound_volume = null
+activable_alternative_text = null
 alternative_enable_after = []
 alternative_deactivate_after = []
+alternative_enable_after_seconds = null
+alternative_deactivate_after_seconds = null
+alternative_destroy_after_activation = null
+alternative_sound_delay = null
+alternative_sound_volume = null
+alternative = null
+forbidden = null
 
 [node name="ActionLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.207198, 0, -0.626201)
@@ -72,6 +90,8 @@ layers = 4
 mesh = SubResource("PlaneMesh_rv4fl")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_1ydsu")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
 [connection signal="input_event" from="." to="." method="_on_activable_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

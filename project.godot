@@ -19,6 +19,15 @@ config/icon="res://icon.png"
 
 SignalBus="*res://_Features/foundation/signal_bus.gd"
 
+[debug]
+
+gdscript/warnings/unassigned_variable=2
+gdscript/warnings/unassigned_variable_op_assign=2
+gdscript/warnings/function_used_as_property=2
+gdscript/warnings/unsafe_void_return=2
+gdscript/warnings/redundant_static_unload=2
+gdscript/warnings/confusable_identifier=2
+
 [display]
 
 window/size/viewport_width=1920

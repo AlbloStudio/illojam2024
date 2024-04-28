@@ -2,7 +2,7 @@ class_name ActivableStateActivated extends ActivableState
 
 
 func enter(_msg := {}) -> void:
-	SignalBus.activable_activated_done.connect(deactivate, CONNECT_ONE_SHOT)
+	SignalBus.activable_activated_done.connect(activated_done, CONNECT_ONE_SHOT)
 
 	var initial_point = (
 		state_owner.alternative_initial_point
@@ -15,9 +15,32 @@ func enter(_msg := {}) -> void:
 	)
 
 
-func deactivate(activable_name: String) -> void:
+func activated_done(activable_name: String) -> void:
 	if activable_name != state_owner.activable_name:
 		return
+
+	var audio_to_play = (
+		state_owner.alternative_sound if state_owner.alternative else state_owner.sound
+	)
+
+	if audio_to_play:
+		var time_to_wait = (
+			state_owner.alternative_sound_delay
+			if state_owner.alternative
+			else state_owner.sound_delay
+		)
+
+		var volume_to_set = (
+			state_owner.alternative_sound_volume
+			if state_owner.alternative
+			else state_owner.sound_volume
+		)
+
+		(
+			create_tween()
+			. tween_callback(play_audio.bind(audio_to_play, volume_to_set))
+			. set_delay(time_to_wait)
+		)
 
 	(
 		create_tween()
@@ -26,3 +49,8 @@ func deactivate(activable_name: String) -> void:
 		)
 		. set_delay(0.3)
 	)
+
+func play_audio(audio_to_play: AudioStream, volume: float) -> void:
+	state_owner.audio_stream.volume_db = volume
+	state_owner.audio_stream.stream = audio_to_play
+	state_owner.audio_stream.play()
