@@ -6,6 +6,7 @@ class_name Activable extends Area3D
 @export var time_to_alternate := 3.0
 @export var initial_state := "Idle"
 @export var transparency_distance := 4.0
+@export var vibration_distance := 3.0
 
 @export_category("Normal")
 @export var activable_text := "..."
@@ -51,13 +52,16 @@ var is_in_context := true:
 		else:
 			visible = true
 
+var time_passed := 0.0
+var distance_from_indicator := 0.0
+
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_deactivated := $FiniteStateMachine/Deactivated as ActivableState
 @onready var state_activated := $FiniteStateMachine/Activated as ActivableState
 @onready var state_visible := $FiniteStateMachine/Visible as ActivableState
 @onready var state_idle := $FiniteStateMachine/Idle as ActivableState
 @onready var collision_shape_3d := $CollisionShape3D as CollisionShape3D
-@onready var label := $ActionLabel as ActivableLabel
+@onready var label := $ActionLabelMesh as ActivableLabel
 @onready var indicator := $Indicator as Node3D
 @onready var indicator_mesh := $Indicator/IndicatorMesh as MeshInstance3D
 @onready var audio_stream := $AudioStreamPlayer3D as AudioStreamPlayer3D
@@ -67,8 +71,29 @@ func _ready() -> void:
 	if initial_state != "":
 		state_machine.forced_initial_state = initial_state
 
-	label.outline_modulate = label.get_color(false, alternative, forbidden)
 	reset_label()
+
+
+func _process(delta):
+	time_passed += delta
+
+	indicator_mesh.position.z = (
+		cos(time_passed * 10) * minf(distance_from_indicator, vibration_distance) * 0.02
+	)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		var cursor_placement := MouseExtends.get_mouse_pos_in_floor(event, get_viewport())
+		distance_from_indicator = cursor_placement.distance_to(
+			Vector3(indicator.global_position.x, 0, indicator.global_position.z)
+		)
+
+		var transparency = (
+			1 - (maxf(0.0, transparency_distance - distance_from_indicator) / transparency_distance)
+		)
+
+		indicator_mesh.transparency = transparency
 
 
 func change_current_activable() -> void:
@@ -114,7 +139,7 @@ func set_label_colors() -> void:
 		return
 
 	var should_be_visible = state_machine.is_in_state([state_visible.name])
-	label.modulate = label.get_color(should_be_visible, alternative, forbidden)
+	label.set_current_color(should_be_visible, alternative, forbidden)
 
 
 func set_label_text() -> void:
@@ -123,7 +148,7 @@ func set_label_text() -> void:
 
 	var label_prefix = "🚫 " if forbidden else ""
 	var label_text = activable_alternative_text if alternative else activable_text
-	label.text = label_prefix + label_text
+	label.set_text(label_prefix + label_text)
 
 
 func _on_activable_input_event(
