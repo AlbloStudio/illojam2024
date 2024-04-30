@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=46 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
@@ -10,9 +10,52 @@
 [ext_resource type="AudioStream" uid="uid://gusbnfhicbwf" path="res://_Features/activables/sounds/sit.mp3" id="7_jdxe8"]
 [ext_resource type="Texture2D" uid="uid://bnhb1b0b3nb4p" path="res://_Features/rooms/living_room/pennywise.png" id="8_0j6pt"]
 [ext_resource type="AudioStream" uid="uid://6aekogm3d1dx" path="res://_Features/activables/sounds/getup.mp3" id="8_3bltq"]
+[ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="8_ku6ao"]
 [ext_resource type="AudioStream" uid="uid://be4xbnwtbfrbp" path="res://_Features/activables/sounds/layup.mp3" id="9_ewa22"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="9_r4vxe"]
+[ext_resource type="Shader" path="res://_Features/activables/activable/activable.gdshader" id="9_xb0qx"]
+[ext_resource type="Texture2D" uid="uid://cr353p7r7q4rc" path="res://_Features/UI/noise.png" id="10_84g48"]
 [ext_resource type="AudioStream" uid="uid://cnx7mcaw8v4vm" path="res://_Features/activables/sounds/lay_down.wav" id="10_h0rxo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3j5al"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_xb0qx")
+shader_parameter/albedo = Color(1, 1, 0.698039, 1)
+shader_parameter/emission = Color(1, 1, 0.698039, 1)
+shader_parameter/ratio = 0.1
+shader_parameter/threshold = 0.655
+shader_parameter/noise_tex = ExtResource("10_84g48")
+
+[sub_resource type="TextMesh" id="TextMesh_rh427"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_3j5al")
+text = "Probando cosillas"
+font = ExtResource("8_ku6ao")
+font_size = 30
+horizontal_alignment = 0
+vertical_alignment = 0
+depth = 0.001
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l0ww1"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_xb0qx")
+shader_parameter/albedo = Color(1, 1, 0.698039, 1)
+shader_parameter/emission = Color(1, 1, 0.698039, 1)
+shader_parameter/ratio = 0.1
+shader_parameter/threshold = 0.655
+shader_parameter/noise_tex = ExtResource("10_84g48")
+
+[sub_resource type="TextMesh" id="TextMesh_bw2d6"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_l0ww1")
+text = "Probando cosillas"
+font = ExtResource("8_ku6ao")
+font_size = 30
+horizontal_alignment = 0
+vertical_alignment = 0
+depth = 0.001
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iji4e"]
 size = Vector3(1.52648, 2.47904, 0.102234)
@@ -128,27 +171,14 @@ transform = Transform3D(0.990566, 0, 0, 0, 1.02941, 0, 0, 0, 1, 3.153, 0.0435573
 transform = Transform3D(1.42, 0, 0, 0, 1.42, 0, 0, 0, 1.42, -0.756403, 0, 3.22266)
 
 [node name="Activable" parent="Clothes/tshirt" index="1" node_paths=PackedStringArray("initial_point", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(0.704, 0, 0, 0, 0.704, 0, 0, 0, 0.704, -0.0496322, 0, -0.052741)
+transform = Transform3D(0.704, 0, 0, 0, 0.704, 0, 0, 0, 0.704, -0.0496322, 0.0853533, -0.052741)
 activable_name = "Put on T-Shirt"
-times_to_unforbid = 5
 initial_state = "Deactivated"
-transparency_distance = 4.0
 activable_text = "Ponerse camiseta"
-enable_after_seconds = 2.0
-deactivate_after_seconds = 0.0
-destroy_after_activation = false
 initial_point = NodePath("Normal")
-sound_delay = 0.0
-sound_volume = 0.0
 activable_alternative_text = "Quitarse camiseta"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
-alternative_deactivate_after_seconds = 0.0
-alternative_destroy_after_activation = false
-alternative_sound_delay = 0.0
-alternative_sound_volume = 0.0
-alternative = false
-forbidden = false
 
 [node name="Normal" type="Marker3D" parent="Clothes/tshirt/Activable" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.352512, -0.0621121, -0.288263)
@@ -157,27 +187,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.352512, -0.0621121, -0.288
 transform = Transform3D(1.69, 0, 0, 0, 1.69, 0, 0, 0, 1.69, -4.21612, 0, 2.34929)
 
 [node name="Activable" parent="Clothes/pants" index="1" node_paths=PackedStringArray("initial_point", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(0.592, 0, 0, 0, 0.592, 0, 0, 0, 0.592, -0.00299996, 0, -0.072)
+transform = Transform3D(0.592, 0, 0, 0, 0.592, 0, 0, 0, 0.592, -0.0029999, 0.0415017, -0.072)
 activable_name = "Put on Pants"
-times_to_unforbid = 5
 initial_state = "Deactivated"
-transparency_distance = 4.0
 activable_text = "Ponerse pantalones"
-enable_after_seconds = 2.0
-deactivate_after_seconds = 0.0
-destroy_after_activation = false
 initial_point = NodePath("Normal")
-sound_delay = 0.0
-sound_volume = 0.0
 activable_alternative_text = "Quitarse pantalones"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
-alternative_deactivate_after_seconds = 0.0
-alternative_destroy_after_activation = false
-alternative_sound_delay = 0.0
-alternative_sound_volume = 0.0
-alternative = false
-forbidden = false
 
 [node name="Normal" type="Marker3D" parent="Clothes/pants/Activable" index="4"]
 transform = Transform3D(1.68919, 0, 0, 0, 1.68919, 0, 0, 0, 1.68919, 0.0846174, 0, -0.0851851)
@@ -186,27 +203,14 @@ transform = Transform3D(1.68919, 0, 0, 0, 1.68919, 0, 0, 0, 1.68919, 0.0846174, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61629, 0, 2.17255)
 
 [node name="Activable" parent="Clothes/underwear" index="1" node_paths=PackedStringArray("initial_point", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.003, 0, -0.072)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.0029999, 0.06679, -0.072)
 activable_name = "Put on Underwear"
-times_to_unforbid = 5
 initial_state = "Deactivated"
-transparency_distance = 4.0
 activable_text = "Ponerse calzoncillos"
-enable_after_seconds = 2.0
-deactivate_after_seconds = 0.0
-destroy_after_activation = false
 initial_point = NodePath("Normal")
-sound_delay = 0.0
-sound_volume = 0.0
 activable_alternative_text = "Quitarse calzoncillos"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
-alternative_deactivate_after_seconds = 0.0
-alternative_destroy_after_activation = false
-alternative_sound_delay = 0.0
-alternative_sound_volume = 0.0
-alternative = false
-forbidden = false
 
 [node name="Normal" type="Marker3D" parent="Clothes/underwear/Activable" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000367045, 0, -0.0508552)
@@ -214,29 +218,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000367045, 0, -0.0508552)
 [node name="Activables" type="Node3D" parent="." index="2"]
 
 [node name="ChairActivableSit" parent="Activables" index="0" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13588, 1.43051e-06, 0.33251)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02638, 0.799957, 0.370289)
 activable_name = "Sit"
-times_to_unforbid = 5
-initial_state = "Idle"
-transparency_distance = 4.0
 activable_text = "Sentarse en taburete"
 enable_after = [NodePath("../ChairActivableGetUp")]
 enable_after_seconds = 2.5
-deactivate_after_seconds = 0.0
-destroy_after_activation = false
 initial_point = NodePath("Normal")
 sound = ExtResource("7_jdxe8")
-sound_delay = 0.0
 sound_volume = 1.0
 activable_alternative_text = "Hablar con taburete"
 alternative_enable_after = [NodePath(".")]
-alternative_enable_after_seconds = 2.0
-alternative_deactivate_after_seconds = 0.0
-alternative_destroy_after_activation = false
-alternative_sound_delay = 0.0
-alternative_sound_volume = 0.0
-alternative = false
-forbidden = false
+
+[node name="ActionLabelMesh" parent="Activables/ChairActivableSit" index="2"]
+mesh = SubResource("TextMesh_rh427")
 
 [node name="Normal" type="Marker3D" parent="Activables/ChairActivableSit" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190939, 0, -0.0727046)
@@ -244,50 +238,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190939, 0, -0.0727046)
 [node name="ChairActivableGetUp" parent="Activables" index="1" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7562, 2.38418e-06, 0.458178)
 activable_name = "GetUp"
-times_to_unforbid = 5
 initial_state = "Deactivated"
-transparency_distance = 4.0
 activable_text = "Levantarse del taburete"
 enable_after = [NodePath("../ChairActivableSit")]
 enable_after_seconds = 2.5
-deactivate_after_seconds = 0.0
-destroy_after_activation = false
 sound = ExtResource("8_3bltq")
-sound_delay = 0.0
 sound_volume = -10.0
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
-alternative_enable_after_seconds = 2.0
-alternative_deactivate_after_seconds = 0.0
-alternative_destroy_after_activation = false
-alternative_sound_delay = 0.0
-alternative_sound_volume = 0.0
-alternative = false
-forbidden = false
 
 [node name="ClosetActivable" parent="Activables" index="2" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_initial_point") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 2.02548, 0.000723839, -4.01017)
 activable_name = "Get Naked"
-times_to_unforbid = 5
 initial_state = "Deactivated"
-transparency_distance = 4.0
 activable_text = "Desnudarse"
 enable_after = [NodePath("../../Clothes/tshirt/Activable"), NodePath("../../Clothes/pants/Activable"), NodePath("../../Clothes/underwear/Activable")]
 enable_after_seconds = 0.2
-deactivate_after_seconds = 0.0
-destroy_after_activation = false
 initial_point = NodePath("Normal")
-sound_delay = 0.0
-sound_volume = 0.0
 activable_alternative_text = "Salir de casa por el armario"
-alternative_enable_after_seconds = 2.0
-alternative_deactivate_after_seconds = 0.0
-alternative_destroy_after_activation = false
 alternative_initial_point = NodePath("Alternative")
-alternative_sound_delay = 0.0
-alternative_sound_volume = 0.0
-alternative = false
-forbidden = false
 
 [node name="Alternative" type="Marker3D" parent="Activables/ClosetActivable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0457621, 0, 0.359463)
@@ -296,132 +265,71 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0457621, 0, 0.359463)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022881, 0, 0.179731)
 
 [node name="PosterActivable" parent="Activables" index="3" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00211, 0.898899, 2.14785)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82014, 0.898899, 2.14785)
 activable_name = "ReadPoster"
-times_to_unforbid = 5
-initial_state = "Idle"
-transparency_distance = 4.0
 activable_text = "Leer"
 enable_after = [NodePath(".")]
-enable_after_seconds = 2.0
-deactivate_after_seconds = 0.0
-destroy_after_activation = false
-sound_delay = 0.0
-sound_volume = 0.0
 activable_alternative_text = "Contemplar"
 alternative_enable_after = [NodePath(".")]
-alternative_enable_after_seconds = 2.0
-alternative_deactivate_after_seconds = 0.0
-alternative_destroy_after_activation = false
-alternative_sound_delay = 0.0
-alternative_sound_volume = 0.0
-alternative = false
-forbidden = false
 
 [node name="SofaActivableLayUpWall" parent="Activables" index="4" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999992, -5.1414, 0.0057869, -2.06969)
 activable_name = "Lay up wall"
-times_to_unforbid = 5
 initial_state = "Deactivated"
-transparency_distance = 4.0
 activable_text = "Levantarse"
 enable_after = [NodePath("../SofaActivableLayDownWall")]
 deactivate_after = [NodePath("../SofaActivableLayUp"), NodePath("."), NodePath("../SofaActivableLayDown")]
 enable_after_seconds = 4.0
-deactivate_after_seconds = 0.0
-destroy_after_activation = false
 sound = ExtResource("9_ewa22")
-sound_delay = 0.0
-sound_volume = 0.0
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
-alternative_deactivate_after_seconds = 0.0
-alternative_destroy_after_activation = false
-alternative_sound_delay = 0.0
-alternative_sound_volume = 0.0
-alternative = false
 forbidden = true
 
 [node name="SofaActivableLayUp" parent="Activables" index="5" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(0.999929, 0.00822848, -0.00857609, -0.00821887, 0.999966, 0.00115449, 0.00858533, -0.00108389, 0.999959, -2.18962, 0.00289345, -2.15886)
+transform = Transform3D(0.999929, 0.00822848, -0.00857609, -0.00821887, 0.999966, 0.00115449, 0.00858533, -0.00108389, 0.999959, -2.18962, 0.122838, -2.15886)
 activable_name = "Lay up"
-times_to_unforbid = 5
 initial_state = "Deactivated"
-transparency_distance = 4.0
 activable_text = "Levantarse"
 enable_after = [NodePath("../SofaActivableLayDown")]
 deactivate_after = [NodePath("../SofaActivableLayUpWall"), NodePath("."), NodePath("../SofaActivableLayDownWall")]
 enable_after_seconds = 4.0
-deactivate_after_seconds = 0.0
-destroy_after_activation = false
 sound = ExtResource("9_ewa22")
-sound_delay = 0.0
-sound_volume = 0.0
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
-alternative_deactivate_after_seconds = 0.0
-alternative_destroy_after_activation = false
-alternative_sound_delay = 0.0
-alternative_sound_volume = 0.0
-alternative = false
-forbidden = false
 
 [node name="SofaActivableLayDown" parent="Activables" index="6" node_paths=PackedStringArray("enable_after", "deactivate_after", "initial_point", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, -3.2486, 0.00144672, -1.71707)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, -3.2486, 0.62082, -1.71707)
 activable_name = "Lay down"
-times_to_unforbid = 5
-initial_state = "Idle"
-transparency_distance = 4.0
 activable_text = "Acostarse"
 enable_after = [NodePath("../SofaActivableLayUpWall"), NodePath("../SofaActivableLayUp")]
 deactivate_after = [NodePath("../SofaActivableLayDownWall"), NodePath(".")]
-enable_after_seconds = 2.0
-deactivate_after_seconds = 0.0
-destroy_after_activation = false
 initial_point = NodePath("Normal")
 sound = ExtResource("10_h0rxo")
-sound_delay = 0.0
-sound_volume = 0.0
 activable_alternative_text = "Girar el sofá con la mente"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
-alternative_deactivate_after_seconds = 0.0
-alternative_destroy_after_activation = false
-alternative_sound_delay = 0.0
-alternative_sound_volume = 0.0
-alternative = false
-forbidden = false
+
+[node name="ActionLabelMesh" parent="Activables/SofaActivableLayDown" index="2"]
+mesh = SubResource("TextMesh_bw2d6")
 
 [node name="Normal" type="Marker3D" parent="Activables/SofaActivableLayDown" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23915, 0, 0.0126084)
 
 [node name="SofaActivableLayDownWall" parent="Activables" index="7" node_paths=PackedStringArray("enable_after", "deactivate_after", "initial_point", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, -3.31861, 0.00144672, -2.18118)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, -3.24679, 0.613559, -1.74217)
 activable_name = "Lay down wall"
-times_to_unforbid = 5
 initial_state = "Deactivated"
-transparency_distance = 4.0
 activable_text = "Acostarse"
 enable_after = [NodePath("../SofaActivableLayUpWall"), NodePath("../SofaActivableLayUp")]
 deactivate_after = [NodePath("../SofaActivableLayDown"), NodePath(".")]
 enable_after_seconds = 2.5
-deactivate_after_seconds = 0.0
-destroy_after_activation = false
 initial_point = NodePath("Normal")
 sound = ExtResource("10_h0rxo")
-sound_delay = 0.0
-sound_volume = 0.0
 activable_alternative_text = "Girar el sofá con la mente"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
-alternative_deactivate_after_seconds = 0.0
-alternative_destroy_after_activation = false
-alternative_sound_delay = 0.0
-alternative_sound_volume = 0.0
-alternative = false
-forbidden = false
 
 [node name="Normal" type="Marker3D" parent="Activables/SofaActivableLayDownWall" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59539, 0, 0.165763)
@@ -687,23 +595,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 [node name="Tablet" parent="Tablet" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108389, 0, 0.137398)
 activable_name = "TabletLivingRoom"
-times_to_unforbid = 5
-initial_state = "Idle"
-transparency_distance = 4.0
 activable_text = "Activar"
-enable_after_seconds = 2.0
-deactivate_after_seconds = 0.0
-destroy_after_activation = false
-sound_delay = 0.0
-sound_volume = 0.0
-activable_alternative_text = "..."
-alternative_enable_after_seconds = 2.0
-alternative_deactivate_after_seconds = 0.0
-alternative_destroy_after_activation = false
-alternative_sound_delay = 0.0
-alternative_sound_volume = 0.0
-alternative = false
-forbidden = false
 
+[editable path="Activables/ChairActivableSit"]
+[editable path="Activables/SofaActivableLayDown"]
 [editable path="MirrorBarrier"]
 [editable path="Tablet"]

@@ -65,6 +65,8 @@ var distance_from_indicator := 0.0
 @onready var indicator := $Indicator as Node3D
 @onready var indicator_mesh := $Indicator/IndicatorMesh as MeshInstance3D
 @onready var audio_stream := $AudioStreamPlayer3D as AudioStreamPlayer3D
+@onready var activating_light := $ActivatingLight as OmniLight3D
+@onready var activating_light_label := $ActivatingLightLabel as OmniLight3D
 
 
 func _ready() -> void:
@@ -94,6 +96,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		)
 
 		indicator_mesh.transparency = transparency
+
+
+func activate_lights(activate: bool) -> void:
+	activating_light.visible = activate
+	activating_light_label.visible = activate
 
 
 func change_current_activable() -> void:

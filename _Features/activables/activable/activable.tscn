@@ -56,6 +56,27 @@ deactivate_after = []
 alternative_enable_after = []
 alternative_deactivate_after = []
 
+[node name="ActivatingLightLabel" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0195749, 0.20792, -0.00877725)
+visible = false
+light_color = Color(0.568627, 0.619608, 0.407843, 1)
+light_energy = 0.4
+light_indirect_energy = 2.592
+light_specular = 0.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.717
+
+[node name="ActivatingLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.352766, 0)
+visible = false
+light_color = Color(0.568627, 0.619608, 0.407843, 1)
+light_energy = 0.6
+light_specular = 0.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 1.0
+
 [node name="ActionLabelMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.179912, 5.96046e-08, -0.5904)
 mesh = SubResource("TextMesh_l0y1l")

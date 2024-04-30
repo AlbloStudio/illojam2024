@@ -14,6 +14,12 @@ func enter(_msg := {}) -> void:
 		state_owner.activable_name, state_owner.alternative, initial_point
 	)
 
+	state_owner.activate_lights(true)
+
+
+func exit() -> void:
+	state_owner.activate_lights(false)
+
 
 func activated_done(activable_name: String) -> void:
 	if activable_name != state_owner.activable_name:

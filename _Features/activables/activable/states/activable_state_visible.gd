@@ -17,6 +17,11 @@ func enter(_msg := {}) -> void:
 	state_owner.indicator.visible = true
 	state_owner.label.make_visible(true, state_owner.alternative, state_owner.forbidden)
 	times_pressed = 0
+	state_owner.activate_lights(true)
+
+
+func exit() -> void:
+	state_owner.activate_lights(false)
 
 
 func update(delta: float) -> void:
