@@ -14,9 +14,7 @@ func enter(_msg := {}) -> void:
 		state_owner.activable_name, state_owner.alternative, initial_point
 	)
 
-	state_owner.activate_lights(true)
-	state_owner.game_feel_audio.stream = state_owner.correct_activated_sfx
-	state_owner.game_feel_audio.play()
+	state_owner.activated_game_feel()
 
 
 func exit() -> void:

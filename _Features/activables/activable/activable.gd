@@ -12,6 +12,15 @@ class_name Activable extends Area3D
 @export var forbidden_activated_sfx: AudioStream
 @export var alternative_activated_sfx: AudioStream
 
+@export var alternative := false:
+	set(value):
+		alternative = value
+		reset_label()
+
+@export var forbidden := false:
+	set(value):
+		forbidden = value
+		reset_label()
 
 @export_category("Normal")
 @export var activable_text := "..."
@@ -37,16 +46,6 @@ class_name Activable extends Area3D
 @export var alternative_sound_delay := 0.0
 @export_range(-24, 6) var alternative_sound_volume := 0.0
 
-@export var alternative := false:
-	set(value):
-		alternative = value
-		reset_label()
-
-@export var forbidden := false:
-	set(value):
-		forbidden = value
-		reset_label()
-
 var player: Player
 var is_in_context := true:
 	set(value):
@@ -59,6 +58,8 @@ var is_in_context := true:
 
 var time_passed := 0.0
 var distance_from_indicator := 0.0
+var original_position_indicator: Vector3
+var original_position_label: Vector3
 
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_deactivated := $FiniteStateMachine/Deactivated as ActivableState
@@ -73,13 +74,20 @@ var distance_from_indicator := 0.0
 @onready var game_feel_audio := $GameFeelAudio as AudioStreamPlayer3D
 @onready var activating_light := $ActivatingLight as OmniLight3D
 @onready var activating_light_label := $ActivatingLightLabel as OmniLight3D
+@onready var animation_player := $AnimationPlayer as ActivableAnimations
 
 
 func _ready() -> void:
 	if initial_state != "":
 		state_machine.forced_initial_state = initial_state
 
+	original_position_indicator = indicator.position as Vector3
+	original_position_label = label.position as Vector3
+
 	reset_label()
+
+	animation_player.do_the_shake.connect(do_the_shake)
+	animation_player.stop_shaking.connect(stop_shaking)
 
 
 func _process(delta):
@@ -104,9 +112,52 @@ func _unhandled_input(event: InputEvent) -> void:
 		indicator_mesh.transparency = transparency
 
 
+func calculate_next_pos(node_position: Vector3, node_original_position: Vector3) -> Vector3:
+	var pos_margin := 0.2
+
+	var x = node_position.x + randf_range(-pos_margin, pos_margin)
+	var y = node_position.y + randf_range(-pos_margin, pos_margin)
+	var z = node_position.z + randf_range(-pos_margin, pos_margin)
+
+	var x_clamped := clampf(
+		x, node_original_position.x - pos_margin, node_original_position.x + pos_margin
+	)
+	var y_clamped := clampf(
+		y, node_original_position.y - pos_margin, node_original_position.y + pos_margin
+	)
+	var z_clamped := clampf(
+		z, node_original_position.z - pos_margin, node_original_position.z + pos_margin
+	)
+
+	return Vector3(x_clamped, y_clamped, z_clamped)
+
+
+func do_the_shake() -> void:
+	indicator.position = calculate_next_pos(indicator.position, original_position_indicator)
+	label.position = calculate_next_pos(label.position, original_position_label)
+
+
+func stop_shaking() -> void:
+	indicator.position = original_position_indicator
+	label.position = original_position_label
+
+
 func activate_lights(activate: bool) -> void:
 	activating_light.visible = activate
 	activating_light_label.visible = activate
+
+
+func activated_game_feel() -> void:
+	activate_lights(true)
+	animation_player.play("activated")
+	game_feel_audio.stream = correct_activated_sfx
+	game_feel_audio.play()
+
+
+func forbidden_game_feel() -> void:
+	animation_player.play_forbidden()
+	game_feel_audio.stream = forbidden_activated_sfx
+	game_feel_audio.play()
 
 
 func change_current_activable() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ctv4r5oi50oy1"]
+[gd_scene load_steps=23 format=3 uid="uid://ctv4r5oi50oy1"]
 
 [ext_resource type="Script" path="res://_Features/activables/activable/activable.gd" id="1_s7sqx"]
 [ext_resource type="AudioStream" uid="uid://dsn2yb5o0irsx" path="res://_Features/UI/activate.wav" id="2_6oowg"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ctelq83bfqylp" path="res://_Features/UI/Interaction Circle.svg" id="9_drbhc"]
 [ext_resource type="Shader" path="res://_Features/activables/activable/activable.gdshader" id="9_jcagm"]
 [ext_resource type="Texture2D" uid="uid://cr353p7r7q4rc" path="res://_Features/UI/noise.png" id="10_ojqgf"]
+[ext_resource type="Script" path="res://_Features/activables/activable/activable_animations.gd" id="15_l7p58"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_88m2b"]
 resource_local_to_scene = true
@@ -50,7 +51,23 @@ shader_parameter/threshold = 0.53
 shader_parameter/texture_albedo = ExtResource("9_drbhc")
 shader_parameter/noise_tex = ExtResource("10_ojqgf")
 
+[sub_resource type="Animation" id="Animation_b3ctj"]
+resource_name = "activated"
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.1, 1, 1.17, 1.17, 1.17, 0.149939, 1, 1.17, 1.17, 1.17, 0.4, 1, 1, 1, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n3bo8"]
+_data = {
+"activated": SubResource("Animation_b3ctj")
+}
+
 [node name="Activable" type="Area3D" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after", "alternative_deactivate_after")]
+transform = Transform3D(1.07754, 0, 0, 0, 1.07754, 0, 0, 0, 1.07754, 0, 0, 0)
 collision_layer = 2
 script = ExtResource("1_s7sqx")
 time_to_alternate = 2.0
@@ -123,6 +140,12 @@ bus = &"SFX"
 [node name="GameFeelAudio" type="AudioStreamPlayer3D" parent="."]
 volume_db = -3.0
 bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n3bo8")
+}
+script = ExtResource("15_l7p58")
 
 [connection signal="input_event" from="." to="." method="_on_activable_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

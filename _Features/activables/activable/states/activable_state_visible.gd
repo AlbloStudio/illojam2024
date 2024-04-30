@@ -64,6 +64,4 @@ func _check_should_activate() -> void:
 	if should_transition:
 		SignalBus.should_activate.emit(state_owner)
 	elif state_owner.forbidden:
-		state_owner.game_feel_audio.stream = state_owner.forbidden_activated_sfx
-		state_owner.game_feel_audio.play()
-
+		state_owner.forbidden_game_feel()
