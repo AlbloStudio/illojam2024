@@ -35,8 +35,7 @@ func update(delta: float) -> void:
 			is_alternative_set = true
 			time_pressing = 0.0
 
-			state_owner.game_feel_audio.stream = state_owner.alternative_activated_sfx
-			state_owner.game_feel_audio.play()
+			state_owner.alternative_game_feel()
 
 
 func handle_input(event: InputEvent) -> void:

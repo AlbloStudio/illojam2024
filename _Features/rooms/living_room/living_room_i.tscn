@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=44 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
@@ -17,26 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://cr353p7r7q4rc" path="res://_Features/UI/noise.png" id="10_84g48"]
 [ext_resource type="AudioStream" uid="uid://cnx7mcaw8v4vm" path="res://_Features/activables/sounds/lay_down.wav" id="10_h0rxo"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3j5al"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("9_xb0qx")
-shader_parameter/albedo = Color(1, 1, 0.698039, 1)
-shader_parameter/emission = Color(1, 1, 0.698039, 1)
-shader_parameter/ratio = 0.1
-shader_parameter/threshold = 0.655
-shader_parameter/noise_tex = ExtResource("10_84g48")
-
-[sub_resource type="TextMesh" id="TextMesh_rh427"]
-resource_local_to_scene = true
-material = SubResource("ShaderMaterial_3j5al")
-text = "Probando cosillas"
-font = ExtResource("8_ku6ao")
-font_size = 30
-horizontal_alignment = 0
-vertical_alignment = 0
-depth = 0.001
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l0ww1"]
 resource_local_to_scene = true
 render_priority = 0
@@ -45,6 +25,11 @@ shader_parameter/albedo = Color(1, 1, 0.698039, 1)
 shader_parameter/emission = Color(1, 1, 0.698039, 1)
 shader_parameter/ratio = 0.1
 shader_parameter/threshold = 0.655
+shader_parameter/radius = 0.5
+shader_parameter/color = null
+shader_parameter/scale = 32.0
+shader_parameter/power = 9.0
+shader_parameter/voronoi_active = false
 shader_parameter/noise_tex = ExtResource("10_84g48")
 
 [sub_resource type="TextMesh" id="TextMesh_bw2d6"]
@@ -220,6 +205,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000367045, 0, -0.0508552)
 [node name="ChairActivableSit" parent="Activables" index="0" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02638, 0.799957, 0.370289)
 activable_name = "Sit"
+forbidden = true
 activable_text = "Sentarse en taburete"
 enable_after = [NodePath("../ChairActivableGetUp")]
 enable_after_seconds = 2.5
@@ -228,10 +214,6 @@ sound = ExtResource("7_jdxe8")
 sound_volume = 1.0
 activable_alternative_text = "Hablar con taburete"
 alternative_enable_after = [NodePath(".")]
-forbidden = true
-
-[node name="ActionLabelMesh" parent="Activables/ChairActivableSit" index="2"]
-mesh = SubResource("TextMesh_rh427")
 
 [node name="Normal" type="Marker3D" parent="Activables/ChairActivableSit" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190939, 0, -0.0727046)
@@ -277,6 +259,7 @@ alternative_enable_after = [NodePath(".")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999992, -5.1414, 0.0057869, -2.06969)
 activable_name = "Lay up wall"
 initial_state = "Deactivated"
+forbidden = true
 activable_text = "Levantarse"
 enable_after = [NodePath("../SofaActivableLayDownWall")]
 deactivate_after = [NodePath("../SofaActivableLayUp"), NodePath("."), NodePath("../SofaActivableLayDown")]
@@ -285,7 +268,6 @@ sound = ExtResource("9_ewa22")
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
-forbidden = true
 
 [node name="SofaActivableLayUp" parent="Activables" index="5" node_paths=PackedStringArray("enable_after", "deactivate_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(0.999929, 0.00822848, -0.00857609, -0.00821887, 0.999966, 0.00115449, 0.00858533, -0.00108389, 0.999959, -2.18962, 0.122838, -2.15886)
@@ -598,7 +580,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108389, 0, 0.137398)
 activable_name = "TabletLivingRoom"
 activable_text = "Activar"
 
-[editable path="Activables/ChairActivableSit"]
 [editable path="Activables/SofaActivableLayDown"]
 [editable path="MirrorBarrier"]
 [editable path="Tablet"]

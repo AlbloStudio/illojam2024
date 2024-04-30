@@ -24,6 +24,11 @@ shader_parameter/albedo = Color(1, 1, 0.698039, 1)
 shader_parameter/emission = Color(1, 1, 0.698039, 1)
 shader_parameter/ratio = 0.1
 shader_parameter/threshold = 0.655
+shader_parameter/radius = 0.0
+shader_parameter/color = null
+shader_parameter/scale = 32.0
+shader_parameter/power = 9.0
+shader_parameter/voronoi_active = false
 shader_parameter/noise_tex = ExtResource("10_ojqgf")
 
 [sub_resource type="TextMesh" id="TextMesh_l0y1l"]
@@ -39,17 +44,25 @@ depth = 0.001
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rkc3m"]
 height = 0.1
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_rv4fl"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3jan2"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("9_jcagm")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/emission = Color(0.956863, 0.956863, 0, 1)
+shader_parameter/emission = Color(0.941248, 0.921513, 0.858703, 1)
 shader_parameter/ratio = 1.0
 shader_parameter/threshold = 0.53
+shader_parameter/radius = 0.0
+shader_parameter/color = null
+shader_parameter/scale = 32.0
+shader_parameter/power = 9.0
+shader_parameter/voronoi_active = false
 shader_parameter/texture_albedo = ExtResource("9_drbhc")
 shader_parameter/noise_tex = ExtResource("10_ojqgf")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rv4fl"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_3jan2")
 
 [sub_resource type="Animation" id="Animation_b3ctj"]
 resource_name = "activated"
@@ -70,14 +83,33 @@ _data = {
 transform = Transform3D(1.07754, 0, 0, 0, 1.07754, 0, 0, 0, 1.07754, 0, 0, 0)
 collision_layer = 2
 script = ExtResource("1_s7sqx")
+activable_name = null
+times_to_unforbid = null
 time_to_alternate = 2.0
+initial_state = null
+transparency_distance = null
+vibration_distance = null
 correct_activated_sfx = ExtResource("2_6oowg")
 forbidden_activated_sfx = ExtResource("3_cruxa")
 alternative_activated_sfx = ExtResource("4_vee18")
+alternative = null
+forbidden = null
+activable_text = null
 enable_after = []
 deactivate_after = []
+enable_after_seconds = null
+deactivate_after_seconds = null
+destroy_after_activation = null
+sound_delay = null
+sound_volume = null
+activable_alternative_text = null
 alternative_enable_after = []
 alternative_deactivate_after = []
+alternative_enable_after_seconds = null
+alternative_deactivate_after_seconds = null
+alternative_destroy_after_activation = null
+alternative_sound_delay = null
+alternative_sound_volume = null
 
 [node name="ActivatingLightLabel" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0195749, 0.20792, -0.00877725)
@@ -132,7 +164,7 @@ transform = Transform3D(0.145, 0, 0, 0, 0.145, 0, 0, 0, 0.145, 0, 0, 0)
 layers = 4
 mesh = SubResource("PlaneMesh_rv4fl")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ShaderMaterial_3jan2")
+script = ExtResource("7_48efp")
 
 [node name="SFX" type="AudioStreamPlayer3D" parent="."]
 bus = &"SFX"
