@@ -8,6 +8,11 @@ class_name Activable extends Area3D
 @export var transparency_distance := 4.0
 @export var vibration_distance := 3.0
 
+@export var correct_activated_sfx: AudioStream
+@export var forbidden_activated_sfx: AudioStream
+@export var alternative_activated_sfx: AudioStream
+
+
 @export_category("Normal")
 @export var activable_text := "..."
 @export var enable_after := [] as Array[Activable]
@@ -64,7 +69,8 @@ var distance_from_indicator := 0.0
 @onready var label := $ActionLabelMesh as ActivableLabel
 @onready var indicator := $Indicator as Node3D
 @onready var indicator_mesh := $Indicator/IndicatorMesh as MeshInstance3D
-@onready var audio_stream := $AudioStreamPlayer3D as AudioStreamPlayer3D
+@onready var audio_stream := $SFX as AudioStreamPlayer3D
+@onready var game_feel_audio := $GameFeelAudio as AudioStreamPlayer3D
 @onready var activating_light := $ActivatingLight as OmniLight3D
 @onready var activating_light_label := $ActivatingLightLabel as OmniLight3D
 

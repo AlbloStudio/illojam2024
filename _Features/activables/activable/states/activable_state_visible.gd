@@ -35,6 +35,9 @@ func update(delta: float) -> void:
 			is_alternative_set = true
 			time_pressing = 0.0
 
+			state_owner.game_feel_audio.stream = state_owner.alternative_activated_sfx
+			state_owner.game_feel_audio.play()
+
 
 func handle_input(event: InputEvent) -> void:
 	if !state_owner.is_in_context:
@@ -60,3 +63,7 @@ func _check_should_activate() -> void:
 
 	if should_transition:
 		SignalBus.should_activate.emit(state_owner)
+	elif state_owner.forbidden:
+		state_owner.game_feel_audio.stream = state_owner.forbidden_activated_sfx
+		state_owner.game_feel_audio.play()
+

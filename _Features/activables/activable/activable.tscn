@@ -1,10 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctv4r5oi50oy1"]
+[gd_scene load_steps=20 format=3 uid="uid://ctv4r5oi50oy1"]
 
 [ext_resource type="Script" path="res://_Features/activables/activable/activable.gd" id="1_s7sqx"]
+[ext_resource type="AudioStream" uid="uid://dsn2yb5o0irsx" path="res://_Features/UI/activate.wav" id="2_6oowg"]
 [ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="2_8t60e"]
 [ext_resource type="Script" path="res://_Features/common/state_machine/finite_state_machine.gd" id="2_oju4k"]
+[ext_resource type="AudioStream" uid="uid://dl4pkfhljty53" path="res://_Features/UI/forbidden.wav" id="3_cruxa"]
 [ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_idle.gd" id="3_eg2dy"]
 [ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_visible.gd" id="4_jqj2w"]
+[ext_resource type="AudioStream" uid="uid://qk5nyf50e3o7" path="res://_Features/UI/alternative.wav" id="4_vee18"]
 [ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_activated.gd" id="5_ybc1y"]
 [ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_deactivated.gd" id="6_p1ox2"]
 [ext_resource type="Script" path="res://_Features/activables/activable/activable_label.gd" id="7_48efp"]
@@ -51,6 +54,9 @@ shader_parameter/noise_tex = ExtResource("10_ojqgf")
 collision_layer = 2
 script = ExtResource("1_s7sqx")
 time_to_alternate = 2.0
+correct_activated_sfx = ExtResource("2_6oowg")
+forbidden_activated_sfx = ExtResource("3_cruxa")
+alternative_activated_sfx = ExtResource("4_vee18")
 enable_after = []
 deactivate_after = []
 alternative_enable_after = []
@@ -111,7 +117,12 @@ mesh = SubResource("PlaneMesh_rv4fl")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_3jan2")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="SFX" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+
+[node name="GameFeelAudio" type="AudioStreamPlayer3D" parent="."]
+volume_db = -3.0
+bus = &"SFX"
 
 [connection signal="input_event" from="." to="." method="_on_activable_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
