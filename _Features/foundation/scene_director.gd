@@ -16,18 +16,6 @@ var awakes = {
 	"rotation": false,
 }
 
-var times_pressed := 0
-var time_pressing := 0.0
-var is_alternative_set := false
-var is_pressing: bool:
-	get:
-		return is_pressing
-	set(value):
-		is_pressing = value
-		if value == false:
-			time_pressing = 0.0
-var can_press = true
-
 @onready var player := $Player as Player
 @onready var living_room := $Stage/LivingRoom/LivingRoom as LivingRoom
 @onready var nolas := $Stage/MoorGnivil/Nolas as Nolas
@@ -35,6 +23,7 @@ var can_press = true
 @onready var ui := $UI as GameUI
 @onready var audio := $Audio as Audios
 @onready var scan := $Scan as ColorRect
+@onready var action_controller := $ActionController as ActionController
 
 
 func _ready():
@@ -65,30 +54,6 @@ func _ready():
 func _unhandled_input(event):
 	if event.is_action_pressed("pause"):
 		SignalBus.paused.emit()
-	elif can_press && current_activable != null && current_activable.is_in_context:
-		if event.is_action_pressed("player_action"):
-			is_pressing = true
-		if event.is_action_released("player_action"):
-			print("released")
-			is_pressing = false
-
-			if is_alternative_set:
-				is_alternative_set = false
-			else:
-				times_pressed += 1
-				current_activable.check_should_activate(times_pressed)
-
-
-func update(delta: float) -> void:
-	if !current_activable.is_in_context:
-		return
-
-	if is_pressing:
-		time_pressing += delta
-		if time_pressing >= current_activable.time_to_alternate:
-			current_activable.is_alternative_set = true
-			time_pressing = 0.0
-			current_activable.alternative_game_feel()
 
 
 func _started() -> void:
@@ -99,9 +64,9 @@ func _started() -> void:
 
 func _activable_activated(activable_name: String, alternative: bool, initial_point: Node3D) -> void:
 	if initial_point != null:
-		can_press = false
+		action_controller.can_press = false
 		await player.move_as_puppet(initial_point.global_position)
-		can_press = true
+		action_controller.can_press = true
 
 	match activable_name:
 		"TabletLivingRoom":
@@ -381,11 +346,12 @@ func _set_current_activable(new_activable: Activable) -> void:
 		current_activable.stop_being_current()
 
 	current_activable = new_activable
-	times_pressed = 0
+	action_controller.current_activable = new_activable
 
 
 func _remove_current_activable() -> void:
 	current_activable = null
+	action_controller.current_activable = null
 
 
 func _should_activate(activable: Activable) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b3hl0t3spppnd"]
+[gd_scene load_steps=40 format=3 uid="uid://b3hl0t3spppnd"]
 
 [ext_resource type="Script" path="res://_Features/foundation/scene_director.gd" id="1_6gnox"]
 [ext_resource type="Script" path="res://_Features/audio/audio.gd" id="2_3jmlc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dpkgwkvewfmuh" path="res://_Features/player/player.tscn" id="2_bfl1y"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_hsqid"]
 [ext_resource type="Shader" path="res://_Features/shaders/main.gdshader" id="2_o8u0n"]
+[ext_resource type="Script" path="res://_Features/main/action_controller.gd" id="3_fao63"]
 [ext_resource type="AudioStream" uid="uid://cit1i7ncdx4f" path="res://_Features/audio/dream1.mp3" id="3_prhnp"]
 [ext_resource type="PackedScene" uid="uid://daj1yi4q8q4f" path="res://_Features/rooms/living_room/living_room_i.tscn" id="4_og77x"]
 [ext_resource type="AudioStream" uid="uid://cuk1tniwd3pdb" path="res://_Features/audio/Discord Call.mp3" id="5_22t2j"]
@@ -143,6 +144,9 @@ refraction_scale = 0.21
 script = ExtResource("1_6gnox")
 discord_call = ExtResource("5_22t2j")
 
+[node name="ActionController" type="Node" parent="."]
+script = ExtResource("3_fao63")
+
 [node name="Scan" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_yhrax")
 anchors_preset = 15
@@ -240,7 +244,7 @@ bus = &"Dialogs"
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.87497, 9, -1.07633)
 current = true
-fov = 74.984
+fov = 74.6932
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
