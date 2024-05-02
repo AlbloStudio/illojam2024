@@ -5,6 +5,7 @@ uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enab
 uniform sampler2D texture_emission : source_color, hint_default_black,filter_linear_mipmap,repeat_enable;
 uniform vec4 emission : source_color;
 uniform sampler2D noise_tex;
+uniform sampler2D disappear_noise_tex;
 uniform float ratio = 0.1;
 uniform float threshold = 0.5;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
@@ -13,6 +14,8 @@ uniform vec4 color : source_color;
 uniform float scale = 32.0;
 uniform float power = 9.0;
 uniform bool voronoi_active = false;
+uniform float noise_size = 1.6;
+uniform float noise_alternative_size = 1.6;
 
 vec2 random( vec2 pos )
 { 
@@ -53,7 +56,8 @@ vec2 voronoi( vec2 uv )
 void fragment() {
     vec2 base_uv = UV;
 
-    vec4 noise = texture(noise_tex, base_uv + TIME * ratio);
+    vec4 noise = texture(noise_tex, vec2(base_uv.x, base_uv.y + TIME * ratio) * noise_size);
+    vec4 noise_static = texture(disappear_noise_tex, vec2(base_uv.x, base_uv.y) * noise_alternative_size);
     
     if (noise.r > threshold) {
         discard;
@@ -71,9 +75,8 @@ void fragment() {
 	ALBEDO = mix( textureLod( SCREEN_TEXTURE, conv_uv, 0.0 ).rgb, color.rgb, color.a );
 	
 	if(voronoi_active) {
-		ALPHA = f;
-	}
-
-    ALPHA *= albedo.a * albedo_tex.a;
-	
+		ALPHA = max(noise_static.r - radius, 0.0);
+	} else {
+    	ALPHA *= albedo.a * albedo_tex.a;
+	}	
 }

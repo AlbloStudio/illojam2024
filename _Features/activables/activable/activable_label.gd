@@ -24,7 +24,7 @@ func get_color(should_be_visible: bool, is_alternative: bool, is_forbidden: bool
 	if is_alternative:
 		color = Color(Color.LIGHT_SALMON.r, Color.LIGHT_SALMON.g, Color.LIGHT_SALMON.b, a)
 	elif is_forbidden:
-		color = Color(0.6, 0.6, 0.6, a)
+		color = Color(0.4, 0.2, 0.2, a)
 
 	return color
 

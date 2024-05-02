@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=39 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
@@ -10,37 +10,9 @@
 [ext_resource type="AudioStream" uid="uid://gusbnfhicbwf" path="res://_Features/activables/sounds/sit.mp3" id="7_jdxe8"]
 [ext_resource type="Texture2D" uid="uid://bnhb1b0b3nb4p" path="res://_Features/rooms/living_room/pennywise.png" id="8_0j6pt"]
 [ext_resource type="AudioStream" uid="uid://6aekogm3d1dx" path="res://_Features/activables/sounds/getup.mp3" id="8_3bltq"]
-[ext_resource type="FontFile" uid="uid://cmbev6fhb5jqg" path="res://_Features/UI/Urbanist-VariableFont_wght.ttf" id="8_ku6ao"]
 [ext_resource type="AudioStream" uid="uid://be4xbnwtbfrbp" path="res://_Features/activables/sounds/layup.mp3" id="9_ewa22"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="9_r4vxe"]
-[ext_resource type="Shader" path="res://_Features/activables/activable/activable.gdshader" id="9_xb0qx"]
-[ext_resource type="Texture2D" uid="uid://cr353p7r7q4rc" path="res://_Features/UI/noise.png" id="10_84g48"]
 [ext_resource type="AudioStream" uid="uid://cnx7mcaw8v4vm" path="res://_Features/activables/sounds/lay_down.wav" id="10_h0rxo"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l0ww1"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("9_xb0qx")
-shader_parameter/albedo = Color(1, 1, 0.698039, 1)
-shader_parameter/emission = Color(1, 1, 0.698039, 1)
-shader_parameter/ratio = 0.1
-shader_parameter/threshold = 0.655
-shader_parameter/radius = 0.5
-shader_parameter/color = null
-shader_parameter/scale = 32.0
-shader_parameter/power = 9.0
-shader_parameter/voronoi_active = false
-shader_parameter/noise_tex = ExtResource("10_84g48")
-
-[sub_resource type="TextMesh" id="TextMesh_bw2d6"]
-resource_local_to_scene = true
-material = SubResource("ShaderMaterial_l0ww1")
-text = "Probando cosillas"
-font = ExtResource("8_ku6ao")
-font_size = 30
-horizontal_alignment = 0
-vertical_alignment = 0
-depth = 0.001
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iji4e"]
 size = Vector3(1.52648, 2.47904, 0.102234)
@@ -205,7 +177,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000367045, 0, -0.0508552)
 [node name="ChairActivableSit" parent="Activables" index="0" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02638, 0.799957, 0.370289)
 activable_name = "Sit"
-forbidden = true
 activable_text = "Sentarse en taburete"
 enable_after = [NodePath("../ChairActivableGetUp")]
 enable_after_seconds = 2.5
@@ -285,6 +256,7 @@ alternative_enable_after_seconds = 4.0
 [node name="SofaActivableLayDown" parent="Activables" index="6" node_paths=PackedStringArray("enable_after", "deactivate_after", "initial_point", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, -3.2486, 0.62082, -1.71707)
 activable_name = "Lay down"
+forbidden = true
 activable_text = "Acostarse"
 enable_after = [NodePath("../SofaActivableLayUpWall"), NodePath("../SofaActivableLayUp")]
 deactivate_after = [NodePath("../SofaActivableLayDownWall"), NodePath(".")]
@@ -293,9 +265,6 @@ sound = ExtResource("10_h0rxo")
 activable_alternative_text = "Girar el sofá con la mente"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
-
-[node name="ActionLabelMesh" parent="Activables/SofaActivableLayDown" index="2"]
-mesh = SubResource("TextMesh_bw2d6")
 
 [node name="Normal" type="Marker3D" parent="Activables/SofaActivableLayDown" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23915, 0, 0.0126084)
@@ -580,6 +549,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108389, 0, 0.137398)
 activable_name = "TabletLivingRoom"
 activable_text = "Activar"
 
-[editable path="Activables/SofaActivableLayDown"]
 [editable path="MirrorBarrier"]
 [editable path="Tablet"]

@@ -31,10 +31,8 @@ func update(delta: float) -> void:
 	if is_pressing:
 		time_pressing += delta
 		if time_pressing >= state_owner.time_to_alternate:
-			state_owner.alternative = !state_owner.alternative
 			is_alternative_set = true
 			time_pressing = 0.0
-
 			state_owner.alternative_game_feel()
 
 

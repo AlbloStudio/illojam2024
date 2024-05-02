@@ -164,13 +164,16 @@ func alternative_game_feel() -> void:
 	game_feel_audio.stream = alternative_activated_sfx
 	game_feel_audio.play()
 	label.get_material().set_shader_parameter("voronoi_active", true)
-	create_tween().tween_method(alternative_shader_pass, 0.0, 1.0, 1.0).finished.connect(
-		func(): label.get_material().set_shader_parameter("voronoi_active", false), CONNECT_ONE_SHOT
+	create_tween().tween_method(alternative_shader_pass, 0.0, 0.7, 0.3).finished.connect(
+		alterantive_mid, CONNECT_ONE_SHOT
 	)
 
-	indicator_mesh.mesh.surface_get_material(0).set_shader_parameter("voronoi_active", true)
-	create_tween().tween_method(alternative_shader_pass, 0.0, 1.0, 1.0).finished.connect(
-		func(): indicator_mesh.mesh.surface_get_material(0).set_shader_parameter("voronoi_active", false), CONNECT_ONE_SHOT
+
+func alterantive_mid() -> void:
+	alternative = !alternative
+
+	create_tween().tween_method(alternative_shader_pass, 0.7, 0.0, 0.3).finished.connect(
+		func(): label.get_material().set_shader_parameter("voronoi_active", false), CONNECT_ONE_SHOT
 	)
 
 
