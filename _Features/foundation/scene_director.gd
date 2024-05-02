@@ -16,6 +16,18 @@ var awakes = {
 	"rotation": false,
 }
 
+var times_pressed := 0
+var time_pressing := 0.0
+var is_alternative_set := false
+var is_pressing: bool:
+	get:
+		return is_pressing
+	set(value):
+		is_pressing = value
+		if value == false:
+			time_pressing = 0.0
+var can_press = true
+
 @onready var player := $Player as Player
 @onready var living_room := $Stage/LivingRoom/LivingRoom as LivingRoom
 @onready var nolas := $Stage/MoorGnivil/Nolas as Nolas
@@ -32,6 +44,7 @@ func _ready():
 
 	SignalBus.activable_activated.connect(_activable_activated)
 	SignalBus.current_activable_changed.connect(_set_current_activable)
+	SignalBus.remove_current_activable.connect(_remove_current_activable)
 	SignalBus.clothes_wrong.connect(_clothes_wronged)
 	SignalBus.clothes_right.connect(_clothes_righted)
 	SignalBus.awaked.connect(_awaked)
@@ -52,20 +65,43 @@ func _ready():
 func _unhandled_input(event):
 	if event.is_action_pressed("pause"):
 		SignalBus.paused.emit()
+	elif can_press && current_activable != null && current_activable.is_in_context:
+		if event.is_action_pressed("player_action"):
+			is_pressing = true
+		if event.is_action_released("player_action"):
+			print("released")
+			is_pressing = false
+
+			if is_alternative_set:
+				is_alternative_set = false
+			else:
+				times_pressed += 1
+				current_activable.check_should_activate(times_pressed)
+
+
+func update(delta: float) -> void:
+	if !current_activable.is_in_context:
+		return
+
+	if is_pressing:
+		time_pressing += delta
+		if time_pressing >= current_activable.time_to_alternate:
+			current_activable.is_alternative_set = true
+			time_pressing = 0.0
+			current_activable.alternative_game_feel()
 
 
 func _started() -> void:
 	player.collision_layer = 1
-	current_activable = living_room.get_tablet_activable()
+	# current_activable = living_room.get_tablet_activable()
 	# _activable_activated("TabletLivingRoom", false, player)
 
 
 func _activable_activated(activable_name: String, alternative: bool, initial_point: Node3D) -> void:
-	if current_activable == null || current_activable.activable_name != activable_name:
-		return
-
 	if initial_point != null:
+		can_press = false
 		await player.move_as_puppet(initial_point.global_position)
+		can_press = true
 
 	match activable_name:
 		"TabletLivingRoom":
@@ -345,6 +381,11 @@ func _set_current_activable(new_activable: Activable) -> void:
 		current_activable.stop_being_current()
 
 	current_activable = new_activable
+	times_pressed = 0
+
+
+func _remove_current_activable() -> void:
+	current_activable = null
 
 
 func _should_activate(activable: Activable) -> void:

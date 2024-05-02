@@ -109,6 +109,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if !is_using_help:
 		set_indicator_transparency_given_mouse_position(event)
 
+
 func set_indicator_transparency_given_mouse_position(event: InputEvent) -> void:
 	var cursor_placement := MouseExtends.get_mouse_pos_in_floor(event, get_viewport())
 	distance_from_indicator = cursor_placement.distance_to(
@@ -120,6 +121,7 @@ func set_indicator_transparency_given_mouse_position(event: InputEvent) -> void:
 	)
 
 	indicator_mesh.transparency = transparency
+
 
 func calculate_next_pos(node_position: Vector3, node_original_position: Vector3) -> Vector3:
 	var pos_margin := 0.2
@@ -259,3 +261,12 @@ func _on_mouse_exited() -> void:
 func _on_mouse_entered() -> void:
 	if state_machine.is_in_state([state_idle.name]):
 		state_machine.transition_to(state_visible.name)
+
+
+func check_should_activate(times_pressed: int) -> void:
+	var should_transition: bool = !forbidden || times_pressed >= times_to_unforbid
+
+	if should_transition:
+		SignalBus.should_activate.emit(self)
+	elif forbidden:
+		forbidden_game_feel()
