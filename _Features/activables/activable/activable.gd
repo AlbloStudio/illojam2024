@@ -60,6 +60,7 @@ var time_passed := 0.0
 var distance_from_indicator := 0.0
 var original_position_indicator: Vector3
 var original_position_label: Vector3
+var is_using_help := false
 
 @onready var state_machine := $FiniteStateMachine as FiniteStateMachine
 @onready var state_deactivated := $FiniteStateMachine/Deactivated as ActivableState
@@ -99,18 +100,26 @@ func _process(delta):
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		var cursor_placement := MouseExtends.get_mouse_pos_in_floor(event, get_viewport())
-		distance_from_indicator = cursor_placement.distance_to(
-			Vector3(indicator.global_position.x, 0, indicator.global_position.z)
-		)
+	if event.is_action_pressed("activable_help"):
+		indicator_mesh.transparency = 0
+		is_using_help = true
+	elif event.is_action_released("activable_help"):
+		is_using_help = false
 
-		var transparency = (
-			1 - (maxf(0.0, transparency_distance - distance_from_indicator) / transparency_distance)
-		)
+	if !is_using_help:
+		set_indicator_transparency_given_mouse_position(event)
 
-		indicator_mesh.transparency = transparency
+func set_indicator_transparency_given_mouse_position(event: InputEvent) -> void:
+	var cursor_placement := MouseExtends.get_mouse_pos_in_floor(event, get_viewport())
+	distance_from_indicator = cursor_placement.distance_to(
+		Vector3(indicator.global_position.x, 0, indicator.global_position.z)
+	)
 
+	var transparency = (
+		1 - (maxf(0.0, transparency_distance - distance_from_indicator) / transparency_distance)
+	)
+
+	indicator_mesh.transparency = transparency
 
 func calculate_next_pos(node_position: Vector3, node_original_position: Vector3) -> Vector3:
 	var pos_margin := 0.2
