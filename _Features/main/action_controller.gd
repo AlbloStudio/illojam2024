@@ -16,16 +16,18 @@ var current_activable: Activable = null:
 		current_activable = value
 		times_pressed = 0
 
-func update(delta: float) -> void:
-	if !current_activable.is_in_context:
+
+func _process(delta: float) -> void:
+	if !current_activable || !current_activable.is_in_context:
 		return
 
 	if is_pressing:
 		time_pressing += delta
 		if time_pressing >= current_activable.time_to_alternate:
-			current_activable.is_alternative_set = true
+			is_alternative_set = true
 			time_pressing = 0.0
 			current_activable.alternative_game_feel()
+
 
 func _unhandled_input(event):
 	if can_press && current_activable != null && current_activable.is_in_context:

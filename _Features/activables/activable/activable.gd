@@ -106,7 +106,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_released("activable_help"):
 		is_using_help = false
 
-	if !is_using_help:
+	if !is_using_help && event is InputEventMouseMotion:
 		set_indicator_transparency_given_mouse_position(event)
 
 

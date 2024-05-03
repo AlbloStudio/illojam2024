@@ -1,6 +1,7 @@
 extends Node
 
 @export var discord_call: AudioStream
+@export var noise_material: Material
 
 var current_activable: Activable = null
 var awakes = {
@@ -24,6 +25,7 @@ var awakes = {
 @onready var audio := $Audio as Audios
 @onready var scan := $Scan as ColorRect
 @onready var action_controller := $ActionController as ActionController
+@onready var awake_actions := $Awake as Awake
 
 
 func _ready():
@@ -170,7 +172,7 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 		"Sit":
 			if alternative:
 				player.say("Qué pasa, taburete? TABURRES?", "TabureteAlternativo")
-				create_tween().tween_callback(func(): _awaked("talk")).set_delay(3.0)
+				create_tween().tween_callback(func(): SignalBus.awaked.emit("talk")).set_delay(3.0)
 			else:
 				player.sit_on_chair(living_room.get_marker_position("chairMarker"))
 				living_room.sit_on_chair()
@@ -199,7 +201,7 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				)
 			else:
 				player.say("ME CAGO", "MeCago2", 2)
-				create_tween().tween_callback(func(): _awaked("poster")).set_delay(2)
+				create_tween().tween_callback(func(): SignalBus.awaked.emit("poster")).set_delay(2)
 				nolas.make_tablet_visible()
 		"Lay down":
 			if alternative:
@@ -411,13 +413,15 @@ func _awaked(awake_name: String) -> void:
 		"window":
 			setup.awake_window()
 		"clothes":
-			living_room.awake_clothes()
+			awake_actions.start_distorsion(living_room.noise_nodes, noise_material)
 		"poster":
 			living_room.awake_poster()
 		"sit":
 			living_room.awake_sit()
 		"sofa":
 			living_room.awake_sofa()
+		"rotation":	
+			awake_actions.start_distorsion(living_room.noise_nodes, null, Vector3(0, 2.0, 0), Vector3(180, 0, 0))
 
 
 func _layed_down() -> void:

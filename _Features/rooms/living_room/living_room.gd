@@ -7,6 +7,8 @@ var activables_while_outside := ["SofaActivableLayDownWall"] as Array[String]
 var cloth_names := ["underwear", "pants", "tshirt"]
 var poster_awaken := false
 
+@export var noise_nodes: Array[Node3D] = []
+
 @onready var closet := $Closet_001 as MeshInstance3D
 
 @onready var closet_handles := $Cube_005 as MeshInstance3D
@@ -158,11 +160,6 @@ func awake_sit() -> void:
 
 func awake_sofa() -> void:
 	pass
-
-
-func awake_clothes() -> void:
-	pass
-
 
 func get_new_rotation_vector() -> Vector3:
 	var x = randf_range(-2 * PI, 2 * PI)

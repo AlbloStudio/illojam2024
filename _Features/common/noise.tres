@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c7ywy5eu6to4"]
+
+[ext_resource type="Shader" path="res://_Features/foundation/noise.gdshader" id="1_nl58o"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nl58o")
+shader_parameter/albedo = Color(1, 0.156863, 0.156863, 1)
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/alpha_scissor_threshold = null
+shader_parameter/roughness = 0.0
+shader_parameter/point_size = 34.966
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/speed = 5.0
+shader_parameter/frequency_uniform = 30.0
+shader_parameter/is_breath = false
+shader_parameter/breath_speed = 0.368
+shader_parameter/breath_freq = 0.021

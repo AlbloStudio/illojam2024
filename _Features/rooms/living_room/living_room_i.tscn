@@ -95,8 +95,9 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 cell_height = 0.01
 edge_max_error = 0.77
 
-[node name="Salon" instance=ExtResource("1_00744")]
+[node name="Salon" node_paths=PackedStringArray("noise_nodes") instance=ExtResource("1_00744")]
 script = ExtResource("2_2xult")
+noise_nodes = [NodePath("Plane_011"), NodePath("Plane_022"), NodePath("Plane_023"), NodePath("Plane_024"), NodePath("Plane_002"), NodePath("Plane_017")]
 
 [node name="Markers" type="Node3D" parent="." index="0"]
 
@@ -256,7 +257,6 @@ alternative_enable_after_seconds = 4.0
 [node name="SofaActivableLayDown" parent="Activables" index="6" node_paths=PackedStringArray("enable_after", "deactivate_after", "initial_point", "alternative_enable_after") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, -3.2486, 0.62082, -1.71707)
 activable_name = "Lay down"
-forbidden = true
 activable_text = "Acostarse"
 enable_after = [NodePath("../SofaActivableLayUpWall"), NodePath("../SofaActivableLayUp")]
 deactivate_after = [NodePath("../SofaActivableLayDownWall"), NodePath(".")]
