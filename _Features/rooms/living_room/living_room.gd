@@ -161,6 +161,7 @@ func awake_sit() -> void:
 func awake_sofa() -> void:
 	pass
 
+
 func get_new_rotation_vector() -> Vector3:
 	var x = randf_range(-2 * PI, 2 * PI)
 	var y = randf_range(-2 * PI, 2 * PI)

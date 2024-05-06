@@ -11,6 +11,7 @@ var time_passed := 0.0
 var material: Material
 var translation: Vector3
 var rotation: Vector3
+var toggle_visibility := false
 
 
 func _init(
@@ -19,28 +20,30 @@ func _init(
 	_time_off_range: Vector2,
 	_translation := Vector3.ZERO,
 	_rotation := Vector3.ZERO,
-	_material: Material = null
+	_material: Material = null,
+	_toggle_visibility := false
 ) -> void:
 	self.nodes = _nodes
 	self.time_on_range = _time_on_range
 	self.time_off_range = _time_off_range
 	self.translation = _translation
+	self.rotation = _rotation
 	self.material = _material
+	self.toggle_visibility = _toggle_visibility
+
 	_switch_status()
 
 
 func _execute_switch() -> void:
 	for node in nodes:
-		if status:
-			node.translate(translation)
-			node.rotation_degrees += rotation
-			if node is GeometryInstance3D:
-				node.material_override = material
-		else:
-			node.translate(-translation)
-			node.rotation_degrees -= rotation
-			if node is GeometryInstance3D:
-				node.material_override = null
+		if toggle_visibility:
+			node.visible = !node.visible
+
+		if node is GeometryInstance3D:
+			node.material_override = material if status else null
+
+		node.translate(translation if status else -translation)
+		node.rotation_degrees += rotation if status else -rotation
 
 
 func _switch_status() -> void:

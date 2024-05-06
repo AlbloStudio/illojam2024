@@ -1,5 +1,6 @@
 extends Node
 
+@export var pera: PackedScene
 @export var discord_call: AudioStream
 @export var noise_material: Material
 
@@ -26,6 +27,7 @@ var awakes = {
 @onready var scan := $Scan as ColorRect
 @onready var action_controller := $ActionController as ActionController
 @onready var awake_actions := $Awake as Awake
+@onready var camera := $CameraGroup/Camera3D as Camera3D
 
 
 func _ready():
@@ -420,8 +422,8 @@ func _awaked(awake_name: String) -> void:
 			living_room.awake_sit()
 		"sofa":
 			living_room.awake_sofa()
-		"rotation":	
-			awake_actions.start_distorsion(living_room.noise_nodes, null, Vector3(0, 2.0, 0), Vector3(180, 0, 0))
+		"rotation":
+			awake_actions.spawn_something(pera, camera, 2.0)
 
 
 func _layed_down() -> void:
