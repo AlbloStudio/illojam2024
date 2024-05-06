@@ -15,7 +15,6 @@
 [ext_resource type="AudioStream" uid="uid://c2gih22b1rxfb" path="res://_Features/audio/dream2.mp3" id="5_eo21i"]
 [ext_resource type="Script" path="res://_Features/UI/pause.gd" id="5_xm3o3"]
 [ext_resource type="AudioStream" uid="uid://jval2fa4776l" path="res://_Features/audio/dream3.mp3" id="6_3nhco"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="6_v8ayd"]
 [ext_resource type="AudioStream" uid="uid://bn2dwbajil1as" path="res://_Features/audio/dream5.mp3" id="7_3aj0d"]
 [ext_resource type="AudioStream" uid="uid://bv1q0nrtlprpr" path="res://_Features/audio/dream4.mp3" id="8_fiqc0"]
 [ext_resource type="AudioStream" uid="uid://n5q1vmi85jkl" path="res://_Features/audio/dream7.mp3" id="8_g4ua3"]
@@ -28,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://m7oax2by6piw" path="res://_Features/audio/dream12.mp3" id="11_r4hg3"]
 [ext_resource type="AudioStream" uid="uid://drmnieapiewxo" path="res://_Features/audio/despierta.mp3" id="12_bx7a7"]
 [ext_resource type="AudioStream" uid="uid://b4x4go7yxbinu" path="res://_Features/audio/dream13.mp3" id="12_nchqr"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="28_p26eg"]
 
 [sub_resource type="Gradient" id="Gradient_n7fhn"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
@@ -247,29 +247,22 @@ bus = &"Dialogs"
 
 [node name="CameraGroup" type="Node" parent="."]
 
+[node name="PhantomCamera3D" type="Node3D" parent="CameraGroup" node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.87497, 9, -1.07633)
+script = ExtResource("28_p26eg")
+follow_mode = 2
+follow_target = NodePath("../../Player")
+tween_on_load = false
+follow_offset = Vector3(0, 9, 0)
+follow_damping = true
+follow_damping_value = Vector3(0.1, 0, 0.1)
+
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
 transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.87497, 9, -1.07633)
 current = true
-fov = 74.8827
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
-
-[node name="PhantomCamera3D" type="Node3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.87497, 9, -1.07633)
-script = ExtResource("6_v8ayd")
-priority_override = false
-priority = 0
-follow_mode = 2
-follow_target = NodePath("../../Player")
-follow_parameters/target_offset = Vector3(0, 9, 0)
-follow_parameters/damping = true
-follow_parameters/damping_value = 10.0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87497, 0, -1.07633)
