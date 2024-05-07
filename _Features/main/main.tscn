@@ -106,7 +106,7 @@ glow_enabled = true
 glow_strength = 1.28
 glow_bloom = 0.01
 fog_enabled = true
-fog_light_color = Color(0.356863, 0.356863, 0.356863, 1)
+fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 0.32
 fog_density = 0.0125
 volumetric_fog_albedo = Color(0.2, 0.2, 0.2, 1)
@@ -137,7 +137,6 @@ size = Vector3(0.220024, 2, 10.1202)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jw0lm"]
 albedo_color = Color(0, 0, 0, 1)
-emission_enabled = true
 emission = Color(0.2, 0.2, 0.2, 1)
 disable_receive_shadows = true
 
@@ -266,7 +265,7 @@ bus = &"Dialogs"
 [node name="CameraGroup" type="Node" parent="."]
 
 [node name="PhantomCamera3D" type="Node3D" parent="CameraGroup" node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.87497, 9, -1.07633)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.789361, 9, -0.719477)
 script = ExtResource("28_p26eg")
 follow_mode = 2
 follow_target = NodePath("../../Player")
@@ -278,14 +277,14 @@ follow_damping = true
 follow_damping_value = Vector3(0.1, 0, 0.1)
 
 [node name="Camera3D" type="Camera3D" parent="CameraGroup"]
-transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -2.87497, 9, -1.07633)
+transform = Transform3D(0.999997, 0, 0, 0, -4.3711e-08, 0.999996, 0, -0.999992, -4.37112e-08, -0.789361, 9, -0.719477)
 current = true
 
 [node name="PhantomCameraHost" type="Node" parent="CameraGroup/Camera3D"]
 script = ExtResource("2_hsqid")
 
 [node name="Player" parent="." instance=ExtResource("2_bfl1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87497, 0, -1.07633)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.789361, 0, -0.719477)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtx4b")

@@ -8,6 +8,8 @@ var cloth_names := ["underwear", "pants", "tshirt"]
 var poster_awaken := false
 
 @export var noise_nodes: Array[Node3D] = []
+@export var ceiling_nodes: Array[Node3D] = []
+@export var scary_hoodie: Node3D
 
 @onready var closet := $Closet_001 as MeshInstance3D
 

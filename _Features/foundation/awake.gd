@@ -51,23 +51,25 @@ func start_visibility_distorsion(
 	)
 
 
-func turn_off_lights() -> void:
-	await _create_timer(4)
+func turn_off_lights(mirror_effect: Node3D) -> void:
+	await _create_timer(8)
 
 	var all_lights = get_parent().find_children("*", "Light3D")
 	var light_states = {}
 
 	world_environment.environment.background_color = Color.BLACK
 	world_environment.environment.fog_enabled = false
+	mirror_effect.visible = false
 
 	for light in all_lights:
 		light_states[light] = light.visible
 		light.visible = false
 
-	await _create_timer(5)
+	await _create_timer(10)
 
 	world_environment.environment.background_color = Color(0.2, 0.2, 0.2)
 	world_environment.environment.fog_enabled = true
+	mirror_effect.visible = true
 
 	for light in all_lights:
 		light.visible = light_states[light]

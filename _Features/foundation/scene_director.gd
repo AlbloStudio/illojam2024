@@ -31,9 +31,9 @@ var awakes = {
 
 
 func _ready():
-	player.collision_layer = 0
-	player.global_position = living_room.get_marker_position("startMarker")
-	player.lay_up_from_sofa_init(living_room.get_marker_position("upMarker"))
+	# player.collision_layer = 0
+	# player.global_position = living_room.get_marker_position("startMarker")
+	# player.lay_up_from_sofa_init(living_room.get_marker_position("upMarker"))
 
 	SignalBus.activable_activated.connect(_activable_activated)
 	SignalBus.current_activable_changed.connect(_set_current_activable)
@@ -407,23 +407,41 @@ func _awaked(awake_name: String) -> void:
 
 	match awake_name:
 		"wall":
-			setup.awake_wall()
+			awake_actions.start_visibility_distorsion(
+				setup.get_stuff_to_disappear, Vector2(5, 30), Vector2(0.1, 10), 2.0
+			)
 		"jump":
-			setup.awake_jump()
+			awake_actions.spawn_something(pera, camera, 2.0)
 		"stream":
-			setup.awake_stream()
+			awake_actions.start_visibility_distorsion(
+				setup.glitched_streaming, Vector2.ZERO, Vector2.ZERO, 1.0
+			)
 		"window":
-			setup.awake_window()
+			var ceiling_nodes := living_room.ceiling_nodes
+			awake_actions.start_transform_distorsion(
+				ceiling_nodes,
+				Vector3.UP * 3.0,
+				Vector3.RIGHT * 180.0,
+				Vector2(INF, INF),
+				Vector2.ZERO,
+				3.0
+			)
 		"clothes":
-			awake_actions.start_distorsion(living_room.noise_nodes, noise_material)
+			awake_actions.start_material_distorsion(
+				living_room.noise_nodes,
+				noise_material,
+				Vector2(1.0, 10.0),
+				Vector2(10.0, 25.0),
+				3.3
+			)
 		"poster":
 			living_room.awake_poster()
 		"sit":
-			living_room.awake_sit()
-		"sofa":
-			living_room.awake_sofa()
+			awake_actions.turn_off_lights(nolas.mirror_effect)
 		"rotation":
-			awake_actions.spawn_something(pera, camera, 2.0)
+			awake_actions.start_visibility_distorsion(
+				[living_room.scary_hoodie], Vector2.ZERO, Vector2.ZERO, 3.2
+			)
 
 
 func _layed_down() -> void:

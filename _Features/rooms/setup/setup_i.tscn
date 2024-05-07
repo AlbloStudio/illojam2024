@@ -1,9 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://c0bdwlue70wgp"]
+[gd_scene load_steps=34 format=3 uid="uid://c0bdwlue70wgp"]
 
 [ext_resource type="PackedScene" uid="uid://eey6l7a03sjc" path="res://_Features/rooms/setup/setup.blend" id="1_8c4o6"]
 [ext_resource type="Script" path="res://_Features/rooms/setup/setup.gd" id="2_42fvx"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_n3fv0"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="4_j3up1"]
+[ext_resource type="Texture2D" uid="uid://d00b5ifsxw6ha" path="res://_Features/activables/bsod.jpeg" id="5_on3cq"]
+[ext_resource type="Texture2D" uid="uid://dfvv88yeqksy2" path="res://_Features/activables/scary_streamer.png" id="6_ajrdh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pld4w"]
 albedo_color = Color(0, 0, 0, 1)
@@ -148,8 +150,10 @@ cell_height = 0.01
 agent_radius = 0.25
 edge_max_error = 0.77
 
-[node name="setup" instance=ExtResource("1_8c4o6")]
+[node name="setup" node_paths=PackedStringArray("get_stuff_to_disappear", "glitched_streaming") instance=ExtResource("1_8c4o6")]
 script = ExtResource("2_42fvx")
+get_stuff_to_disappear = [NodePath("CajonesTraseros"), NodePath("VideogameBox_1"), NodePath("VideogameBox_2"), NodePath("VideogameBox_3"), NodePath("VideogameBox_4"), NodePath("VideogameBox_5"), NodePath("CuadroILLOGTAMAIN"), NodePath("CuadroIlloMarvellaVice"), NodePath("YoutubePlaque1"), NodePath("Cajonera Ventan"), NodePath("YoutubePlaque3"), NodePath("Youtube Plaque 2"), NodePath("SkateProp"), NodePath("VideogameBox_8"), NodePath("Cuadrito Prop 3"), NodePath("CuadritoProp1"), NodePath("CuadritoProp2"), NodePath("VideogameBox_12"), NodePath("VideogameBox_10"), NodePath("VideogameBox_9"), NodePath("VideogameBox_7"), NodePath("Estanteria"), NodePath("Botella_1"), NodePath("Maceta_1"), NodePath("SmallProps_1"), NodePath("VideogameBox_13"), NodePath("VideogameBox_11"), NodePath("Sphere_001"), NodePath("Plane"), NodePath("Plane_001"), NodePath("Plane_002"), NodePath("Plane_003"), NodePath("Disco GodofWar_001"), NodePath("ZeldaBox"), NodePath("VideogameBox_9_001"), NodePath("VideogameBox_7_001"), NodePath("VideogameBox_7_002"), NodePath("Disco GodofWar_002"), NodePath("ZeldaBox_001"), NodePath("Botella_1_001"), NodePath("Plane_005"), NodePath("Plane_006"), NodePath("Plane_007"), NodePath("VideogameBox_7_003"), NodePath("VideogameBox_12_001"), NodePath("ZeldaBox_002"), NodePath("ZeldaBox_003"), NodePath("VideogameBox_12_002"), NodePath("Figura Venom_001"), NodePath("VideogameBox_8_002"), NodePath("VideogameBox_8_003"), NodePath("Figura Venom_002"), NodePath("SmallProps_1_001"), NodePath("SmallProps_1_002"), NodePath("SmallProps_1_003"), NodePath("Figura Venom_003"), NodePath("Figura Venom_004"), NodePath("VideogameBox_7_004"), NodePath("VideogameBox_7_005"), NodePath("VideogameBox_3_001"), NodePath("VideogameBox_8_004"), NodePath("VideogameBox_8_005"), NodePath("VideogameBox_5_001"), NodePath("CoDMW3 Statue_002"), NodePath("Sphere"), NodePath("Cylinder_004"), NodePath("CoDMW3 Statue"), NodePath("WalterWhiteFigurine"), NodePath("Mando Ps5_002"), NodePath("Cylinder_003"), NodePath("NeveraMahou"), NodePath("polygon4_002"), NodePath("polygon4_001"), NodePath("VideogameBox_8_001"), NodePath("Plane_004"), NodePath("Cylinder_002"), NodePath("Cylinder_001")]
+glitched_streaming = [NodePath("Pantalla_1/Sprite3D5"), NodePath("Pantalla_1/Sprite3D6"), NodePath("Pantalla_1/Sprite3D")]
 
 [node name="SetupCeiling" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.123302, 3.05618, 9.51134)
@@ -448,6 +452,21 @@ alternative_enable_after = [NodePath(".")]
 [node name="Normal" type="Marker3D" parent="Activables/MoveChairActivable" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278759, 0, 0.109357)
 
+[node name="Sprite3D5" type="Sprite3D" parent="Pantalla_1" index="0"]
+transform = Transform3D(0.0543501, 0, -0.367454, 0, 0.396878, 0, 0.357726, 0, 0.055828, 0.226582, 0.482298, 1.14755)
+visible = false
+texture = ExtResource("5_on3cq")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Pantalla_1" index="1"]
+transform = Transform3D(-0.184415, 0, -0.319774, 0, 0.396878, 0, 0.311309, 0, -0.18943, 0.361943, 0.461326, -1.07862)
+visible = false
+texture = ExtResource("5_on3cq")
+
+[node name="Sprite3D" type="Sprite3D" parent="Pantalla_1" index="2"]
+transform = Transform3D(-0.000468481, 0, 0.0611422, 0, 0.061144, 0, -0.0611422, 0, -0.000468481, 0.0390252, 0.513769, -0.021454)
+visible = false
+texture = ExtResource("6_ajrdh")
+
 [node name="Cajonera Ventan" parent="." index="19"]
 transform = Transform3D(-4.37114e-08, 0, 1.39383, 0, 1, 0, -1, 0, -6.09262e-08, 2.02009, 0.398512, 1.763)
 
@@ -576,6 +595,9 @@ bones/47/rotation = Quaternion(0.241564, 0.0547086, -0.0136417, 0.968745)
 
 [node name="Sphere" parent="." index="156"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.12226, 1.49904, 1.84575)
+
+[node name="polySurface137" parent="WalterWhiteFigurine/WalterModel" index="0"]
+transform = Transform3D(1.07314, 5.96046e-08, 6.3079e-15, -5.96046e-08, 1.07314, -1.97987e-14, 3.55271e-15, 0, 1.07314, -37.3016, -10.092, 64.6042)
 
 [node name="CeilingLight5" type="SpotLight3D" parent="." index="170"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.619664, 2.53399, 1.96487)

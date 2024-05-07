@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=40 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://be4xbnwtbfrbp" path="res://_Features/activables/sounds/layup.mp3" id="9_ewa22"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="9_r4vxe"]
 [ext_resource type="AudioStream" uid="uid://cnx7mcaw8v4vm" path="res://_Features/activables/sounds/lay_down.wav" id="10_h0rxo"]
+[ext_resource type="Texture2D" uid="uid://bx24tlyk351mn" path="res://_Features/activables/creepy_hoodie.png" id="12_ujn47"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iji4e"]
 size = Vector3(1.52648, 2.47904, 0.102234)
@@ -95,9 +96,11 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 cell_height = 0.01
 edge_max_error = 0.77
 
-[node name="Salon" node_paths=PackedStringArray("noise_nodes") instance=ExtResource("1_00744")]
+[node name="Salon" node_paths=PackedStringArray("noise_nodes", "ceiling_nodes", "scary_hoodie") instance=ExtResource("1_00744")]
 script = ExtResource("2_2xult")
-noise_nodes = [NodePath("Plane_011"), NodePath("Plane_022"), NodePath("Plane_023"), NodePath("Plane_024"), NodePath("Plane_002"), NodePath("Plane_017")]
+noise_nodes = [NodePath("Cube_006"), NodePath("Cube_007"), NodePath("Cube_008"), NodePath("Sphere_001"), NodePath("Sphere_002"), NodePath("Sphere_003"), NodePath("Cube_003"), NodePath("Cylinder_010")]
+ceiling_nodes = [NodePath("Plane_010"), NodePath("Plane_028"), NodePath("Plane_015"), NodePath("Cylinder_007")]
+scary_hoodie = NodePath("Plane_034/scary_hoodie")
 
 [node name="Markers" type="Node3D" parent="." index="0"]
 
@@ -431,6 +434,11 @@ input_ray_pickable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Closet_001/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027061, 0.161621, -0.0920839)
 shape = SubResource("BoxShape3D_k7482")
+
+[node name="scary_hoodie" type="Sprite3D" parent="Plane_034" index="0"]
+transform = Transform3D(-7.00695e-09, 0, 0.236841, 0, 0.236841, 0, -0.1603, 0, -1.03527e-08, -0.0345397, 0, 0)
+visible = false
+texture = ExtResource("12_ujn47")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_007" index="0"]
 collision_layer = 3

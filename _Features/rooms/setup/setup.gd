@@ -1,5 +1,8 @@
 class_name Setup extends Room
 
+@export var get_stuff_to_disappear: Array[Node3D]
+@export var glitched_streaming: Array[Node3D]
+
 var activables_while_penetrated := ["WallsUpActivable", "MoveChairActivable"] as Array[String]
 var activables_while_normal := (
 	[
@@ -99,10 +102,6 @@ func stream_wrong() -> void:
 
 func stream_out_wrong() -> void:
 	switch_context(activables_while_normal)
-
-
-func awake_wall() -> void:
-	pass
 
 
 func awake_jump() -> void:
