@@ -18,8 +18,9 @@ var current_activable: Activable = null:
 
 
 func _process(delta: float) -> void:
-	if !current_activable || !current_activable.is_in_context:
-		return
+	if current_activable == null || !current_activable.is_in_context:
+			is_pressing = false
+			return
 
 	if is_pressing:
 		time_pressing += delta
@@ -33,7 +34,9 @@ func _unhandled_input(event):
 	if can_press && current_activable != null && current_activable.is_in_context:
 		if event.is_action_pressed("player_action"):
 			is_pressing = true
+			current_activable.progress_audio.play()
 		if event.is_action_released("player_action"):
+			current_activable.progress_audio.stop()
 			is_pressing = false
 
 			if is_alternative_set:

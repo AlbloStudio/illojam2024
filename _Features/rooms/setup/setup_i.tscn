@@ -1,11 +1,18 @@
-[gd_scene load_steps=34 format=3 uid="uid://c0bdwlue70wgp"]
+[gd_scene load_steps=41 format=3 uid="uid://c0bdwlue70wgp"]
 
 [ext_resource type="PackedScene" uid="uid://eey6l7a03sjc" path="res://_Features/rooms/setup/setup.blend" id="1_8c4o6"]
 [ext_resource type="Script" path="res://_Features/rooms/setup/setup.gd" id="2_42fvx"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_n3fv0"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="4_j3up1"]
+[ext_resource type="AudioStream" uid="uid://gusbnfhicbwf" path="res://_Features/activables/sounds/sit.mp3" id="5_fryem"]
 [ext_resource type="Texture2D" uid="uid://d00b5ifsxw6ha" path="res://_Features/activables/bsod.jpeg" id="5_on3cq"]
 [ext_resource type="Texture2D" uid="uid://dfvv88yeqksy2" path="res://_Features/activables/scary_streamer.png" id="6_ajrdh"]
+[ext_resource type="AudioStream" uid="uid://6aekogm3d1dx" path="res://_Features/activables/sounds/getup.mp3" id="6_qcqh2"]
+[ext_resource type="AudioStream" uid="uid://f3hv5t1433ph" path="res://_Features/activables/sounds/jump.wav" id="7_xm5ys"]
+[ext_resource type="AudioStream" uid="uid://ct54pfxyqw13n" path="res://_Features/activables/sounds/teleport.mp3" id="8_cc1lt"]
+[ext_resource type="AudioStream" uid="uid://cdchtb2hsv5bt" path="res://_Features/activables/sounds/blind_up.mp3" id="9_d2e7n"]
+[ext_resource type="AudioStream" uid="uid://cmou4uiwchbj2" path="res://_Features/activables/sounds/blind_down.mp3" id="10_2dqqg"]
+[ext_resource type="AudioStream" uid="uid://dqre8lapf8hnv" path="res://_Features/activables/sounds/wheels.mp3" id="11_83rsw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pld4w"]
 albedo_color = Color(0, 0, 0, 1)
@@ -310,6 +317,8 @@ activable_name = "StreamIn"
 activable_text = "Hacer Stream"
 enable_after = [NodePath("../StreamOutActivable")]
 initial_point = NodePath("Normal")
+sound = ExtResource("5_fryem")
+sound_volume = 3.0
 activable_alternative_text = "Mover la silla"
 alternative_enable_after = [NodePath(".")]
 
@@ -322,6 +331,8 @@ activable_name = "StreamOut"
 initial_state = "Deactivated"
 activable_text = "Dejar de hacer stream"
 enable_after = [NodePath("../StreamInActivable")]
+sound = ExtResource("6_qcqh2")
+sound_volume = -10.0
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
 
@@ -332,6 +343,8 @@ initial_state = "Deactivated"
 activable_text = "ssHssascssser ssStressams"
 enable_after = [NodePath("../StreamOutInCorrectActivable")]
 initial_point = NodePath("Normal")
+sound = ExtResource("5_fryem")
+sound_volume = 3.0
 activable_alternative_text = "ffFMooffverfff ffLa Sffifflfllaa"
 alternative_enable_after = [NodePath(".")]
 
@@ -344,19 +357,25 @@ activable_name = "StreamOutWrong"
 initial_state = "Deactivated"
 activable_text = "Dssesjssasr sdses shssascser streamsss"
 enable_after = [NodePath("../StreamInIncorrectActivable")]
+sound = ExtResource("6_qcqh2")
+sound_volume = -10.0
 activable_alternative_text = "Ecffhffar funfa cffabezffffaditaffff"
 alternative_enable_after = [NodePath(".")]
 
 [node name="JumpDownActivable" parent="Activables" index="4" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_enable_after", "alternative_initial_point") instance=ExtResource("2_n3fv0")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.41488, 0, -2.66524)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.15264, 0, -2.18523)
 activable_name = "Jump Down"
 initial_state = "Deactivated"
 activable_text = "Bajar pared"
 enable_after = [NodePath("../WallsUpActivable")]
 initial_point = NodePath("Normal")
+sound = ExtResource("8_cc1lt")
+sound_delay = 0.4
+sound_volume = -4.0
 activable_alternative_text = "Saltar"
 alternative_enable_after = [NodePath("../WallsUpActivable")]
 alternative_initial_point = NodePath("Alternative")
+alternative_sound = ExtResource("7_xm5ys")
 
 [node name="Normal" type="Marker3D" parent="Activables/JumpDownActivable" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.367, 3.013, 1.191)
@@ -370,6 +389,7 @@ activable_name = "Exit Window"
 activable_text = "Salir por la ventana"
 enable_after = [NodePath(".")]
 initial_point = NodePath("Normal")
+sound = ExtResource("7_xm5ys")
 activable_alternative_text = "Asomarse"
 alternative_enable_after = [NodePath(".")]
 alternative_initial_point = NodePath("Alternative")
@@ -387,6 +407,7 @@ initial_state = "Deactivated"
 activable_text = "Volver"
 enable_after = [NodePath("../ExitWindowActivable")]
 initial_point = NodePath("Normal")
+sound = ExtResource("7_xm5ys")
 activable_alternative_text = "Asomarse"
 alternative_enable_after = [NodePath(".")]
 alternative_initial_point = NodePath("Alternative")
@@ -404,6 +425,8 @@ initial_state = "Deactivated"
 activable_text = "Levantar la persiana"
 enable_after = [NodePath("../BlindersDownActivable")]
 initial_point = NodePath("Normal")
+sound = ExtResource("9_d2e7n")
+sound_volume = -3.0
 activable_alternative_text = "Cuestionarse el cordelito"
 alternative_enable_after = [NodePath(".")]
 
@@ -416,6 +439,8 @@ activable_name = "Blinders Down"
 activable_text = "Bajar la persiana"
 enable_after = [NodePath("../BlindersUpActivable")]
 initial_point = NodePath("Normal")
+sound = ExtResource("10_2dqqg")
+sound_volume = -3.0
 activable_alternative_text = "Cuestionarse el cordelito"
 alternative_enable_after = [NodePath(".")]
 
@@ -423,7 +448,7 @@ alternative_enable_after = [NodePath(".")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0134435, 0, 0.390104)
 
 [node name="WallsUpActivable" parent="Activables" index="9" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_enable_after", "alternative_initial_point") instance=ExtResource("2_n3fv0")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.72516, 0.883721, -4.05414)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.727455, 0.883721, -3.59929)
 activable_name = "TouchWall"
 activable_text = "Tocar la pared"
 enable_after = [NodePath(".")]
@@ -431,6 +456,9 @@ initial_point = NodePath("Normal")
 activable_alternative_text = "Subir la pared"
 alternative_enable_after = [NodePath("../JumpDownActivable")]
 alternative_initial_point = NodePath("Alternative")
+alternative_sound = ExtResource("8_cc1lt")
+alternative_sound_delay = 0.4
+alternative_sound_volume = -4.0
 
 [node name="Normal" type="Marker3D" parent="Activables/WallsUpActivable" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.701996, 0, -0.018102)
@@ -447,6 +475,7 @@ deactivate_after = [NodePath("../StreamInActivable"), NodePath("../StreamOutActi
 enable_after_seconds = 0.1
 destroy_after_activation = true
 initial_point = NodePath("Normal")
+sound = ExtResource("11_83rsw")
 alternative_enable_after = [NodePath(".")]
 
 [node name="Normal" type="Marker3D" parent="Activables/MoveChairActivable" index="4"]

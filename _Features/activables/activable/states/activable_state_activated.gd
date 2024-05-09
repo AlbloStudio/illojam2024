@@ -42,9 +42,9 @@ func activated_done(activable_name: String) -> void:
 			else state_owner.sound_volume
 		)
 
-		create_tween().tween_callback(play_audio.bind(audio_to_play, volume_to_set)).set_delay(
-			time_to_wait
-		)
+		await get_tree().create_timer(time_to_wait).timeout
+		play_audio(audio_to_play, volume_to_set)
+
 
 	(
 		create_tween()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ctv4r5oi50oy1"]
+[gd_scene load_steps=25 format=3 uid="uid://ctv4r5oi50oy1"]
 
 [ext_resource type="Script" path="res://_Features/activables/activable/activable.gd" id="1_s7sqx"]
 [ext_resource type="AudioStream" uid="uid://dsn2yb5o0irsx" path="res://_Features/UI/activate.wav" id="2_6oowg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_idle.gd" id="3_eg2dy"]
 [ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_visible.gd" id="4_jqj2w"]
 [ext_resource type="AudioStream" uid="uid://qk5nyf50e3o7" path="res://_Features/UI/alternative.wav" id="4_vee18"]
+[ext_resource type="AudioStream" uid="uid://bhromoqagjmps" path="res://_Features/activables/sounds/progress.mp3" id="5_3gin4"]
 [ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_activated.gd" id="5_ybc1y"]
 [ext_resource type="Script" path="res://_Features/activables/activable/states/activable_state_deactivated.gd" id="6_p1ox2"]
 [ext_resource type="Texture2D" uid="uid://c746ouxhj4n8j" path="res://_Features/UI/noise_alternative.png" id="7_6x0xm"]
@@ -154,6 +155,12 @@ skeleton = NodePath("../..")
 script = ExtResource("7_48efp")
 
 [node name="SFX" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+
+[node name="ProgressAudio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(0.92804, 0, 0, 0, 0.92804, 0, 0, 0, 0.92804, 0, 0, 0)
+stream = ExtResource("5_3gin4")
+volume_db = -3.0
 bus = &"SFX"
 
 [node name="GameFeelAudio" type="AudioStreamPlayer3D" parent="."]

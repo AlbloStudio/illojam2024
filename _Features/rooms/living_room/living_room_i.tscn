@@ -1,10 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://daj1yi4q8q4f"]
+[gd_scene load_steps=42 format=3 uid="uid://daj1yi4q8q4f"]
 
 [ext_resource type="PackedScene" uid="uid://cukxxfqkbx561" path="res://_Features/rooms/living_room/Salon.blend" id="1_00744"]
 [ext_resource type="Script" path="res://_Features/rooms/living_room/living_room.gd" id="2_2xult"]
 [ext_resource type="PackedScene" uid="uid://b2uyt4m0rq2fi" path="res://_Features/common/barrier/barrier_system.tscn" id="3_6s4fw"]
 [ext_resource type="PackedScene" uid="uid://d3rkq03p0oela" path="res://_Features/rooms/living_room/clothes/t-shirt.blend" id="3_ldumg"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="3_t3t5u"]
+[ext_resource type="AudioStream" uid="uid://buosm84b0xpjh" path="res://_Features/activables/sounds/clothes.wav" id="5_ltnwt"]
 [ext_resource type="PackedScene" uid="uid://krfftilrej8q" path="res://_Features/rooms/living_room/clothes/trousers.blend" id="5_v7b18"]
 [ext_resource type="PackedScene" uid="uid://bn3rgui88uyr0" path="res://_Features/rooms/living_room/clothes/underpants.blend" id="6_lembl"]
 [ext_resource type="AudioStream" uid="uid://gusbnfhicbwf" path="res://_Features/activables/sounds/sit.mp3" id="7_jdxe8"]
@@ -12,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://6aekogm3d1dx" path="res://_Features/activables/sounds/getup.mp3" id="8_3bltq"]
 [ext_resource type="AudioStream" uid="uid://be4xbnwtbfrbp" path="res://_Features/activables/sounds/layup.mp3" id="9_ewa22"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="9_r4vxe"]
+[ext_resource type="AudioStream" uid="uid://nxe8ryn1s3lt" path="res://_Features/activables/sounds/ClosetActivable_normal.mp3" id="9_syyqw"]
 [ext_resource type="AudioStream" uid="uid://cnx7mcaw8v4vm" path="res://_Features/activables/sounds/lay_down.wav" id="10_h0rxo"]
 [ext_resource type="Texture2D" uid="uid://bx24tlyk351mn" path="res://_Features/activables/creepy_hoodie.png" id="12_ujn47"]
 
@@ -137,6 +139,7 @@ activable_name = "Put on T-Shirt"
 initial_state = "Deactivated"
 activable_text = "Ponerse camiseta"
 initial_point = NodePath("Normal")
+sound = ExtResource("5_ltnwt")
 activable_alternative_text = "Quitarse camiseta"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
@@ -153,6 +156,7 @@ activable_name = "Put on Pants"
 initial_state = "Deactivated"
 activable_text = "Ponerse pantalones"
 initial_point = NodePath("Normal")
+sound = ExtResource("5_ltnwt")
 activable_alternative_text = "Quitarse pantalones"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
@@ -169,6 +173,7 @@ activable_name = "Put on Underwear"
 initial_state = "Deactivated"
 activable_text = "Ponerse calzoncillos"
 initial_point = NodePath("Normal")
+sound = ExtResource("5_ltnwt")
 activable_alternative_text = "Quitarse calzoncillos"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
@@ -186,7 +191,7 @@ enable_after = [NodePath("../ChairActivableGetUp")]
 enable_after_seconds = 2.5
 initial_point = NodePath("Normal")
 sound = ExtResource("7_jdxe8")
-sound_volume = 1.0
+sound_volume = 2.0
 activable_alternative_text = "Hablar con taburete"
 alternative_enable_after = [NodePath(".")]
 
@@ -213,6 +218,8 @@ activable_text = "Desnudarse"
 enable_after = [NodePath("../../Clothes/tshirt/Activable"), NodePath("../../Clothes/pants/Activable"), NodePath("../../Clothes/underwear/Activable")]
 enable_after_seconds = 0.2
 initial_point = NodePath("Normal")
+sound = ExtResource("9_syyqw")
+sound_volume = 10.0
 activable_alternative_text = "Salir de casa por el armario"
 alternative_initial_point = NodePath("Alternative")
 
@@ -240,6 +247,8 @@ enable_after = [NodePath("../SofaActivableLayDownWall")]
 deactivate_after = [NodePath("../SofaActivableLayUp"), NodePath("."), NodePath("../SofaActivableLayDown")]
 enable_after_seconds = 4.0
 sound = ExtResource("9_ewa22")
+sound_delay = 1.3
+sound_volume = 3.0
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
@@ -253,6 +262,8 @@ enable_after = [NodePath("../SofaActivableLayDown")]
 deactivate_after = [NodePath("../SofaActivableLayUpWall"), NodePath("."), NodePath("../SofaActivableLayDownWall")]
 enable_after_seconds = 4.0
 sound = ExtResource("9_ewa22")
+sound_delay = 1.3
+sound_volume = 3.0
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
@@ -265,6 +276,7 @@ enable_after = [NodePath("../SofaActivableLayUpWall"), NodePath("../SofaActivabl
 deactivate_after = [NodePath("../SofaActivableLayDownWall"), NodePath(".")]
 initial_point = NodePath("Normal")
 sound = ExtResource("10_h0rxo")
+sound_volume = 5.0
 activable_alternative_text = "Girar el sofá con la mente"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0
@@ -282,6 +294,7 @@ deactivate_after = [NodePath("../SofaActivableLayDown"), NodePath(".")]
 enable_after_seconds = 2.5
 initial_point = NodePath("Normal")
 sound = ExtResource("10_h0rxo")
+sound_volume = 5.0
 activable_alternative_text = "Girar el sofá con la mente"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 4.0

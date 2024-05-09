@@ -65,7 +65,7 @@ func turn_off_lights(mirror_effect: Node3D) -> void:
 		light_states[light] = light.visible
 		light.visible = false
 
-	await _create_timer(10)
+	await _create_timer(7)
 
 	world_environment.environment.background_color = Color(0.2, 0.2, 0.2)
 	world_environment.environment.fog_enabled = true

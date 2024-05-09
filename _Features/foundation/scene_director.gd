@@ -354,6 +354,8 @@ func _set_current_activable(new_activable: Activable) -> void:
 
 
 func _remove_current_activable() -> void:
+	current_activable.progress_audio.stop()
+
 	current_activable = null
 	action_controller.current_activable = null
 

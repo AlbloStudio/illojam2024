@@ -32,7 +32,7 @@ class_name Activable extends Area3D
 @export var initial_point: Node3D
 @export var sound: AudioStream
 @export var sound_delay := 0.0
-@export_range(-24, 6) var sound_volume := 0.0
+@export_range(-24, 10) var sound_volume := 0.0
 
 @export_category("Alternative")
 @export var activable_alternative_text := "..."
@@ -44,7 +44,7 @@ class_name Activable extends Area3D
 @export var alternative_initial_point: Node3D
 @export var alternative_sound: AudioStream
 @export var alternative_sound_delay := 0.0
-@export_range(-24, 6) var alternative_sound_volume := 0.0
+@export_range(-24, 10) var alternative_sound_volume := 0.0
 
 var player: Player
 var is_in_context := true:
@@ -73,6 +73,7 @@ var is_using_help := false
 @onready var indicator_mesh := $Indicator/IndicatorMesh as MeshInstance3D
 @onready var audio_stream := $SFX as AudioStreamPlayer3D
 @onready var game_feel_audio := $GameFeelAudio as AudioStreamPlayer3D
+@onready var progress_audio := $ProgressAudio as AudioStreamPlayer3D
 @onready var activating_light := $ActivatingLight as OmniLight3D
 @onready var activating_light_label := $ActivatingLightLabel as OmniLight3D
 @onready var animation_player := $AnimationPlayer as ActivableAnimations
@@ -197,6 +198,7 @@ func change_current_activable() -> void:
 
 
 func stop_being_current() -> void:
+	game_feel_audio.stop()
 	if state_machine.is_in_state([state_visible.name]):
 		state_machine.transition_to(state_idle.name)
 

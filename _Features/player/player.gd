@@ -6,7 +6,6 @@ class_name Player extends CharacterBody3D
 @export var speed_fast = 3.0
 @export var acceleration := 10.0
 @export var intertia := 15.0
-@export var zarzillos: AudioStream
 
 var desired_velocity := Vector2.ZERO
 var clothes = ["underwear", "pants", "tshirt"]
@@ -132,8 +131,6 @@ func put_some_clothes(cloth_name: String) -> void:
 		clothes.append(cloth_name)
 		if cloth_name == "pants":
 			body.get_active_material(2).albedo_texture = original_pants_texture
-			audiostream_player.stream = zarzillos
-			audiostream_player.play()
 		elif cloth_name == "tshirt":
 			body.get_active_material(1).albedo_texture = original_hoodie_texture
 

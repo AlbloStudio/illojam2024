@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://cb0311e3f7has"]
+[gd_scene load_steps=24 format=3 uid="uid://cb0311e3f7has"]
 
 [ext_resource type="PackedScene" uid="uid://22b2y7e1gs5j" path="res://_Features/rooms/moor_moor_gnivil/Nolas.blend" id="1_anjvf"]
 [ext_resource type="PackedScene" uid="uid://ctv4r5oi50oy1" path="res://_Features/activables/activable/activable.tscn" id="2_lb8q8"]
 [ext_resource type="Script" path="res://_Features/rooms/moor_moor_gnivil/nolas.gd" id="2_x8dvp"]
 [ext_resource type="PackedScene" uid="uid://bb43tlfgdsw7r" path="res://_Features/activables/tablet/tablet.tscn" id="3_k6s5t"]
+[ext_resource type="AudioStream" uid="uid://dkmseio4fve1v" path="res://_Features/activables/sounds/PosterActivable_normal.wav" id="4_cl8vw"]
+[ext_resource type="AudioStream" uid="uid://gusbnfhicbwf" path="res://_Features/activables/sounds/sit.mp3" id="5_y5ukc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kc5t6"]
 size = Vector3(5.38177, 3.50208, 0.224121)
@@ -85,6 +87,9 @@ activable_text = "reeL"
 enable_after = [NodePath("../../Tablet/Tablet")]
 destroy_after_activation = true
 initial_point = NodePath("Normal")
+sound = ExtResource("4_cl8vw")
+sound_delay = 2.5
+sound_volume = 2.0
 activable_alternative_text = "rariM"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 5.0
@@ -99,6 +104,8 @@ forbidden = true
 activable_text = "eterubat ne esratneS"
 destroy_after_activation = true
 initial_point = NodePath("Normal")
+sound = ExtResource("5_y5ukc")
+sound_volume = 2.0
 activable_alternative_text = "eterubat noc rablaH"
 alternative_enable_after = [NodePath(".")]
 alternative_enable_after_seconds = 5.0
