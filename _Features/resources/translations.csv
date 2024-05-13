@@ -1,0 +1,84 @@
+keys,es,en
+TABURETE,"Qué pasa, taburete? TABURRES?","What’s up, stool? Feeling stoolpid?"
+ZZZ,ZZzzzZzZZzZ,ZZzzzZzZZzZ
+ETERUBAT,"?SERRUBAT ?eterubat ,asap euQ","?diploots gnileeF ?loots ,pu s’tahW"
+OTILUC,"otiluc ayav ...on is euq,oluc le ev em es on euqrop Y .retsoP le ne ev em es apuog euq ,onamreh ,soiD",""".ttub a tahw ...erew ti fi ,nwohs t'nsi ttub ym esuaceb dnA .retsop eht ni emosdo h os kool I ,rehtorb ,doG"
+ME_CAGO,ME CAGO,I SHIT MYSELF
+PARED,"Otia, una pared","Wow, a wall"
+VENTANA_FUERA,Hostia.... eso que se ve desde aquí es rarísimo. La gente tira cualquier porquería al suelo,Damn... that thing you can see from here is really weird. People throw any garbage on the floor.
+VENTANA_ABIERTA,Ni de coña salgo por una ventana abierta.,No way I'm going out through an open window.
+VENTANA_DENTRO,MI CASA ILLO,DUDE MA HOUSE
+CORDELILLO,"Que hace aquí el cordelillo de bajar la persiana? Por la cara. Y la músia tétrica esta? Hermano, cabeza fría, te lo juro",What is this blind cord doing here? no reason for it. And this creepy music? I'm SO scared
+NOTHING,...,...
+ESPEJO,"Y ese espejo? no me veo reflejado, por la cara...","And that mirror? I can’t see my reflection, for no reason..."
+ORDEN,Ese es el orden en el que me visto todos los días...,This is the order I get dressed every day...
+DESPERTE,"Uf, por fin. Me desperté. Me desperté? %*%*(@#","Ugh, finally. I woke up. Did I wake up? %%(@#"
+START_0,"Hola, soy LMDSHOW... Estás atrapado en un sueño. Lo sé, rarete, no? Pero quiero ayudarte.","Hello, I'm LMDSHOW... You are trapped in a dream. I know, weird, right? But I want to help you."
+START_1,"La clave para despertar es hacer cosas inusuales e ilógicas, cosas que no harías en la vida real.","The key to waking up is to do unusual and illogical things, things you wouldn't do in real life."
+START_2,"Y... por dónde empezar? Tal vez, ese.... ese armario.","And... where to start? Maybe, that... that closet."
+START_3,Y... en qué orden te vistes todos los días?,And... in what order do you dress every day?
+START_4,Espero que esto te guíe hacia la luz de la realidad. AIIIPS,I hope this guides you towards the light of reality. AIIIPS!
+START_5,"(Click izquierdo para moverte, click derecho para ejecutar la acción sobre la que está tu ratón, y ESC o Enter para el menú de volumen)","(Left click to move, right click to perform the action where your mouse is, and ESC or Enter for the volume menu)"
+SECONDS_0,Deja pulsado durante 3 segundos sobre una acción y...,Hold down on an action for 3 seconds and...
+SECONDS_1,Cambiarás a una acción alternativa.,You'll switch to an alternative action.
+SECONDS_2,Deja pulsado durante 3 segundos otra vez y volverás a la acción original.,Hold down for 3 seconds again and you'll return to the original action.
+QUITADO,No me puedo quitar lo que ya me he quitado... espabila.,I can't take off what I've already taken off... pls
+CULITO,"Dios, hermano, qué guapo se me ve en el poster. Y porque no se me ve el culo, si no... vaya culito","God, brother, I look so handsome in the poster. And because my butt isn't shown, if it were... what a butt."
+OGACEM,"""OGAC EM?"" Qué cojones es eso? desde cuándo tengo yo este poster aquí? parece escrito como si estuviera mirando un espejo.","""FLESYMTIHSI?"" What the hell is that? Since when do I have this poster here? It looks like it's written as if I were looking in a mirror."
+ARRIBA,"No puedo desde aquí arriba, por alguna razón...","I can't from up here, for some reason..."
+StreamIn,Hacer Stream,Stream
+StreamIn_alt,Mover la silla,Move the chair
+StreamOut,Dejar de hacer stream,Stop streaming
+StreamOut_alt,Echar una cabezadita,Take a nap
+StreamWrong,ssHssascssser ssStressams,ssHssascssser ssStressams
+StreamWrong_alt,ffFMooffverfff ffLa Sffifflfllaa,ffFMooffverfff ffLa Sffifflfllaa
+StreamOutWrong,Dssesjssasr sdses shssascser streamsss,ssSstsosps sssstsssrsesamsisnsgsss
+StreamOutWrong_alt,Ecffhffar funfa cffabezffffaditaffff,ffTfafkffeff faf fnfafpff
+Jump Down,Bajar pared,Lower the wall
+Jump Down_alt,Saltar,Jump
+Exit Window,Salir por la ventana,Exit through the window
+Exit Window_alt,Asomarse,Look outside
+Enter Window,Volver,Return
+Enter Window_alt,Asomarse,Look inside
+Blinders Up,Levantar la persiana,Raise the blind
+Blinders Up_alt,Cuestionarse el cordelito,Question the little cord
+Blinders Down,Bajar la persiana,Lower the blind
+Blinders Down_alt,Cuestionarse el cordelito,Question the little cord
+TouchWall,Tocar la pared,Touch the wall
+TouchWall_alt,Subir la pared,Climb the wall
+Move Chair,Mover la silla,Move the chair
+Move Chair_alt,...,...
+TabletSecret,Activar,Activate
+TabletSecret_alt,...,...
+Tablet,Leer chat,Read chat
+Tablet_alt,...,...
+Put on T-Shirt,Ponerse camiseta,Put on a shirt
+Put on T-Shirt_alt,Quitarse camiseta,Take off a shirt
+Put on Pants,Ponerse pantalones,Put on pants
+Put on Pants_alt,Quitarse pantalones,Take off pants
+Put on Underwear,Ponerse calzoncillos,Put on underwear
+Put on Underwear_alt,Quitarse calzoncillos,Take off underwear
+Sit,Sentarse en taburete,Sit on the stool
+Sit_alt,Hablar con taburete,Talk to the stool
+GetUp,Levantarse del taburete,Get up from the stool
+GetUp_alt,Echar una cabezadita,Take a nap
+Get Naked,Desnudarse,Get undressed
+Get Naked_alt,Salir de casa por el armario,Leave the house through the closet
+ReadPoster,Leer,Read
+ReadPoster_alt,Contemplar,Contemplate
+Lay up wall,Levantarse,Get up
+Lay up wall_alt,Echar una cabezadita,Take a nap
+Lay up,Levantarse,Get up
+Lay up_alt,Echar una cabezadita,Take a nap
+Lay down,Acostarse,Lie down
+Lay down_alt,Girar el sofá con la mente,Spin the sofa with the mind
+Lay down wall,Acostarse,Lie down
+Lay down wall_alt,Girar el sofá con la mente,Spin the sofa with the mind
+TabletLivingRoom,Activar,Activate
+TabletLivingRoom_alt,...,...
+RetsopDear,reeL,reeL
+RetsopDear_alt,rariM,rariM
+Tis,eterubat ne esratneS,Sit on the stool
+Tis_alt,eterubat noc rablaH,Talk with stool
+TabletNolas,Activar,Activate
+TabletNolas_alt,...,...

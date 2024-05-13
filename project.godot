@@ -65,6 +65,10 @@ activable_help={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://_Features/resources/translations.es.translation", "res://_Features/resources/translations.en.translation")
+
 [layer_names]
 
 3d_physics/layer_1="players"

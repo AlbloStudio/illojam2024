@@ -78,14 +78,7 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 			(
 				living_room
 				. say_tablet(
-					[
-						"Hola, soy LMDSHOW... Estás atrapado en un sueño. Lo sé, rarete, no? Pero quiero ayudarte.",
-						"La clave para despertar es hacer cosas inusuales e ilógicas, cosas que no harías en la vida real.",
-						"Y... por dónde empezar? Tal vez, ese.... ese armario.",
-						"Y... en qué orden te vistes todos los días?",
-						"Espero que esto te guíe hacia la luz de la realidad. AIIIPS",
-						"(Pulsa E o Espacio para ejecutar una acción, y ESC o Enter para el menú de volumen)"
-					],
+					["START_0", "START_1", "START_2", "START_3", "START_4", "START_5"],
 					"IlloIntroCompleta",
 					[
 						7.0,
@@ -108,13 +101,7 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 
 		"TabletSecret":
 			setup.say_tablet(
-				[
-					"Deja pulsado durante 3 segundos sobre una acción y...",
-					"Cambiarás a una acción alternativa.",
-					"Deja pulsado durante 3 segundos otra vez y volverás a la acción original."
-				],
-				"AcciónAlternativa",
-				[5.0, 4.0, 5.0]
+				["SECONDS_0", "SECONDS_1", "SECONDS_2"], "AcciónAlternativa", [5.0, 4.0, 5.0]
 			)
 			create_tween().tween_callback(setup.reactivate_tablet).set_delay(11.0)
 
@@ -127,53 +114,31 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 
 		"Put on T-Shirt":
 			if alternative:
-				player.say(
-					"No me puedo quitar lo que ya me he quitado... espabila.",
-					"QuitarseRopcaSinRopa"
-				)
+				player.say("QUITADO", "QuitarseRopcaSinRopa")
 			else:
 				_put_on_clothes("tshirt")
 
 		"Put on Pants":
 			if alternative:
-				player.say(
-					"No me puedo quitar lo que ya me he quitado... espabila.",
-					"QuitarseRopcaSinRopa"
-				)
+				player.say("QUITADO", "QuitarseRopcaSinRopa")
 			else:
 				_put_on_clothes("pants")
 
 		"Put on Underwear":
 			if alternative:
-				player.say(
-					"No me puedo quitar lo que ya me he quitado... espabila.",
-					"QuitarseRopcaSinRopa"
-				)
+				player.say("QUITADO", "QuitarseRopcaSinRopa")
 			else:
 				_put_on_clothes("underwear")
 
 		"ReadPoster":
 			if alternative:
-				(
-					player
-					. say(
-						"Dios, hermano, qué guapo se me ve en el poster. Y porque no se me ve el culo, si no... vaya culito",
-						"ContemplarPoster"
-					)
-				)
+				player.say("CULITO", "ContemplarPoster")
 			else:
-				(
-					player
-					. say(
-						'"OGAC EM?" Qué cojones es eso? desde cuándo tengo yo este poster aquí? parece escrito como si estuviera mirando un espejo.',
-						"OGACEM",
-						9
-					)
-				)
+				player.say("OGACEM", "OGACEM", 9)
 
 		"Sit":
 			if alternative:
-				player.say("Qué pasa, taburete? TABURRES?", "TabureteAlternativo")
+				player.say("TABURETE", "TabureteAlternativo")
 				create_tween().tween_callback(func(): SignalBus.awaked.emit("talk")).set_delay(3.0)
 			else:
 				player.sit_on_chair(living_room.get_marker_position("chairMarker"))
@@ -181,28 +146,22 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 
 		"GetUp":
 			if alternative:
-				player.say("ZZzzzZzZZzZ", "ZZZSfx")
+				player.say("ZZZ", "ZZZSfx")
 			else:
 				player.get_up_from_chair()
 				living_room.get_up_from_chair()
 
 		"Tis":
 			if alternative:
-				player.say("?SERRUBAT ?etrubat ,asap euQ", "TabureteAlternativoInverso")
+				player.say("ETERUBAT", "TabureteAlternativoInverso")
 			else:
 				player.sit_on_mirror_chair(nolas.get_marker_position("chairMarker"))
 
 		"RetsopDear":
 			if alternative:
-				(
-					player
-					. say(
-						"oticuluc ayav ...on is ,oluc le ev em es on euqrop Y .retsoP le ne ev em es apuog euq ,onamreh ,soiD",
-						"ContemplarPosterInvertido"
-					)
-				)
+				player.say("OTILUC", "ContemplarPosterInvertido")
 			else:
-				player.say("ME CAGO", "MeCago2", 2)
+				player.say("ME_CAGO", "MeCago2", 2)
 				create_tween().tween_callback(func(): SignalBus.awaked.emit("poster")).set_delay(2)
 				nolas.make_tablet_visible()
 		"Lay down":
@@ -221,46 +180,42 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 
 		"Lay up":
 			if alternative:
-				player.say("ZZzzzZzZZzZ", "ZZZSfx")
+				player.say("ZZZ", "ZZZSfx")
 			else:
 				player.lay_up_from_sofa(living_room.get_marker_position("upMarker"))
 				living_room.lay_up()
 
 		"Lay up wall":
 			if alternative:
-				player.say("ZZzzzZzZZzZ", "ZZZSfx")
+				player.say("ZZZ", "ZZZSfx")
 			else:
 				player.lay_up_from_sofa(living_room.get_marker_position("wallMarker"), true)
 				living_room.lay_up(true)
 
 		"StreamIn":
 			if alternative:
-				player.say(
-					"No puedo desde aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
-				)
+				player.say("ARRIBA", "no puedo desde aqui arriba")
 			else:
 				player.sit_to_stream(setup.get_marker_position("StreamMarker"))
 				setup.stream_in()
 
 		"StreamOut":
 			if alternative:
-				player.say("ZZzzzZzZZzZ", "ZZZSfx")
+				player.say("ZZZ", "ZZZSfx")
 			else:
 				player.get_up_from_streaming()
 				setup.stream_out()
 
 		"StreamWrong":
 			if alternative:
-				player.say(
-					"No puedo desde aquí arriba, por alguna razón...", "no puedo desde aqui arriba"
-				)
+				player.say("ARRIBA", "no puedo desde aqui arriba")
 			else:
 				player.sit_to_stream_wrong(setup.get_marker_position("StreamWrongMarker"))
 				setup.stream_wrong()
 
 		"StreamOutWrong":
 			if alternative:
-				player.say("ZZzzzZzZZzZ", "ZZZSfx")
+				player.say("ZZZ", "ZZZSfx")
 			else:
 				player.get_up_from_streaming_wrong()
 				setup.stream_out_wrong()
@@ -273,53 +228,34 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				)
 				setup.switch_to_normal_context()
 			else:
-				player.say("Otia, una pared", "HostiaUnaPared")
+				player.say("PARED", "HostiaUnaPared")
 
 		"Exit Window":
 			if alternative:
-				(
-					player
-					. say(
-						"Hostia.... eso que se ve desde aquí es rarísimo. La gente tira cualquier porquería al suelo",
-						"AsomarsePorLaVentana"
-					)
-				)
+				player.say("VENTANA_FUERA", "AsomarsePorLaVentana")
 			else:
 				if setup.exit_window_activable.forbidden:
 					player.exit_window()
 					setup.show_secret_room()
 				else:
-					player.say("Ni de coña salgo por una ventana abierta.", "NiDeCoñaSalgo")
+					player.say("VENTANA_ABIERTA", "NiDeCoñaSalgo")
 
 		"Enter Window":
 			if alternative:
-				player.say("MI CASA ILLO", "AsomarseDesdeFuera")
+				player.say("VENTANA_DENTRO", "AsomarseDesdeFuera")
 			else:
 				player.enter_window()
 				setup.hide_secret_room()
 
 		"Blinders Up":
 			if alternative:
-				(
-					player
-					. say(
-						"Que hace aquí el cordelillo de bajar la persiana? Por la cara. Y la músia tétrica esta? Hermano, cabeza fría, te lo juro",
-						"cordelillopersianaDialogo",
-						7
-					)
-				)
+				player.say("CORDELILLO", "cordelillopersianaDialogo", 7)
 			else:
 				setup.blinders_up()
 
 		"Blinders Down":
 			if alternative:
-				(
-					player
-					. say(
-						"Que hace aquí el cordelillo de bajar la persiana? Por la cara. Y la músia tétrica esta? Hermano, cabeza fría, te lo juro",
-						"cordelillopersianaDialogo"
-					)
-				)
+				player.say("CORDELILLO", "cordelillopersianaDialogo")
 			else:
 				setup.blinders_down()
 
@@ -335,7 +271,7 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 
 		"Move Chair":
 			if alternative:
-				player.say("...", " ")
+				player.say("NOTHING", " ")
 			else:
 				setup.move_chair()
 
@@ -375,18 +311,12 @@ func _clothes_wronged() -> void:
 	living_room.make_closet_disappear()
 	living_room.destroy_clothes()
 	SignalBus.awaked.emit("clothes")
-	(
-		create_tween()
-		. tween_callback(
-			func(): player.say("Y ese espejo? no me veo reflejado, por la cara...", "")
-		)
-		. set_delay(3)
-	)
+	create_tween().tween_callback(func(): player.say("ESPEJO", "")).set_delay(3)
 
 
 func _clothes_righted() -> void:
 	living_room.reset_closet()
-	player.say("Ese es el orden en el que me visto todos los días...", "")
+	player.say("ORDEN", "")
 
 
 func _awaked(awake_name: String) -> void:
@@ -489,7 +419,7 @@ func _despierta() -> void:
 
 
 func _started_end() -> void:
-	player.say("Uf, por fin. Me desperté. Me desperté? %*%*(@#", "porfinmedesperte")
+	player.say("DESPERTE", "porfinmedesperte")
 	await get_tree().create_timer(4.5).timeout
 	ui.show_mierda()
 	ui.hide_ui()

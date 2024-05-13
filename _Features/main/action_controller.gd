@@ -19,8 +19,8 @@ var current_activable: Activable = null:
 
 func _process(delta: float) -> void:
 	if current_activable == null || !current_activable.is_in_context:
-			is_pressing = false
-			return
+		is_pressing = false
+		return
 
 	if is_pressing:
 		time_pressing += delta

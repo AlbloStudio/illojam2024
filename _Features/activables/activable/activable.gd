@@ -245,7 +245,7 @@ func set_label_text() -> void:
 		return
 
 	var label_prefix = "🚫 " if forbidden else ""
-	var label_text = activable_alternative_text if alternative else activable_text
+	var label_text = tr(activable_name + "_alt") if alternative else tr(activable_name)
 	label.set_text(label_prefix + label_text)
 
 
