@@ -4,6 +4,7 @@ var is_paused = false
 
 @onready var music_slider := %Music as HSlider
 @onready var dialog_slider := %Dialogs as HSlider
+@onready var sfx_slider := %SFX as HSlider
 
 
 func _ready():
@@ -15,6 +16,10 @@ func _ready():
 
 	dialog_slider.value = (
 		(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Dialogs")) + 80) / 0.8
+	)
+
+	sfx_slider.value = (
+		(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")) + 80) / 0.8
 	)
 
 
@@ -29,3 +34,7 @@ func _on_dialogs_value_changed(value: float) -> void:
 
 func _on_music_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -80 + value * 0.8)
+
+
+func _on_sfx_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), -80 + value * 0.8)

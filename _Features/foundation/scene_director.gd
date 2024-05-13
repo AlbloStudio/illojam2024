@@ -31,9 +31,9 @@ var awakes = {
 
 
 func _ready():
-	# player.collision_layer = 0
-	# player.global_position = living_room.get_marker_position("startMarker")
-	# player.lay_up_from_sofa_init(living_room.get_marker_position("upMarker"))
+	player.collision_layer = 0
+	player.global_position = living_room.get_marker_position("startMarker")
+	player.lay_up_from_sofa_init(living_room.get_marker_position("upMarker"))
 
 	SignalBus.activable_activated.connect(_activable_activated)
 	SignalBus.current_activable_changed.connect(_set_current_activable)
@@ -62,8 +62,8 @@ func _unhandled_input(event):
 
 func _started() -> void:
 	player.collision_layer = 1
-	# current_activable = living_room.get_tablet_activable()
-	# _activable_activated("TabletLivingRoom", false, player)
+	current_activable = living_room.get_tablet_activable()
+	_activable_activated("TabletLivingRoom", false, player)
 
 
 func _activable_activated(activable_name: String, alternative: bool, initial_point: Node3D) -> void:

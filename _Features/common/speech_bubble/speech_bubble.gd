@@ -10,10 +10,11 @@ func _process(_delta) -> void:
 
 
 func say(text: Array[String], audio: String, delay: Array[float] = [3.0]) -> void:
-	var sound = _load_mp3("res://_Features/audio/" + audio + ".mp3")
-	if sound != null:
-		audiostream_player.stream = sound
-		audiostream_player.play()
+	if TranslationServer.get_locale() == "es":
+		var sound = _load_mp3("res://_Features/audio/" + audio + ".mp3")
+		if sound != null:
+			audiostream_player.stream = sound
+			audiostream_player.play()
 
 	speech_bubble_label.visible = true
 

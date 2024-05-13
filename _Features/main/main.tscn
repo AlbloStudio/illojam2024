@@ -228,7 +228,7 @@ alignment = 1
 
 [node name="Musicbel" type="Label" parent="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Música"
+text = "MENU_MUSIC"
 
 [node name="Music" type="HSlider" parent="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -237,10 +237,18 @@ value = 100.0
 
 [node name="DialogLabel" type="Label" parent="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Diálogos
-"
+text = "MENU_DIALOGS"
 
 [node name="Dialogs" type="HSlider" parent="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+
+[node name="SFXLabel" type="Label" parent="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MENU_SFX"
+
+[node name="SFX" type="HSlider" parent="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 value = 100.0
@@ -249,7 +257,7 @@ value = 100.0
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "SALISTE DEL VIDEOJUEGO"
+text = "MENU_EXIT"
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("2_3jmlc")
@@ -362,4 +370,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_s78er")
 
 [connection signal="value_changed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Music" to="Pause" method="_on_music_value_changed"]
 [connection signal="value_changed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Dialogs" to="Pause" method="_on_dialogs_value_changed"]
+[connection signal="value_changed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/SFX" to="Pause" method="_on_sfx_value_changed"]
 [connection signal="pressed" from="Pause/MarginContainer/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
