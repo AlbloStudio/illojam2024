@@ -9,7 +9,9 @@ func _process(_delta) -> void:
 		global_rotation = Vector3(0, 0, 0)
 
 
-func say(text: Array[String], audio: String, delay: Array[float] = [3.0]) -> void:
+func say(
+	text: Array[String], audio: String, delay: Array[float] = [3.0], actions: Dictionary = {}
+) -> void:
 	if TranslationServer.get_locale() == "es":
 		var sound = _load_mp3("res://_Features/audio/" + audio + ".mp3")
 		if sound != null:
@@ -17,6 +19,9 @@ func say(text: Array[String], audio: String, delay: Array[float] = [3.0]) -> voi
 			audiostream_player.play()
 
 	speech_bubble_label.visible = true
+
+	for action in actions:
+		create_tween().tween_callback(action).set_delay(actions[action])
 
 	for i in text.size():
 		speech_bubble_label.text = tr(text[i])

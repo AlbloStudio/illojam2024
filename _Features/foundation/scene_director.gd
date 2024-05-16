@@ -87,23 +87,25 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 						3.0,
 						4.0,
 						5.0,
-					]
+					],
+					{
+						living_room.make_closet_appear: 16.0,
+						nolas.make_closet_appear: 16.0,
+						living_room.reactivate_tablet: 108.0,
+						player.go_controlled: 26.0,
+					}
 				)
 			)
-
-			create_tween().tween_callback(living_room.make_closet_appear).set_delay(16.0)
-			create_tween().tween_callback(nolas.make_closet_appear).set_delay(16.0)
-			create_tween().tween_callback(living_room.reactivate_tablet).set_delay(108.0)
-			create_tween().tween_callback(player.go_controlled).set_delay(26.0)
-
 		"TabletNolas":
 			nolas.activate_tablet()
 
 		"TabletSecret":
 			setup.say_tablet(
-				["SECONDS_0", "SECONDS_1", "SECONDS_2"], "AcciónAlternativa", [5.0, 4.0, 5.0]
+				["SECONDS_0", "SECONDS_1", "SECONDS_2"],
+				"AcciónAlternativa",
+				[5.0, 4.0, 5.0],
+				{setup.reactivate_tablet: 11.0}
 			)
-			create_tween().tween_callback(setup.reactivate_tablet).set_delay(11.0)
 
 		"Get Naked":
 			if alternative:
@@ -138,8 +140,12 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 
 		"Sit":
 			if alternative:
-				player.say("TABURETE", "TabureteAlternativo")
-				create_tween().tween_callback(func(): SignalBus.awaked.emit("talk")).set_delay(3.0)
+				player.say(
+					"TABURETE",
+					"TabureteAlternativo",
+					6.0,
+					{func(): SignalBus.awaked.emit("talk"): 3.0}
+				)
 			else:
 				player.sit_on_chair(living_room.get_marker_position("chairMarker"))
 				living_room.sit_on_chair()
@@ -161,8 +167,9 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 			if alternative:
 				player.say("OTILUC", "ContemplarPosterInvertido")
 			else:
-				player.say("ME_CAGO", "MeCago2", 2)
-				create_tween().tween_callback(func(): SignalBus.awaked.emit("poster")).set_delay(2)
+				player.say(
+					"ME_CAGO", "MeCago2", 2.0, {func(): SignalBus.awaked.emit("poster"): 2.0}
+				)
 				nolas.make_tablet_visible()
 		"Lay down":
 			if alternative:

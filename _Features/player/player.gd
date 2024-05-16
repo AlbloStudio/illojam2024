@@ -143,8 +143,8 @@ func put_some_clothes(cloth_name: String) -> void:
 			SignalBus.clothes_right.emit()
 
 
-func say(text: String, audio: String, delay := 6) -> void:
-	speech_bubble.say([text], audio, [delay])
+func say(text: String, audio: String, delay := 6.0, actions: Dictionary = {}) -> void:
+	speech_bubble.say([text], audio, [delay], actions)
 
 
 func stop_talking() -> void:
