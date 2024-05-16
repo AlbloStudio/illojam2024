@@ -568,6 +568,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 [node name="Tablet" parent="Tablet" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108389, 0, 0.137398)
 activable_name = "TabletLivingRoom"
+initial_state = "Deactivated"
 activable_text = "Activar"
 
 [editable path="MirrorBarrier"]

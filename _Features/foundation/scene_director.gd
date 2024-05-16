@@ -31,6 +31,7 @@ var awakes = {
 
 
 func _ready():
+	living_room.switch_context(living_room.none)
 	player.collision_layer = 0
 	player.global_position = living_room.get_marker_position("startMarker")
 	player.lay_up_from_sofa_init(living_room.get_marker_position("upMarker"))
@@ -92,6 +93,7 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 						nolas.make_closet_appear: 16.0,
 						living_room.reactivate_tablet: 108.0,
 						player.go_controlled: 26.0,
+						living_room.reset_context: 28.0
 					}
 				)
 			)
@@ -181,7 +183,7 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				living_room.rotate_sofa()
 			else:
 				player.lay_down_on_sofa(living_room.get_marker_position("layMarker"), true)
-				living_room.lay_down(true)
+				living_room.lay_down()
 
 		"Lay up":
 			if alternative:
@@ -424,6 +426,8 @@ func _despierta() -> void:
 
 
 func _started_end() -> void:
+	living_room.switch_context(living_room.none)
+
 	player.say("DESPERTE", "porfinmedesperte")
 	await get_tree().create_timer(4.5).timeout
 	ui.show_mierda()

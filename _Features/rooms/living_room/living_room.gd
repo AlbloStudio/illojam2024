@@ -3,6 +3,7 @@ class_name LivingRoom extends Room
 var activables_while_sitting := ["ChairActivableGetUp"] as Array[String]
 var activables_while_laying := ["SofaActivableLayUpWall", "SofaActivableLayUp"] as Array[String]
 var activables_while_outside := ["SofaActivableLayDownWall"] as Array[String]
+var none := [] as Array[String]
 
 var cloth_names := ["underwear", "pants", "tshirt"]
 var poster_awaken := false
@@ -115,13 +116,10 @@ func get_up_from_chair() -> void:
 	reactivate_tablet()
 
 
-func lay_down(wall := false) -> void:
+func lay_down() -> void:
 	switch_to_none_mode()
 	deactivate_tablet()
-	if wall:
-		reset_context()
-	else:
-		switch_context(activables_while_laying)
+	switch_context(activables_while_laying)
 
 
 func lay_up(wall := false) -> void:

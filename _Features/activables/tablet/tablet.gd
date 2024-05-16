@@ -9,8 +9,10 @@ func say(to_say: Dictionary, audio: String, actions: Dictionary = {}) -> void:
 
 
 func activate() -> void:
-	activable.reactivate()
+	if activable != null:
+		activable.reactivate()
 
 
 func deactivate() -> void:
-	activable.deactivate()
+	if activable != null:
+		activable.deactivate()
