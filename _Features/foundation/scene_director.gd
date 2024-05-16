@@ -78,16 +78,15 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 			(
 				living_room
 				. say_tablet(
-					["START_0", "START_1", "START_2", "START_3", "START_4", "START_5"],
+					{
+						"START_0": 7.0,
+						"START_1": 13.0,
+						"START_2": 17.5,
+						"START_3": 20.5,
+						"START_4": 24.5,
+						"START_5": 29.5
+					},
 					"IlloIntroCompleta",
-					[
-						7.0,
-						6.0,
-						4.5,
-						3.0,
-						4.0,
-						5.0,
-					],
 					{
 						living_room.make_closet_appear: 16.0,
 						nolas.make_closet_appear: 16.0,
@@ -101,9 +100,8 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 
 		"TabletSecret":
 			setup.say_tablet(
-				["SECONDS_0", "SECONDS_1", "SECONDS_2"],
+				{"SECONDS_0": 5.0, "SECONDS_1": 9.0, "SECONDS_2": 14.0},
 				"AcciónAlternativa",
-				[5.0, 4.0, 5.0],
 				{setup.reactivate_tablet: 11.0}
 			)
 

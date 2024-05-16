@@ -84,10 +84,8 @@ func move_chair() -> void:
 	move_chair_animation.play("move_chair")
 
 
-func say_tablet(
-	to_say: Array[String], audio: String, delay: Array[float] = [3.0], actions: Dictionary = {}
-) -> void:
-	tablet.say(to_say, audio, delay, actions)
+func say_tablet(to_say: Dictionary, audio: String, actions: Dictionary = {}) -> void:
+	tablet.say(to_say, audio, actions)
 
 
 func stream_in() -> void:

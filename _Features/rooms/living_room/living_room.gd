@@ -19,8 +19,7 @@ var poster_awaken := false
 
 @onready var clothes := $Clothes as Node3D
 
-@onready var char_activable_sit := $Activables/ChairActivableSit as Activable
-@onready var char_activable_getup := $Activables/ChairActivableGetUp as Activable
+@onready var tablet_activable := $Tablet/Tablet as Activable
 
 @onready var colliders := $Colliders as Node3D
 @onready var colliders_body := $Colliders/StaticBody3D as StaticBody3D
@@ -44,6 +43,9 @@ func _ready() -> void:
 
 
 func make_closet_appear() -> void:
+	if closet == null:
+		return
+
 	closet.transparency = 1
 	closet_handles.transparency = 1
 	closet.visible = true
@@ -62,6 +64,7 @@ func make_closet_disappear() -> void:
 	tww.finished.connect(on_closet_disappeared, CONNECT_ONE_SHOT)
 	tww.tween_property(closet, "transparency", 1, 0.3)
 	tww.tween_property(closet_handles, "transparency", 1, 0.3)
+	tablet_activable.queue_free()
 
 
 func on_closet_disappeared() -> void:
@@ -71,6 +74,9 @@ func on_closet_disappeared() -> void:
 
 
 func reset_closet() -> void:
+	if closet == null:
+		return
+
 	for cloth_name in cloth_names:
 		var cloth_activable = get_node(_clothes_path(cloth_name, false)) as Node3D
 		cloth_activable.visible = true

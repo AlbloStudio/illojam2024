@@ -144,7 +144,7 @@ func put_some_clothes(cloth_name: String) -> void:
 
 
 func say(text: String, audio: String, delay := 6.0, actions: Dictionary = {}) -> void:
-	speech_bubble.say([text], audio, [delay], actions)
+	speech_bubble.say({text: delay}, audio, actions)
 
 
 func stop_talking() -> void:

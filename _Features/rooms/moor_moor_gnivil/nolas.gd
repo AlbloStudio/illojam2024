@@ -33,14 +33,10 @@ func activate_tablet() -> void:
 	(
 		tablet_nolas
 		. say(
-			[
-				"Has visto que hay acciones deshabilitadas, o prohibidas?",
-				"Dale 5 veces... y las forzarás."
-			],
+			{
+				"Has visto que hay acciones deshabilitadas, o prohibidas?": 4.0,
+				"Dale 5 veces... y las forzarás.": 10.0
+			},
 			"DaleCincoVeces",
-			[
-				4.0,
-				6.0,
-			]
 		)
 	)
