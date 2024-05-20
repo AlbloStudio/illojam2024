@@ -34,6 +34,8 @@ var poster_awaken := false
 @onready var sofa04 := $Plane_022 as MeshInstance3D
 @onready var sofa05 := $Plane_017 as MeshInstance3D
 
+@onready var exit_marker := $Markers/Exit as Marker3D
+
 
 func _ready() -> void:
 	closet.visible = false

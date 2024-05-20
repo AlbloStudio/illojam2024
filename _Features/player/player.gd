@@ -31,6 +31,8 @@ var original_pants_texture: Texture
 
 @onready var nav_agent := $NavigationAgent3D as NavigationAgent3D
 
+@onready var collision := $CollisionShape3D as CollisionShape3D
+
 
 func _ready():
 	desired_velocity = Vector2.LEFT
@@ -417,6 +419,6 @@ func _on_disappear(new_position: Vector3, on_middle: Callable, on_end: Callable)
 	appear_tween.tween_property(hair, "transparency", 0.0, 1.0)
 	appear_tween.tween_property(head, "transparency", 0.0, 1.0)
 
-
-func exit_dream(new_position: Vector3) -> void:
-	animate("Walk", new_position, Vector3(0.0, PI, 0.0), state_animating.name, false)
+func dont_collide() -> void:
+	collision.shape = null
+	collision_mask = 0

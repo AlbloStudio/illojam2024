@@ -127,6 +127,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8564, 0, -2.15505)
 [node name="chairMarker" type="Marker3D" parent="Markers" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.039, 0.398, 0.682079)
 
+[node name="Exit" type="Marker3D" parent="Markers" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 2.52879, 0.000723839, -8.92314)
+
 [node name="Clothes" type="Node3D" parent="." index="1"]
 transform = Transform3D(0.990566, 0, 0, 0, 1.02941, 0, 0, 0, 1, 3.153, 0.0435573, -3.921)
 
@@ -210,7 +213,7 @@ sound_volume = -10.0
 activable_alternative_text = "Echar una cabezadita"
 alternative_enable_after = [NodePath(".")]
 
-[node name="ClosetActivable" parent="Activables" index="2" node_paths=PackedStringArray("enable_after", "initial_point", "alternative_initial_point") instance=ExtResource("3_t3t5u")]
+[node name="ClosetActivable" parent="Activables" index="2" node_paths=PackedStringArray("enable_after", "initial_point") instance=ExtResource("3_t3t5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 2.02548, 0.000723839, -4.01017)
 activable_name = "Get Naked"
 initial_state = "Deactivated"
@@ -221,12 +224,8 @@ initial_point = NodePath("Normal")
 sound = ExtResource("9_syyqw")
 sound_volume = 10.0
 activable_alternative_text = "Salir de casa por el armario"
-alternative_initial_point = NodePath("Alternative")
 
-[node name="Alternative" type="Marker3D" parent="Activables/ClosetActivable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0457621, 0, 0.359463)
-
-[node name="Normal" type="Marker3D" parent="Activables/ClosetActivable" index="5"]
+[node name="Normal" type="Marker3D" parent="Activables/ClosetActivable" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022881, 0, 0.179731)
 
 [node name="PosterActivable" parent="Activables" index="3" node_paths=PackedStringArray("enable_after", "alternative_enable_after") instance=ExtResource("3_t3t5u")]

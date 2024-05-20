@@ -68,6 +68,8 @@ func _started() -> void:
 
 
 func _activable_activated(activable_name: String, alternative: bool, initial_point: Node3D) -> void:
+	player.speech_bubble.stop_saying()
+
 	if initial_point != null:
 		action_controller.can_press = false
 		await player.move_as_puppet(initial_point.global_position)
@@ -106,7 +108,9 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 
 		"Get Naked":
 			if alternative:
-				player.exit_dream(living_room.get_marker_position("exitDreamMarker"))
+				player.dont_collide()
+				await player.move_as_puppet(living_room.exit_marker.global_position)
+				_secret_end()
 			else:
 				living_room.make_clothes_appear()
 				player.get_naked()
@@ -424,7 +428,6 @@ func _despierta() -> void:
 	scan_material.set_shader_parameter("pallete_effect", 0.0)
 	scan_material.set_shader_parameter("scan_brightness", 1.0)
 
-
 func _started_end() -> void:
 	living_room.switch_context(living_room.none)
 
@@ -436,4 +439,9 @@ func _started_end() -> void:
 	player.go_puppet()
 	await get_tree().create_timer(1.7).timeout
 	ui.hide_mierda()
+	ui.start_video()
+
+func _secret_end() -> void:
+	ui.hide_ui()
+	audio.stop()
 	ui.start_video()
