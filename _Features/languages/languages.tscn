@@ -1,67 +1,98 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxkxj8gtgofh1"]
+[gd_scene load_steps=6 format=3 uid="uid://cxkxj8gtgofh1"]
 
 [ext_resource type="Texture2D" uid="uid://1vqa5dfjugik" path="res://_Features/languages/es.png" id="1_a13dj"]
 [ext_resource type="Script" path="res://_Features/languages/languages.gd" id="1_nfw3k"]
 [ext_resource type="Texture2D" uid="uid://cmssg7u70spu" path="res://_Features/languages/en.png" id="2_1eg18"]
 [ext_resource type="PackedScene" uid="uid://b3hl0t3spppnd" path="res://_Features/main/main.tscn" id="2_et36n"]
+[ext_resource type="FontFile" uid="uid://wxl2a5jt3j0m" path="res://_Features/UI/RobotoMono-VariableFont_wght.ttf" id="5_33nsl"]
 
 [node name="LanguageSelector" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_nfw3k")
 next_scene = ExtResource("2_et36n")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -868.5
-offset_top = -331.0
-offset_right = 868.5
-offset_bottom = 331.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -25.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-columns = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 300
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 200
 
-[node name="ES_MARGIN" type="MarginContainer" parent="GridContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HBoxContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ES_MARGIN" type="MarginContainer" parent="MarginContainer/VSplitContainer/HFlowContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="ES" type="TextureButton" parent="GridContainer/ES_MARGIN"]
+[node name="ES" type="TextureButton" parent="MarginContainer/VSplitContainer/HFlowContainer/ES_MARGIN"]
 self_modulate = Color(1, 1, 1, 0.443137)
 layout_mode = 2
 texture_normal = ExtResource("1_a13dj")
 
-[node name="EN_MARGIN" type="MarginContainer" parent="GridContainer"]
+[node name="EN_MARGIN" type="MarginContainer" parent="MarginContainer/VSplitContainer/HFlowContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="EN" type="TextureButton" parent="GridContainer/EN_MARGIN"]
+[node name="EN" type="TextureButton" parent="MarginContainer/VSplitContainer/HFlowContainer/EN_MARGIN"]
 self_modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
 texture_normal = ExtResource("2_1eg18")
 
-[connection signal="mouse_entered" from="GridContainer/ES_MARGIN/ES" to="." method="_on_es_mouse_entered"]
-[connection signal="mouse_exited" from="GridContainer/ES_MARGIN/ES" to="." method="_on_es_mouse_exited"]
-[connection signal="pressed" from="GridContainer/ES_MARGIN/ES" to="." method="_on_es_pressed"]
-[connection signal="mouse_entered" from="GridContainer/EN_MARGIN/EN" to="." method="_on_en_mouse_entered"]
-[connection signal="mouse_exited" from="GridContainer/EN_MARGIN/EN" to="." method="_on_en_mouse_exited"]
-[connection signal="pressed" from="GridContainer/EN_MARGIN/EN" to="." method="_on_en_pressed"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 495
+
+[node name="HelpText" type="RichTextLabel" parent="MarginContainer/VSplitContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/normal_font = ExtResource("5_33nsl")
+theme_override_font_sizes/normal_font_size = 85
+bbcode_enabled = true
+text = "Izq 🖱️ moverte
+Der 🖱️ realizar acción
+Mid 🖱️ mostrar puntos
+ESC ⌨️ menú
+  Q ⌨️ saltar diálogos"
+fit_content = true
+scroll_active = false
+
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HFlowContainer/ES_MARGIN/ES" to="." method="_on_es_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HFlowContainer/ES_MARGIN/ES" to="." method="_on_es_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HFlowContainer/ES_MARGIN/ES" to="." method="_on_es_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HFlowContainer/EN_MARGIN/EN" to="." method="_on_en_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HFlowContainer/EN_MARGIN/EN" to="." method="_on_en_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HFlowContainer/EN_MARGIN/EN" to="." method="_on_en_pressed"]

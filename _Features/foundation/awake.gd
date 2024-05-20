@@ -1,8 +1,8 @@
 class_name Awake extends Node
 
-var in_process: Array[AwakeInProcess]
-
 @export var world_environment: WorldEnvironment
+
+var in_process: Array[AwakeInProcess]
 
 
 func _process(delta):

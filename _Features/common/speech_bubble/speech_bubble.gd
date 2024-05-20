@@ -1,14 +1,14 @@
 class_name SpeechBubble extends Node3D
 
-@onready var speech_bubble_label := $SpeechBubbleLabel as Label3D
-@onready var audiostream_player := $AudioStreamPlayer3D as AudioStreamPlayer3D
-
 var next_texts: Dictionary = {}
 var next_actions: Dictionary = {}
 var next_audio: String = ""
 
 var actions_cue: Array[CallbackTweener] = []
 var texts_cue: Array[CallbackTweener] = []
+
+@onready var speech_bubble_label := $SpeechBubbleLabel as Label3D
+@onready var audiostream_player := $AudioStreamPlayer3D as AudioStreamPlayer3D
 
 
 func _unhandled_input(event: InputEvent):

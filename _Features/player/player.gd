@@ -419,6 +419,7 @@ func _on_disappear(new_position: Vector3, on_middle: Callable, on_end: Callable)
 	appear_tween.tween_property(hair, "transparency", 0.0, 1.0)
 	appear_tween.tween_property(head, "transparency", 0.0, 1.0)
 
+
 func dont_collide() -> void:
 	collision.shape = null
 	collision_mask = 0

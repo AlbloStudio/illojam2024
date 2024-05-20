@@ -78,23 +78,25 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 	match activable_name:
 		"TabletLivingRoom":
 			player.go_puppet()
-			living_room.say_tablet(
-				{
-					"START_0": 7.0,
-					"START_1": 13.0,
-					"START_2": 17.5,
-					"START_3": 20.5,
-					"START_4": 24.5,
-					"START_5": 29.5
-				},
-				"IlloIntroCompleta",
-				{
-					living_room.make_closet_appear: 16.0,
-					nolas.make_closet_appear: 16.0,
-					living_room.reactivate_tablet: 108.0,
-					player.go_controlled: 26.0,
-					living_room.reset_context: 28.0
-				}
+			(
+				living_room
+				. say_tablet(
+					{
+						"START_0": 7.0,
+						"START_1": 13.0,
+						"START_2": 17.5,
+						"START_3": 20.5,
+						"START_4": 24.5,
+					},
+					"IlloIntroCompleta",
+					{
+						living_room.make_closet_appear: 16.0,
+						nolas.make_closet_appear: 16.0,
+						living_room.reactivate_tablet: 108.0,
+						player.go_controlled: 26.0,
+						living_room.reset_context: 28.0
+					}
+				)
 			)
 		"TabletNolas":
 			nolas.activate_tablet()
@@ -428,6 +430,7 @@ func _despierta() -> void:
 	scan_material.set_shader_parameter("pallete_effect", 0.0)
 	scan_material.set_shader_parameter("scan_brightness", 1.0)
 
+
 func _started_end() -> void:
 	living_room.switch_context(living_room.none)
 
@@ -440,6 +443,7 @@ func _started_end() -> void:
 	await get_tree().create_timer(1.7).timeout
 	ui.hide_mierda()
 	ui.start_video()
+
 
 func _secret_end() -> void:
 	ui.hide_ui()
