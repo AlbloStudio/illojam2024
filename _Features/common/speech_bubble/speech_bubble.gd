@@ -3,15 +3,18 @@ class_name SpeechBubble extends Node3D
 @onready var speech_bubble_label := $SpeechBubbleLabel as Label3D
 @onready var audiostream_player := $AudioStreamPlayer3D as AudioStreamPlayer3D
 
+var next_texts: Dictionary = {}
+var next_actions: Dictionary = {}
+var next_audio: String = ""
+
 var actions_cue: Array[CallbackTweener] = []
-var texts_cue: Array[CallbackTweener]
+var texts_cue: Array[CallbackTweener] = []
 
 
-func _input(event: InputEvent):
+func _unhandled_input(event: InputEvent):
 	if actions_cue.size() > 0 || audiostream_player.playing:
-		if event is InputEventMouseButton:
-			if event.button_index == MOUSE_BUTTON_LEFT || event.button_index == MOUSE_BUTTON_RIGHT:
-				stop_saying()
+		if event.is_action_pressed("skip"):
+			stop_saying()
 
 
 func _process(_delta) -> void:
@@ -20,6 +23,13 @@ func _process(_delta) -> void:
 
 
 func say(texts: Dictionary, audio: String, actions: Dictionary = {}) -> void:
+	if texts_cue.size() > 0:
+		next_texts = texts
+		next_actions = actions
+		next_audio = audio
+		stop_saying()
+		return
+
 	if TranslationServer.get_locale() == "es":
 		var sound = _load_mp3("res://_Features/audio/" + audio + ".mp3")
 		if sound != null:
@@ -60,9 +70,16 @@ func switch_text(text: String) -> void:
 func finish_say() -> void:
 	speech_bubble_label.visible = false
 	texts_cue.clear()
+	if next_texts.size() > 0:
+		say(next_texts, next_audio, next_actions)
+		next_texts.clear()
+		next_actions.clear()
+		next_audio = ""
 
 
 func stop_saying() -> void:
+	print("stop saying...")
+
 	speech_bubble_label.visible = false
 	audiostream_player.stop()
 	for action in actions_cue:

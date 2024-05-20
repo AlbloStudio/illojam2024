@@ -76,26 +76,23 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 	match activable_name:
 		"TabletLivingRoom":
 			player.go_puppet()
-			(
-				living_room
-				. say_tablet(
-					{
-						"START_0": 7.0,
-						"START_1": 13.0,
-						"START_2": 17.5,
-						"START_3": 20.5,
-						"START_4": 24.5,
-						"START_5": 29.5
-					},
-					"IlloIntroCompleta",
-					{
-						living_room.make_closet_appear: 16.0,
-						nolas.make_closet_appear: 16.0,
-						living_room.reactivate_tablet: 108.0,
-						player.go_controlled: 26.0,
-						living_room.reset_context: 28.0
-					}
-				)
+			living_room.say_tablet(
+				{
+					"START_0": 7.0,
+					"START_1": 13.0,
+					"START_2": 17.5,
+					"START_3": 20.5,
+					"START_4": 24.5,
+					"START_5": 29.5
+				},
+				"IlloIntroCompleta",
+				{
+					living_room.make_closet_appear: 16.0,
+					nolas.make_closet_appear: 16.0,
+					living_room.reactivate_tablet: 108.0,
+					player.go_controlled: 26.0,
+					living_room.reset_context: 28.0
+				}
 			)
 		"TabletNolas":
 			nolas.activate_tablet()
@@ -168,9 +165,12 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				player.say("OTILUC", "ContemplarPosterInvertido")
 			else:
 				player.say(
-					"ME_CAGO", "MeCago2", 2.0, {func(): SignalBus.awaked.emit("poster"): 2.0}
+					"ME_CAGO",
+					"MeCago2",
+					2.0,
+					{func(): SignalBus.awaked.emit("poster"): 2.0, nolas.make_tablet_visible: 0.0}
 				)
-				nolas.make_tablet_visible()
+
 		"Lay down":
 			if alternative:
 				living_room.rotate_sofa()
