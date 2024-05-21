@@ -109,12 +109,14 @@ func _clothes_path(cloth: String, with_activable := true) -> String:
 
 func sit_on_chair() -> void:
 	switch_context(activables_while_sitting)
+	switch_clothes_activabe(false)
 	deactivate_tablet()
 
 
 func get_up_from_chair() -> void:
 	await get_tree().create_timer(2).timeout
 	reset_context()
+	switch_clothes_activabe(true)
 	reactivate_tablet()
 
 
@@ -122,17 +124,20 @@ func lay_down() -> void:
 	switch_to_none_mode()
 	deactivate_tablet()
 	switch_context(activables_while_laying)
+	switch_clothes_activabe(false)
 
 
 func lay_up(wall := false) -> void:
 	switch_to_none_mode()
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(5).timeout
 	if wall:
 		switch_context(activables_while_outside)
 		deactivate_tablet()
+		switch_clothes_activabe(false)
 	else:
 		reset_context()
 		reactivate_tablet()
+		switch_clothes_activabe(true)
 
 
 func switch_to_layed_mode() -> void:
@@ -160,14 +165,6 @@ func activate_clothe(clothe_name: String, delay := 0.0) -> void:
 
 func awake_poster() -> void:
 	pennywise.visible = true
-
-
-func awake_sit() -> void:
-	pass
-
-
-func awake_sofa() -> void:
-	pass
 
 
 func get_new_rotation_vector() -> Vector3:
@@ -204,3 +201,9 @@ func return_sofa() -> void:
 	rotation_tween.tween_property(sofa05, "global_rotation", Vector3.ZERO, 0.4)
 
 	create_tween().tween_callback(func(): SignalBus.awaked.emit("rotation")).set_delay(0.5)
+
+
+func switch_clothes_activabe(switch := false) -> void:
+	for cloth_name in cloth_names:
+		var cloth_activable = get_node(_clothes_path(cloth_name, true)) as Node3D
+		cloth_activable.is_in_context = switch
