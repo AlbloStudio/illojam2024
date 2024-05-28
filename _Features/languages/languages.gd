@@ -3,28 +3,22 @@ extends Node
 @export var next_scene: PackedScene
 
 var help_text_en = """
-LMB 🖱️ move
-RMB 🖱️ execute action
-MMB 🖱️ see all points
-ESC ⌨️ menu
-  Q ⌨️ skip dialogue
+🖱️ LMB move    |    RMB execute action    |    MMB see all points
+⌨️ ESC menu    |    Q skip dialogue
 """
 
 var help_text_es = """
-Izq 🖱️ moverte
-Der 🖱️ realizar acción
-Mid 🖱️ mostrar puntos
-ESC ⌨️ menú
-  Q ⌨️ saltar diálogos
+🖱️ Izq  moverte    |    Der realizar acción    |    Mid mostrar puntos
+⌨️ ESC menú    |    Q saltar diálogos
 """
 
 var strong_lights_text_es = "Desactivar luces parpadeantes"
 var strong_lights_text_en = "Disable flashing ilumination"
 
-@onready var help_label := %HelpText as RichTextLabel
+@onready var help_label := %HelpText as Label
 @onready var strong_lights := %StrongLights as CheckButton
-@onready var en_button := %EN_MARGIN/EN as TextureButton
-@onready var es_button := %ES_MARGIN/ES as TextureButton
+@onready var en_button := %EN as TextureButton
+@onready var es_button := %ES as TextureButton
 
 
 func _ready():
