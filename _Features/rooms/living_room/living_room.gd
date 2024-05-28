@@ -4,6 +4,7 @@ class_name LivingRoom extends Room
 @export var ceiling_nodes: Array[Node3D] = []
 @export var scary_hoodie: Node3D
 
+var no_activables := [] as Array[String]
 var activables_while_sitting := ["ChairActivableGetUp"] as Array[String]
 var activables_while_laying := ["SofaActivableLayUpWall", "SofaActivableLayUp"] as Array[String]
 var activables_while_outside := ["SofaActivableLayDownWall"] as Array[String]
@@ -129,6 +130,7 @@ func lay_down() -> void:
 
 func lay_up(wall := false) -> void:
 	switch_to_none_mode()
+	switch_context(no_activables)
 	await get_tree().create_timer(5).timeout
 	if wall:
 		switch_context(activables_while_outside)
@@ -206,4 +208,5 @@ func return_sofa() -> void:
 func switch_clothes_activabe(switch := false) -> void:
 	for cloth_name in cloth_names:
 		var cloth_activable = get_node(_clothes_path(cloth_name, true)) as Node3D
-		cloth_activable.is_in_context = switch
+		if cloth_activable != null:
+			cloth_activable.is_in_context = switch

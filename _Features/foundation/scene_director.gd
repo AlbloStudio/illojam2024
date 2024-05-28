@@ -4,6 +4,7 @@ extends Node
 @export var discord_call: AudioStream
 @export var noise_material: Material
 
+var are_strong_lights = true
 var current_activable: Activable = null
 var awakes = {
 	"wall": false,
@@ -54,6 +55,11 @@ func _ready():
 	SignalBus.started_end.connect(_started_end)
 
 	ui.set_total_progress(awakes.size())
+
+	var config = ConfigFile.new()
+	var res = config.load("user://preferences.cfg")
+	if res == OK:
+		are_strong_lights = config.get_value("preferences", "strong_lights_on", true)
 
 
 func _unhandled_input(event):
@@ -235,11 +241,12 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 
 		"TouchWall":
 			if alternative:
+				setup.switch_to_upwall_context()
+
 				player.set_up_walls(
 					setup.get_marker_position("WallsUpMarker"),
-					func(): setup.switch_to_upwall_context()
+					func(): setup.switch_to_upwall_layer()
 				)
-				setup.switch_to_normal_context()
 			else:
 				player.say("PARED", "HostiaUnaPared")
 
@@ -275,12 +282,9 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 		"Jump Down":
 			if alternative:
 				player.penetrate(setup.get_marker_position("PenetrationMarker"))
-				setup.switch_to_normal_context()
+				setup.switch_to_normal_layer()
 			else:
-				player.set_down_wall(
-					setup.get_marker_position("WallsDownMarker"),
-					func(): setup.switch_to_normal_context()
-				)
+				player.set_down_wall(setup.get_marker_position("WallsDownMarker"), jump_down)
 
 		"Move Chair":
 			if alternative:
@@ -289,6 +293,11 @@ func _activable_activated(activable_name: String, alternative: bool, initial_poi
 				setup.move_chair()
 
 	SignalBus.activable_activated_done.emit(activable_name)
+
+
+func jump_down() -> void:
+	setup.switch_to_normal_layer()
+	setup.switch_to_normal_context()
 
 
 func _set_current_activable(new_activable: Activable) -> void:
@@ -372,13 +381,14 @@ func _awaked(awake_name: String) -> void:
 				3.0
 			)
 		"clothes":
-			awake_actions.start_material_distorsion(
-				living_room.noise_nodes,
-				noise_material,
-				Vector2(1.0, 10.0),
-				Vector2(10.0, 25.0),
-				3.3
-			)
+			if are_strong_lights:
+				awake_actions.start_material_distorsion(
+					living_room.noise_nodes,
+					noise_material,
+					Vector2(1.0, 10.0),
+					Vector2(10.0, 25.0),
+					3.3
+				)
 		"poster":
 			living_room.awake_poster()
 		"sit":
@@ -419,6 +429,11 @@ func _on_button_pressed() -> void:
 
 
 func _despierta() -> void:
+	living_room.switch_context(living_room.none)
+	living_room.deactivate_tablet()
+	nolas.deactivate_tablet()
+	living_room.switch_clothes_activabe(false)
+
 	player.collision_layer = 0
 	player.stop_talking()
 	player.global_position = living_room.get_marker_position("startMarker")
@@ -432,8 +447,6 @@ func _despierta() -> void:
 
 
 func _started_end() -> void:
-	living_room.switch_context(living_room.none)
-
 	player.say("DESPERTE", "porfinmedesperte")
 	await get_tree().create_timer(4.5).timeout
 	ui.show_mierda()

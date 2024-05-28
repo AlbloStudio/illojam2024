@@ -274,9 +274,10 @@ depth = 0.5
 [node name="Tablet" parent="." index="75" instance=ExtResource("3_k6s5t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04001, 0.621368, 4.2036)
 
-[node name="Tablet" parent="Tablet" index="1"]
+[node name="Tablet" parent="Tablet" index="1" node_paths=PackedStringArray("enable_after")]
 activable_name = "TabletNolas"
 initial_state = "Deactivated"
 activable_text = "Activar"
+enable_after = [NodePath(".")]
 
 [editable path="Tablet"]

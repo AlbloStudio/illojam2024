@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0vmulqr0n2n6"
-path="res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex"
+uid="uid://dwysyblgpw0h4"
+path="res://.godot/imported/DespiertaCover.png-b9ab6a822abe3b5fd3517ac2359d0b94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=["res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex"]
+source_file="res://_Features/resources/DespiertaCover.png"
+dest_files=["res://.godot/imported/DespiertaCover.png-b9ab6a822abe3b5fd3517ac2359d0b94.ctex"]
 
 [params]
 

@@ -46,12 +46,18 @@ func switch_to_penerated_context() -> void:
 
 func switch_to_normal_context() -> void:
 	switch_context(activables_while_normal)
+
+
+func switch_to_normal_layer() -> void:
 	colliders.collision_layer = 4
 	colliders_up.collision_layer = 0
 
 
 func switch_to_upwall_context() -> void:
 	switch_context(activables_while_up)
+
+
+func switch_to_upwall_layer() -> void:
 	colliders.collision_layer = 0
 	colliders_up.collision_layer = 4
 
@@ -93,6 +99,7 @@ func stream_in() -> void:
 
 
 func stream_out() -> void:
+	await get_tree().create_timer(3).timeout
 	switch_context(activables_while_normal)
 
 
@@ -101,16 +108,5 @@ func stream_wrong() -> void:
 
 
 func stream_out_wrong() -> void:
+	await get_tree().create_timer(3).timeout
 	switch_context(activables_while_normal)
-
-
-func awake_jump() -> void:
-	pass
-
-
-func awake_stream() -> void:
-	pass
-
-
-func awake_window() -> void:
-	pass

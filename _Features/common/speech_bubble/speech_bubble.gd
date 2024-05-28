@@ -78,8 +78,6 @@ func finish_say() -> void:
 
 
 func stop_saying() -> void:
-	print("stop saying...")
-
 	speech_bubble_label.visible = false
 	audiostream_player.stop()
 	for action in actions_cue:
